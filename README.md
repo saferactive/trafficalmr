@@ -1,18 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<!-- [![Travis build status](https://travis-ci.org/ITSLeeds/RpackageTemplate.svg?branch=master)](https://travis-ci.org/ITSLeeds/RpackageTemplate) -->
+<!-- [![Travis build status](https://travis-ci.org/ITSLeeds/traffiCalmr.svg?branch=master)](https://travis-ci.org/ITSLeeds/traffiCalmr) -->
 
-<!-- [![Coverage status](https://codecov.io/gh/ITSLeeds/RpackageTemplate/branch/master/graph/badge.svg)](https://codecov.io/github/ITSLeeds/RpackageTemplate?branch=master) -->
+<!-- [![Coverage status](https://codecov.io/gh/ITSLeeds/traffiCalmr/branch/master/graph/badge.svg)](https://codecov.io/github/ITSLeeds/traffiCalmr?branch=master) -->
 
-<!-- [![Build status](https://ci.appveyor.com/api/projects/status/gqp3smc04as3qg85?svg=true)](https://ci.appveyor.com/project/layik/RpackageTemplate-05ana) -->
+<!-- [![Build status](https://ci.appveyor.com/api/projects/status/gqp3smc04as3qg85?svg=true)](https://ci.appveyor.com/project/layik/traffiCalmr-05ana) -->
 
-![tic](https://github.com/ITSLeeds/RpackageTemplate/workflows/tic/badge.svg)
+![tic](https://github.com/ITSLeeds/traffiCalmr/workflows/tic/badge.svg)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-# RpackageTemplate
+# traffiCalmr
 
 Template to form the basis of ITSLeeds R packages
 
@@ -24,7 +24,7 @@ Install the package with **remotes** as follows:
 install.packages("remotes") # If you do not already have the remotes package
 Change the contents to "user/repo", e.g:
 # remotes::install_github("ropensci/stplanr") # for the stplanr package
-remotes::install_github("ITSleeds/RpackageTemplate")
+remotes::install_github("ITSleeds/traffiCalmr")
 ```
 
 ## Usage
@@ -33,8 +33,8 @@ To create a new package and get it on your computer:
 
   - Create a new repo on GitHub in an appropriate organisation. You can
     use this template by clicking the “[Use this
-    template](https://github.com/ITSLeeds/RpackageTemplate/generate)”
-    button in the top right hand corner of this page.
+    template](https://github.com/ITSLeeds/traffiCalmr/generate)” button
+    in the top right hand corner of this page.
   - Clone the package onto your computer, e.g. by typing `git clone
     git@github.com:itsleeds/youPackageName` in a Linux terminal (try
     pressing `Ctl+Shift+T` in RStudio to get to the terminal or open
@@ -46,7 +46,7 @@ To create a new package and get it on your computer:
 
 ``` bash
 cd testPackage
-mv RpackageTemplate.Rproj yourPackageName.Rproj
+mv traffiCalmr.Rproj yourPackageName.Rproj
 ```
 
   - Open the project in RStudio as follows:
@@ -99,7 +99,7 @@ Acknowledge all the fine people who helped build this package.
 
 ## Contribution
 
-Please note that the `RpackageTemplate` project is released with a
+Please note that the `traffiCalmr` project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to
 this project, you agree to abide by its terms.
 
