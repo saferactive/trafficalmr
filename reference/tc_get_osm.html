@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Hello, World! — hello • traffiCalmr</title>
+<title>Get traffic calming interventions from OpenStreetMap — tc_get_osm • traffiCalmr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Hello, World! — hello" />
-<meta property="og:description" content="Prints 'Hello, world!'." />
+<meta property="og:title" content="Get traffic calming interventions from OpenStreetMap — tc_get_osm" />
+<meta property="og:description" content="Get traffic calming interventions from OpenStreetMap" />
 
 
 
@@ -120,21 +120,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Hello, World!</h1>
-    
-    <div class="hidden name"><code>hello.Rd</code></div>
+    <h1>Get traffic calming interventions from OpenStreetMap</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ITSLeeds/traffiCalmr/blob/master/R/tc_get_osm.R'><code>R/tc_get_osm.R</code></a></small>
+    <div class="hidden name"><code>tc_get_osm.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Prints 'Hello, world!'.</p>
+    <p>Get traffic calming interventions from OpenStreetMap</p>
     </div>
 
-    <pre class="usage"><span class='fu'>hello</span>()</pre>
+    <pre class="usage"><span class='fu'>tc_get_osm</span>(<span class='kw'>bbox</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"osm_points"</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>bbox</th>
+      <td><p>A bounding box or name passed to `osmdata`</p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>A type of `traffic_calming` intervention.
+Possible values include `yes`, `bump` and `hump`.
+See [wiki.openstreetmap.org](https://wiki.openstreetmap.org/wiki/Key:traffic_calming)
+for details.</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>The type of `osmdata` object to return, `osm_points` (default),
+`osm_lines` etc (see [osmdata](https://cran.r-project.org/package=osmdata) for details)</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An sf object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>hello</span>()</div><div class='output co'>#&gt; [1] "Hello, world!"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>interventions</span> <span class='kw'>=</span> <span class='fu'>tc_get_osm</span>(<span class='kw'>bbox</span> <span class='kw'>=</span> <span class='st'>"walthamstow village"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
