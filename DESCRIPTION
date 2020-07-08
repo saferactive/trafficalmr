@@ -27,5 +27,6 @@ Suggests:
     covr,
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    stats19
 VignetteBuilder: knitr
