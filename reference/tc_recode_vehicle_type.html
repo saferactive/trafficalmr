@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • traffiCalmr</title>
+<title>Recode vehicle types — tc_recode_vehicle_type • traffiCalmr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Recode vehicle types — tc_recode_vehicle_type" />
+<meta property="og:description" content="This function was designed to simplify vehicle types from STAT19 data" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -117,48 +118,33 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Recode vehicle types</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ITSLeeds/traffiCalmr/blob/master/R/tc_recode.R'><code>R/tc_recode.R</code></a></small>
+    <div class="hidden name"><code>tc_recode_vehicle_type.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>This function was designed to simplify vehicle types from STAT19 data</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>tc_recode_vehicle_type</span>(<span class='no'>x</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="tc_get_osm.html">tc_get_osm()</a></code> </p>
-        </td>
-        <td><p>Get traffic calming interventions from OpenStreetMap</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_recode_vehicle_type.html">tc_recode_vehicle_type()</a></code> </p>
-        </td>
-        <td><p>Recode vehicle types</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>Vehicle types, e.g. from the vehicle_type column in STATS19 data</p></td>
+    </tr>
     </table>
-  </div>
 
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>(<span class='no'>x</span> <span class='kw'>=</span> <span class='kw pkg'>stats19</span><span class='kw ns'>::</span><span class='no'><a href='https://docs.ropensci.org/stats19/reference/vehicles_sample.html'>vehicles_sample</a></span>$<span class='no'>vehicle_type</span>)</div><div class='output co'>#&gt; [1] "Car"                           "Goods 7.5 tonnes mgw and over"
+#&gt; [3] "Car"                          </div><div class='input'><span class='fu'>tc_recode_vehicle_type</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "Car" "HGV" "Car"</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
