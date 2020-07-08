@@ -15,4 +15,10 @@ This function was designed to simplify vehicle types from STAT19 data
 \examples{
 (x = stats19::vehicles_sample$vehicle_type)
 tc_recode_vehicle_type(x)
+\dontrun{
+v = stats19::get_stats19(2018, "vehicles")
+v$vehicle_type_simple = tc_recode_vehicle_type(v$vehicle_type)
+table(v$vehicle_type)
+table(v$vehicle_type_simple)
+}
 }

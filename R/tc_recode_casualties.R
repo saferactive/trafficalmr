@@ -6,7 +6,7 @@
 #' @examples
 #' (x = stats19::casualties_sample$casualty_type)
 #' (x = stats19::casualties_sample$casualty_type)
-#' tc_recode_casualty_type(x)
+#' tc_recode_casualties(x)
 #' \dontrun{
 #' v = stats19::get_stats19(2018, "casualties")
 #' v$casualty_type_simple = tc_recode_casualties(v$casualty_type)
