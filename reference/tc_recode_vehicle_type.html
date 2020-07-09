@@ -129,7 +129,13 @@
     <p>This function was designed to simplify vehicle types from STAT19 data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tc_recode_vehicle_type</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>tc_recode_vehicle_type</span>(
+  <span class='no'>x</span>,
+  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>`Taxi*.+`</span> <span class='kw'>=</span> <span class='st'>"Taxi"</span>, <span class='kw'>`Van*.+`</span> <span class='kw'>=</span> <span class='st'>"Van"</span>, <span class='kw'>`Pedal cycle`</span> <span class='kw'>=</span> <span class='st'>"Bicycle"</span>,
+    <span class='kw'>`(M|m)otorcycle*.+|Elec*.+`</span> <span class='kw'>=</span> <span class='st'>"Motorcycle"</span>,
+    <span class='kw'>`Data*.+|Other*.+|Agri*.+|Ridden*.+|Mobility*.+|Tram*.+`</span> <span class='kw'>=</span> <span class='st'>"Other"</span>, <span class='kw'>`Bus*.+`</span> <span class='kw'>=</span> <span class='st'>"Bus"</span>,
+    <span class='kw'>`Minibus*.+`</span> <span class='kw'>=</span> <span class='st'>"Minibus"</span>, <span class='kw'>`Goods*.+`</span> <span class='kw'>=</span> <span class='st'>"HGV"</span>)
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,6 +143,12 @@
     <tr>
       <th>x</th>
       <td><p>Vehicle types, e.g. from the vehicle_type column in STATS19 data</p></td>
+    </tr>
+    <tr>
+      <th>pattern</th>
+      <td><p>A named character vector with values representing new vehicle type names.
+Has the form `c("Car" = "Car", "Taxi/Private hire car" = "Taxi")`. See documentation
+for details.</p></td>
     </tr>
     </table>
 
