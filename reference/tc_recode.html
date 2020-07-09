@@ -140,7 +140,7 @@ Default recoding functions are available in functions such as
   <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>`Taxi*.+`</span> <span class='kw'>=</span> <span class='st'>"Taxi"</span>, <span class='kw'>`Van*.+`</span> <span class='kw'>=</span> <span class='st'>"Van"</span>, <span class='kw'>`Pedal cycle`</span> <span class='kw'>=</span> <span class='st'>"Bicycle"</span>,
     <span class='kw'>`(M|m)otorcycle*.+|Elec*.+`</span> <span class='kw'>=</span> <span class='st'>"Motorcycle"</span>,
     <span class='kw'>`Data*.+|Other*.+|Agri*.+|Ridden*.+|Mobility*.+|Tram*.+`</span> <span class='kw'>=</span> <span class='st'>"Other"</span>, <span class='kw'>`Bus*.+`</span> <span class='kw'>=</span> <span class='st'>"Bus"</span>,
-    <span class='kw'>`Minibus*.+`</span> <span class='kw'>=</span> <span class='st'>"Minibus"</span>, <span class='kw'>`Goods*.+`</span> <span class='kw'>=</span> <span class='st'>"HGV"</span>)
+    <span class='kw'>`Minibus*.+`</span> <span class='kw'>=</span> <span class='st'>"Other"</span>, <span class='kw'>`Goods*.+`</span> <span class='kw'>=</span> <span class='st'>"HGV"</span>)
 )
 
 <span class='fu'>tc_recode_casualties</span>(<span class='no'>x</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pattern_match</span> <span class='kw'>=</span> <span class='no'>casualties_lookup</span>)</pre>
@@ -181,10 +181,10 @@ Has the form <code><a href='https://rdrr.io/r/base/c.html'>c("Car long name" = "
 (<span class='no'>x</span> <span class='kw'>=</span> <span class='kw pkg'>stats19</span><span class='kw ns'>::</span><span class='no'><a href='https://docs.ropensci.org/stats19/reference/casualties_sample.html'>casualties_sample</a></span>$<span class='no'>casualty_type</span>)</div><div class='output co'>#&gt; [1] "Motorcycle 125cc and under rider or passenger"
 #&gt; [2] "Pedestrian"                                   
 #&gt; [3] "Car occupant"                                 </div><div class='input'><span class='fu'>tc_recode_casualties</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "Motorcyclist" "Pedestrian"   "Car_occupant"</div><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>c</span> <span class='kw'>=</span> <span class='kw pkg'>stats19</span><span class='kw ns'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span>(<span class='fl'>2018</span>, <span class='st'>"casualties"</span>)
-<span class='no'>c</span>$<span class='no'>casualty_type_simple</span> <span class='kw'>=</span> <span class='fu'>tc_recode_casualties</span>(<span class='no'>c</span>$<span class='no'>casualty_type</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>c</span>$<span class='no'>casualty_type</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>c</span>$<span class='no'>casualty_type_simple</span>)
+<span class='no'>cas</span> <span class='kw'>=</span> <span class='kw pkg'>stats19</span><span class='kw ns'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span>(<span class='fl'>2018</span>, <span class='st'>"casualties"</span>)
+<span class='no'>cas</span>$<span class='no'>casualty_type_simple</span> <span class='kw'>=</span> <span class='fu'>tc_recode_casualties</span>(<span class='no'>cas</span>$<span class='no'>casualty_type</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>cas</span>$<span class='no'>casualty_type</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>cas</span>$<span class='no'>casualty_type_simple</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
