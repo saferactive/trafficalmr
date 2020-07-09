@@ -126,7 +126,8 @@ Milestones are shown in the table below.
 # milestones$Date[5] = "2020-06-11"
 # milestones$Deliverable[1] = "Report 1: on input data and methodology (delayed)"
 # readr::write_csv(milestones, "reports/milestones.csv")
-milestones = readr::read_csv("milestones.csv")
+u = "https://github.com/saferactive/saferactive/raw/master/reports/milestones.csv"
+milestones = readr::read_csv(u)
 milestones %>% knitr::kable()
 ```
 
@@ -144,24 +145,28 @@ source("../code/get-traffic-calming-data-from-osm.R")
 ```
 
 ```{r tcmap, fig.cap="Map of traffic calming interventions in London from OSM.", out.width="60%"}
-knitr::include_graphics("../figures/traffic_calming_osm_map_london.png")
+knitr::include_graphics("../../saferactive/figures/traffic_calming_osm_map_london.png")
 ```
 
 
 ```{r tctab}
 # traffic_calming_osm_london = sf::read_sf("https://github.com/saferactive/saferactive/releases/download/0.1/traffic_calming_osm_london.geojson")
-traffic_calming_osm_london = sf::read_sf("../traffic_calming_osm_london.geojson")
-# table(traffic_calming_osm_london$traffic_calming)
-lnd = spData::lnd
-# names(lnd)
-lnd = lnd %>% 
-  select(Borough = NAME)
-traffic_calming_osm_london = sf::st_join(traffic_calming_osm_london, lnd)
-traffic_calming_osm_london %>% 
-  sf::st_drop_geometry() %>% 
-  group_by(intervention) %>% 
-  summarise(n = n(), borough_with_most = Borough[which.max(n)]) %>% 
-  knitr::kable(caption = "Summary of traffic calming interventions by type and Borough in which most are found.")
+# # traffic_calming_osm_london = sf::read_sf("../traffic_calming_osm_london.geojson")
+# # table(traffic_calming_osm_london$traffic_calming)
+# lnd = spData::lnd
+# # names(lnd)
+# lnd = lnd %>% 
+#   select(Borough = NAME)
+# traffic_calming_osm_london = sf::st_join(traffic_calming_osm_london, lnd)
+# tc_london_results = traffic_calming_osm_london %>% 
+#   sf::st_drop_geometry() %>% 
+#   group_by(intervention) %>% 
+#   summarise(n = n(), borough_with_most = Borough[which.max(n)])
+# readr::write_csv(tc_london_results, "tc_london_results.csv")
+# piggyback::pb_upload("tc_london_results.csv")
+# piggyback::pb_download_url("tc_london_results.csv")
+tc_london_results = read.csv("https://github.com/saferactive/trafficalmr/releases/download/0.0.1/tc_london_results.csv", stringsAsFactors = FALSE)
+knitr::kable(x = tc_london_results, caption = "Summary of traffic calming interventions by type and Borough in which most are found.")
 ```
 
 ## Traffic calming and other intervention data from the CID
@@ -180,12 +185,12 @@ traffic_calming_osm_london %>%
 
 We have explored visualisation options and we are using a state of the art R solution to power our production web application. The technicalities of the solution can be added somewhere else in the project but the solution is a modern front with a RESETful API which would mean the data is available for the users for transparency and reuse. The other scalable front end solution we are currently developing for the purpose of this project is inspired the smartphone ecosystem.
 
-```{r vis, fig.cap="Using R to develop the fron-end using Turing eAtlas npm package"}
+```{r vis1, fig.cap="Using R to develop the fron-end using Turing eAtlas npm package"}
 knitr::include_graphics("https://user-images.githubusercontent.com/408568/86475297-4e71f500-bd3c-11ea-921c-e4cca9683201.png")
 ```
 
-```{r vis, fig.cap="Using vector tiles to visualise large amounts of ata which can be cached and used offline in the browser and ability to interact with it"}
-knitr::include_graphics("figures/vector_tiles.png")
+```{r vis2, fig.cap="Using vector tiles to visualise large amounts of ata which can be cached and used offline in the browser and ability to interact with it"}
+knitr::include_graphics("../../saferactive/figures/vector_tiles.png")
 ```
 
 
@@ -194,7 +199,7 @@ knitr::include_graphics("figures/vector_tiles.png")
 Another option we have explored is 'heatmap' visualisations, as shown in a prototype web application currently hosted at https://saferactive.github.io/ and shown in Figure \@ref(fig:heatmap1).
 
 ```{r heatmap1, fig.cap="Prototype interactive visualisation of road crashes with a heatmap."}
-knitr::include_graphics("../figures/shiny-app-1.png")
+knitr::include_graphics("../../saferactive/figures/shiny-app-1.png")
 ```
 
 ## Who-hit-who
@@ -216,20 +221,20 @@ Corrections were also made to account for changes in accident reporting systems.
 Initial results show some clear patterns. Cycling levels are highest in Inner London, with one-way commuter journey km cycled ranging from 58,410 km in Westminster to 1060 km in Harrow. Cycle casualties are also greatest in Inner London and mean annual adjusted KSI values for the period 2009-2013 range from 27.1 casualties per year in Westminster to 2.2 casualties per year in Barking and Dagenham. 
 
 ```{r fig1, fig.cap = "Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013) using casualty severity adjustments for non-injury based reporting systems"}
-knitr::include_graphics("../figures/total-km-KSI.png")
+knitr::include_graphics("../../saferactive/figures/total-km-KSI.png")
 ```
 
 There is a strong negative relationship between km cycled and KSI/bkm. Inner London Boroughs have greater km cycled and lower KSI/bkm, despite having a higher total number of casualties. By contrast, Outer London Boroughs have fewer km cycled and higher KSI/bkm. The results for slight injuries closely mirror those for serious injuries and fatalities.
 
 ```{r fig2, fig.cap = "KSI and slight injuries per bkm for London Boroughs 2009 - 2013"}
-knitr::include_graphics("../figures/KSI-per-bkm.png")
+knitr::include_graphics("../../saferactive/figures/KSI-per-bkm.png")
 ```
 
 
 We plan to use a similar method to estimate walking levels and KSI/bkm in each London Borough. This will also be based on travel to work 2011 census data.
 
 ```{r fig3, fig.cap = "Relationship between KSI/bkm and number of km cycled in each Borough"}
-knitr::include_graphics("../figures/km-cycled-KSI.png")
+knitr::include_graphics("../../saferactive/figures/km-cycled-KSI.png")
 ```
 
 # References
