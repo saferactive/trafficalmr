@@ -7,9 +7,9 @@
 tc_recode_vehicle_type(
   x,
   pattern = c(`Taxi*.+` = "Taxi", `Van*.+` = "Van", `Pedal cycle` = "Bicycle",
-    `(M|m)otorcycle*.+` = "Motorcycle",
-    `Data*.+|Elec*.+|Other*.+|Agri*.+|Ridden*.+|Mobility*.+|Tram*.+` = "Other", `Bus*.+`
-    = "Bus", `Minibus*.+` = "Minibus", `Goods*.+` = "HGV")
+    `(M|m)otorcycle*.+|Elec*.+` = "Motorcycle",
+    `Data*.+|Other*.+|Agri*.+|Ridden*.+|Mobility*.+|Tram*.+` = "Other", `Bus*.+` = "Bus",
+    `Minibus*.+` = "Minibus", `Goods*.+` = "HGV")
 )
 }
 \arguments{
