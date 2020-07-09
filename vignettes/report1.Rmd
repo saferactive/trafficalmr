@@ -11,6 +11,9 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 bibliography: saferactive.bib
+pkgdown:
+  as_is: true
+  set_null_theme: false
 ---
 
 ```{r, eval=FALSE, echo=FALSE}
