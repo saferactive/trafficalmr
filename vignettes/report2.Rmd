@@ -1,0 +1,20 @@
+---
+title: "SaferActive Report II: Scenarios"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SaferActive Report II: Scenarios}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: saferactive.bib
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(trafficalmr)
+```

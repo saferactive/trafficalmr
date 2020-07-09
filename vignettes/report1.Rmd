@@ -22,11 +22,7 @@ output: bookdown::word_document2
 #     lof: false
 #     number_sections: true
 #     latex_engine: xelatex
-bibliography:
-  # - ../saferroads.bib
-  # - report1.bib
-  - ../saferactive.bib
-  - ../saferactive1.bib
+bibliography: saferactive.bib
 ---
 
 ```{r, eval=FALSE, echo=FALSE}
