@@ -29,11 +29,38 @@ This is an  R package to support road safety and traffic calming measures.
 remotes::install_github("saferactive/traffiCalmr")
 ```
 
-# Usage
-
 ```{r}
 library(traffiCalmr)
 ```
+
+
+# Get traffic calming data
+
+```{r, eval=FALSE}
+traffic_calming_points = tc_get_osm(bbox = "chapeltown leeds")
+```
+
+```{r, echo=FALSE, eval=FALSE}
+saveRDS(traffic_calming_points, "traffic_calming_points_chapeltown.Rds")
+piggyback::pb_upload("traffic_calming_points_chapeltown.Rds")
+piggyback::pb_download_url("traffic_calming_points_chapeltown.Rds")
+```
+
+```{r, echo=FALSE, eval=FALSE}
+u = "https://github.com/saferactive/traffiCalmr/releases/download/0.0.1/traffic_calming_points_chapeltown.Rds"
+traffic_calming_points = readRDS(url(u))
+```
+
+```{r, eval=FALSE}
+mapview::mapview(traffic_calming_points["traffic_calming"])
+```
+
+![](https://user-images.githubusercontent.com/1825120/87041987-f2e7b180-c1ea-11ea-9731-b2b9512fd0ea.png)
+
+
+
+# Recoding data
+
 
 Recode vehicle types:
 
@@ -43,10 +70,12 @@ tc_recode_vehicle_type(c("Bus long", "Motorcycle long name"))
 
 This can be useful in visualisation:
 
-```{r, fig.show='hold', out.width="50%"}
+```{r, fig.show='hold', fig.width=8, out.width="50%"}
 v = stats19::get_stats19(year = 2018, type = "vehicles")
 v$vehicle_type_simple = tc_recode_vehicle_type(v$vehicle_type)
 barplot(table(v$vehicle_type))
 barplot(table(v$vehicle_type_simple))
 ```
 
+Note that the second plot on the right is much easier to interpret.
+See [`?tc_recode()`](https://saferactive.github.io/traffiCalmr/reference/tc_recode.html) for details.

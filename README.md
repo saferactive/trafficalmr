@@ -23,11 +23,23 @@ measures.
 remotes::install_github("saferactive/traffiCalmr")
 ```
 
-# Usage
-
 ``` r
 library(traffiCalmr)
 ```
+
+# Get traffic calming data
+
+``` r
+traffic_calming_points = tc_get_osm(bbox = "chapeltown leeds")
+```
+
+``` r
+mapview::mapview(traffic_calming_points["traffic_calming"])
+```
+
+![](https://user-images.githubusercontent.com/1825120/87041987-f2e7b180-c1ea-11ea-9731-b2b9512fd0ea.png)
+
+# Recoding data
 
 Recode vehicle types:
 
@@ -49,4 +61,8 @@ barplot(table(v$vehicle_type))
 barplot(table(v$vehicle_type_simple))
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="50%" /><img src="man/figures/README-unnamed-chunk-4-2.png" width="50%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="50%" /><img src="man/figures/README-unnamed-chunk-8-2.png" width="50%" />
+
+Note that the second plot on the right is much easier to interpret. See
+[`?tc_recode()`](https://saferactive.github.io/traffiCalmr/reference/tc_recode.html)
+for details.
