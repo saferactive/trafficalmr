@@ -145,7 +145,7 @@ source("../code/get-traffic-calming-data-from-osm.R")
 ```
 
 ```{r tcmap, fig.cap="Map of traffic calming interventions in London from OSM.", out.width="60%"}
-knitr::include_graphics("../../saferactive/figures/traffic_calming_osm_map_london.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/traffic_calming_osm_map_london.png")
 ```
 
 
@@ -190,7 +190,7 @@ knitr::include_graphics("https://user-images.githubusercontent.com/408568/864752
 ```
 
 ```{r vis2, fig.cap="Using vector tiles to visualise large amounts of ata which can be cached and used offline in the browser and ability to interact with it"}
-knitr::include_graphics("../../saferactive/figures/vector_tiles.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/vector_tiles.png")
 ```
 
 
@@ -199,7 +199,7 @@ knitr::include_graphics("../../saferactive/figures/vector_tiles.png")
 Another option we have explored is 'heatmap' visualisations, as shown in a prototype web application currently hosted at https://saferactive.github.io/ and shown in Figure \@ref(fig:heatmap1).
 
 ```{r heatmap1, fig.cap="Prototype interactive visualisation of road crashes with a heatmap."}
-knitr::include_graphics("../../saferactive/figures/shiny-app-1.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/shiny-app-1.png")
 ```
 
 ## Who-hit-who
@@ -221,20 +221,20 @@ Corrections were also made to account for changes in accident reporting systems.
 Initial results show some clear patterns. Cycling levels are highest in Inner London, with one-way commuter journey km cycled ranging from 58,410 km in Westminster to 1060 km in Harrow. Cycle casualties are also greatest in Inner London and mean annual adjusted KSI values for the period 2009-2013 range from 27.1 casualties per year in Westminster to 2.2 casualties per year in Barking and Dagenham. 
 
 ```{r fig1, fig.cap = "Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013) using casualty severity adjustments for non-injury based reporting systems"}
-knitr::include_graphics("../../saferactive/figures/total-km-KSI.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/total-km-KSI.png")
 ```
 
 There is a strong negative relationship between km cycled and KSI/bkm. Inner London Boroughs have greater km cycled and lower KSI/bkm, despite having a higher total number of casualties. By contrast, Outer London Boroughs have fewer km cycled and higher KSI/bkm. The results for slight injuries closely mirror those for serious injuries and fatalities.
 
 ```{r fig2, fig.cap = "KSI and slight injuries per bkm for London Boroughs 2009 - 2013"}
-knitr::include_graphics("../../saferactive/figures/KSI-per-bkm.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/KSI-per-bkm.png")
 ```
 
 
 We plan to use a similar method to estimate walking levels and KSI/bkm in each London Borough. This will also be based on travel to work 2011 census data.
 
 ```{r fig3, fig.cap = "Relationship between KSI/bkm and number of km cycled in each Borough"}
-knitr::include_graphics("../../saferactive/figures/km-cycled-KSI.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/km-cycled-KSI.png")
 ```
 
 # References
