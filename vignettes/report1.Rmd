@@ -3,7 +3,7 @@ title: "SaferActive Report 1: Data"
 author: Institute for Transport Studies
 output: bookdown::html_vignette2
 vignette: >
-  %\VignetteIndexEntry{SaferActive Report II: Scenarios}
+  %\VignetteIndexEntry{SaferActive Report 1: Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 bibliography: saferactive.bib
@@ -16,7 +16,6 @@ file.rename("report1.bib", "reports/report1.bib")
 ```
 
 ```{r, include = FALSE}
-remotes::install_github("Robinlovelace/gitgantt")
 knitr::opts_chunk$set(
   message = FALSE,
   collapse = TRUE,
@@ -24,10 +23,6 @@ knitr::opts_chunk$set(
   echo = FALSE,
   out.width = "100%"
 )
-library(tidyverse)
-library(stats19)
-f = list.files(path = ".", pattern = "lovelace|jamson|beech|hama", ignore.case = TRUE)
-piggyback::pb_upload(f)
 ```
 
 # Introduction
@@ -127,8 +122,8 @@ Milestones are shown in the table below.
 # milestones$Deliverable[1] = "Report 1: on input data and methodology (delayed)"
 # readr::write_csv(milestones, "reports/milestones.csv")
 u = "https://github.com/saferactive/saferactive/raw/master/reports/milestones.csv"
-milestones = readr::read_csv(u)
-milestones %>% knitr::kable()
+milestones = read.csv(u, stringsAsFactors = FALSE)
+knitr::kable(milestones)
 ```
 
 # Data collection and cleaning
