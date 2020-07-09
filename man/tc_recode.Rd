@@ -13,7 +13,7 @@ tc_recode_vehicle_type(
   pattern = c(`Taxi*.+` = "Taxi", `Van*.+` = "Van", `Pedal cycle` = "Bicycle",
     `(M|m)otorcycle*.+|Elec*.+` = "Motorcycle",
     `Data*.+|Other*.+|Agri*.+|Ridden*.+|Mobility*.+|Tram*.+` = "Other", `Bus*.+` = "Bus",
-    `Minibus*.+` = "Minibus", `Goods*.+` = "HGV")
+    `Minibus*.+` = "Other", `Goods*.+` = "HGV")
 )
 
 tc_recode_casualties(x, pattern = NULL, pattern_match = casualties_lookup)
@@ -53,9 +53,9 @@ table(v$vehicle_type_simple)
 (x = stats19::casualties_sample$casualty_type)
 tc_recode_casualties(x)
 \dontrun{
-c = stats19::get_stats19(2018, "casualties")
-c$casualty_type_simple = tc_recode_casualties(c$casualty_type)
-table(c$casualty_type)
-table(c$casualty_type_simple)
+cas = stats19::get_stats19(2018, "casualties")
+cas$casualty_type_simple = tc_recode_casualties(cas$casualty_type)
+table(cas$casualty_type)
+table(cas$casualty_type_simple)
 }
 }
