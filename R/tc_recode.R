@@ -44,7 +44,7 @@ tc_recode_vehicle_type = function(
   pattern = c("Taxi*.+" = "Taxi", "Van*.+" = "Van",
              "Pedal cycle" = "Bicycle", "(M|m)otorcycle*.+|Elec*.+" = "Motorcycle",
              "Data*.+|Other*.+|Agri*.+|Ridden*.+|Mobility*.+|Tram*.+" = "Other",
-             "Bus*.+" = "Bus", "Minibus*.+" = "Minibus",
+             "Bus*.+" = "Bus", "Minibus*.+" = "Other",
              "Goods*.+" = "HGV"
              )
   ) {
