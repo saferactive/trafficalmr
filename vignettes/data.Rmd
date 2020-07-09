@@ -1,0 +1,17 @@
+---
+title: "Data on traffic calming"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+For more on this, see the project's home page: https://github.com/saferactive/saferactive
