@@ -7,15 +7,15 @@
 tc_get_osm(bbox = NULL, value = NULL, output = "osm_points")
 }
 \arguments{
-\item{bbox}{A bounding box or name passed to `osmdata`}
+\item{bbox}{A bounding box or name passed to \code{osmdata}}
 
-\item{value}{A type of `traffic_calming` intervention.
-Possible values include `yes`, `bump` and `hump`.
-See [wiki.openstreetmap.org](https://wiki.openstreetmap.org/wiki/Key:traffic_calming)
+\item{value}{A type of \code{traffic_calming} intervention.
+Possible values include \code{yes}, \code{bump} and \code{hump}.
+See \href{https://wiki.openstreetmap.org/wiki/Key:traffic_calming}{wiki.openstreetmap.org}
 for details.}
 
-\item{output}{The type of `osmdata` object to return, `osm_points` (default),
-`osm_lines` etc (see [osmdata](https://cran.r-project.org/package=osmdata) for details)}
+\item{output}{The type of \code{osmdata} object to return, \code{osm_points} (default),
+\code{osm_lines} etc (see \href{https://cran.r-project.org/package=osmdata}{osmdata} for details)}
 }
 \value{
 An sf object
