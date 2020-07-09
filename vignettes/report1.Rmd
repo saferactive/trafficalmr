@@ -1,6 +1,9 @@
 ---
 title: "SaferActive Report 1: Data"
 author: Institute for Transport Studies
+# output:
+#     bookdown::html_document2:
+#       base_format: rmarkdown::html_vignette
 output: bookdown::html_vignette2
 # output: bookdown::word_document2
 vignette: >
@@ -41,7 +44,10 @@ Less attention has been paid to the question of how road safety measures can sim
 
 > Limited evidence exists on secondary effects of investment in traffic calming and safety, including effects on rates of transport-related physical activity (active transport)
 
+This suggests that there is a need for research that measures at least two outcomes from traffic calming and other road safety measures, that this project will investigate in parallel:
 
+- Reduction in casualty rates
+- Increase in active travel
 
 # Policy drivers
 

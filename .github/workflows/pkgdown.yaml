@@ -34,7 +34,7 @@ jobs:
         run: |
           install.packages("remotes")
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_dev("pkgdown")
+          remotes::install_github("forked-packages/pkgdown", ref = "fix-955")
         shell: Rscript {0}
 
       - name: Install package
