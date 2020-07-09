@@ -1,6 +1,6 @@
 ---
 title: "SaferActive Report 1: Data"
-author: Institute for Transport Studies
+author: Institute for Transport Studies ([ITS](https://environment.leeds.ac.uk/transport/)) [University of Leeds](https://www.leeds.ac.uk/)
 # output:
 #     bookdown::html_document2:
 #       base_format: rmarkdown::html_vignette
