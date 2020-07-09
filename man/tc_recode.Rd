@@ -3,9 +3,10 @@
 \name{tc_recode}
 \alias{tc_recode}
 \alias{tc_recode_vehicle_type}
+\alias{tc_recode_casualties}
 \title{Recode character strings based on regular expressions}
 \usage{
-tc_recode(x, pattern)
+tc_recode(x, pattern = NULL, pattern_match = NULL)
 
 tc_recode_vehicle_type(
   x,
@@ -14,15 +15,18 @@ tc_recode_vehicle_type(
     `Data*.+|Other*.+|Agri*.+|Ridden*.+|Mobility*.+|Tram*.+` = "Other", `Bus*.+` = "Bus",
     `Minibus*.+` = "Minibus", `Goods*.+` = "HGV")
 )
+
+tc_recode_casualties(x, pattern = NULL, pattern_match = c(l = "b"))
 }
 \arguments{
 \item{x}{Character string to recode}
 
 \item{pattern}{A named character vector with values representing new values.
 Has the form \code{c("Car long name" = "Car", "Taxi/Private hire car" = "Taxi")}.
-\verb{Car long name} will be converted into \code{Car} in this case.
+\verb{Car long name} will be converted into \code{Car} in this case.}
 
-for details.}
+\item{pattern_match}{Character string in the form of
+\code{c("car" = "car", "bike" = "bike")} that replaces all parts of the match.}
 }
 \description{
 This function takes a character string and recodes it.
@@ -33,14 +37,25 @@ Default recoding functions are available in functions such as
 It is based on the function \code{\link[stringr:str_replace]{stringr::str_replace_all()}}.
 }
 \examples{
-x = c("car long name", "bus", "a bike long")
-tc_recode(x, pattern = c("car*.+" = "car", "*.+bike*.+"))
+x = c("car long name", "bus", "a bike long", "a bike")
+tc_recode(x, pattern = c("car.+" = "car"))
+tc_recode(x, pattern = c(".+bike.+" = "bike"))
+tc_recode(x, pattern = c("car.+" = "car", ".+bike.+" = "bike"))
+tc_recode(x, pattern_match = c("car" = "car", "bike" = "bike"))
+(x = stats19::vehicles_sample$vehicle_type)
+tc_recode_vehicle_type(x)
 \dontrun{
 v = stats19::get_stats19(2018, "vehicles")
 v$vehicle_type_simple = tc_recode_vehicle_type(v$vehicle_type)
 table(v$vehicle_type)
 table(v$vehicle_type_simple)
 }
-(x = stats19::vehicles_sample$vehicle_type)
-tc_recode_vehicle_type(x)
+(x = stats19::casualties_sample$casualty_type)
+tc_recode_casualties(x)
+\dontrun{
+v = stats19::get_stats19(2018, "casualties")
+v$casualty_type_simple = tc_recode_casualties(v$casualty_type)
+table(v$casualty_type)
+table(v$casualty_type_simple)
+}
 }

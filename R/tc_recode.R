@@ -10,14 +10,21 @@
 #' @param pattern A named character vector with values representing new values.
 #' Has the form `c("Car long name" = "Car", "Taxi/Private hire car" = "Taxi")`.
 #' `Car long name` will be converted into `Car` in this case.
+#' @param pattern_match Character string in the form of
+#' `c("car" = "car", "bike" = "bike")` that replaces all parts of the match.
 #'
 #' @export
 #' @examples
-#' x = c("car long name", "bus", "a bike long")
+#' x = c("car long name", "bus", "a bike long", "a bike")
 #' tc_recode(x, pattern = c("car.+" = "car"))
-#' tc_recode(x, pattern = c(".+bike*.+" = "bike"))
-#' tc_recode(x, pattern = c("car.+" = "car", ".+bike*.+" = "bike"))
-tc_recode = function(x, pattern) {
+#' tc_recode(x, pattern = c(".+bike.+" = "bike"))
+#' tc_recode(x, pattern = c("car.+" = "car", ".+bike.+" = "bike"))
+#' tc_recode(x, pattern_match = c("car" = "car", "bike" = "bike"))
+tc_recode = function(x, pattern = NULL, pattern_match = NULL) {
+  if(is.null(pattern)) {
+    pattern = pattern_match
+    names(pattern) = paste0(".*", names(pattern), "*.+")
+  }
   stringr::str_replace_all(x, pattern)
 }
 #' Recode vehicle types
@@ -43,10 +50,7 @@ tc_recode_vehicle_type = function(
   ) {
   tc_recode(x, pattern)
 }
-#' Recode casualty types
-#'
-#'  This function was designed to simplify casualty classification from STAT19 data
-#' @param x The type of vehicle the casualty occupied, from the casualty_type column in STATS19 data
+#' @rdname tc_recode
 #' @export
 #' @examples
 #' (x = stats19::casualties_sample$casualty_type)
@@ -57,24 +61,10 @@ tc_recode_vehicle_type = function(
 #' table(v$casualty_type)
 #' table(v$casualty_type_simple)
 #' }
-tc_recode_casualties = function(x, pattern = c(
-  "Cyclist"= "Cyclist",
-  "Pedestrian" = "Pedestrian",
-  "otorcyc" = "Motorcyclist",
-  "7.5" = "HGV_occupant",
-  "Goods casualty - unknown weight" = "HGV_occupant",
-  "Car occupant" = "Car_occupant",
-  "Van" = "Van_occupant",
-  "coach" = "Bus_occupant",
-  "Minibus" = "Minibus_occupant",
-  "Taxi" = "Taxi_occupant",
-  "Agricultural casualty" = "Other",
-  "Missing" = "Other",
-  "Mobility" = "Other",
-  "Tram" = "Other",
-  "horse" = "Other",
-  "Other casualty" = "Other",
-  "issing" = "Other"
-)) {
-  tc_recode(x, pattern)
+tc_recode_casualties = function(
+  x,
+  pattern = NULL,
+  pattern_match = c("l" = "b")
+  ) {
+  tc_recode(x, pattern = pattern, pattern_match = pattern_match)
 }
