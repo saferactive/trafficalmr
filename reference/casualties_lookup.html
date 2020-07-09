@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Recode casualty types — tc_recode_casualties • traffiCalmr</title>
+<title>Stats19 schema and variables — casualties_lookup • traffiCalmr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Recode casualty types — tc_recode_casualties" />
-<meta property="og:description" content="This function was designed to simplify casualty classification from STAT19 data" />
+<meta property="og:title" content="Stats19 schema and variables — casualties_lookup" />
+<meta property="og:description" content="casualties_lookup contains a lookup table for recoding casualty types." />
 
 
 
@@ -120,38 +120,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Recode casualty types</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ITSLeeds/traffiCalmr/blob/master/R/tc_recode_casualties.R'><code>R/tc_recode_casualties.R</code></a></small>
-    <div class="hidden name"><code>tc_recode_casualties.Rd</code></div>
+    <h1>Stats19 schema and variables</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ITSLeeds/traffiCalmr/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>casualties_lookup.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function was designed to simplify casualty classification from STAT19 data</p>
+    <p><code>casualties_lookup</code> contains a lookup table for recoding casualty types.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tc_recode_casualties</span>(<span class='no'>x</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>The type of vehicle the casualty occupied, from the casualty_type column in STATS19 data</p></td>
-    </tr>
-    </table>
 
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>(<span class='no'>x</span> <span class='kw'>=</span> <span class='kw pkg'>stats19</span><span class='kw ns'>::</span><span class='no'><a href='https://docs.ropensci.org/stats19/reference/casualties_sample.html'>casualties_sample</a></span>$<span class='no'>casualty_type</span>)</div><div class='output co'>#&gt; [1] "Motorcycle 125cc and under rider or passenger"
-#&gt; [2] "Pedestrian"                                   
-#&gt; [3] "Car occupant"                                 </div><div class='input'>(<span class='no'>x</span> <span class='kw'>=</span> <span class='kw pkg'>stats19</span><span class='kw ns'>::</span><span class='no'><a href='https://docs.ropensci.org/stats19/reference/casualties_sample.html'>casualties_sample</a></span>$<span class='no'>casualty_type</span>)</div><div class='output co'>#&gt; [1] "Motorcycle 125cc and under rider or passenger"
-#&gt; [2] "Pedestrian"                                   
-#&gt; [3] "Car occupant"                                 </div><div class='input'><span class='fu'>tc_recode_casualties</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "Motorcyclist" "Pedestrian"   "Car_occupant"</div><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>v</span> <span class='kw'>=</span> <span class='kw pkg'>stats19</span><span class='kw ns'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span>(<span class='fl'>2018</span>, <span class='st'>"casualties"</span>)
-<span class='no'>v</span>$<span class='no'>casualty_type_simple</span> <span class='kw'>=</span> <span class='fu'>tc_recode_casualties</span>(<span class='no'>v</span>$<span class='no'>casualty_type</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>v</span>$<span class='no'>casualty_type</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>v</span>$<span class='no'>casualty_type_simple</span>)
-}</div></pre>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
