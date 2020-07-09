@@ -7,9 +7,10 @@
 
 <!-- [![Build status](https://ci.appveyor.com/api/projects/status/gqp3smc04as3qg85?svg=true)](https://ci.appveyor.com/project/layik/traffiCalmr-05ana) -->
 
-![tic](https://github.com/saferactive/traffiCalmr/workflows/tic/badge.svg)[![Project
-Status: Active – The project has reached a stable, usable state and is
-being actively
+[![R build
+status](https://github.com/saferactive/traffiCalmr/workflows/R-CMD-check/badge.svg)](https://github.com/saferactive/traffiCalmr/actions)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 # traffiCalmr
