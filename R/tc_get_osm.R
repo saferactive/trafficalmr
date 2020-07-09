@@ -11,7 +11,9 @@
 #' @return An sf object
 #' @export
 #' @examples
+#' \dontrun{
 #' interventions = tc_get_osm(bbox = "walthamstow village")
+#' }
 tc_get_osm = function(bbox = NULL, value = NULL, output = "osm_points") {
   res = osmdata::osmdata_sf(
     osmdata::add_osm_feature(
