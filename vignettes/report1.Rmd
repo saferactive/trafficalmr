@@ -1,27 +1,11 @@
 ---
-title: "SaferActive Progress Report 1"
-author: 
-- Institute for Transport Studies, University of Leeds
-date: "`r Sys.Date()`"
-# output: bookdown::html_document2
-output: bookdown::word_document2
-# output:
-#   memor::pdf_memo:
-#     use_profile: false
-#     logo: "uol-logo.png"
-#     short_title: short title
-#     watermark: Draft
-#     confidential: false
-#     libertine: false
-#     chinese: false
-#     logo_height: 1.2cm
-#     watermark_color: gray
-#     footer_on_first_page: true
-#     toc: false
-#     lot: false
-#     lof: false
-#     number_sections: true
-#     latex_engine: xelatex
+title: "SaferActive Report 1: Data"
+author: Institute for Transport Studies
+output: bookdown::html_vignette2
+vignette: >
+  %\VignetteIndexEntry{SaferActive Report II: Scenarios}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 bibliography: saferactive.bib
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "SaferActive Report II: Scenarios"
-output: rmarkdown::html_vignette
+author: Institute for Transport Studies
+output: bookdown::html_vignette2
 vignette: >
   %\VignetteIndexEntry{SaferActive Report II: Scenarios}
   %\VignetteEngine{knitr::rmarkdown}
