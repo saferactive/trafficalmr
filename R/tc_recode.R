@@ -41,7 +41,7 @@ tc_recode_vehicle_type = function(
              "Goods*.+" = "HGV"
              )
   ) {
-  stringr::str_replace_all(x, pattern)
+  tc_recode(x, pattern)
 }
 #' Recode casualty types
 #'
@@ -50,7 +50,6 @@ tc_recode_vehicle_type = function(
 #' @export
 #' @examples
 #' (x = stats19::casualties_sample$casualty_type)
-#' (x = stats19::casualties_sample$casualty_type)
 #' tc_recode_casualties(x)
 #' \dontrun{
 #' v = stats19::get_stats19(2018, "casualties")
@@ -58,25 +57,24 @@ tc_recode_vehicle_type = function(
 #' table(v$casualty_type)
 #' table(v$casualty_type_simple)
 #' }
-tc_recode_casualties = function(x) {
-  casualty_type_recoded = x
-  casualty_type_recoded[grepl("Cyclist", x)] = "Cyclist"
-  casualty_type_recoded[grepl("Pedestrian", x)] = "Pedestrian"
-  casualty_type_recoded[grepl("otorcyc", x)] = "Motorcyclist"
-  casualty_type_recoded[grepl("7.5", x)] = "HGV_occupant"
-  casualty_type_recoded[grepl("Goods casualty - unknown weight", x)] = "HGV_occupant"
-  casualty_type_recoded[x == "Car occupant"] = "Car_occupant"
-  casualty_type_recoded[grepl("Van", x)] = "Van_occupant"
-  casualty_type_recoded[grepl("coach", x)] = "Bus_occupant"
-  casualty_type_recoded[grepl("Minibus", x)] = "Minibus_occupant"
-  casualty_type_recoded[grepl("Taxi", x)] = "Taxi_occupant"
-  casualty_type_recoded[grepl("Agricultural casualty", x)] = "Other"
-  casualty_type_recoded[grepl("Missing", x)] = "Other"
-  casualty_type_recoded[grepl("Mobility", x)] = "Other"
-  casualty_type_recoded[grepl("Tram", x)] = "Other"
-  casualty_type_recoded[grepl("horse", x)] = "Other"
-  casualty_type_recoded[grepl("Other casualty", x)] = "Other"
-  casualty_type_recoded[grepl("issing", x)] = "Other"
-  casualty_type_recoded[is.na(casualty_type_recoded)] = "Other"
-  casualty_type_recoded
+tc_recode_casualties = function(x, pattern = c(
+  "Cyclist"= "Cyclist",
+  "Pedestrian" = "Pedestrian",
+  "otorcyc" = "Motorcyclist",
+  "7.5" = "HGV_occupant",
+  "Goods casualty - unknown weight" = "HGV_occupant",
+  "Car occupant" = "Car_occupant",
+  "Van" = "Van_occupant",
+  "coach" = "Bus_occupant",
+  "Minibus" = "Minibus_occupant",
+  "Taxi" = "Taxi_occupant",
+  "Agricultural casualty" = "Other",
+  "Missing" = "Other",
+  "Mobility" = "Other",
+  "Tram" = "Other",
+  "horse" = "Other",
+  "Other casualty" = "Other",
+  "issing" = "Other"
+)) {
+  tc_recode(x, pattern)
 }
