@@ -1,0 +1,246 @@
+---
+title: "SaferActive Report 1: Data"
+author: Institute for Transport Studies
+output: bookdown::html_vignette2
+# output: bookdown::word_document2
+vignette: >
+  %\VignetteIndexEntry{SaferActive Report 1: Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: saferactive.bib
+---
+
+```{r, eval=FALSE, echo=FALSE}
+browseURL("reports/report1.pdf")
+citr::tidy_bib_file(rmd_file = "reports/report1.Rmd", messy_bibliography = "~/uaf/allrefs.bib", file = "report1.bib")
+file.rename("report1.bib", "reports/report1.bib")
+```
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  collapse = TRUE,
+  comment = "#>",
+  echo = FALSE,
+  out.width = "100%"
+)
+```
+
+# Introduction
+
+The report summarises progress on the SaferActive project, funded by the Department for Transport in support of aims outlined in the Cycling and Walking Investment Strategy (CWIS): to double the number of stages cycled compared with the baseline year of 2013, and "reverse the decline in walking" [@departmentfortransport_cycling_2017] **whilst reducing the casualty rate per km walked and cycled year-on-year**.
+
+A follow-on report reviewed the safety elements of the CWIS, emphasising the importance of safety for enabling active travel and advocating measuring safety in terms of "the number of fatalities and serious injuries per billion miles" [@nathan_cycling_2019].
+In this report we outline methods of estimating safety in the more commonly used units of killed and seriously injured per billion km (KSI/bkm), and outline progress in collecting, analyising and modelling datasets that will be used in subsequent steps of the project.
+
+# Research landscape
+
+A range of traffic calming measures can reduce casualty rates, a topic that has received much interest in the academic literature [e.g. @akbari_traffic_2020; @bunn_traffic_2003; @zalewski_traffic_2019; @zein_safety_1997; @bornioli_effectiveness_2018].
+Recent papers have found strong evidence for 'safety in numbers' (increasing the argument for research into cycling uptake alongside road safety interventions) and the effectiveness of 20 mph speed limits for reducing risk to pedestrians [@aldred_cycling_2018; @cook_twenty_2020].
+Less attention has been paid to the question of how road safety measures can simultaneously reduce casualty rates *and increase levels of cycling and walking* [@brown_evidence_2017]:
+
+> Limited evidence exists on secondary effects of investment in traffic calming and safety, including effects on rates of transport-related physical activity (active transport)
+
+
+
+# Policy drivers
+
+Objective 3 of the CWIS is to "reduce the rate of cyclists killed or seriously injured on England's roads,
+measured as the number of fatalities and serious injuries per billion miles cycled." 
+Metrics to support this objective include: KSI/bkm, slight injuries per bkm, urban/rural/regional split of crashes, and proportion of cyclists/drivers stating that it's too dangerous to cycle.
+There is no parallel target for pedestrian safety.
+<!-- To check -->
+
+A rapid evidence assessment was commissioned by the Department for Transport in 2018 to identify promising intervention types in support of walking and cycling safety [@natcen_cycling_2018].
+Section 6.1, focusing on infrastructure and road signs interventions, found that there is evidence for the effectiveness of a range of interventions can be effective in reducing casualty rates, including 'pedestrian refuge islands', speed humps and speed cameras.
+Evidence was also reviewed of the effectiveness of cycleways, junction/roundabout design, signal controls, street lighting and 'safe routes to school'.
+Section 6.2 found evidence of legislative changes, particularly speed limit reductions and expenditure on road safety policing.
+Again, no UK-specific studies were identified.
+
+A 2 year road safety action plan was set out in 2019, although the emphasis of this report was on education of drivers rather than traffic calming measures in the context of the CWIS (which is mentioned only once in the report), although the report does emphasise the importance of 20 mph zones [@departmentfortransport_road_2019].
+
+The CWIS Safety Review provides the most detailed government document to date on road safety measures specifically designed to support walking and cycling and contained much evidence and a number of case studies of effective interventions [@departmentfortransport_cycling_2018].
+Chapter 5 of this review focusses on infrastructure, with comments on cycling design guidance which have since been incorporated into the widely used Design Manual for Roads and Bridges in May 2020 [@highwaysengland_cd_2020].
+There are still no legally binding national standards for local authorities meaning that many cycleways do not meet guidance such as a 1.5 m minimum cycleway width.
+
+**An issue with the policy and research landscapes is that available evidence on road safety interventions is not easily actionable.** 
+An aim of this project is to make available evidence more actionable, while simultaneously generating more evidence of the effectiveness of different interventions.
+
+# Types of road safety interventions for walking and cycling
+
+A wide range of interventions can be undertaken to support road safety objectives.
+Interventions that have been mentioned in the research and policy contexts above are outlined below, with reference to data availability.
+
+- Speed limit reductions include '20 mph limits' (implemented only via signage) and '20 mph zones' (which involve physical traffic calming measures and can include optional measures such as speed cameras) [@maher_20mph_2018; @rospa_guide_2019]
+  - Data on the prevalence of 20 mph zones can be obtained from OpenStreetMap, although it is not always clear when interventions took place.
+  - The Ordnance Survey has data on legal speed limits and real world traffic speeds and we are in conversation with them to obtain these datasets for use in our work.
+- A related intervention is the installation of speed cameras. 
+  - We are not aware of any national dataset on speed cameras that could be used for this study.
+- Traffic Regulation Orders report interventions such as contraflow cycleways and other changes
+  - Data on TROs should be available open access from https://www.thegazette.co.uk
+- The location and nature of physical traffic calming infrastructure, including various types of speed humps and raised junctions, plus a range of additional traffic calming measures [@departmentfortransport_traffic_2007]. These can be obtained from multiple sources, including:
+  - Traffic calming infrastructure in OSM
+  - The Cycling Infrastructure Database in London
+  - Ordnance Survey Topo layer
+  
+## Other types of intervention
+
+Other interventions may not have been implemented primarily for road safety reasons, but may nevertheless reduce cycle and pedestrian casualty rates alongside other aims such as increasing cycling levels or reducing road traffic.
+
+- The installation of cycle superhighways or cycle lanes. 
+- 'Filtered permeability' interventions including point closures of roads, for example by rising and fixed bollards.
+- Larger scale interventions, including Mini-Holland schemes.
+
+Again, data sources for these measures will include:
+  - TfL Cycling Action Plan
+  - Cycling infrastructure in OSM
+  - The Cycling Infrastructure Database in London
+  - Ordnance Survey Topo layer
+
+**Todo: any more?**
+
+
+The context is shown in graphs showing historic walking and cycling rates and casualty numbers visualised in the initial bid document which can now be seen at [github.com/saferactive/](https://github.com/saferactive/saferactive), where we will host open data and code developed for the project.
+<!-- (any secure data used for the project will be saved securely). -->
+
+# Timelines
+
+The project runs from April 2020 until the end of June 2021.
+Milestones are shown in the table below.
+
+```{r, message=FALSE}
+# milestones_original = readODS::read_ods("~/onedrive/projects-all/saferactive/submitted-application/submitted-deliverables.ods")
+# names(milestones_original)
+# milestones = milestones_original %>%
+#   rename(Date = "") %>%
+#   dplyr::filter(!is.na(Deliverable)) %>%
+#   select(Month, Date, Deliverable)
+# milestones$Date[1] = "2020-07-24"
+# milestones$Date[2] = "2020-09-25"
+# milestones$Date[3] = "2020-12-04"
+# milestones$Date[4] = "2020-03-05"
+# milestones$Date[5] = "2020-06-11"
+# milestones$Deliverable[1] = "Report 1: on input data and methodology (delayed)"
+# readr::write_csv(milestones, "reports/milestones.csv")
+u = "https://github.com/saferactive/saferactive/raw/master/reports/milestones.csv"
+milestones = read.csv(u, stringsAsFactors = FALSE)
+knitr::kable(milestones)
+```
+
+# Data collection and cleaning
+
+During the first three months of the project we have focussed on data collection, development of methods and descriptive data analysis/visualisation.
+
+## Obtaining traffic calming interventions from OSM
+
+Data on traffic interventions were obtained from OSM, using the tag [`traffic_calming`](https://wiki.openstreetmap.org/wiki/Key:traffic_calming), as shown in Figure \@ref(fig:tcmap) and summarised in Table \@ref(tab:tctab).
+
+```{r, eval=FALSE}
+remotes::install_github("saferactive/traffiCalmr")
+source("../code/get-traffic-calming-data-from-osm.R")
+```
+
+```{r tcmap, fig.cap="Map of traffic calming interventions in London from OSM.", out.width="60%"}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/traffic_calming_osm_map_london.png")
+```
+
+
+```{r tctab}
+# traffic_calming_osm_london = sf::read_sf("https://github.com/saferactive/saferactive/releases/download/0.1/traffic_calming_osm_london.geojson")
+# # traffic_calming_osm_london = sf::read_sf("../traffic_calming_osm_london.geojson")
+# # table(traffic_calming_osm_london$traffic_calming)
+# lnd = spData::lnd
+# # names(lnd)
+# lnd = lnd %>% 
+#   select(Borough = NAME)
+# traffic_calming_osm_london = sf::st_join(traffic_calming_osm_london, lnd)
+# tc_london_results = traffic_calming_osm_london %>% 
+#   sf::st_drop_geometry() %>% 
+#   group_by(intervention) %>% 
+#   summarise(n = n(), borough_with_most = Borough[which.max(n)])
+# readr::write_csv(tc_london_results, "tc_london_results.csv")
+# piggyback::pb_upload("tc_london_results.csv")
+# piggyback::pb_download_url("tc_london_results.csv")
+tc_london_results = read.csv("https://github.com/saferactive/trafficalmr/releases/download/0.0.1/tc_london_results.csv", stringsAsFactors = FALSE)
+knitr::kable(x = tc_london_results, caption = "Summary of traffic calming interventions by type and Borough in which most are found.")
+```
+
+## Traffic calming and other intervention data from the CID
+
+## Traffic regulation orders from The Gazette
+
+## Data on road speeds from OSM
+
+## Data on 20 mph zones?
+
+## Other interventions?
+
+# Visualisation
+
+## Interactive visualisation
+
+We have explored visualisation options and we are using a state of the art R solution to power our production web application. The technicalities of the solution can be added somewhere else in the project but the solution is a modern front with a RESETful API which would mean the data is available for the users for transparency and reuse. The other scalable front end solution we are currently developing for the purpose of this project is inspired the smartphone ecosystem.
+
+```{r vis1, fig.cap="Using R to develop the fron-end using Turing eAtlas npm package"}
+knitr::include_graphics("https://user-images.githubusercontent.com/408568/86475297-4e71f500-bd3c-11ea-921c-e4cca9683201.png")
+```
+
+```{r vis2, fig.cap="Using vector tiles to visualise large amounts of ata which can be cached and used offline in the browser and ability to interact with it"}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/vector_tiles.png")
+```
+
+
+## Heat map
+
+Another option we have explored is 'heatmap' visualisations, as shown in a prototype web application currently hosted at https://saferactive.github.io/ and shown in Figure \@ref(fig:heatmap1).
+
+```{r heatmap1, fig.cap="Prototype interactive visualisation of road crashes with a heatmap."}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/shiny-app-1.png")
+```
+
+## Who-hit-who
+
+Todo: Roger's bit here.
+
+# Analyis
+
+We have developed a methodology to estimate the casualty rate per billion km for walking and cycling.
+
+Casualty data is available from stats19, broken down into fatal, serious and slight casualties. We have filtered these by mode of travel, identifying cyclist and pedestrian casualties. 
+
+To obtain KSI/bkm for cycle casualties, we have estimated the number of kilometers cycled in each London Borough. Using 2011 census data for travel to work and Cyclestreets.net 'fast' routing options, we create a route network. Each road segment within the route network is assigned to a London Borough based on its centroid location. Multiplying the number of cyclists using each segment by the length of the segment thus gives the number of km cycled within each Borough. 
+
+To obtain sufficient sample size we used stats19 casualty data for the years 2009 - 2013. However, our estimate of km cycled only covers one-way commuter journeys on a single day in 2011. Therefore we filter the stats19 data to include only accidents taking place during the rush hour peak periods (07:30-09:30 and 16:30-18:30). We then divided the number of casualties by two (to represent one-way journeys), then by five and again by 365 (to represent a single year and a single day). 
+
+Corrections were also made to account for changes in accident reporting systems. In recent years, many police forces across the UK have switched to injury based reporting systems. This has altered the proportions of casualties recorded as having 'serious' and 'slight' injuries. To control for these changes, casualty-level correction values were used, as recommended in [@departmentfortransport_annex_2019].
+
+Initial results show some clear patterns. Cycling levels are highest in Inner London, with one-way commuter journey km cycled ranging from 58,410 km in Westminster to 1060 km in Harrow. Cycle casualties are also greatest in Inner London and mean annual adjusted KSI values for the period 2009-2013 range from 27.1 casualties per year in Westminster to 2.2 casualties per year in Barking and Dagenham. 
+
+```{r fig1, fig.cap = "Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013) using casualty severity adjustments for non-injury based reporting systems"}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/total-km-KSI.png")
+```
+
+There is a strong negative relationship between km cycled and KSI/bkm. Inner London Boroughs have greater km cycled and lower KSI/bkm, despite having a higher total number of casualties. By contrast, Outer London Boroughs have fewer km cycled and higher KSI/bkm. The results for slight injuries closely mirror those for serious injuries and fatalities.
+
+```{r fig2, fig.cap = "KSI and slight injuries per bkm for London Boroughs 2009 - 2013"}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/KSI-per-bkm.png")
+```
+
+
+We plan to use a similar method to estimate walking levels and KSI/bkm in each London Borough. This will also be based on travel to work 2011 census data.
+
+```{r fig3, fig.cap = "Relationship between KSI/bkm and number of km cycled in each Borough"}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/km-cycled-KSI.png")
+```
+
+# References
+
+
+
+<!-- Reporting schedule: -->
+
+<!-- 2020-06-01	3	Report 1: on input data and data	25.00% -->
+<!-- 2020-09-01	6	Report 2: scenarios, workshop 1 and prototype web application to test	25.00% -->
+<!-- 2020-12-01	9	Report 3: results and publication of open risk map data	25.00% -->
+<!-- 2021-03-01	12	Final project report and end-of-project workshop	25.00% -->
+<!-- 2021-06-01	15	Refined project web app pending feedback from workshop and stakeholders	 -->

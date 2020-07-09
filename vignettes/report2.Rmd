@@ -1,0 +1,21 @@
+---
+title: "SaferActive Report II: Scenarios"
+author: Institute for Transport Studies
+output: bookdown::html_vignette2
+vignette: >
+  %\VignetteIndexEntry{SaferActive Report II: Scenarios}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: saferactive.bib
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(trafficalmr)
+```

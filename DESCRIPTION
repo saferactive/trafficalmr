@@ -30,7 +30,8 @@ Suggests:
     knitr,
     rmarkdown,
     testthat,
-    stats19
+    stats19,
+    bookdown
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 Depends: 
