@@ -55,4 +55,4 @@ casualties_lookup = c(
   "issing" = "Other"
 )
 
-usethis::use_data(casualties_lookup, overwrite = TRUE)
+usethis::use_data(casualties_lookup, overwrite = TRUE, version = 3)
