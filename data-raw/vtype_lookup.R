@@ -50,7 +50,7 @@ casualties_lookup = c(
   "Missing" = "Other",
   "Mobility" = "Other",
   "Tram" = "Other",
-  "horse" = "Other",
+  "Horse" = "Other",
   "Other casualty" = "Other",
   "issing" = "Other"
 )
