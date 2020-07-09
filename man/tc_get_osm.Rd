@@ -24,5 +24,7 @@ An sf object
 Get traffic calming interventions from OpenStreetMap
 }
 \examples{
+\dontrun{
 interventions = tc_get_osm(bbox = "walthamstow village")
+}
 }
