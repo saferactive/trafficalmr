@@ -46,7 +46,7 @@ casualties_lookup = c(
   "coach" = "Bus_occupant",
   "Minibus" = "Minibus_occupant",
   "Taxi" = "Taxi_occupant",
-  "Agricultural casualty" = "Other",
+  "Agri" = "Other",
   "Missing" = "Other",
   "Mobility" = "Other",
   "Tram" = "Other",
@@ -55,4 +55,4 @@ casualties_lookup = c(
   "issing" = "Other"
 )
 
-# usethis::use_data(casualties_lookup, overwrite = TRUE)
+usethis::use_data(casualties_lookup, overwrite = TRUE)
