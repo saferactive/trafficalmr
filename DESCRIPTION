@@ -31,3 +31,4 @@ Suggests:
     testthat,
     stats19
 VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
