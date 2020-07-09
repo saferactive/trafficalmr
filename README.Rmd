@@ -13,6 +13,9 @@ knitr::opts_chunk$set(
 )
 ```
 
+[![R build status](https://github.com/saferactive/traffiCalmr/workflows/R-CMD-check/badge.svg)](https://github.com/saferactive/traffiCalmr/actions)
+
+
 <!-- [![Travis build status](https://travis-ci.org/ITSLeeds/traffiCalmr.svg?branch=master)](https://travis-ci.org/ITSLeeds/traffiCalmr) -->
 <!-- [![Coverage status](https://codecov.io/gh/ITSLeeds/traffiCalmr/branch/master/graph/badge.svg)](https://codecov.io/github/ITSLeeds/traffiCalmr?branch=master) -->
 <!-- [![Build status](https://ci.appveyor.com/api/projects/status/gqp3smc04as3qg85?svg=true)](https://ci.appveyor.com/project/layik/traffiCalmr-05ana) -->
