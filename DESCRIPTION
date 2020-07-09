@@ -21,7 +21,8 @@ Imports:
     usethis,
     devtools,
     goodpractice,
-    osmdata
+    osmdata,
+    stringr
 RoxygenNote: 7.1.1
 Suggests: 
     covr,
