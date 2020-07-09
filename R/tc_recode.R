@@ -56,15 +56,20 @@ tc_recode_vehicle_type = function(
 #' (x = stats19::casualties_sample$casualty_type)
 #' tc_recode_casualties(x)
 #' \dontrun{
-#' c = stats19::get_stats19(2018, "casualties")
-#' c$casualty_type_simple = tc_recode_casualties(c$casualty_type)
-#' table(v$casualty_type)
-#' table(v$casualty_type_simple)
+#' cas = stats19::get_stats19(2018, "casualties")
+#' cas$casualty_type_simple = tc_recode_casualties(cas$casualty_type)
+#' table(cas$casualty_type)
+#' table(cas$casualty_type_simple)
 #' }
-tc_recode_casualties = function(
-  x,
-  pattern = NULL,
-  pattern_match = c("l" = "b")
-  ) {
+tc_recode_casualties = function(x,
+                                pattern = NULL,
+                                pattern_match = casualties_lookup) {
   tc_recode(x, pattern = pattern, pattern_match = pattern_match)
 }
+
+utils::globalVariables(
+  c(
+    "casualties_lookup"
+  )
+)
+

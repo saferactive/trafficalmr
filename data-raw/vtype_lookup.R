@@ -37,4 +37,22 @@ data.frame(
 names(vehicle_type_lookup) = vehicle_type_lookup_names
 dput(vehicle_type_lookup)
 
-# usethis::use_data(DATASET, overwrite = TRUE)
+casualties_lookup = c(
+  "otorcyc" = "Motorcyclist",
+  "7.5" = "HGV_occupant",
+  "Goods" = "HGV_occupant",
+  "Car occupant" = "Car_occupant",
+  "Van" = "Van_occupant",
+  "coach" = "Bus_occupant",
+  "Minibus" = "Minibus_occupant",
+  "Taxi" = "Taxi_occupant",
+  "Agricultural casualty" = "Other",
+  "Missing" = "Other",
+  "Mobility" = "Other",
+  "Tram" = "Other",
+  "horse" = "Other",
+  "Other casualty" = "Other",
+  "issing" = "Other"
+)
+
+# usethis::use_data(casualties_lookup, overwrite = TRUE)

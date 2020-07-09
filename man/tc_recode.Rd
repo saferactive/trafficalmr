@@ -16,7 +16,7 @@ tc_recode_vehicle_type(
     `Minibus*.+` = "Minibus", `Goods*.+` = "HGV")
 )
 
-tc_recode_casualties(x, pattern = NULL, pattern_match = c(l = "b"))
+tc_recode_casualties(x, pattern = NULL, pattern_match = casualties_lookup)
 }
 \arguments{
 \item{x}{Character string to recode}
@@ -53,9 +53,9 @@ table(v$vehicle_type_simple)
 (x = stats19::casualties_sample$casualty_type)
 tc_recode_casualties(x)
 \dontrun{
-v = stats19::get_stats19(2018, "casualties")
-v$casualty_type_simple = tc_recode_casualties(v$casualty_type)
-table(v$casualty_type)
-table(v$casualty_type_simple)
+c = stats19::get_stats19(2018, "casualties")
+c$casualty_type_simple = tc_recode_casualties(c$casualty_type)
+table(c$casualty_type)
+table(c$casualty_type_simple)
 }
 }
