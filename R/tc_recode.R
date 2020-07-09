@@ -2,6 +2,9 @@
 #'
 #'  This function was designed to simplify vehicle types from STAT19 data
 #' @param x Vehicle types, e.g. from the vehicle_type column in STATS19 data
+#' @param pattern A named character vector with values representing new vehicle type names.
+#' Has the form `c("Car" = "Car", "Taxi/Private hire car" = "Taxi")`. See documentation
+#' for details.
 #' @export
 #' @examples
 #' (x = stats19::vehicles_sample$vehicle_type)
@@ -12,23 +15,14 @@
 #' table(v$vehicle_type)
 #' table(v$vehicle_type_simple)
 #' }
-tc_recode_vehicle_type = function(x) {
-  vehicle_type_recoded = x
-  vehicle_type_recoded[grepl("otorcyc", x)] = "Motorcycle"
-  vehicle_type_recoded[grepl("7.5", x)] = "HGV"
-  vehicle_type_recoded[grepl("Pedal", x)] = "Bicycle"
-  vehicle_type_recoded[grepl("Goods vehicle - unknown weight", x)] = "HGV"
-  vehicle_type_recoded[grepl("Van", x)] = "Van"
-  vehicle_type_recoded[grepl("coach", x)] = "Bus"
-  vehicle_type_recoded[grepl("Minibus", x)] = "Minibus"
-  vehicle_type_recoded[grepl("Taxi", x)] = "Taxi"
-  vehicle_type_recoded[grepl("Agricultural vehicle", x)] = "Other"
-  vehicle_type_recoded[grepl("Missing", x)] = "Other"
-  vehicle_type_recoded[grepl("Mobility", x)] = "Other"
-  vehicle_type_recoded[grepl("Tram", x)] = "Other"
-  vehicle_type_recoded[grepl("horse", x)] = "Other"
-  vehicle_type_recoded[grepl("Other vehicle", x)] = "Other"
-  vehicle_type_recoded[grepl("issing", x)] = "Other"
-  vehicle_type_recoded[is.na(vehicle_type_recoded)] = "Other"
-  vehicle_type_recoded
+tc_recode_vehicle_type = function(
+  x,
+  pattern = c("Taxi*.+" = "Taxi", "Van*.+" = "Van",
+             "Pedal cycle" = "Bicycle", "(M|m)otorcycle*.+|Elec*.+" = "Motorcycle",
+             "Data*.+|Other*.+|Agri*.+|Ridden*.+|Mobility*.+|Tram*.+" = "Other",
+             "Bus*.+" = "Bus", "Minibus*.+" = "Minibus",
+             "Goods*.+" = "HGV"
+             )
+  ) {
+  stringr::str_replace_all(x, pattern)
 }

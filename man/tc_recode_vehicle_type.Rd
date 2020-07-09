@@ -4,10 +4,20 @@
 \alias{tc_recode_vehicle_type}
 \title{Recode vehicle types}
 \usage{
-tc_recode_vehicle_type(x)
+tc_recode_vehicle_type(
+  x,
+  pattern = c(`Taxi*.+` = "Taxi", `Van*.+` = "Van", `Pedal cycle` = "Bicycle",
+    `(M|m)otorcycle*.+|Elec*.+` = "Motorcycle",
+    `Data*.+|Other*.+|Agri*.+|Ridden*.+|Mobility*.+|Tram*.+` = "Other", `Bus*.+` = "Bus",
+    `Minibus*.+` = "Minibus", `Goods*.+` = "HGV")
+)
 }
 \arguments{
 \item{x}{Vehicle types, e.g. from the vehicle_type column in STATS19 data}
+
+\item{pattern}{A named character vector with values representing new vehicle type names.
+Has the form `c("Car" = "Car", "Taxi/Private hire car" = "Taxi")`. See documentation
+for details.}
 }
 \description{
 This function was designed to simplify vehicle types from STAT19 data
