@@ -2,6 +2,7 @@
 title: "SaferActive Report 1: Data"
 author: Institute for Transport Studies
 output: bookdown::html_vignette2
+# output: bookdown::word_document2
 vignette: >
   %\VignetteIndexEntry{SaferActive Report 1: Data}
   %\VignetteEngine{knitr::rmarkdown}
