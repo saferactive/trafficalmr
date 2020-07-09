@@ -1,4 +1,4 @@
-Package: traffiCalmr
+Package: trafficalmr
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
@@ -13,8 +13,8 @@ Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 Language: EN-GB
 License: file LICENSE
-URL: https://github.com/saferactive/traffiCalmr, https://saferactive.github.io/traffiCalmr/
-BugReports: https://github.com/saferactive/traffiCalmr/issues
+URL: https://github.com/saferactive/trafficalmr, https://saferactive.github.io/trafficalmr/
+BugReports: https://github.com/saferactive/trafficalmr/issues
 Encoding: UTF-8
 LazyData: true
 Imports:

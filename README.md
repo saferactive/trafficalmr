@@ -1,19 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<!-- [![Travis build status](https://travis-ci.org/ITSLeeds/traffiCalmr.svg?branch=master)](https://travis-ci.org/ITSLeeds/traffiCalmr) -->
+<!-- [![Travis build status](https://travis-ci.org/ITSLeeds/trafficalmr.svg?branch=master)](https://travis-ci.org/ITSLeeds/trafficalmr) -->
 
-<!-- [![Coverage status](https://codecov.io/gh/ITSLeeds/traffiCalmr/branch/master/graph/badge.svg)](https://codecov.io/github/ITSLeeds/traffiCalmr?branch=master) -->
+<!-- [![Coverage status](https://codecov.io/gh/ITSLeeds/trafficalmr/branch/master/graph/badge.svg)](https://codecov.io/github/ITSLeeds/trafficalmr?branch=master) -->
 
-<!-- [![Build status](https://ci.appveyor.com/api/projects/status/gqp3smc04as3qg85?svg=true)](https://ci.appveyor.com/project/layik/traffiCalmr-05ana) -->
+<!-- [![Build status](https://ci.appveyor.com/api/projects/status/gqp3smc04as3qg85?svg=true)](https://ci.appveyor.com/project/layik/trafficalmr-05ana) -->
 
 [![R build
-status](https://github.com/saferactive/traffiCalmr/workflows/R-CMD-check/badge.svg)](https://github.com/saferactive/traffiCalmr/actions)
+status](https://github.com/saferactive/trafficalmr/workflows/R-CMD-check/badge.svg)](https://github.com/saferactive/trafficalmr/actions)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-# traffiCalmr
+# trafficalmr
 
 This is an R package to support road safety and traffic calming
 measures.
@@ -21,11 +21,11 @@ measures.
 # Installation
 
 ``` r
-remotes::install_github("saferactive/traffiCalmr")
+remotes::install_github("saferactive/trafficalmr")
 ```
 
 ``` r
-library(traffiCalmr)
+library(trafficalmr)
 ```
 
 # Get traffic calming data
@@ -65,5 +65,5 @@ barplot(table(v$vehicle_type_simple))
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="50%" /><img src="man/figures/README-unnamed-chunk-8-2.png" width="50%" />
 
 Note that the second plot on the right is much easier to interpret. See
-[`?tc_recode()`](https://saferactive.github.io/traffiCalmr/reference/tc_recode.html)
+[`?tc_recode()`](https://saferactive.github.io/trafficalmr/reference/tc_recode.html)
 for details.
