@@ -25,3 +25,28 @@ tc_get_osm = function(bbox = NULL, value = NULL, output = "osm_points") {
   )
   res[[output]]
 }
+
+#' Get traffic calming interventions from OpenStreetMap via osmextractr
+#'
+#' @param bbox A bounding box or name passed to `osmdata`
+#' @param ... Arguments passed to [osmextractr::oe_get()]
+#' @param query SQL query to sample file
+#' @param osmconf_ini OSM configuration file
+#' @return An sf object
+#' @export
+#' @examples
+#' \dontrun{
+#' library(osmextractr)
+#' uk_results = tc_get_osmextractr("Great Britain")
+#' }
+tc_get_osmextractr = function(
+  bbox = NULL,
+  ...,
+  query = "SELECT * FROM 'lines' WHERE highway IN ('primary', 'secondary')",
+  osmconf_ini = NULL
+  ) {
+  osmextractr::oe_get(place = bbox, ..., query = query, osmconf_ini = osmconf_ini)
+}
+
+# osmextractr::oe_get(osmconf_ini = )
+# osmextractr::oe_get(osmconf_ini = )
