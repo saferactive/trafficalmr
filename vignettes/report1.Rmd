@@ -75,7 +75,7 @@ There are still no legally binding national standards for local authorities mean
 **An issue with the policy and research landscapes is that available evidence on road safety interventions is not easily actionable.** 
 An aim of this project is to make available evidence more actionable, while simultaneously generating more evidence of the effectiveness of different interventions.
 
-# Types of road safety interventions for walking and cycling
+# Road safety interventions
 
 A wide range of interventions can be undertaken to support road safety objectives.
 Interventions that have been mentioned in the research and policy contexts above are outlined below, with reference to data availability.
@@ -106,7 +106,7 @@ Again, data sources for these measures will include:
   - The Cycling Infrastructure Database in London
   - Ordnance Survey Topo layer
 
-**Todo: any more?**
+<!-- **Todo: any more?** -->
 
 
 The context is shown in graphs showing historic walking and cycling rates and casualty numbers visualised in the initial bid document which can now be seen at [github.com/saferactive/](https://github.com/saferactive/saferactive), where we will host open data and code developed for the project.
@@ -136,7 +136,7 @@ milestones = read.csv(u, stringsAsFactors = FALSE)
 knitr::kable(milestones)
 ```
 
-# Data collection and cleaning
+# Data collection and processing
 
 During the first three months of the project we have focussed on data collection, development of methods and descriptive data analysis/visualisation.
 
