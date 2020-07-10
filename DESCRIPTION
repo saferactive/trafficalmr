@@ -31,7 +31,10 @@ Suggests:
     rmarkdown,
     testthat,
     stats19,
-    bookdown
+    bookdown,
+    osmextractr
+Remotes:
+    itsleeds/osmextractr
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 Depends: 
