@@ -1,9 +1,9 @@
 ---
-title: "SaferActive Report II: Scenarios"
+title: "SaferActive Report 2: Scenarios"
 author: Institute for Transport Studies
 output: bookdown::html_vignette2
 vignette: >
-  %\VignetteIndexEntry{SaferActive Report II: Scenarios}
+  %\VignetteIndexEntry{SaferActive Report 2: Scenarios}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 bibliography: saferactive.bib
