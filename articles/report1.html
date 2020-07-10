@@ -394,15 +394,15 @@ Figure 6: Upset plot displaying vehicle combinations involved in crashes in 2018
 <p>Initial results show some clear patterns. Cycling levels are highest in Inner London, with one-way commuter journey km cycled ranging from 58,410 km in Westminster to 1060 km in Harrow. Cycle casualties are also greatest in Inner London and mean annual adjusted KSI values for the period 2009-2013 (including weekday peak hour data only) range from 24.8 casualties per year in Westminster to 1.8 casualties per year in Barking and Dagenham.</p>
 <div class="figure">
 <span id="fig:fig1"></span>
-<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-totals.png" alt="Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013) using casualty severity adjustments for non-injury based reporting systems" width="100%"><p class="caption">
-Figure 7: Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013) using casualty severity adjustments for non-injury based reporting systems
+<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-totals.png" alt="Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems" width="100%"><p class="caption">
+Figure 7: Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems
 </p>
 </div>
 <p>There is a strong negative relationship between km cycled and KSI/bkm. Inner London Boroughs have greater km cycled and lower KSI/bkm, despite having a higher total number of casualties. By contrast, Outer London Boroughs have fewer km cycled and higher KSI/bkm. The results for slight injuries closely mirror those for serious injuries and fatalities.</p>
 <div class="figure">
 <span id="fig:fig2"></span>
-<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-KSI-bkm.png" alt="KSI and slight injuries per bkm for London Boroughs 2009 - 2013" width="100%"><p class="caption">
-Figure 8: KSI and slight injuries per bkm for London Boroughs 2009 - 2013
+<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-KSI-bkm.png" alt="Cyclist KSI and slight injuries per bkm for London Boroughs 2009 - 2013" width="100%"><p class="caption">
+Figure 8: Cyclist KSI and slight injuries per bkm for London Boroughs 2009 - 2013
 </p>
 </div>
 <p>Further analyses will examine the nature of the relationship between km cycled and KSI/bkm. Initial findings suggest that this may be a exponential decay relationship, as seen in Figure</p>
@@ -412,7 +412,24 @@ Figure 8: KSI and slight injuries per bkm for London Boroughs 2009 - 2013
 Figure 9: Relationship between KSI/bkm and number of km cycled in each Borough
 </p>
 </div>
-<p>We plan to use a similar method to estimate walking levels and KSI/bkm in each London Borough. This will also be based on travel to work 2011 census data.</p>
+<div id="pedestrian-casualties" class="section level2">
+<h2 class="hasAnchor">
+<a href="#pedestrian-casualties" class="anchor"></a>Pedestrian casualties</h2>
+<p>Using a similar method, we have estimated walking levels per Borough based on travel to work 2011 census data. Trips are routed using the Cyclestreets.net fast route algorithm. However, we expect this to be less accurate than our measure of cycling levels, due to the high proportion of walking trips that are for purposes other than commuting. Future work will investigate other data sources to improve our estimation of walking levels.</p>
+<div class="figure">
+<span id="fig:fig4"></span>
+<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-totals.png" alt="Total km walked (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems" width="100%"><p class="caption">
+Figure 10: Total km walked (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems
+</p>
+</div>
+<div class="figure">
+<span id="fig:fig5"></span>
+<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-KSI-bkm.png" alt="Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 - 2013" width="100%"><p class="caption">
+Figure 11: Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 - 2013
+</p>
+</div>
+<p>The highest rates of KSI/bkm and slight injuries per bkm for pedestrians are found to be in the outermost Inner London Boroughs, such as Haringey, Lewisham and Newham. However, we expect that this may be an artefact of the fact that travel to work has been used as a proxy for total km walked. These Boroughs may have high levels of walking overall, but relatively low levels of walking to work since they are not within walking distance of Central London. This requires further investigation.</p>
+</div>
 </div>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">
