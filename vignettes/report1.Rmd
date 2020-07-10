@@ -240,28 +240,30 @@ Casualty data is available from stats19, broken down into fatal, serious and sli
 
 To obtain KSI/bkm for cycle casualties, we have estimated the number of kilometers cycled in each London Borough. Using 2011 census data for travel to work and Cyclestreets.net 'fast' routing options, we create a route network. Each road segment within the route network is assigned to a London Borough based on its centroid location. Multiplying the number of cyclists using each segment by the length of the segment thus gives the number of km cycled within each Borough. 
 
-To obtain sufficient sample size we used stats19 casualty data for the years 2009 - 2013. However, our estimate of km cycled only covers one-way commuter journeys on a single day in 2011. Therefore we filter the stats19 data to include only accidents taking place during the rush hour peak periods (07:30-09:30 and 16:30-18:30). We then divided the number of casualties by two (to represent one-way journeys), then by five and again by 365 (to represent a single year and a single day). 
+To obtain sufficient sample size we used stats19 casualty data for the years 2009 - 2013. However, our estimate of km cycled only covers one-way commuter journeys on a single day in 2011. Therefore we filter the stats19 data to include only accidents taking place during the rush hour peak periods (07:30-09:30 and 16:30-18:30) on weekdays. We then divided the number of casualties by two (to represent one-way journeys), then by five (to represent a single year) and again by 261 (to represent a single day). 
 
 Corrections were also made to account for changes in accident reporting systems. In recent years, many police forces across the UK have switched to injury based reporting systems. This has altered the proportions of casualties recorded as having 'serious' and 'slight' injuries. To control for these changes, casualty-level correction values were used, as recommended in [@departmentfortransport_annex_2019].
 
-Initial results show some clear patterns. Cycling levels are highest in Inner London, with one-way commuter journey km cycled ranging from 58,410 km in Westminster to 1060 km in Harrow. Cycle casualties are also greatest in Inner London and mean annual adjusted KSI values for the period 2009-2013 range from 27.1 casualties per year in Westminster to 2.2 casualties per year in Barking and Dagenham. 
+Initial results show some clear patterns. Cycling levels are highest in Inner London, with one-way commuter journey km cycled ranging from 58,410 km in Westminster to 1060 km in Harrow. Cycle casualties are also greatest in Inner London and mean annual adjusted KSI values for the period 2009-2013 (including weekday peak hour data only) range from 24.8 casualties per year in Westminster to 1.8 casualties per year in Barking and Dagenham. 
 
 ```{r fig1, fig.cap = "Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013) using casualty severity adjustments for non-injury based reporting systems"}
-knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/total-km-KSI.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-totals.png")
 ```
 
 There is a strong negative relationship between km cycled and KSI/bkm. Inner London Boroughs have greater km cycled and lower KSI/bkm, despite having a higher total number of casualties. By contrast, Outer London Boroughs have fewer km cycled and higher KSI/bkm. The results for slight injuries closely mirror those for serious injuries and fatalities.
 
 ```{r fig2, fig.cap = "KSI and slight injuries per bkm for London Boroughs 2009 - 2013"}
-knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/KSI-per-bkm.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-KSI-bkm.png")
 ```
 
-
-We plan to use a similar method to estimate walking levels and KSI/bkm in each London Borough. This will also be based on travel to work 2011 census data.
+Further analyses will examine the nature of the relationship between km cycled and KSI/bkm. Initial findings suggest that this may be a exponential decay relationship, as seen in Figure 
 
 ```{r fig3, fig.cap = "Relationship between KSI/bkm and number of km cycled in each Borough"}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/km-cycled-KSI.png")
 ```
+
+We plan to use a similar method to estimate walking levels and KSI/bkm in each London Borough. This will also be based on travel to work 2011 census data.
+
 
 # References
 
