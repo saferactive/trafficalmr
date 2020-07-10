@@ -176,6 +176,21 @@ knitr::kable(x = tc_london_results, caption = "Summary of traffic calming interv
 
 ## Traffic calming and other intervention data from the CID
 
+The Cycling Infrastructure Database (CID) provides rich, detailed and accurate information on cycling-related interventions across London.
+Of the 7 datasets in the CID, one is specifically focussed on traffic calming.
+An overview of the traffic calming measures it includes is shown below.
+
+```{r cidtab}
+cid_london_results = read.csv("https://github.com/saferactive/trafficalmr/releases/download/0.0.1/traffic-calming-cid-summary.csv", stringsAsFactors = FALSE)
+knitr::kable(x = cid_london_results, caption = "Summary of traffic calming interventions by type and Borough in which most are found.")
+```
+
+The results presented above highlight both the incomplete nature of OSM data and the quality of CID data.
+Given that there is no CID outside London and that Ordnance Survey data cannot readily be used in public-facing web tools, this suggests efforts to improve the quality of OSM data may be a worthwhile endevour.
+Visual comparison of the 65,288 traffic calming features in the CID and 12,354 traffic calming interventions in OSM (a five fold difference) suggests that the two datasets do correspond reasonably well.
+Exploring the suitability of OSM vs CID vs OS data on traffic calming measures is a logical next step building on the preceding analysis.
+
+
 ## Traffic regulation orders from The Gazette
 
 ## Data on road speeds from OSM
