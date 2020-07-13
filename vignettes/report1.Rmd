@@ -75,10 +75,16 @@ There are still no legally binding national standards for local authorities mean
 **An issue with the policy and research landscapes is that available evidence on road safety interventions is not easily actionable.** 
 An aim of this project is to make available evidence more actionable, while simultaneously generating more evidence of the effectiveness of different interventions.
 
-# Road safety interventions
+# Intervention types
 
 A wide range of interventions can be undertaken to support road safety objectives.
 Interventions that have been mentioned in the research and policy contexts above are outlined below, with reference to data availability.
+
+It is important to note that a wide range of interventions have safety impacts.
+Restricting the analysis to interventions specifically designed to improve safety could ignore the impact of potentially more important changes.
+We therefore classify interventions as those aiming to improve road safety and other interventions.
+
+## Road safety interventions 
 
 - Speed limit reductions include '20 mph limits' (implemented only via signage) and '20 mph zones' (which involve physical traffic calming measures and can include optional measures such as speed cameras) [@maher_20mph_2018; @rospa_guide_2019]
   - Data on the prevalence of 20 mph zones can be obtained from OpenStreetMap, although it is not always clear when interventions took place.
