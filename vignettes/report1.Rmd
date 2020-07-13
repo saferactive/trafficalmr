@@ -215,11 +215,32 @@ One option is to create an interface to the API to bulk download TRO data from t
 
 ## Data on road speeds from OSM
 
+We have developed functionality to bulk download OSM data with the `maxspeed` variable.
+The results for all highways in OSM for London are shown below:
 
+|max_speed |      n|
+|:---------|------:|
+|NA        | 295290|
+|20 mph    |  52391|
+|30 mph    |  24814|
+|40 mph    |   3251|
+|50 mph    |   1589|
+|60 mph    |   1313|
+|70 mph    |    695|
 
-## Data on 20 mph zones?
+More prominent roads are most likely to have speed limit data, as shown in the plot below, which shows the roads that have meaningful speed limit values.
 
-## Other interventions?
+```{r, fig.cap="Speed limit data from OSM across all roads in London."}
+knitr::include_graphics("https://user-images.githubusercontent.com/1825120/87316271-796afe80-c51d-11ea-80dd-513f4bda52f2.png")
+```
+
+## Data on 20 mph zones
+
+One of the most effective interventions from a road safety perspective is 20 mph zones, according to UK based evidence.
+It would therefore make sense to identify 20 mph zones.
+One option would be to identify 20 mph zones from data at the road segment level, but we may require more data on where 20 mph zones have been implemented.
+
+<!-- ## Other interventions? -->
 
 # Visualisation
 
@@ -235,7 +256,6 @@ knitr::include_graphics("https://user-images.githubusercontent.com/408568/864752
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/vector_tiles.png")
 ```
 
-
 ## Heat map
 
 Another option we have explored is 'heatmap' visualisations, as shown in a prototype web application currently hosted at https://saferactive.github.io/ and shown in Figure \@ref(fig:heatmap1).
@@ -250,7 +270,7 @@ When studying road crash data, there is often detailed qualitative context that 
 A recent and successful example of a tool aimed at effecting such comparisons is [who-hit-who](https://www.hetongeluk.nl/statistieken/andere_partij?period=2020).
 A screenshot appears in Figure \@ref(fig:who1), but this is essentially an interactive web-page displaying pair-wise frequencies of travelers/vehicle types involved in fatalities in the Netherlands.
 As part of our visualization design work, we will also explore incorporating these sorts of matrix views for characterizing crashes into our web-based visualization tool.
-For example, these sorts of summaries views could be introduced as dynamic legends (e.g. Dykes et al. 2010), where the data displayed changes according to the spatial filter and zoom level of the main map view.
+For example, these sorts of summaries views could be introduced as dynamic legends [@meulemans_small_2017], where the data displayed changes according to the spatial filter and zoom level of the main map view.
 
 
 ```{r who1, fig.cap="Screenshot taken from the who-hit-who tool."}
@@ -260,7 +280,9 @@ knitr::include_graphics("https://user-images.githubusercontent.com/1825120/87161
 There are nevertheless problems with these sorts of matrix views. They are not particularly space-efficient; most positions in the matrix above are empty.
 The matrix in Figure \@ref(fig:who1) does not immediately convey an order – it is necessary to perform some scanning of the rows and columns to identify the first, second and third most commonly occurring vehicle-to-vehicle combination.  Additionally, the graphic considers only pairwise combinations of vehicle types; it is possible that some crashes may involve more than two categories of vehicle.
 
-An alternative is Upset (Lex et al. 2014).  Upset plots organise co-occurring variables into discrete sets and summarises over the sets using bars, with an accompanying legend describing the composition of each set. In Figure \@ref(fig:who2), an example is applied to road crash data in England for 2018, accessed via Stats19 (Lovelace et al. 2019).  The plot has three components: the main bar chart shows each discrete combination of vehicle involved in crashes in the Stats19 dataset, ordered left-to-right according to frequency. Beneath this is a matrix clarifying what each combination represents, with vehicle combinations indicated via filled dots and emphasised with connecting lines. 
+An alternative is Upset.
+<!-- (Lex et al. 2014) -->
+Upset plots organise co-occurring variables into discrete sets and summarises over the sets using bars, with an accompanying legend describing the composition of each set. In Figure \@ref(fig:who2), an example is applied to road crash data in England for 2018, accessed via the `stats19` package [@lovelace_stats19_2019].  The plot has three components: the main bar chart shows each discrete combination of vehicle involved in crashes in the Stats19 dataset, ordered left-to-right according to frequency. Beneath this is a matrix clarifying what each combination represents, with vehicle combinations indicated via filled dots and emphasised with connecting lines. 
 
 By far the most common vehicle-to-vehicle combination is car-to-car. After this, collisions between cars and pedestrians, bicycles and motorcycles occur in reasonably large numbers. Notice that there are crashes involving more than two vehicle categories: most notable is car-van-HGV combination in column 8.  With interaction it is possible to flexibly re-order upset plots, so rather than ordering according to intersection size, we may wish to order according to intersection degree – that is, the number of distinct vehicle types involved in a collision. Notice that in Figure \@ref(fig:who2), we have chosen to provide an additional summary graphic for each set intersection – in this case relative accident severity. The apparently high severity levels for set combinations towards the right-end of the graphic should be read cautiously as they are based on very low frequencies. However, a noticeable higher KSI rate (close to 50%) can be observed for crashes involving cars and HGVs.
 
@@ -321,6 +343,7 @@ To help identify the best way forward, we frame these options as questions, the 
 
 - How soon should we extend the analysis beyond London?
 - What should the balance of emphasis be regarding the three main dataset types that will be explored in the data (exposure data, casualty data and intervention data)?
+- Is there available data on the location and extent and date of implementation of 20 mph zones?
 - To what extent could analysis of TRO data be of use when TRO data systems are rolled-out nationwide?
 - To what extent should we focus on analysis of open OSM data on traffic calming interventions vs licenced data from the OS?
 - What should the balance be in terms of focus on the different types of outputs, including provision of value-added data (e.g. estimated risk for walking and cycling), visualisation, method development and software?

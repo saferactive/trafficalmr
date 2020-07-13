@@ -10,7 +10,10 @@ piggyback::pb_upload("osm_london_highways.Rds")
 osm_london_highways_clipped = sf::st_intersection(osm_london_highways, spData::lnd)
 nrow(osm_london_highways)
 
-osm_london_highways_gf = oe_get("Greater London", extra_attributes = c("maxspeed", "oneway", "lanes", "traffic_calming"), force_vectortranslate = TRUE)
+# osm_london_highways_gf = oe_get("Greater London", extra_attributes = c("maxspeed", "oneway", "lanes", "traffic_calming"), force_vectortranslate = TRUE)
+# saveRDS(osm_london_highways_gf, "osm_london_highways_gf.Rds")
+# piggyback::pb_upload("osm_london_highways_gf.Rds")
+osm_london_highways_gf = readRDS("osm_london_highways_gf.Rds")
 osm_london_highways_gf %>%
   sample_n(5000) %>%
   mapview::mapview()
@@ -33,6 +36,29 @@ osm_london_highways_gf %>%
   summarise(n = n()) %>%
   arrange(desc(n)) %>%
   slice(1:20)
+
+osm_london_highways_gf = osm_london_highways_gf %>%
+  mutate(max_speed = as.character(tc_recode_speeds_uk(maxspeed)))
+
+osm_london_highways_gf %>%
+  sf::st_drop_geometry() %>%
+  dplyr::group_by(as.character(max_speed)) %>%
+  summarise(n = n()) %>%
+  arrange(desc(n)) %>%
+  slice(1:20) %>%
+  knitr::kable()
+
+osm_london_highways_with_speeds = osm_london_highways_gf %>%
+  filter(!is.na(max_speed))
+
+summary(osm_london_highways_with_speeds$max_speed)
+
+plot(osm_london_highways_with_speeds["max_speed"])
+library(tmap)
+
+head(osm_london_highways_with_speeds$max_speed)
+tm_shape(osm_london_highways_with_speeds) +
+  tm_lines("max_speed")
 
 as.character(unique(osm_london_highways_gf$maxspeed))
 
