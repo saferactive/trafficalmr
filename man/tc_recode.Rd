@@ -4,6 +4,7 @@
 \alias{tc_recode}
 \alias{tc_recode_vehicle_type}
 \alias{tc_recode_casualties}
+\alias{tc_recode_speeds_uk}
 \title{Recode character strings based on regular expressions}
 \usage{
 tc_recode(x, pattern = NULL, pattern_match = NULL)
@@ -17,6 +18,8 @@ tc_recode_vehicle_type(
 )
 
 tc_recode_casualties(x, pattern = NULL, pattern_match = casualties_lookup)
+
+tc_recode_speeds_uk(x, pattern = NULL, pattern_match = c(`30` = "30 mph"))
 }
 \arguments{
 \item{x}{Character string to recode}
@@ -53,6 +56,20 @@ table(v$vehicle_type_simple)
 (x = stats19::casualties_sample$casualty_type)
 tc_recode_casualties(x)
 \dontrun{
+cas = stats19::get_stats19(2018, "casualties")
+cas$casualty_type_simple = tc_recode_casualties(cas$casualty_type)
+table(cas$casualty_type)
+table(cas$casualty_type_simple)
+}
+\dontrun{
+x = c("30 mph", "40 mph", NA, "20 mph", "70 mph", "10 mph", "60 mph",
+"50 mph", "85 mph", "80 mph", "15 mph", "75 mph", "5 mph", "45 mph",
+"110 mph", "100 mph", "25 mph", "12 mph", "115 mph", "230", "105 mph",
+"90 mph", "7", "30", "35 mph", "65 mph", "55 mph", "40", "80",
+"20", "95 mph", "60", "64", "10", "none", "5", "walk", "signals",
+"variable", "50", "4 mph", "national", "15", "125 mph", "250",
+"300", "320", "100", "180", "225", "2 mph")
+tc_recode_speeds_uk(x)
 cas = stats19::get_stats19(2018, "casualties")
 cas$casualty_type_simple = tc_recode_casualties(cas$casualty_type)
 table(cas$casualty_type)
