@@ -72,28 +72,24 @@ utils::globalVariables(
     "casualties_lookup"
   )
 )
-#' @rdname tc_recode
+#' Recode maxspeed values in OSM
+#'
+#' @inheritParams tc_recode
+#' @param allowed_values Values that can be returned, other than `NA`
+#'
 #' @export
 #' @examples
-#' \dontrun{
-#' x = c("30 mph", "40 mph", NA, "20 mph", "70 mph", "10 mph", "60 mph",
-#' "50 mph", "85 mph", "80 mph", "15 mph", "75 mph", "5 mph", "45 mph",
-#' "110 mph", "100 mph", "25 mph", "12 mph", "115 mph", "230", "105 mph",
-#' "90 mph", "7", "30", "35 mph", "65 mph", "55 mph", "40", "80",
-#' "20", "95 mph", "60", "64", "10", "none", "5", "walk", "signals",
-#' "variable", "50", "4 mph", "national", "15", "125 mph", "250",
-#' "300", "320", "100", "180", "225", "2 mph")
+#' x = c("30 mph", "10 mph", "60 mph", "25 mph", "30", "national")
 #' tc_recode_speeds_uk(x)
-#' cas = stats19::get_stats19(2018, "casualties")
-#' cas$casualty_type_simple = tc_recode_casualties(cas$casualty_type)
-#' table(cas$casualty_type)
-#' table(cas$casualty_type_simple)
 #' }
 tc_recode_speeds_uk = function(
   x,
-  pattern = NULL,
-  pattern_match = c("30" = "30 mph")
+  allowed_values = c("20 mph", "30 mph", "40 mph", "50 mph", "60 mph", "70 mph"),
+  pattern = c("national" = "60 mph", "0$" = "0 mph")
   ) {
-  tc_recode(x, pattern = pattern, pattern_match = pattern_match)
+  sel_allowed = x %in% allowed_values
+  x[!sel_allowed] = stringr::str_replace_all(x[!sel_allowed], pattern)
+  x[!x %in% allowed_values] = NA
+  x
 }
 
