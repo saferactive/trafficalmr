@@ -149,9 +149,7 @@ Default recoding functions are available in functions such as
     `Minibus*.+` = <span class='st'>"Other"</span>, `Goods*.+` = <span class='st'>"HGV"</span>)
 )
 
-<span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_recode.html'>tc_recode_casualties</a></span>(<span class='kw'>x</span>, pattern = <span class='kw'>NULL</span>, pattern_match = <span class='kw'>casualties_lookup</span>)
-
-<span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_recode.html'>tc_recode_speeds_uk</a></span>(<span class='kw'>x</span>, pattern = <span class='kw'>NULL</span>, pattern_match = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(`30` = <span class='st'>"30 mph"</span>))</pre>
+<span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_recode.html'>tc_recode_casualties</a></span>(<span class='kw'>x</span>, pattern = <span class='kw'>NULL</span>, pattern_match = <span class='kw'>casualties_lookup</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -189,20 +187,6 @@ Has the form <code><a href='https://rdrr.io/r/base/c.html'>c("Car long name" = "
 (<span class='kw'>x</span> <span class='op'>=</span> <span class='kw'>stats19</span>::<span class='kw'><a href='https://docs.ropensci.org/stats19/reference/casualties_sample.html'>casualties_sample</a></span><span class='op'>$</span><span class='kw'>casualty_type</span>)</div><div class='output co'>#&gt; [1] "Motorcycle 125cc and under rider or passenger"
 #&gt; [2] "Pedestrian"                                   
 #&gt; [3] "Car occupant"                                 </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_recode.html'>tc_recode_casualties</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; [1] "Motorcyclist" "Pedestrian"   "Car_occupant"</div><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='kw'>cas</span> <span class='op'>=</span> <span class='kw'>stats19</span>::<span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span>(<span class='fl'>2018</span>, <span class='st'>"casualties"</span>)
-<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type_simple</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_recode.html'>tc_recode_casualties</a></span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type_simple</span>)
-}
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"30 mph"</span>, <span class='st'>"40 mph"</span>, <span class='fl'>NA</span>, <span class='st'>"20 mph"</span>, <span class='st'>"70 mph"</span>, <span class='st'>"10 mph"</span>, <span class='st'>"60 mph"</span>,
-<span class='st'>"50 mph"</span>, <span class='st'>"85 mph"</span>, <span class='st'>"80 mph"</span>, <span class='st'>"15 mph"</span>, <span class='st'>"75 mph"</span>, <span class='st'>"5 mph"</span>, <span class='st'>"45 mph"</span>,
-<span class='st'>"110 mph"</span>, <span class='st'>"100 mph"</span>, <span class='st'>"25 mph"</span>, <span class='st'>"12 mph"</span>, <span class='st'>"115 mph"</span>, <span class='st'>"230"</span>, <span class='st'>"105 mph"</span>,
-<span class='st'>"90 mph"</span>, <span class='st'>"7"</span>, <span class='st'>"30"</span>, <span class='st'>"35 mph"</span>, <span class='st'>"65 mph"</span>, <span class='st'>"55 mph"</span>, <span class='st'>"40"</span>, <span class='st'>"80"</span>,
-<span class='st'>"20"</span>, <span class='st'>"95 mph"</span>, <span class='st'>"60"</span>, <span class='st'>"64"</span>, <span class='st'>"10"</span>, <span class='st'>"none"</span>, <span class='st'>"5"</span>, <span class='st'>"walk"</span>, <span class='st'>"signals"</span>,
-<span class='st'>"variable"</span>, <span class='st'>"50"</span>, <span class='st'>"4 mph"</span>, <span class='st'>"national"</span>, <span class='st'>"15"</span>, <span class='st'>"125 mph"</span>, <span class='st'>"250"</span>,
-<span class='st'>"300"</span>, <span class='st'>"320"</span>, <span class='st'>"100"</span>, <span class='st'>"180"</span>, <span class='st'>"225"</span>, <span class='st'>"2 mph"</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_recode.html'>tc_recode_speeds_uk</a></span>(<span class='kw'>x</span>)
 <span class='kw'>cas</span> <span class='op'>=</span> <span class='kw'>stats19</span>::<span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span>(<span class='fl'>2018</span>, <span class='st'>"casualties"</span>)
 <span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type_simple</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_recode.html'>tc_recode_casualties</a></span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type</span>)
