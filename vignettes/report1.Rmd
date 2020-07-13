@@ -201,7 +201,7 @@ Exploring the suitability of OSM vs CID vs OS data on traffic calming measures i
 Traffic Regulation Orders (TROs) are a legislative instrument used by local governments to make localised changes to the law to address transport issues.
 They are used for a wide range of purposes and are especially important when responding rapidly to unforeseen changes, as described in the House of Commons Briefing Paper CBP 6013, published in June 2020 [@butcher_traffic_2020]:
 
-> Traffic Regulation Orders (TROs) are used by local councils to regulate traffic in their areas –this can be done by,for instance,temporarily or permanently stopping up a road to all or particular types of trafficand implementing parking restrictions. The reasons for doing this can be varied –to permit a road to be used for a parade, event or street party or to protect residents from ‘rat-running’ orto protect the road from the weight of heavy vehicles.
+> Traffic Regulation Orders (TROs) are used by local councils to regulate traffic in their areas –this can be done by,for instance,temporarily or permanently stopping up a road to all or particular types of trafficand implementing parking restrictions. The reasons for doing this can be varied –to permit a road to be used for a parade, event or street party or to protect residents from ‘rat-running’ or to protect the road from the weight of heavy vehicles.
 
 The main types of TRO are:
 
@@ -214,6 +214,8 @@ An effort to unify TRO datasets across London has resulted in the website [thega
 One option is to create an interface to the API to bulk download TRO data from this service, and we have created a prototype R package to explore this option at https://github.com/ITSLeeds/thegazetter. 
 
 ## Data on road speeds from OSM
+
+
 
 ## Data on 20 mph zones?
 
