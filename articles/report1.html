@@ -397,7 +397,15 @@ They are used for a wide range of purposes and are especially important when res
 <blockquote>
 <p>Traffic Regulation Orders (TROs) are used by local councils to regulate traffic in their areas –this can be done by,for instance,temporarily or permanently stopping up a road to all or particular types of trafficand implementing parking restrictions. The reasons for doing this can be varied –to permit a road to be used for a parade, event or street party or to protect residents from ‘rat-running’ orto protect the road from the weight of heavy vehicles.</p>
 </blockquote>
-<p>We have investigated options for accessing data on TROs.</p>
+<p>The main types of TRO are:</p>
+<ul>
+<li>Permanent TROs (PTROs), which must pass through four steps before they are approved (Preliminary requirements, Public objections and inquiries, Consent for certain schemes including speed limit reductions and Making and place a notice in the local press)</li>
+<li>Experimental TROs (ETROs) can be made without the same requirements for consultation as a PTRO, although ETROs can become permanent.</li>
+<li>Temporary TROs (TTROs) are time limited.</li>
+</ul>
+<p>A Discovery project was funded to explore options for improving transparency and data access associated with TROs, resulting in a report recommending exploration of ways to provide open TRO data “in a consistent format that can be processed digitally” <span class="citation">(GeoPlace 2020)</span>.
+An effort to unify TRO datasets across London has resulted in the website <a href="https://www.thegazette.co.uk/dataservice">thegazette.co.uk</a>.
+One option is to create an interface to the API to bulk download TRO data from this service, and we have created a prototype R package to explore this option at <a href="https://github.com/ITSLeeds/thegazetter" class="uri">https://github.com/ITSLeeds/thegazetter</a>.</p>
 </div>
 <div id="data-on-road-speeds-from-osm" class="section level2">
 <h2 class="hasAnchor">
@@ -517,6 +525,27 @@ Figure 11: Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 -
 <p>The highest rates of KSI/bkm and slight injuries per bkm for pedestrians are found to be in the outermost Inner London Boroughs, such as Haringey, Lewisham and Newham. However, we expect that this may be an artefact of the fact that travel to work has been used as a proxy for total km walked. These Boroughs may have high levels of walking overall, but relatively low levels of walking to work since they are not within walking distance of Central London. This requires further investigation.</p>
 </div>
 </div>
+<div id="next-steps-and-questions-going-forward" class="section level1">
+<h1 class="hasAnchor">
+<a href="#next-steps-and-questions-going-forward" class="anchor"></a>Next steps and questions going forward</h1>
+<p>Overall the next step is to move from collection and exploratory analysis of data towards modelling scenarios of change and visualisation.
+There are a number of options.
+To help identify the best way forward, we frame these options as questions, the answers to which can inform our strategy over the coming months:</p>
+<ul>
+<li>How soon should we extend the analysis beyond London?</li>
+<li>What should the balance of emphasis be regarding the three main dataset types that will be explored in the data (exposure data, casualty data and intervention data)?</li>
+<li>To what extent could analysis of TRO data be of use when TRO data systems are rolled-out nationwide?</li>
+<li>To what extent should we focus on analysis of open OSM data on traffic calming interventions vs licenced data from the OS?</li>
+<li>What should the balance be in terms of focus on the different types of outputs, including provision of value-added data (e.g. estimated risk for walking and cycling), visualisation, method development and software?</li>
+<li>To what extent should we focus on time series vs geographic analysis?</li>
+</ul>
+<p>Our default is to continue in the same direction but focus on the datasets and outputs that seem most promising. Based on the work presented in this report we think these are</p>
+<ul>
+<li>estimates of the combined active travel uptake and safety impacts of major interventions to estimate the impacts of future changes</li>
+<li>creating new ways to visualise active travel uptake and road safety data in a single place</li>
+<li>development of software tools such as <code>trafficalmr</code> to support other to use datasets related to exposure, casualty and intervention data</li>
+</ul>
+</div>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
@@ -562,6 +591,9 @@ Figure 11: Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 -
 </div>
 <div id="ref-departmentfortransport_annex_2019">
 <p>———. 2019b. “Annex: Update to Severity Adjustments Methodology.”</p>
+</div>
+<div id="ref-geoplace_tro_2020">
+<p>GeoPlace. 2020. “TRO Discovery.”</p>
 </div>
 <div id="ref-highwaysengland_cd_2020">
 <p>Highways England. 2020. “CD 195 - Designing for Cycle Traffic - DMRB.” Highways England.</p>
