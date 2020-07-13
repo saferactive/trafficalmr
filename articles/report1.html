@@ -410,14 +410,59 @@ One option is to create an interface to the API to bulk download TRO data from t
 <div id="data-on-road-speeds-from-osm" class="section level2">
 <h2 class="hasAnchor">
 <a href="#data-on-road-speeds-from-osm" class="anchor"></a>Data on road speeds from OSM</h2>
+<p>We have developed functionality to bulk download OSM data with the <code>maxspeed</code> variable.
+The results for all highways in OSM for London are shown below:</p>
+<table class="table">
+<thead><tr class="header">
+<th align="left">max_speed</th>
+<th align="right">n</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="right">295290</td>
+</tr>
+<tr class="even">
+<td align="left">20 mph</td>
+<td align="right">52391</td>
+</tr>
+<tr class="odd">
+<td align="left">30 mph</td>
+<td align="right">24814</td>
+</tr>
+<tr class="even">
+<td align="left">40 mph</td>
+<td align="right">3251</td>
+</tr>
+<tr class="odd">
+<td align="left">50 mph</td>
+<td align="right">1589</td>
+</tr>
+<tr class="even">
+<td align="left">60 mph</td>
+<td align="right">1313</td>
+</tr>
+<tr class="odd">
+<td align="left">70 mph</td>
+<td align="right">695</td>
+</tr>
+</tbody>
+</table>
+<p>More prominent roads are most likely to have speed limit data, as shown in the plot below, which shows the roads that have meaningful speed limit values.</p>
+<div class="figure">
+<span id="fig:unnamed-chunk-5"></span>
+<img src="https://user-images.githubusercontent.com/1825120/87316271-796afe80-c51d-11ea-80dd-513f4bda52f2.png" alt="Speed limit data from OSM across all roads in London." width="100%"><p class="caption">
+Figure 2: Speed limit data from OSM across all roads in London.
+</p>
+</div>
 </div>
 <div id="data-on-20-mph-zones" class="section level2">
 <h2 class="hasAnchor">
-<a href="#data-on-20-mph-zones" class="anchor"></a>Data on 20 mph zones?</h2>
-</div>
-<div id="other-interventions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-interventions" class="anchor"></a>Other interventions?</h2>
+<a href="#data-on-20-mph-zones" class="anchor"></a>Data on 20 mph zones</h2>
+<p>One of the most effective interventions from a road safety perspective is 20 mph zones, according to UK based evidence.
+It would therefore make sense to identify 20 mph zones.
+One option would be to identify 20 mph zones from data at the road segment level, but we may require more data on where 20 mph zones have been implemented.</p>
+<!-- ## Other interventions? -->
 </div>
 </div>
 <div id="visualisation" class="section level1">
@@ -430,24 +475,24 @@ One option is to create an interface to the API to bulk download TRO data from t
 <div class="figure">
 <span id="fig:vis1"></span>
 <img src="https://user-images.githubusercontent.com/408568/86475297-4e71f500-bd3c-11ea-921c-e4cca9683201.png" alt="Using R to develop the fron-end using Turing eAtlas npm package" width="100%"><p class="caption">
-Figure 2: Using R to develop the fron-end using Turing eAtlas npm package
+Figure 3: Using R to develop the fron-end using Turing eAtlas npm package
 </p>
 </div>
 <div class="figure">
 <span id="fig:vis2"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/vector_tiles.png" alt="Using vector tiles to visualise large amounts of ata which can be cached and used offline in the browser and ability to interact with it" width="100%"><p class="caption">
-Figure 3: Using vector tiles to visualise large amounts of ata which can be cached and used offline in the browser and ability to interact with it
+Figure 4: Using vector tiles to visualise large amounts of ata which can be cached and used offline in the browser and ability to interact with it
 </p>
 </div>
 </div>
 <div id="heat-map" class="section level2">
 <h2 class="hasAnchor">
 <a href="#heat-map" class="anchor"></a>Heat map</h2>
-<p>Another option we have explored is ‘heatmap’ visualisations, as shown in a prototype web application currently hosted at <a href="https://saferactive.github.io/" class="uri">https://saferactive.github.io/</a> and shown in Figure <a href="#fig:heatmap1">4</a>.</p>
+<p>Another option we have explored is ‘heatmap’ visualisations, as shown in a prototype web application currently hosted at <a href="https://saferactive.github.io/" class="uri">https://saferactive.github.io/</a> and shown in Figure <a href="#fig:heatmap1">5</a>.</p>
 <div class="figure">
 <span id="fig:heatmap1"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/shiny-app-1.png" alt="Prototype interactive visualisation of road crashes with a heatmap." width="100%"><p class="caption">
-Figure 4: Prototype interactive visualisation of road crashes with a heatmap.
+Figure 5: Prototype interactive visualisation of road crashes with a heatmap.
 </p>
 </div>
 </div>
@@ -456,23 +501,25 @@ Figure 4: Prototype interactive visualisation of road crashes with a heatmap.
 <a href="#who-hit-who" class="anchor"></a>Who-hit-who</h2>
 <p>When studying road crash data, there is often detailed qualitative context that is important to analyse. For example, it may be desirable to explore the categories of traveler/vehicle types involved in collisions.
 A recent and successful example of a tool aimed at effecting such comparisons is <a href="https://www.hetongeluk.nl/statistieken/andere_partij?period=2020">who-hit-who</a>.
-A screenshot appears in Figure <a href="#fig:who1">5</a>, but this is essentially an interactive web-page displaying pair-wise frequencies of travelers/vehicle types involved in fatalities in the Netherlands.
+A screenshot appears in Figure <a href="#fig:who1">6</a>, but this is essentially an interactive web-page displaying pair-wise frequencies of travelers/vehicle types involved in fatalities in the Netherlands.
 As part of our visualization design work, we will also explore incorporating these sorts of matrix views for characterizing crashes into our web-based visualization tool.
-For example, these sorts of summaries views could be introduced as dynamic legends (e.g. Dykes et al. 2010), where the data displayed changes according to the spatial filter and zoom level of the main map view.</p>
+For example, these sorts of summaries views could be introduced as dynamic legends <span class="citation">(Meulemans et al. 2017)</span>, where the data displayed changes according to the spatial filter and zoom level of the main map view.</p>
 <div class="figure">
 <span id="fig:who1"></span>
 <img src="https://user-images.githubusercontent.com/1825120/87161600-aa002d80-c2bc-11ea-9d81-f3e3c3857bd3.png" alt="Screenshot taken from the who-hit-who tool." width="100%"><p class="caption">
-Figure 5: Screenshot taken from the who-hit-who tool.
+Figure 6: Screenshot taken from the who-hit-who tool.
 </p>
 </div>
 <p>There are nevertheless problems with these sorts of matrix views. They are not particularly space-efficient; most positions in the matrix above are empty.
-The matrix in Figure <a href="#fig:who1">5</a> does not immediately convey an order – it is necessary to perform some scanning of the rows and columns to identify the first, second and third most commonly occurring vehicle-to-vehicle combination. Additionally, the graphic considers only pairwise combinations of vehicle types; it is possible that some crashes may involve more than two categories of vehicle.</p>
-<p>An alternative is Upset (Lex et al. 2014). Upset plots organise co-occurring variables into discrete sets and summarises over the sets using bars, with an accompanying legend describing the composition of each set. In Figure <a href="#fig:who2">6</a>, an example is applied to road crash data in England for 2018, accessed via Stats19 (Lovelace et al. 2019). The plot has three components: the main bar chart shows each discrete combination of vehicle involved in crashes in the Stats19 dataset, ordered left-to-right according to frequency. Beneath this is a matrix clarifying what each combination represents, with vehicle combinations indicated via filled dots and emphasised with connecting lines.</p>
-<p>By far the most common vehicle-to-vehicle combination is car-to-car. After this, collisions between cars and pedestrians, bicycles and motorcycles occur in reasonably large numbers. Notice that there are crashes involving more than two vehicle categories: most notable is car-van-HGV combination in column 8. With interaction it is possible to flexibly re-order upset plots, so rather than ordering according to intersection size, we may wish to order according to intersection degree – that is, the number of distinct vehicle types involved in a collision. Notice that in Figure <a href="#fig:who2">6</a>, we have chosen to provide an additional summary graphic for each set intersection – in this case relative accident severity. The apparently high severity levels for set combinations towards the right-end of the graphic should be read cautiously as they are based on very low frequencies. However, a noticeable higher KSI rate (close to 50%) can be observed for crashes involving cars and HGVs.</p>
+The matrix in Figure <a href="#fig:who1">6</a> does not immediately convey an order – it is necessary to perform some scanning of the rows and columns to identify the first, second and third most commonly occurring vehicle-to-vehicle combination. Additionally, the graphic considers only pairwise combinations of vehicle types; it is possible that some crashes may involve more than two categories of vehicle.</p>
+<p>An alternative is Upset.
+<!-- (Lex et al. 2014) -->
+Upset plots organise co-occurring variables into discrete sets and summarises over the sets using bars, with an accompanying legend describing the composition of each set. In Figure <a href="#fig:who2">7</a>, an example is applied to road crash data in England for 2018, accessed via the <code>stats19</code> package <span class="citation">(Lovelace et al. 2019)</span>. The plot has three components: the main bar chart shows each discrete combination of vehicle involved in crashes in the Stats19 dataset, ordered left-to-right according to frequency. Beneath this is a matrix clarifying what each combination represents, with vehicle combinations indicated via filled dots and emphasised with connecting lines.</p>
+<p>By far the most common vehicle-to-vehicle combination is car-to-car. After this, collisions between cars and pedestrians, bicycles and motorcycles occur in reasonably large numbers. Notice that there are crashes involving more than two vehicle categories: most notable is car-van-HGV combination in column 8. With interaction it is possible to flexibly re-order upset plots, so rather than ordering according to intersection size, we may wish to order according to intersection degree – that is, the number of distinct vehicle types involved in a collision. Notice that in Figure <a href="#fig:who2">7</a>, we have chosen to provide an additional summary graphic for each set intersection – in this case relative accident severity. The apparently high severity levels for set combinations towards the right-end of the graphic should be read cautiously as they are based on very low frequencies. However, a noticeable higher KSI rate (close to 50%) can be observed for crashes involving cars and HGVs.</p>
 <div class="figure">
 <span id="fig:who2"></span>
 <img src="https://user-images.githubusercontent.com/1825120/87160079-4bd24b00-c2ba-11ea-832d-48e17eb78822.png" alt="Upset plot displaying vehicle combinations involved in crashes in 2018 in England. Source: Stats19." width="100%"><p class="caption">
-Figure 6: Upset plot displaying vehicle combinations involved in crashes in 2018 in England. Source: Stats19.
+Figure 7: Upset plot displaying vehicle combinations involved in crashes in 2018 in England. Source: Stats19.
 </p>
 </div>
 </div>
@@ -489,21 +536,21 @@ Figure 6: Upset plot displaying vehicle combinations involved in crashes in 2018
 <div class="figure">
 <span id="fig:fig1"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-totals.png" alt="Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems" width="100%"><p class="caption">
-Figure 7: Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems
+Figure 8: Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems
 </p>
 </div>
 <p>There is a strong negative relationship between km cycled and KSI/bkm. Inner London Boroughs have greater km cycled and lower KSI/bkm, despite having a higher total number of casualties. By contrast, Outer London Boroughs have fewer km cycled and higher KSI/bkm. The results for slight injuries closely mirror those for serious injuries and fatalities.</p>
 <div class="figure">
 <span id="fig:fig2"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-KSI-bkm.png" alt="Cyclist KSI and slight injuries per bkm for London Boroughs 2009 - 2013" width="100%"><p class="caption">
-Figure 8: Cyclist KSI and slight injuries per bkm for London Boroughs 2009 - 2013
+Figure 9: Cyclist KSI and slight injuries per bkm for London Boroughs 2009 - 2013
 </p>
 </div>
 <p>Further analyses will examine the nature of the relationship between km cycled and KSI/bkm. Initial findings suggest that this may be a exponential decay relationship, as seen in Figure</p>
 <div class="figure">
 <span id="fig:fig3"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/km-cycled-KSI.png" alt="Relationship between KSI/bkm and number of km cycled in each Borough" width="100%"><p class="caption">
-Figure 9: Relationship between KSI/bkm and number of km cycled in each Borough
+Figure 10: Relationship between KSI/bkm and number of km cycled in each Borough
 </p>
 </div>
 <div id="pedestrian-casualties" class="section level2">
@@ -513,13 +560,13 @@ Figure 9: Relationship between KSI/bkm and number of km cycled in each Borough
 <div class="figure">
 <span id="fig:fig4"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-totals.png" alt="Total km walked (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems" width="100%"><p class="caption">
-Figure 10: Total km walked (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems
+Figure 11: Total km walked (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems
 </p>
 </div>
 <div class="figure">
 <span id="fig:fig5"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-KSI-bkm.png" alt="Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 - 2013" width="100%"><p class="caption">
-Figure 11: Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 - 2013
+Figure 12: Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 - 2013
 </p>
 </div>
 <p>The highest rates of KSI/bkm and slight injuries per bkm for pedestrians are found to be in the outermost Inner London Boroughs, such as Haringey, Lewisham and Newham. However, we expect that this may be an artefact of the fact that travel to work has been used as a proxy for total km walked. These Boroughs may have high levels of walking overall, but relatively low levels of walking to work since they are not within walking distance of Central London. This requires further investigation.</p>
@@ -534,6 +581,7 @@ To help identify the best way forward, we frame these options as questions, the 
 <ul>
 <li>How soon should we extend the analysis beyond London?</li>
 <li>What should the balance of emphasis be regarding the three main dataset types that will be explored in the data (exposure data, casualty data and intervention data)?</li>
+<li>Is there available data on the location and extent and date of implementation of 20 mph zones?</li>
 <li>To what extent could analysis of TRO data be of use when TRO data systems are rolled-out nationwide?</li>
 <li>To what extent should we focus on analysis of open OSM data on traffic calming interventions vs licenced data from the OS?</li>
 <li>What should the balance be in terms of focus on the different types of outputs, including provision of value-added data (e.g. estimated risk for walking and cycling), visualisation, method development and software?</li>
@@ -598,8 +646,14 @@ To help identify the best way forward, we frame these options as questions, the 
 <div id="ref-highwaysengland_cd_2020">
 <p>Highways England. 2020. “CD 195 - Designing for Cycle Traffic - DMRB.” Highways England.</p>
 </div>
+<div id="ref-lovelace_stats19_2019">
+<p>Lovelace, Robin, Malcolm Morgan, Layik Hama, and Mark Padgham. 2019. “Stats19: A Package for Working with Open Road Crash Data.” <em>Journal of Open Source Software</em>. <a href="https://doi.org/10.21105/joss.01181">https://doi.org/10.21105/joss.01181</a>.</p>
+</div>
 <div id="ref-maher_20mph_2018">
 <p>Maher, Mike. 2018. “20mph Research Study.” Department for Transport.</p>
+</div>
+<div id="ref-meulemans_small_2017">
+<p>Meulemans, Wouter, Jason Dykes, Aidan Slingsby, Cagatay Turkay, and Jo Wood. 2017. “Small Multiples with Gaps.” <em>IEEE Transactions on Visualization and Computer Graphics</em> 23 (1): 381–90. <a href="https://doi.org/10.1109/TVCG.2016.2598542">https://doi.org/10.1109/TVCG.2016.2598542</a>.</p>
 </div>
 <div id="ref-natcen_cycling_2018">
 <p>NatCen. 2018. “Cycling and Walking Safety Rapid Evidence Assessment.” Department for Transport.</p>
