@@ -40,6 +40,8 @@ osm_london_highways_gf %>%
 osm_london_highways_gf = osm_london_highways_gf %>%
   mutate(max_speed = as.character(tc_recode_speeds_uk(maxspeed)))
 
+
+
 osm_london_highways_gf %>%
   sf::st_drop_geometry() %>%
   dplyr::group_by(as.character(max_speed)) %>%
@@ -50,6 +52,10 @@ osm_london_highways_gf %>%
 
 osm_london_highways_with_speeds = osm_london_highways_gf %>%
   filter(!is.na(max_speed))
+
+nrow(osm_london_highways_gf) # 500k rows
+saveRDS(osm_london_highways_gf, "osm_london_highways_gf.Rds")
+piggyback::pb_upload("osm_london_highways_gf.Rds")
 
 summary(osm_london_highways_with_speeds$max_speed)
 
