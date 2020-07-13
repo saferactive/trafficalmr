@@ -196,8 +196,14 @@ Given that there is no CID outside London and that Ordnance Survey data cannot r
 Visual comparison of the 65,288 traffic calming features in the CID and 12,354 traffic calming interventions in OSM (a five fold difference) suggests that the two datasets do correspond reasonably well.
 Exploring the suitability of OSM vs CID vs OS data on traffic calming measures is a logical next step building on the preceding analysis.
 
-
 ## Traffic regulation orders from The Gazette
+
+Traffic Regulation Orders (TROs) are a legislative instrument used by local governments to make localised changes to the law to address transport issues.
+They are used for a wide range of purposes and are especially important when responding rapidly to unforeseen changes, as described in the House of Commons Briefing Paper CBP 6013, published in June 2020 [@butcher_traffic_2020]:
+
+> Traffic Regulation Orders (TROs) are used by local councils to regulate traffic in their areas –this can be done by,for instance,temporarily or permanently stopping up a road to all or particular types of trafficand implementing parking restrictions. The reasons for doing this can be varied –to permit a road to be used for a parade, event or street party or to protect residents from ‘rat-running’ orto protect the road from the weight of heavy vehicles.
+
+We have investigated options for accessing data on TROs.
 
 ## Data on road speeds from OSM
 
