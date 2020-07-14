@@ -306,7 +306,7 @@ knitr::include_graphics("https://user-images.githubusercontent.com/1825120/87160
 ```
 
 
-# Analyis
+# Analysis
 
 We have developed a methodology to estimate the casualty rate per billion km for walking and cycling.
 
@@ -350,7 +350,7 @@ Levels of walking to work are unsurprisingly highest in Boroughs close to Centra
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/walk-KSI-bkm.png")
 ```
 
-Continuing to use the weekday peak hour data, a higher proportion of pedestrian casualties suffer serious injuries or fatalities compared to cycle casualties. For pedestrians, 25.9% of casualties are serious or fatal, but for cyclists this figure is only 19.1%. The mean KSI/bkm walked, at 1430, is slightly higher than the mean KSI/bkm cycled, at 1610, although the figure for pedestrians in particular may be artificially raised by the exclusion of non-commuter journeys.
+Continuing to use the weekday peak hour data, a higher proportion of pedestrian casualties suffer serious injuries or fatalities compared to cycle casualties. For pedestrians, 25.9% of casualties are serious or fatal, but for cyclists this figure is only 19.1%. The mean KSI/bkm walked, at 1430, is similar the mean KSI/bkm cycled, at 1610, although the figure for pedestrians in particular may be artificially raised by the exclusion of non-commuter journeys.
 
 The highest rates of KSI/bkm and slight injuries per bkm for pedestrians are found to be in the outermost Inner London Boroughs, such as Haringey, Lewisham and Newham (Figure \@ref(fig:fig5)). However, we expect that this may be an artefact of the fact that travel to work has been used as a proxy for total km walked. These Boroughs may have high levels of walking overall, but relatively low levels of walking to work since they are not within walking distance of Central London. This requires further investigation. 
 
