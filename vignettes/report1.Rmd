@@ -44,7 +44,7 @@ The report summarises progress on the SaferActive project, funded by the Departm
 A follow-on report reviewed the safety elements of the CWIS, emphasising the importance of safety for enabling active travel and advocating measuring safety in terms of "the number of fatalities and serious injuries per billion miles" [@nathan_cycling_2019].
 In this report we outline methods of estimating safety in the more commonly used units of killed and seriously injured per billion km (KSI/bkm), and outline progress in collecting, analyising and modelling datasets that will be used in subsequent steps of the project.
 
-Since the project's inception in April 2020 we have also undertaken the following work support road safety policies for active transport:
+Since the project's inception in April 2020 we have also undertaken the following work to support road safety policies for active transport:
 
 - Development of a new R package, trafficalmr, to automate the access and analysis of exposure data, casualty data and intervention data (see [saferactive.github.io/trafficalmr](https://saferactive.github.io/trafficalmr) for details)
 - Collected and preprocessed data from a wide range of sources to support next steps in the project (see Section 6)
@@ -77,7 +77,7 @@ A rapid evidence assessment was commissioned by the Department for Transport in 
 Section 6.1, focusing on infrastructure and road signs interventions, found that there is evidence for the effectiveness of a range of interventions can be effective in reducing casualty rates, including 'pedestrian refuge islands', speed humps and speed cameras.
 Evidence was also reviewed of the effectiveness of cycleways, junction/roundabout design, signal controls, street lighting and 'safe routes to school'.
 Section 6.2 found evidence of legislative changes, particularly speed limit reductions and expenditure on road safety policing.
-Again, no UK-specific studies were identified.
+No UK-specific studies were identified.
 
 A 2 year road safety action plan was set out in 2019, although the emphasis of this report was on education of drivers rather than traffic calming measures in the context of the CWIS (which is mentioned only once in the report), although the report does emphasise the importance of 20 mph zones [@departmentfortransport_road_2019].
 
@@ -119,7 +119,7 @@ Other interventions may not have been implemented primarily for road safety reas
 - 'Filtered permeability' interventions including point closures of roads, for example by rising and fixed bollards.
 - Larger scale interventions, including Mini-Holland schemes.
 
-Again, data sources for these measures will include:
+- Again, data sources for these measures will include:
   - TfL Cycling Action Plan
   - Cycling infrastructure in OSM
   - The Cycling Infrastructure Database in London
@@ -205,16 +205,18 @@ knitr::kable(x = cid_london_results, caption = "Summary of traffic calming inter
 ```
 
 The results presented above highlight both the incomplete nature of OSM data and the quality of CID data.
-Given that there is no CID outside London and that Ordnance Survey data cannot readily be used in public-facing web tools, this suggests efforts to improve the quality of OSM data may be a worthwhile endevour.
+Given that there is no CID outside London and that Ordnance Survey data cannot readily be used in public-facing web tools, this suggests efforts to improve the quality of OSM data may be a worthwhile endeavour.
 Visual comparison of the 65,288 traffic calming features in the CID and 12,354 traffic calming interventions in OSM (a five fold difference) suggests that the two datasets do correspond reasonably well.
 Exploring the suitability of OSM vs CID vs OS data on traffic calming measures is a logical next step building on the preceding analysis.
 
 ## Traffic regulation orders from The Gazette
 
 Traffic Regulation Orders (TROs) are a legislative instrument used by local governments to make localised changes to the law to address transport issues.
-They are used for a wide range of purposes and are especially important when responding rapidly to unforeseen changes, as described in the House of Commons Briefing Paper CBP 6013, published in June 2020 [@butcher_traffic_2020]:
+They are used for a wide range of purposes and include Experimental and Temporary orders which are especially important when responding rapidly to unforeseen changes.
+The date of introduction of TROs represents a vital clue to the implementation timelines of traffic calming measures.
+TROs are described in the House of Commons Briefing Paper CBP 6013, published in June 2020 [@butcher_traffic_2020]:
 
-> Traffic Regulation Orders (TROs) are used by local councils to regulate traffic in their areas –this can be done by,for instance,temporarily or permanently stopping up a road to all or particular types of trafficand implementing parking restrictions. The reasons for doing this can be varied –to permit a road to be used for a parade, event or street party or to protect residents from ‘rat-running’ or to protect the road from the weight of heavy vehicles.
+> Traffic Regulation Orders (TROs) are used by local councils to regulate traffic in their areas – this can be done by, for instance, temporarily or permanently stopping up a road to all or particular types of trafficand implementing parking restrictions. The reasons for doing this can be varied – to permit a road to be used for a parade, event or street party or to protect residents from ‘rat-running’ or to protect the road from the weight of heavy vehicles.
 
 The main types of TRO are:
 
@@ -259,7 +261,7 @@ One option would be to identify 20 mph zones from data at the road segment level
 
 ## Interactive visualisation
 
-We have explored visualisation options and we are using a state of the art R solution to power our production web application. The technicalities of the solution can be added somewhere else in the project but the solution is a modern front with a RESETful API which would mean the data is available for the users for transparency and reuse. The other scalable front end solution we are currently developing for the purpose of this project is inspired the smartphone ecosystem.
+We have explored visualisation options and we are using a state of the art R solution to power our production web application. The technicalities of the solution can be added somewhere else in the project but the solution is a modern front with a RESTful API which would mean the data is available for the users for transparency and reuse. The other scalable front end solution we are currently developing for the purpose of this project is inspired the smartphone ecosystem.
 
 ```{r vis1, fig.cap="Using R to develop the fron-end using Turing eAtlas npm package"}
 knitr::include_graphics("https://user-images.githubusercontent.com/408568/86475297-4e71f500-bd3c-11ea-921c-e4cca9683201.png")
@@ -316,19 +318,19 @@ To obtain sufficient sample size we used stats19 casualty data for the years 200
 
 Corrections were also made to account for changes in accident reporting systems. In recent years, many police forces across the UK have switched to injury based reporting systems. This has altered the proportions of casualties recorded as having 'serious' and 'slight' injuries. To control for these changes, casualty-level correction values were used, as recommended in [@departmentfortransport_annex_2019].
 
-Initial results show some clear patterns. Cycling levels are highest in Inner London, with one-way commuter journey km cycled ranging from 58,410 km in Westminster to 1060 km in Harrow. Cycle casualties are also greatest in Inner London and mean annual adjusted KSI values for the period 2009-2013 (including weekday peak hour data only) range from 24.8 casualties per year in Westminster to 1.8 casualties per year in Barking and Dagenham. 
+Initial results show some clear patterns (Figure \@ref(fig:fig1)). Cycling levels are highest in Inner London, with one-way commuter journey km cycled ranging from 58,410 km in Westminster to 1060 km in Harrow. Cycle casualties are also greatest in Inner London and mean annual adjusted KSI values for the period 2009-2013 (including weekday peak hour data only) range from 24.8 casualties per year in Westminster to 1.8 casualties per year in Barking and Dagenham. 
 
 ```{r fig1, fig.cap = "Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems"}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-totals.png")
 ```
 
-There is a strong negative relationship between km cycled and KSI/bkm. Inner London Boroughs have greater km cycled and lower KSI/bkm, despite having a higher total number of casualties. By contrast, Outer London Boroughs have fewer km cycled and higher KSI/bkm. The results for slight injuries closely mirror those for serious injuries and fatalities.
+There is a strong negative relationship between km cycled and KSI/bkm (Figure \@ref(fig:fig2)). Inner London Boroughs have greater km cycled and lower KSI/bkm, despite having a higher total number of casualties. By contrast, Outer London Boroughs have fewer km cycled and higher KSI/bkm. The results for slight injuries closely mirror those for serious injuries and fatalities.
 
 ```{r fig2, fig.cap = "Cyclist KSI and slight injuries per bkm for London Boroughs 2009 - 2013"}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-KSI-bkm.png")
 ```
 
-Further analyses will examine the nature of the relationship between km cycled and KSI/bkm. Initial findings suggest that this may be a exponential decay relationship, as seen in Figure 
+Further analyses will examine the nature of the relationship between km cycled and KSI/bkm. Initial findings suggest that this may be a exponential decay relationship, as seen in Figure \@ref(fig:fig3). 
 
 ```{r fig3, fig.cap = "Relationship between KSI/bkm and number of km cycled in each Borough"}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/km-cycled-KSI.png")
@@ -339,11 +341,13 @@ knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferacti
 Using a similar method, we have estimated walking levels per Borough based on travel to work 2011 census data. Trips are routed using the Cyclestreets.net fast route algorithm. However, we expect this to be less accurate than our measure of cycling levels, due to the high proportion of walking trips that are for purposes other than commuting. Future work will investigate other data sources to improve our estimation of walking levels. 
 
 ```{r fig4, fig.cap = "Total km walked (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems"}
-knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-totals.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/walk-totals.png")
 ```
 
+Levels of walking to work are unsurprisingly highest in Boroughs close to Central London  (Figure \@ref(fig:fig4)). 
+
 ```{r fig5, fig.cap = "Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 - 2013"}
-knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-KSI-bkm.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/walk-KSI-bkm.png")
 ```
 
 The highest rates of KSI/bkm and slight injuries per bkm for pedestrians are found to be in the outermost Inner London Boroughs, such as Haringey, Lewisham and Newham. However, we expect that this may be an artefact of the fact that travel to work has been used as a proxy for total km walked. These Boroughs may have high levels of walking overall, but relatively low levels of walking to work since they are not within walking distance of Central London. This requires further investigation. 
