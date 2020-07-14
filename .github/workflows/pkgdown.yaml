@@ -32,6 +32,11 @@ jobs:
 
       - name: Install dependencies
         run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+
+      - name: Install dependencies
+        run: |
           install.packages("remotes")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_github("forked-packages/pkgdown", ref = "fix-955")
