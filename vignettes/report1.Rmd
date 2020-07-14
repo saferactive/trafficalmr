@@ -1,7 +1,7 @@
 ---
 title: "SaferActive Report 1: Data"
 author: Institute for Transport Studies ([ITS](https://environment.leeds.ac.uk/transport/)) [University of Leeds](https://www.leeds.ac.uk/)
-output: html_vignette
+output: bookdown::html_vignette2
 vignette: >
   %\VignetteIndexEntry{SaferActive Report 1: Data}
   %\VignetteEngine{knitr::rmarkdown}
