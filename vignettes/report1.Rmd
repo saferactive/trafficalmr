@@ -50,6 +50,7 @@ Since the project's inception in April 2020 we have also undertaken the followin
 
 A range of traffic calming measures can reduce casualty rates, a topic that has received much interest in the academic literature [e.g. @akbari_traffic_2020; @bunn_traffic_2003; @zalewski_traffic_2019; @zein_safety_1997; @bornioli_effectiveness_2018].
 Recent papers have found strong evidence for 'safety in numbers' (increasing the argument for research into cycling uptake alongside road safety interventions) and the effectiveness of 20 mph speed limits for reducing risk to pedestrians [@aldred_cycling_2018; @cook_twenty_2020].
+A major study by the DfT found evidence that '20 mph zones' improved road safety [@maher_20mph_2018].
 Less attention has been paid to the question of how road safety measures can simultaneously reduce casualty rates *and increase levels of cycling and walking* [@brown_evidence_2017]:
 
 > Limited evidence exists on secondary effects of investment in traffic calming and safety, including effects on rates of transport-related physical activity (active transport)
@@ -356,9 +357,10 @@ To help identify the best way forward, we frame these options as questions, the 
 
 - How soon should we extend the analysis beyond London?
 - What should the balance of emphasis be regarding the three main dataset types that will be explored in the data (exposure data, casualty data and intervention data)?
-- Is there available data on the location and extent and date of implementation of 20 mph zones?
-- To what extent could analysis of TRO data be of use when TRO data systems are rolled-out nationwide?
-- To what extent should we focus on analysis of open OSM data on traffic calming interventions vs licenced data from the OS?
+- Is there available data on the location and extent and date of implementation of 20 mph zones, e.g. digitised versions of the maps shown in @maher_20mph_2018 ([Appendix 1](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/784904/technical-appendix-1-20mph-case-study-descriptions.pdf))?
+- In terms of exposure, what count datasets are available in addition to the DfT's [road traffic statistics](https://roadtraffic.dft.gov.uk), which we plan to analyise in the second stage of the project.
+- What additional datasets on TROs beyond The Gazette (which is London focussed) are available and to what extent could analysis of TRO data be of use when TRO data systems are rolled-out nationwide?
+- To what extent should we focus on analysis of open OSM data on traffic calming interventions vs licensed data from the OS?
 - What should the balance be in terms of focus on the different types of outputs, including provision of value-added data (e.g. estimated risk for walking and cycling), visualisation, method development and software?
 - To what extent should we focus on time series vs geographic analysis?
 
