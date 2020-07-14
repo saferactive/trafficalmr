@@ -344,13 +344,15 @@ Using a similar method, we have estimated walking levels per Borough based on tr
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/walk-totals.png")
 ```
 
-Levels of walking to work are unsurprisingly highest in Boroughs close to Central London  (Figure \@ref(fig:fig4)). 
+Levels of walking to work are unsurprisingly highest in Boroughs close to Central London (Figure \@ref(fig:fig4)), reaching 39,700 km (for one-way commuter journeys) in Westminster. Meanwhile, KSI/bkm peaks at 23.2 casualties per year in Westminster.
 
 ```{r fig5, fig.cap = "Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 - 2013"}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/walk-KSI-bkm.png")
 ```
 
-The highest rates of KSI/bkm and slight injuries per bkm for pedestrians are found to be in the outermost Inner London Boroughs, such as Haringey, Lewisham and Newham. However, we expect that this may be an artefact of the fact that travel to work has been used as a proxy for total km walked. These Boroughs may have high levels of walking overall, but relatively low levels of walking to work since they are not within walking distance of Central London. This requires further investigation. 
+Continuing to use the weekday peak hour data, a higher proportion of pedestrian casualties suffer serious injuries or fatalities compared to cycle casualties. For pedestrians, 25.9% of casualties are serious or fatal, but for cyclists this figure is only 19.1%. The mean KSI/bkm walked, at 1430, is slightly higher than the mean KSI/bkm cycled, at 1610, although the figure for pedestrians in particular may be artificially raised by the exclusion of non-commuter journeys.
+
+The highest rates of KSI/bkm and slight injuries per bkm for pedestrians are found to be in the outermost Inner London Boroughs, such as Haringey, Lewisham and Newham (Figure \@ref(fig:fig5)). However, we expect that this may be an artefact of the fact that travel to work has been used as a proxy for total km walked. These Boroughs may have high levels of walking overall, but relatively low levels of walking to work since they are not within walking distance of Central London. This requires further investigation. 
 
 # Next steps
 
