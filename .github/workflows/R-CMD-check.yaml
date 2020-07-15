@@ -63,9 +63,24 @@ jobs:
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
 
-      - name: Install dependencies
+      - name: Install dependencies on macOS
+        if: runner.os == 'macOS'
         run: |
           remotes::install_deps(dependencies = TRUE, type = "binary")
+          remotes::install_cran("rcmdcheck")
+
+        shell: Rscript {0}
+      - name: Install dependencies on Windows
+        if: runner.os == 'Windows'
+        run: |
+          remotes::install_deps(dependencies = TRUE, type = "binary")
+          remotes::install_cran("rcmdcheck")
+        shell: Rscript {0}
+
+      - name: Install dependencies on Linux
+        if: runner.os == 'Linux'
+        run: |
+          remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
