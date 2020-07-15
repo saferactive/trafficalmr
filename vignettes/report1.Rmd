@@ -352,24 +352,38 @@ The highest rates of KSI/bkm and slight injuries per bkm for pedestrians are fou
 # Next steps
 
 Overall the next step is to move from collection and exploratory analysis of data towards modelling scenarios of change and visualisation.
-There are a number of options.
-To help identify the best way forward, we frame these options as questions, the answers to which can inform our strategy over the coming months:
 
-- How soon should we extend the analysis beyond London?
-- What should the balance of emphasis be regarding the three main dataset types that will be explored in the data (exposure data, casualty data and intervention data)?
-- Is there available data on the location and extent and date of implementation of 20 mph zones, e.g. digitised versions of the maps shown in @maher_20mph_2018 ([Appendix 1](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/784904/technical-appendix-1-20mph-case-study-descriptions.pdf))?
-- In terms of exposure, what count datasets are available in addition to the DfT's [road traffic statistics](https://roadtraffic.dft.gov.uk), which we plan to analyise in the second stage of the project.
-- What additional datasets on TROs beyond The Gazette (which is London focussed) are available and to what extent could analysis of TRO data be of use when TRO data systems are rolled-out nationwide?
-- To what extent should we focus on analysis of open OSM data on traffic calming interventions vs licensed data from the OS?
-- What should the balance be in terms of focus on the different types of outputs, including provision of value-added data (e.g. estimated risk for walking and cycling), visualisation, method development and software?
-- To what extent should we focus on time series vs geographic analysis?
-
-Our default is to continue in the same direction but focus on the datasets and outputs that seem most promising. Based on the work presented in this report we think these are 
+We envisage the following high level outputs:
 
 - estimates of the combined active travel uptake and safety impacts of major interventions to estimate the impacts of future changes
 - creating new ways to visualise active travel uptake and road safety data in a single place
 - development of software tools such as `trafficalmr` to support other to use datasets related to exposure, casualty and intervention data
 
+More specifically, the following actions and strategies will inform our work over the next reporting period:
+
+- Keep a balance between the three main dataset types of exposure data (estimated cycling and walking levels), casualty data and traffic calming intervention data. 
+The interaction between these three factors is our core area of interest.
+
+- Investigate relationships between the Index of Multiple Deprivation and casualty rates, in particular pedestrian casualties. 
+
+- Use DfT [road traffic statistics](https://roadtraffic.dft.gov.uk) to estimate changes in cycling uptake through time, along with any other datasets that are available.  
+
+- Work to improve estimates of walking levels, including through use of NTS data. 
+
+- Continue using London as a case study, but focus on methods that can be generalised to extend the analysis to the rest of the country. 
+This means assessing the quality of OSM traffic calming data by comparison with the CID or Ordnance Survey. 
+Work on solving data licensing issues with OS data, as this would provide an excellent national data source.
+
+- If DfT is able identify data on 20mph zones this will be very beneficial e.g. digitised versions of the maps shown in @maher_20mph_2018 ([Appendix 1](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/784904/technical-appendix-1-20mph-case-study-descriptions.pdf))?. 
+Otherwise, we will investigate the possibility of digitising this data.
+
+- Develop R functions to extract London TRO data from The Gazette, to provide vital information on the date of implementation of traffic calming measures. 
+Further investigate how to access TRO data from outside London when TRO data systems are rolled-out nationwide.
+
+- Continue to work on multiple types of output. 
+This will include data visualisation such as who-hit-who upset plots, software development, method development and data analysis.
+
+- Analysis at a range of temporal and geographical scales, with data volume determining the highest resolution we can reach or the format of the outputs at high geographic resolutions.
 
 
 # References
