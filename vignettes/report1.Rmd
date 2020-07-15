@@ -2,9 +2,10 @@
 title: "SaferActive Report 1: Data"
 author: Institute for Transport Studies ([ITS](https://environment.leeds.ac.uk/transport/)) [University of Leeds](https://www.leeds.ac.uk/)
 output:
-  bookdown::html_vignette2:
+  # bookdown::html_vignette2:
+  bookdown::word_document2:
     number_sections: true
-    toc: true
+    # toc: true
 vignette: >
   %\VignetteIndexEntry{SaferActive Report 1: Data}
   %\VignetteEngine{knitr::rmarkdown}
@@ -31,7 +32,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Introduction
+# 1 Introduction
 
 The report summarises progress on the SaferActive project, funded by the Department for Transport in support of aims outlined in the Cycling and Walking Investment Strategy (CWIS): to double the number of stages cycled compared with the baseline year of 2013, and "reverse the decline in walking" [@departmentfortransport_cycling_2017] **whilst reducing the casualty rate per km walked and cycled year-on-year**.
 
@@ -46,7 +47,7 @@ Since the project's inception in April 2020 we have also undertaken the followin
 - Analysed the variability of estimated walking and cycling risk per bkm (see Section 8)
 - Created a prototype web app to visualise road safety data (see [saferactive.github.io](https://saferactive.github.io/)) as a basis for considering next steps in Section 9
 
-# Research landscape
+# 2 Research landscape
 
 A range of traffic calming measures can reduce casualty rates, a topic that has received much interest in the academic literature [e.g. @akbari_traffic_2020; @bunn_traffic_2003; @zalewski_traffic_2019; @zein_safety_1997; @bornioli_effectiveness_2018].
 Recent papers have found strong evidence for 'safety in numbers' (increasing the argument for research into cycling uptake alongside road safety interventions) and the effectiveness of 20 mph speed limits for reducing risk to pedestrians [@aldred_cycling_2018; @cook_twenty_2020].
@@ -60,7 +61,7 @@ This suggests that there is a need for research that measures at least two outco
 - Reduction in casualty rates
 - Increase in active travel
 
-# Policy drivers
+# 3 Policy drivers
 
 Objective 3 of the CWIS is to "reduce the rate of cyclists killed or seriously injured on England's roads,
 measured as the number of fatalities and serious injuries per billion miles cycled." 
@@ -83,7 +84,7 @@ There are still no legally binding national standards for local authorities mean
 **An issue with the policy and research landscapes is that available evidence on road safety interventions is not easily actionable.** 
 An aim of this project is to make available evidence more actionable, while simultaneously generating more evidence of the effectiveness of different interventions.
 
-# Intervention types
+# 4 Intervention types
 
 A wide range of interventions can be undertaken to support road safety objectives.
 Interventions that have been mentioned in the research and policy contexts above are outlined below, with reference to data availability.
@@ -126,7 +127,7 @@ Other interventions may not have been implemented primarily for road safety reas
 The context is shown in graphs showing historic walking and cycling rates and casualty numbers visualised in the initial bid document which can now be seen at [github.com/saferactive/](https://github.com/saferactive/saferactive), where we will host open data and code developed for the project.
 <!-- (any secure data used for the project will be saved securely). -->
 
-# Timelines
+# 5 Timelines
 
 The project runs from April 2020 until the end of June 2021.
 Milestones are shown in the table below.
@@ -150,7 +151,7 @@ milestones = read.csv(u, stringsAsFactors = FALSE)
 knitr::kable(milestones)
 ```
 
-# Data collection and processing
+# 6 Data collection and processing
 
 During the first three months of the project we have focussed on data collection, development of methods and descriptive data analysis/visualisation.
 
@@ -252,7 +253,7 @@ One option would be to identify 20 mph zones from data at the road segment level
 
 <!-- ## Other interventions? -->
 
-# Visualisation
+# 7 Visualisation
 
 ## Interactive visualisation
 
@@ -301,7 +302,7 @@ knitr::include_graphics("https://user-images.githubusercontent.com/1825120/87160
 ```
 
 
-# Analysis
+# 8 Analysis
 
 We have developed a methodology to estimate the casualty rate per billion km for walking and cycling.
 
@@ -349,7 +350,7 @@ Continuing to use the weekday peak hour data, a higher proportion of pedestrian 
 
 The highest rates of KSI/bkm and slight injuries per bkm for pedestrians are found to be in the outermost Inner London Boroughs, such as Haringey, Lewisham and Newham (Figure \@ref(fig:fig5)). However, we expect that this may be an artefact of the fact that travel to work has been used as a proxy for total km walked. These Boroughs may have high levels of walking overall, but relatively low levels of walking to work since they are not within walking distance of Central London. This requires further investigation. 
 
-# Next steps
+# 9 Next steps
 
 Overall the next step is to move from collection and exploratory analysis of data towards modelling scenarios of change and visualisation.
 
@@ -386,7 +387,7 @@ This will include data visualisation such as who-hit-who upset plots, software d
 - Analysis at a range of temporal and geographical scales, with data volume determining the highest resolution we can reach or the format of the outputs at high geographic resolutions.
 
 
-# References
+# 10 References
 
 
 
