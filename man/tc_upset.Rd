@@ -4,11 +4,27 @@
 \alias{tc_upset}
 \title{Create 'who-hit-who' visualisations}
 \usage{
-tc_upset(crashes_joined)
+tc_upset(
+  crash_summary,
+  casualty_type = c("Car", "Taxi", "Pedestrian", "Van", "Bicycle", "Motorcycle",
+    "Other", "Bus", "HGV", "Minibus"),
+  family = "Avenir Book"
+)
 }
 \arguments{
-\item{crashes_joined}{crashes dataset with vehicles and casuatlties variables}
+\item{crash_summary}{crashes dataset with vehicles and casuatlties variables}
+
+\item{family}{font family}
 }
 \description{
 Create 'who-hit-who' visualisations
+}
+\examples{
+\dontrun{
+crashes = stats19::get_stats19(2018, "crashes")
+casualties = stats19::get_stats19(2018, "cas")
+vehicles = stats19::get_stats19(2018, "veh")
+crash_summary = tc_recode(crashes, casualties, vehicles)
+# tc_upset(crash_summary)
+}
 }
