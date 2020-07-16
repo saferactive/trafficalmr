@@ -6,3 +6,34 @@
 #' @keywords datasets
 #' @name casualties_lookup
 NULL
+#' Sample STATS19 data
+#'
+#' @docType data
+#' @keywords datasets
+#' @aliases casualties_wf vehicles_wf
+#' @name crashes_wf
+#' @examples
+#' \dontrun{
+#' crashes = stats19::get_stats19(2014:2018, "acc")
+#' lnd = spData::lnd
+#' waltham_forest = lnd[lnd$NAME == "Waltham Forest", ]
+#' crashes_sf = stats19::format_sf(crashes, lonlat = TRUE)
+#' table(crashes_sf$police_force)
+#' crashes_wf = crashes_sf[waltham_forest, ]
+#' plot(crashes_wf)
+#' crashes_wf = sf::st_drop_geometry(crashes_wf)
+#' # crashes_wy = crashes[crashes$police_force == "West Yorkshire", ]
+#' casualties = stats19::get_stats19(2014:2018, "cas")
+#' casualties_wf = casualties[casualties$accident_index %in% crashes_wf$accident_index, ]
+#' vehicles = stats19::get_stats19(2014:2018, "veh")
+#' vehicles_wf = vehicles[vehicles$accident_index %in% crashes_wf$accident_index, ]
+#'
+#' usethis::use_data(crashes_wf, overwrite = TRUE)
+#' usethis::use_data(casualties_wf)
+#' usethis::use_data(vehicles_wf)
+#'
+#' crashes = crashes_wf
+#' casualties = casualties_wf
+#' vehicles = vehicles_wf
+#' }
+NULL

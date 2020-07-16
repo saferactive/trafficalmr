@@ -4,13 +4,8 @@
 #' @param family font family
 #' @export
 #' @examples
-#' \dontrun{
-#' crashes = stats19::get_stats19(2018, "crashes")
-#' casualties = stats19::get_stats19(2018, "cas")
-#' vehicles = stats19::get_stats19(2018, "veh")
-#' crash_summary = tc_recode(crashes, casualties, vehicles)
-#' # tc_upset(crash_summary)
-#' }
+#' crash_summary_wf = tc_join_stats19(crashes_wf, casualties_wf, vehicles_wf)
+#' tc_upset(crash_summary_wy)
 tc_upset = function(
   crash_summary,
   casualty_type = c("Car", "Taxi", "Pedestrian", "Van", "Bicycle", "Motorcycle",
@@ -58,10 +53,18 @@ tc_upset = function(
 #' @param casualties The casualty table from STATS19 data
 #' @param vehicles The vehicles table from STATS19 data
 #' @export
-tc_join_stats19 = function(crashes, casualties, vehicles) {
-  casualties$casualty_type_simple <- tc_recode_casualties(casualties_all$casualty_type, pattern_match = casualties_lookup_2)
-  vehicles$vehicle_type_simple <- tc_recode_vehicle_type(vehicles_all$vehicle_type)
-  casualties <- casualties_all %>%
+tc_join_stats19 = function(crashes, casualties, vehicles, pattern_match = NULL) {
+  if(!requireNamespace("ComplexUpset", quietly = TRUE)) {
+    stop("Install the ComplexUpset package")
+  }
+  if(is.null(pattern_match)) {
+    casualties$casualty_type_simple <- tc_recode_casualties(casualties$casualty_type)
+  } else {
+    casualties$casualty_type_simple <- tc_recode_casualties(casualties$casualty_type, pattern_match = pattern_match)
+  }
+
+  vehicles$vehicle_type_simple <- tc_recode_vehicle_type(vehicles$vehicle_type)
+  casualties <- casualties %>%
     dplyr::mutate(
       casualty_type_simple=dplyr::case_when(
         casualty_type_simple=="Cyclist" ~ "Bicycle",

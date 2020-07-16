@@ -25,7 +25,9 @@ Imports:
     goodpractice,
     osmdata,
     stringr,
-    magrittr
+    magrittr,
+    dplyr,
+    tidyr
 RoxygenNote: 7.1.1
 Suggests: 
     covr,
@@ -34,9 +36,10 @@ Suggests:
     testthat,
     stats19,
     bookdown,
-    ComplexUpset
+    ComplexUpset,
+    ggplot2,
+    scales
 Remotes:
     krassowski/complex-upset
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
-

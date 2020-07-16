@@ -21,10 +21,7 @@ Create 'who-hit-who' visualisations
 }
 \examples{
 \dontrun{
-crashes = stats19::get_stats19(2018, "crashes")
-casualties = stats19::get_stats19(2018, "cas")
-vehicles = stats19::get_stats19(2018, "veh")
-crash_summary = tc_recode(crashes, casualties, vehicles)
-# tc_upset(crash_summary)
+crash_summary_wf = tc_join_stats19(crashes, casualties, vehicles)
+tc_upset(crash_summary_wy)
 }
 }
