@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • trafficalmr</title>
+<title>Join stats19 tables — tc_join_stats19 • trafficalmr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Join stats19 tables — tc_join_stats19" />
+<meta property="og:description" content="Join stats19 tables" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -123,78 +124,43 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Join stats19 tables</h1>
+    <small class="dont-index">Source: <a href='https://github.com/saferactive/trafficalmr/blob/master/R/upset.R'><code>R/upset.R</code></a></small>
+    <div class="hidden name"><code>tc_join_stats19.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Join stats19 tables</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_join_stats19.html'>tc_join_stats19</a></span>(<span class='kw'>crashes</span>, <span class='kw'>casualties</span>, <span class='kw'>vehicles</span>, pattern_match = <span class='kw'>NULL</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="casualties_lookup.html">casualties_lookup</a></code> </p>
-        </td>
-        <td><p>Stats19 schema and variables</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="crashes_wf.html">crashes_wf</a></code> </p>
-        </td>
-        <td><p>Sample STATS19 data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_get_osm.html">tc_get_osm()</a></code> </p>
-        </td>
-        <td><p>Get traffic calming interventions from OpenStreetMap</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_join_stats19.html">tc_join_stats19()</a></code> </p>
-        </td>
-        <td><p>Join stats19 tables</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_recode.html">tc_recode()</a></code> <code><a href="tc_recode.html">tc_recode_vehicle_type()</a></code> <code><a href="tc_recode.html">tc_recode_casualties()</a></code> </p>
-        </td>
-        <td><p>Recode character strings based on regular expressions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_recode_speeds_uk.html">tc_recode_speeds_uk()</a></code> </p>
-        </td>
-        <td><p>Recode maxspeed values in OSM</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_upset.html">tc_upset()</a></code> </p>
-        </td>
-        <td><p>Create 'who-hit-who' visualisations</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>crashes</th>
+      <td><p>The accidents table of crashes from STATS19 data</p></td>
+    </tr>
+    <tr>
+      <th>casualties</th>
+      <td><p>The casualty table from STATS19 data</p></td>
+    </tr>
+    <tr>
+      <th>vehicles</th>
+      <td><p>The vehicles table from STATS19 data</p></td>
+    </tr>
+    <tr>
+      <th>pattern_match</th>
+      <td><p>Character string in the form of
+<code><a href='https://rdrr.io/r/base/c.html'>c("car" = "car", "bike" = "bike")</a></code> that replaces all parts of the match.</p></td>
+    </tr>
     </table>
-  </div>
 
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
