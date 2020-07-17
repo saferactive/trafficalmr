@@ -2,32 +2,35 @@
 #'
 #' @param crash_summary crashes dataset with vehicles and casuatlties variables
 #' @param family font family
+#' @param casualty_type The casualty types to plot
 #' @export
 #' @examples
 #' crash_summary = tc_join_stats19(crashes_wf, casualties_wf, vehicles_wf)
 #' tc_upset(crash_summary)
+#' tc_upset(crash_summary, casualty_type = c("Car", "Pedestrian", "Bicycle"))
 tc_upset = function(crash_summary,
                     casualty_type = c(
                       "Car",
-                      "Taxi",
                       "Pedestrian",
                       "Van",
                       "Bicycle",
                       "Motorcycle",
-                      "Other",
-                      "Bus",
-                      "HGV",
-                      "Minibus"
+                      "Bus"
                     ),
-                    family = "Avenir Book") {
+                    family = "") {
   # code resulting in upset plot
 
   # For the UpSet plot we do not differentiate number of vehicles involved in single crash.
   # As this is a set visualization we don't want to double count crashes.
 
+  if (!requireNamespace("ComplexUpset", quietly = TRUE)) {
+    stop("Install the ComplexUpset package")
+  }
+
   ComplexUpset::upset(
     crash_summary,
     casualty_type,
+    # split out as separate function?
     annotations = list("KSI" = list(
       aes = ggplot2::aes(x = intersection, fill = accident_severity),
       geom = list(
@@ -71,14 +74,12 @@ tc_upset = function(crash_summary,
 #' @param crashes The accidents table of crashes from STATS19 data
 #' @param casualties The casualty table from STATS19 data
 #' @param vehicles The vehicles table from STATS19 data
+#' @inheritParams tc_recode
 #' @export
 tc_join_stats19 = function(crashes,
                            casualties,
                            vehicles,
                            pattern_match = NULL) {
-  if (!requireNamespace("ComplexUpset", quietly = TRUE)) {
-    stop("Install the ComplexUpset package")
-  }
   if (is.null(pattern_match)) {
     casualties$casualty_type_simple <-
       tc_recode_casualties(casualties$casualty_type)

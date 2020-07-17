@@ -6,13 +6,14 @@
 \usage{
 tc_upset(
   crash_summary,
-  casualty_type = c("Car", "Taxi", "Pedestrian", "Van", "Bicycle", "Motorcycle",
-    "Other", "Bus", "HGV", "Minibus"),
-  family = "Avenir Book"
+  casualty_type = c("Car", "Pedestrian", "Van", "Bicycle", "Motorcycle", "Bus"),
+  family = ""
 )
 }
 \arguments{
 \item{crash_summary}{crashes dataset with vehicles and casuatlties variables}
+
+\item{casualty_type}{The casualty types to plot}
 
 \item{family}{font family}
 }
@@ -20,6 +21,7 @@ tc_upset(
 Create 'who-hit-who' visualisations
 }
 \examples{
-crash_summary_wf = tc_join_stats19(crashes_wf, casualties_wf, vehicles_wf)
-tc_upset(crash_summary_wf)
+crash_summary = tc_join_stats19(crashes_wf, casualties_wf, vehicles_wf)
+tc_upset(crash_summary)
+tc_upset(crash_summary, casualty_type = c("Car", "Pedestrian", "Bicycle"))
 }

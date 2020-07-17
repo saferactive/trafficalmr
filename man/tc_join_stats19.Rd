@@ -12,6 +12,9 @@ tc_join_stats19(crashes, casualties, vehicles, pattern_match = NULL)
 \item{casualties}{The casualty table from STATS19 data}
 
 \item{vehicles}{The vehicles table from STATS19 data}
+
+\item{pattern_match}{Character string in the form of
+\code{c("car" = "car", "bike" = "bike")} that replaces all parts of the match.}
 }
 \description{
 Join stats19 tables
