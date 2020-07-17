@@ -4,7 +4,7 @@
 \alias{tc_join_stats19}
 \title{Join stats19 tables}
 \usage{
-tc_join_stats19(crashes, casualties, vehicles)
+tc_join_stats19(crashes, casualties, vehicles, pattern_match = NULL)
 }
 \arguments{
 \item{crashes}{The accidents table of crashes from STATS19 data}

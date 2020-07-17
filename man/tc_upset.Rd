@@ -20,8 +20,6 @@ tc_upset(
 Create 'who-hit-who' visualisations
 }
 \examples{
-\dontrun{
-crash_summary_wf = tc_join_stats19(crashes, casualties, vehicles)
-tc_upset(crash_summary_wy)
-}
+crash_summary_wf = tc_join_stats19(crashes_wf, casualties_wf, vehicles_wf)
+tc_upset(crash_summary_wf)
 }
