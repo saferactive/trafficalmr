@@ -6,10 +6,11 @@
 #' @export
 #' @examples
 #' crash_summary = tc_join_stats19(crashes_wf, casualties_wf, vehicles_wf)
+#' names(crash_summary)
+#' summary(crash_summary)
 #' tc_upset(crash_summary)
 #' tc_upset(crash_summary, casualty_type = c("Car", "Pedestrian", "Bicycle"))
 #' # create plot with 'Other' category
-#' names(crashes_wf)
 #' table(casualties_wf$casualty_type)
 #' casualties_wf2 = dplyr::mutate(
 #'   casualties_wf,
@@ -29,7 +30,9 @@ tc_upset = function(crash_summary,
                       "Van",
                       "Bicycle",
                       "Motorcycle",
-                      "Bus"
+                      "Bus",
+                      "HGV",
+                      "Taxi"
                     ),
                     family = "") {
   # code resulting in upset plot

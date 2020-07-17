@@ -6,7 +6,8 @@
 \usage{
 tc_upset(
   crash_summary,
-  casualty_type = c("Car", "Pedestrian", "Van", "Bicycle", "Motorcycle", "Bus"),
+  casualty_type = c("Car", "Pedestrian", "Van", "Bicycle", "Motorcycle", "Bus", "HGV",
+    "Taxi"),
   family = ""
 )
 }
@@ -22,6 +23,21 @@ Create 'who-hit-who' visualisations
 }
 \examples{
 crash_summary = tc_join_stats19(crashes_wf, casualties_wf, vehicles_wf)
+names(crash_summary)
+summary(crash_summary)
 tc_upset(crash_summary)
 tc_upset(crash_summary, casualty_type = c("Car", "Pedestrian", "Bicycle"))
+# create plot with 'Other' category
+table(casualties_wf$casualty_type)
+casualties_wf2 = dplyr::mutate(
+  casualties_wf,
+  casualty_type_simple = dplyr::case_when(
+     casualty_type == "Car occupant" ~ "Car",
+     casualty_type == "Pedestrian" ~ "Pedestrian",
+     casualty_type == "Cyclist" ~ "Cyclist",
+     TRUE ~ "Other"
+    )
+  )
+crash_summary = tc_join_stats19(crashes_wf, casualties_wf2, vehicles_wf)
+tc_upset(crash_summary, casualty_type = c("Car", "Pedestrian", "Bicycle", "Other"))
 }
