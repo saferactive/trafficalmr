@@ -1,0 +1,13 @@
+utils::globalVariables(
+  c(
+    "accident_index",
+    "vehicle_type_simple",
+    "vehicle_type_simple",
+    "casualty_type_simple",
+    "accident_severity",
+    "type",
+    "is_present",
+    "intersection",
+    "accident_severity"
+  )
+)
