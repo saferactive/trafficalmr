@@ -81,16 +81,16 @@ tc_join_stats19 = function(crashes,
                            vehicles,
                            pattern_match = NULL) {
   if (is.null(pattern_match)) {
-    casualties$casualty_type_simple <-
+    casualties$casualty_type_simple =
       tc_recode_casualties(casualties$casualty_type)
   } else {
-    casualties$casualty_type_simple <-
+    casualties$casualty_type_simple =
       tc_recode_casualties(casualties$casualty_type, pattern_match = pattern_match)
   }
 
-  vehicles$vehicle_type_simple <-
+  vehicles$vehicle_type_simple =
     tc_recode_vehicle_type(vehicles$vehicle_type)
-  casualties <- casualties %>%
+  casualties = casualties %>%
     dplyr::mutate(
       casualty_type_simple = dplyr::case_when(
         casualty_type_simple == "Cyclist" ~ "Bicycle",
@@ -98,14 +98,14 @@ tc_join_stats19 = function(crashes,
         TRUE ~ casualty_type_simple
       )
     )
-  crash_cas <- dplyr::inner_join(
+  crash_cas = dplyr::inner_join(
     vehicles %>% dplyr::select(accident_index, vehicle_type_simple),
     casualties %>% dplyr::select(accident_index, casualty_type_simple),
     by = "accident_index"
   ) %>%
     dplyr::inner_join(crashes %>%  dplyr::select(accident_index, accident_severity),
                       by = "accident_index")
-  crash_cas <-
+  crash_cas =
     crash_cas %>% tidyr::pivot_longer(
       -c(accident_index, accident_severity),
       names_to = "cas_veh",
@@ -113,20 +113,27 @@ tc_join_stats19 = function(crashes,
     )
   # # For the UpSet plot we do not differentiate number of vehicles involved in single crash.
   # # As this is a set visualization we don't want to double count crashes.
-  crash_summary <-
-    crash_cas %>%   dplyr::select(accident_index, type) %>% unique %>%  dplyr::mutate(is_present =
-                                                                                        TRUE) %>%
+  crash_summary =
+    crash_cas %>%
+    dplyr::select(accident_index, type) %>%
+    unique %>%
+    dplyr::mutate(is_present = TRUE) %>%
     tidyr::pivot_wider(
       id = accident_index,
       names_from = type,
       values_from = is_present,
       values_fill = list(is_present = FALSE)
     )
-  crash_summary  <- crash_summary %>%
-    dplyr::inner_join(crash_cas %>%  dplyr::select(accident_index, accident_severity) %>% unique)
+  crash_summary = crash_summary %>%
+    dplyr::inner_join(crash_cas %>%
+                        dplyr::select(accident_index, accident_severity) %>%
+                        unique
+                      )
   crash_summary
 }
 
+
+# original code -----------------------------------------------------------
 # casualties_lookup_2 = c(
 #   "otorcyc" = "Motorcyclist",
 #   "7.5" = "HGV",
