@@ -10,7 +10,7 @@ NULL
 #'
 #' @docType data
 #' @keywords datasets
-#' @aliases casualties_wf vehicles_wf
+#' @aliases casualties_wf vehicles_wf crash_summary_wy
 #' @name crashes_wf
 #' @examples
 #' \dontrun{

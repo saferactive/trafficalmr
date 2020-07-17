@@ -5,6 +5,7 @@
 \alias{crashes_wf}
 \alias{casualties_wf}
 \alias{vehicles_wf}
+\alias{crash_summary_wy}
 \title{Sample STATS19 data}
 \description{
 Sample STATS19 data
