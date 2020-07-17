@@ -8,6 +8,20 @@
 #' crash_summary = tc_join_stats19(crashes_wf, casualties_wf, vehicles_wf)
 #' tc_upset(crash_summary)
 #' tc_upset(crash_summary, casualty_type = c("Car", "Pedestrian", "Bicycle"))
+#' # create plot with 'Other' category
+#' names(crashes_wf)
+#' table(casualties_wf$casualty_type)
+#' casualties_wf2 = dplyr::mutate(
+#'   casualties_wf,
+#'   casualty_type_simple = dplyr::case_when(
+#'      casualty_type == "Car occupant" ~ "Car",
+#'      casualty_type == "Pedestrian" ~ "Pedestrian",
+#'      casualty_type == "Cyclist" ~ "Cyclist",
+#'      TRUE ~ "Other"
+#'     )
+#'   )
+#' crash_summary = tc_join_stats19(crashes_wf, casualties_wf2, vehicles_wf)
+#' tc_upset(crash_summary, casualty_type = c("Car", "Pedestrian", "Bicycle", "Other"))
 tc_upset = function(crash_summary,
                     casualty_type = c(
                       "Car",
@@ -80,17 +94,25 @@ tc_upset = function(crash_summary,
 tc_join_stats19 = function(crashes,
                            casualties,
                            vehicles,
-                           pattern_match = NULL) {
-  if (is.null(pattern_match)) {
-    casualties$casualty_type_simple =
-      tc_recode_casualties(casualties$casualty_type)
-  } else {
-    casualties$casualty_type_simple =
-      tc_recode_casualties(casualties$casualty_type, pattern_match = pattern_match)
+                           pattern_match = NULL
+                           ) {
+
+  # recode casualties and crashes
+  if(is.null(casualties$casualty_type_simple)) {
+    if (is.null(pattern_match)) {
+      casualties$casualty_type_simple =
+        tc_recode_casualties(casualties$casualty_type)
+    } else {
+      casualties$casualty_type_simple =
+        tc_recode_casualties(casualties$casualty_type, pattern_match = pattern_match)
+    }
   }
 
-  vehicles$vehicle_type_simple =
-    tc_recode_vehicle_type(vehicles$vehicle_type)
+  if(is.null(vehicles$vehicle_type_simple)) {
+    vehicles$vehicle_type_simple =
+      tc_recode_vehicle_type(vehicles$vehicle_type)
+  }
+
   casualties = casualties %>%
     dplyr::mutate(
       casualty_type_simple = dplyr::case_when(
