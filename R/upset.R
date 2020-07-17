@@ -21,7 +21,17 @@
 #'      TRUE ~ "Other"
 #'     )
 #'   )
-#' crash_summary = tc_join_stats19(crashes_wf, casualties_wf2, vehicles_wf)
+#' table(casualties_wf2$casualty_type_simple)
+#' table(vehicles_wf$vehicle_type)
+#' vehicles_wf2 = dplyr::mutate(
+#'   vehicles_wf,
+#'   vehicle_type_simple = dplyr::case_when(
+#'      vehicle_type == "Car" ~ "Car",
+#'      vehicle_type == "Bicycle" ~ "Pedal cycle",
+#'      TRUE ~ "Other"
+#'     )
+#'   )
+#' crash_summary = tc_join_stats19(crashes_wf, casualties_wf2, vehicles_wf2)
 #' tc_upset(crash_summary, casualty_type = c("Car", "Pedestrian", "Bicycle", "Other"))
 tc_upset = function(crash_summary,
                     casualty_type = c(
