@@ -218,7 +218,29 @@
      <span class='fl'>TRUE</span> <span class='op'>~</span> <span class='st'>"Other"</span>
     )
   )
-<span class='kw'>crash_summary</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_join_stats19.html'>tc_join_stats19</a></span>(<span class='kw'>crashes_wf</span>, <span class='kw'>casualties_wf2</span>, <span class='kw'>vehicles_wf</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `vehicle_type_simple`.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "accident_index"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_upset.html'>tc_upset</a></span>(<span class='kw'>crash_summary</span>, casualty_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Bicycle"</span>, <span class='st'>"Other"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='img'><img src='tc_upset-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>vehicles_wf</span><span class='op'>$</span><span class='kw'>vehicle_type</span>)</div><div class='output co'>#&gt; 
+#&gt;                  Agricultural vehicle  Bus or coach (17 or more pass seats) 
+#&gt;                                     3                                   210 
+#&gt;                                   Car         Goods 7.5 tonnes mgw and over 
+#&gt;                                  4285                                    27 
+#&gt;       Goods over 3.5t. and under 7.5t      Minibus (8 - 16 passenger seats) 
+#&gt;                                    31                                    10 
+#&gt;            Motorcycle 125cc and under             Motorcycle 50cc and under 
+#&gt;                                   326                                    72 
+#&gt; Motorcycle over 125cc and up to 500cc                 Motorcycle over 500cc 
+#&gt;                                    67                                    91 
+#&gt;                         Other vehicle                           Pedal cycle 
+#&gt;                                    44                                   597 
+#&gt;                 Taxi/Private hire car   Van / Goods 3.5 tonnes mgw or under 
+#&gt;                                   151                                   363 </div><div class='input'><span class='kw'>vehicles_wf2</span> <span class='op'>=</span> <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(
+  <span class='kw'>vehicles_wf</span>,
+  vehicle_type_simple = <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span>(
+     <span class='kw'>vehicle_type</span> <span class='op'>==</span> <span class='st'>"Car"</span> <span class='op'>~</span> <span class='st'>"Car"</span>,
+     <span class='kw'>vehicle_type</span> <span class='op'>==</span> <span class='st'>"Cyclist"</span> <span class='op'>~</span> <span class='st'>"Pedal cycle"</span>,
+     <span class='fl'>TRUE</span> <span class='op'>~</span> <span class='st'>"Other"</span>
+    )
+  )
+<span class='kw'>crash_summary</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_join_stats19.html'>tc_join_stats19</a></span>(<span class='kw'>crashes_wf</span>, <span class='kw'>casualties_wf2</span>, <span class='kw'>vehicles_wf2</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = "accident_index"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_upset.html'>tc_upset</a></span>(<span class='kw'>crash_summary</span>, casualty_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Bicycle"</span>, <span class='st'>"Other"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='img'><img src='tc_upset-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
