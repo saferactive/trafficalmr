@@ -46,8 +46,9 @@ tc_upset = function(crash_summary,
       )
     )),
     base_annotations = list(
-      'Intersection size' = ComplexUpset::intersection_size(text = ggplot2::element_text(size =
-                                                                                           3))
+      'Intersection size' = ComplexUpset::intersection_size(
+        text = ggplot2::element_text(size = 3)
+        )
     ),
     name = "Combinations of casualty types",
     width_ratio = 0.1,
