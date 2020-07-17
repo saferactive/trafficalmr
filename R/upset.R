@@ -27,7 +27,7 @@
 #'   vehicles_wf,
 #'   vehicle_type_simple = dplyr::case_when(
 #'      vehicle_type == "Car" ~ "Car",
-#'      vehicle_type == "Cyclist" ~ "Pedal cycle",
+#'      vehicle_type == "Bicycle" ~ "Pedal cycle",
 #'      TRUE ~ "Other"
 #'     )
 #'   )
