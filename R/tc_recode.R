@@ -67,11 +67,13 @@ tc_recode_casualties = function(x,
   tc_recode(x, pattern = pattern, pattern_match = pattern_match)
 }
 
+#' just make sure global var casualties_lookup is in scope
 utils::globalVariables(
   c(
     "casualties_lookup"
   )
 )
+
 #' Recode maxspeed values in OSM
 #'
 #' @inheritParams tc_recode
