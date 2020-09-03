@@ -82,3 +82,7 @@ barplot(table(v$vehicle_type_simple))
 
 Note that the second plot on the right is much easier to interpret.
 See [`?tc_recode()`](https://saferactive.github.io/trafficalmr/reference/tc_recode.html) for details.
+
+
+# Development (contributing)
+R package `testthat` is used to test this package. Some of the tests, understandably, need to make calls to OSM and other remote services. The package has an ENV to avoid running network calls (downloads). If you like to avoid running them set an ENV var with `DONT_DOWNLOAD_ANYTHING = false` so that you skip them. If `curl::has_internet()` fails, they will be skipped anyways.

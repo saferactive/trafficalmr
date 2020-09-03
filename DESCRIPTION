@@ -38,7 +38,8 @@ Suggests:
     bookdown,
     ComplexUpset,
     ggplot2,
-    scales
+    scales,
+    curl
 Remotes:
     krassowski/complex-upset
 VignetteBuilder: knitr
