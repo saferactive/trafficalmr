@@ -135,7 +135,7 @@
     <p>Create 'who-hit-who' visualisations</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_upset.html'>tc_upset</a></span>(
+    <pre class="usage"><span class='fu'>tc_upset</span>(
   <span class='kw'>crash_summary</span>,
   casualty_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Van"</span>, <span class='st'>"Bicycle"</span>, <span class='st'>"Motorcycle"</span>, <span class='st'>"Bus"</span>, <span class='st'>"HGV"</span>,
     <span class='st'>"Taxi"</span>),
@@ -161,11 +161,14 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>crash_summary</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_join_stats19.html'>tc_join_stats19</a></span>(<span class='kw'>crashes_wf</span>, <span class='kw'>casualties_wf</span>, <span class='kw'>vehicles_wf</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `casualty_type_simple`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `vehicle_type_simple`.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "accident_index"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>crash_summary</span>)</div><div class='output co'>#&gt;  [1] "accident_index"    "Bus"               "HGV_occupant"     
+    <pre class="examples"><div class='input'><span class='kw'>crash_summary</span> <span class='op'>=</span> <span class='fu'><a href='tc_join_stats19.html'>tc_join_stats19</a></span>(<span class='kw'>crashes_wf</span>, <span class='kw'>casualties_wf</span>, <span class='kw'>vehicles_wf</span>)
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `casualty_type_simple`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `vehicle_type_simple`.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "accident_index"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>crash_summary</span>)
+</div><div class='output co'>#&gt;  [1] "accident_index"    "Bus"               "HGV_occupant"     
 #&gt;  [4] "Car"               "Car_occupant"      "Bicycle"          
 #&gt;  [7] "Pedestrian"        "Taxi"              "Motorcycle"       
 #&gt; [10] "HGV"               "Van"               "Taxi_occupant"    
-#&gt; [13] "Other"             "Minibus_occupant"  "accident_severity"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>crash_summary</span>)</div><div class='output co'>#&gt;  accident_index        Bus          HGV_occupant       Car         
+#&gt; [13] "Other"             "Minibus_occupant"  "accident_severity"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>crash_summary</span>)
+</div><div class='output co'>#&gt;  accident_index        Bus          HGV_occupant       Car         
 #&gt;  Length:3449        Mode :logical   Mode :logical   Mode :logical  
 #&gt;  Class :character   FALSE:3240      FALSE:3242      FALSE:572      
 #&gt;  Mode  :character   TRUE :209       TRUE :207       TRUE :2877     
@@ -180,8 +183,11 @@
 #&gt;    Other         Minibus_occupant accident_severity 
 #&gt;  Mode :logical   Mode :logical    Length:3449       
 #&gt;  FALSE:3392      FALSE:3447       Class :character  
-#&gt;  TRUE :57        TRUE :2          Mode  :character  </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_upset.html'>tc_upset</a></span>(<span class='kw'>crash_summary</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='output co'>#&gt; [1] "Dropping empty groups: HGV"</div><div class='img'><img src='tc_upset-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_upset.html'>tc_upset</a></span>(<span class='kw'>crash_summary</span>, casualty_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Bicycle"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='img'><img src='tc_upset-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># create plot with 'Other' category</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>casualties_wf</span><span class='op'>$</span><span class='kw'>casualty_type</span>)</div><div class='output co'>#&gt; 
+#&gt;  TRUE :57        TRUE :2          Mode  :character  </div><div class='input'><span class='fu'>tc_upset</span>(<span class='kw'>crash_summary</span>)
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='output co'>#&gt; [1] "Dropping empty groups: HGV"</div><div class='img'><img src='tc_upset-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>tc_upset</span>(<span class='kw'>crash_summary</span>, casualty_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Bicycle"</span>))
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='img'><img src='tc_upset-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># create plot with 'Other' category</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>casualties_wf</span><span class='op'>$</span><span class='kw'>casualty_type</span>)
+</div><div class='output co'>#&gt; 
 #&gt;             Bus or coach occupant (17 or more pass seats) 
 #&gt;                                                       159 
 #&gt;                                              Car occupant 
@@ -218,7 +224,8 @@
      <span class='fl'>TRUE</span> <span class='op'>~</span> <span class='st'>"Other"</span>
     )
   )
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>vehicles_wf</span><span class='op'>$</span><span class='kw'>vehicle_type</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>vehicles_wf</span><span class='op'>$</span><span class='kw'>vehicle_type</span>)
+</div><div class='output co'>#&gt; 
 #&gt;                  Agricultural vehicle  Bus or coach (17 or more pass seats) 
 #&gt;                                     3                                   210 
 #&gt;                                   Car         Goods 7.5 tonnes mgw and over 
@@ -240,7 +247,9 @@
      <span class='fl'>TRUE</span> <span class='op'>~</span> <span class='st'>"Other"</span>
     )
   )
-<span class='kw'>crash_summary</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_join_stats19.html'>tc_join_stats19</a></span>(<span class='kw'>crashes_wf</span>, <span class='kw'>casualties_wf2</span>, <span class='kw'>vehicles_wf2</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = "accident_index"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/trafficalmr/man/tc_upset.html'>tc_upset</a></span>(<span class='kw'>crash_summary</span>, casualty_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Bicycle"</span>, <span class='st'>"Other"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='img'><img src='tc_upset-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='kw'>crash_summary</span> <span class='op'>=</span> <span class='fu'><a href='tc_join_stats19.html'>tc_join_stats19</a></span>(<span class='kw'>crashes_wf</span>, <span class='kw'>casualties_wf2</span>, <span class='kw'>vehicles_wf2</span>)
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = "accident_index"</span></div><div class='input'><span class='fu'>tc_upset</span>(<span class='kw'>crash_summary</span>, casualty_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Bicycle"</span>, <span class='st'>"Other"</span>))
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='img'><img src='tc_upset-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

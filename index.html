@@ -126,14 +126,19 @@
 <span class="kw">v</span> <span class="op">=</span> <span class="kw">stats19</span>::<span class="fu"><a href="https://docs.ropensci.org/stats19/reference/get_stats19.html">get_stats19</a></span>(year = <span class="fl">2018</span>, type = <span class="st">"vehicles"</span>)
 <span class="co">#&gt; Files identified: dftRoadSafetyData_Vehicles_2018.csv</span>
 <span class="co">#&gt;    http://data.dft.gov.uk.s3.amazonaws.com/road-accidents-safety-data/dftRoadSafetyData_Vehicles_2018.csv</span>
-<span class="co">#&gt; Data already exists in data_dir, not downloading</span>
-<span class="co">#&gt; Data saved at ~/stats19-data/dftRoadSafetyData_Vehicles_2018.csv</span>
+<span class="co">#&gt; Attempt downloading from:</span>
+<span class="co">#&gt; Data saved at /var/folders/z7/l4z5fwqs2ksfv22ghh2n9smh0000gp/T//RtmpnCR13T/dftRoadSafetyData_Vehicles_2018.csv</span>
 <span class="kw">v</span><span class="op">$</span><span class="kw">vehicle_type_simple</span> <span class="op">=</span> <span class="fu"><a href="reference/tc_recode.html">tc_recode_vehicle_type</a></span>(<span class="kw">v</span><span class="op">$</span><span class="kw">vehicle_type</span>)
 <span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="kw">v</span><span class="op">$</span><span class="kw">vehicle_type</span>))
 <span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="kw">v</span><span class="op">$</span><span class="kw">vehicle_type_simple</span>))
 </pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="50%"><img src="reference/figures/README-unnamed-chunk-8-2.png" width="50%"></p>
 <p>Note that the second plot on the right is much easier to interpret. See <a href="https://saferactive.github.io/trafficalmr/reference/tc_recode.html"><code>?tc_recode()</code></a> for details.</p>
+</div>
+<div id="development-contributing" class="section level1">
+<h1 class="hasAnchor">
+<a href="#development-contributing" class="anchor"></a>Development (contributing)</h1>
+<p>R package <code>testthat</code> is used to test this package. Some of the tests, understandably, need to make calls to OSM and other remote services. The package has an ENV to avoid running network calls (downloads). If you like to avoid running them set an ENV var with <code>DONT_DOWNLOAD_ANYTHING = false</code> so that you skip them. If <code><a href="https://jeroen.cran.dev/curl/reference/nslookup.html">curl::has_internet()</a></code> fails, they will be skipped anyways.</p>
 </div>
 
   </div>
