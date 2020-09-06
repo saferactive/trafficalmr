@@ -43,6 +43,7 @@ Suggests:
     curl,
     sf
 Remotes:
-    krassowski/complex-upset
+    krassowski/complex-upset,
+    itsleeds/osmextract
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
