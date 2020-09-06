@@ -12,8 +12,8 @@ function \code{oe_get}.}
 }
 \description{
 Use \code{osmextract} to get the roads and then filter on \code{other_tags}
-with keyword \code{traffic_calming} (see \link{OSM Wiki}
-(https://wiki.openstreetmap.org/wiki/Key:traffic_calming)).
+with keyword \code{traffic_calming}
+(see \href{https://wiki.openstreetmap.org/wiki/Key:traffic_calming}{OSM Wiki}).
 Currently it only takes the \code{place} argument.
 }
 \examples{

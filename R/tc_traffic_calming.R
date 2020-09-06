@@ -1,8 +1,8 @@
 #' Ge traffic calming measures for an area from OSM
 #'
 #' Use `osmextract` to get the roads and then filter on `other_tags`
-#' with keyword `traffic_calming` (see [OSM Wiki]
-#' (https://wiki.openstreetmap.org/wiki/Key:traffic_calming)).
+#' with keyword `traffic_calming`
+#' (see [OSM Wiki](https://wiki.openstreetmap.org/wiki/Key:traffic_calming)).
 #' Currently it only takes the `place` argument.
 #'
 #' @param place Geographic name or coordinates as per `osmextract`
