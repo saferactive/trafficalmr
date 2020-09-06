@@ -28,7 +28,7 @@ Imports:
     magrittr,
     dplyr,
     tidyr,
-    osmextract
+    osmextract (>= 0.1.0)
 RoxygenNote: 7.1.1
 Suggests: 
     covr,
