@@ -42,7 +42,7 @@ Suggests:
     scales,
     curl,
     sf
-Remotes: 
+Remotes:
     krassowski/complex-upset,
     itsleeds/osmextract
 VignetteBuilder: knitr
