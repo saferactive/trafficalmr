@@ -27,7 +27,8 @@ Imports:
     stringr,
     magrittr,
     dplyr,
-    tidyr
+    tidyr,
+    osmextract
 RoxygenNote: 7.1.1
 Suggests: 
     covr,
@@ -39,7 +40,8 @@ Suggests:
     ComplexUpset,
     ggplot2,
     scales,
-    curl
+    curl,
+    sf
 Remotes:
     krassowski/complex-upset
 VignetteBuilder: knitr
