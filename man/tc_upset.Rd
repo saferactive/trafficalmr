@@ -38,12 +38,13 @@ casualties_wf2 = dplyr::mutate(
      TRUE ~ "Other"
     )
   )
+table(casualties_wf2$casualty_type_simple)
 table(vehicles_wf$vehicle_type)
 vehicles_wf2 = dplyr::mutate(
   vehicles_wf,
   vehicle_type_simple = dplyr::case_when(
      vehicle_type == "Car" ~ "Car",
-     vehicle_type == "Cyclist" ~ "Pedal cycle",
+     vehicle_type == "Bicycle" ~ "Pedal cycle",
      TRUE ~ "Other"
     )
   )
