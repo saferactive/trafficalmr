@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • trafficalmr</title>
+<title>Ge traffic calming measures for an area from OSM — tc_traffic_calming • trafficalmr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,11 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Ge traffic calming measures for an area from OSM — tc_traffic_calming" />
+<meta property="og:description" content="Use osmextract to get the roads and then filter on other_tags
+with keyword traffic_calming
+(see OSM Wiki).
+Currently it only takes the place argument." />
 
 
 
@@ -58,7 +62,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -123,84 +127,39 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Ge traffic calming measures for an area from OSM</h1>
+    <small class="dont-index">Source: <a href='https://github.com/saferactive/trafficalmr/blob/master/R/tc_traffic_calming.R'><code>R/tc_traffic_calming.R</code></a></small>
+    <div class="hidden name"><code>tc_traffic_calming.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Use <code>osmextract</code> to get the roads and then filter on <code>other_tags</code>
+with keyword <code>traffic_calming</code>
+(see <a href='https://wiki.openstreetmap.org/wiki/Key:traffic_calming'>OSM Wiki</a>).
+Currently it only takes the <code>place</code> argument.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>tc_traffic_calming</span>(place = <span class='kw'>NULL</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="casualties_lookup.html">casualties_lookup</a></code> </p>
-        </td>
-        <td><p>Stats19 schema and variables</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="crashes_wf.html">crashes_wf</a></code> </p>
-        </td>
-        <td><p>Sample STATS19 data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_get_osm.html">tc_get_osm()</a></code> </p>
-        </td>
-        <td><p>Get traffic calming interventions from OpenStreetMap</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_join_stats19.html">tc_join_stats19()</a></code> </p>
-        </td>
-        <td><p>Join stats19 tables</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_recode.html">tc_recode()</a></code> <code><a href="tc_recode.html">tc_recode_vehicle_type()</a></code> <code><a href="tc_recode.html">tc_recode_casualties()</a></code> </p>
-        </td>
-        <td><p>Recode character strings based on regular expressions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_recode_speeds_uk.html">tc_recode_speeds_uk()</a></code> </p>
-        </td>
-        <td><p>Recode maxspeed values in OSM</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_traffic_calming.html">tc_traffic_calming()</a></code> </p>
-        </td>
-        <td><p>Ge traffic calming measures for an area from OSM</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tc_upset.html">tc_upset()</a></code> </p>
-        </td>
-        <td><p>Create 'who-hit-who' visualisations</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>place</th>
+      <td><p>Geographic name or coordinates as per <code>osmextract</code>
+function <code>oe_get</code>.</p></td>
+    </tr>
     </table>
-  </div>
 
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>tc_traffic_calming</span>(<span class='st'>"Isle of Wight"</span>)
+}
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

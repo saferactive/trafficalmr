@@ -224,7 +224,10 @@
      <span class='fl'>TRUE</span> <span class='op'>~</span> <span class='st'>"Other"</span>
     )
   )
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>vehicles_wf</span><span class='op'>$</span><span class='kw'>vehicle_type</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>casualties_wf2</span><span class='op'>$</span><span class='kw'>casualty_type_simple</span>)
+</div><div class='output co'>#&gt; 
+#&gt;        Car    Cyclist      Other Pedestrian 
+#&gt;       2038        580        855        772 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>vehicles_wf</span><span class='op'>$</span><span class='kw'>vehicle_type</span>)
 </div><div class='output co'>#&gt; 
 #&gt;                  Agricultural vehicle  Bus or coach (17 or more pass seats) 
 #&gt;                                     3                                   210 
@@ -243,7 +246,7 @@
   <span class='kw'>vehicles_wf</span>,
   vehicle_type_simple = <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span>(
      <span class='kw'>vehicle_type</span> <span class='op'>==</span> <span class='st'>"Car"</span> <span class='op'>~</span> <span class='st'>"Car"</span>,
-     <span class='kw'>vehicle_type</span> <span class='op'>==</span> <span class='st'>"Cyclist"</span> <span class='op'>~</span> <span class='st'>"Pedal cycle"</span>,
+     <span class='kw'>vehicle_type</span> <span class='op'>==</span> <span class='st'>"Bicycle"</span> <span class='op'>~</span> <span class='st'>"Pedal cycle"</span>,
      <span class='fl'>TRUE</span> <span class='op'>~</span> <span class='st'>"Other"</span>
     )
   )
