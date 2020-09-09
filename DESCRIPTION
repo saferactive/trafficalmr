@@ -29,6 +29,7 @@ Imports:
     dplyr,
     tidyr,
     ComplexUpset,
+    sf,
     osmextract (>= 0.1.0)
 RoxygenNote: 7.1.1
 Suggests: 
@@ -41,7 +42,6 @@ Suggests:
     ggplot2,
     scales,
     curl,
-    sf
 Remotes:
     krassowski/complex-upset,
     itsleeds/osmextract
