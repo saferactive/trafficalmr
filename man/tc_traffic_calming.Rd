@@ -25,5 +25,9 @@ tc_interventions = tc_traffic_calming("Isle of Wight")
 plot(tc_interventions)
 tc_interventions
 summary(tc_interventions$geometry) # points and lines in there
+tc_points = tc_traffic_calming("Isle of Wight", convert_to_points = TRUE)
+summary(tc_points$geometry) # points only
+tc_wy = tc_traffic_calming("West Yorkshire")
+table(tc_wy$traffic_calming)
 }
 }
