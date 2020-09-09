@@ -141,7 +141,7 @@ with keyword <code>traffic_calming</code>
 Currently it only takes the <code>place</code> argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tc_traffic_calming</span>(place = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>tc_traffic_calming</span>(place = <span class='kw'>NULL</span>, convert_to_points = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,12 +151,24 @@ Currently it only takes the <code>place</code> argument.</p>
       <td><p>Geographic name or coordinates as per <code>osmextract</code>
 function <code>oe_get</code>.</p></td>
     </tr>
+    <tr>
+      <th>convert_to_points</th>
+      <td><p>Should linestring geometries be converted to points?
+<code>FALSE</code> by default.</p></td>
+    </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>tc_traffic_calming</span>(<span class='st'>"Isle of Wight"</span>)
+<span class='kw'>tc_interventions</span> <span class='op'>=</span> <span class='fu'>tc_traffic_calming</span>(<span class='st'>"Isle of Wight"</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='kw'>tc_interventions</span>)
+<span class='kw'>tc_interventions</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>tc_interventions</span><span class='op'>$</span><span class='kw'>geometry</span>) <span class='co'># points and lines in there</span>
+<span class='kw'>tc_points</span> <span class='op'>=</span> <span class='fu'>tc_traffic_calming</span>(<span class='st'>"Isle of Wight"</span>, convert_to_points = <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>tc_points</span><span class='op'>$</span><span class='kw'>geometry</span>) <span class='co'># points only</span>
+<span class='kw'>tc_wy</span> <span class='op'>=</span> <span class='fu'>tc_traffic_calming</span>(<span class='st'>"West Yorkshire"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>tc_wy</span><span class='op'>$</span><span class='kw'>traffic_calming</span>)
 }
 </div></pre>
   </div>

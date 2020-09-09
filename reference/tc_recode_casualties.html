@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Recode character strings based on regular expressions — tc_recode • trafficalmr</title>
+<title>Recode casualty_type variable from STATS19 data — tc_recode_casualties • trafficalmr</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,8 @@
 
 
 
-<meta property="og:title" content="Recode character strings based on regular expressions — tc_recode" />
-<meta property="og:description" content="This function takes a character string and recodes it.
-Default recoding functions are available in functions such as
-tc_recode_vehicle_type() and tc_recode_casualties." />
+<meta property="og:title" content="Recode casualty_type variable from STATS19 data — tc_recode_casualties" />
+<meta property="og:description" content="Recode casualty_type variable from STATS19 data" />
 
 
 
@@ -128,18 +126,16 @@ tc_recode_vehicle_type() and tc_recode_casualties." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Recode character strings based on regular expressions</h1>
+    <h1>Recode casualty_type variable from STATS19 data</h1>
     <small class="dont-index">Source: <a href='https://github.com/saferactive/trafficalmr/blob/master/R/tc_recode.R'><code>R/tc_recode.R</code></a></small>
-    <div class="hidden name"><code>tc_recode.Rd</code></div>
+    <div class="hidden name"><code>tc_recode_casualties.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function takes a character string and recodes it.
-Default recoding functions are available in functions such as
-<code><a href='tc_recode_vehicle_type.html'>tc_recode_vehicle_type()</a></code> and <code>tc_recode_casualties</code>.</p>
+    <p>Recode casualty_type variable from STATS19 data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tc_recode</span>(<span class='kw'>x</span>, pattern = <span class='kw'>NULL</span>, pattern_match = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>tc_recode_casualties</span>(<span class='kw'>x</span>, pattern = <span class='kw'>NULL</span>, pattern_match = <span class='kw'>casualties_lookup</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,17 +157,19 @@ Has the form <code><a href='https://rdrr.io/r/base/c.html'>c("Car long name" = "
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>It is based on the function <code><a href='https://stringr.tidyverse.org/reference/str_replace.html'>stringr::str_replace_all()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"car long name"</span>, <span class='st'>"bus"</span>, <span class='st'>"a bike long"</span>, <span class='st'>"a bike"</span>)
-<span class='fu'>tc_recode</span>(<span class='kw'>x</span>, pattern = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"car.+"</span> = <span class='st'>"car"</span>))
-</div><div class='output co'>#&gt; [1] "car"         "bus"         "a bike long" "a bike"     </div><div class='input'><span class='fu'>tc_recode</span>(<span class='kw'>x</span>, pattern = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>".+bike.+"</span> = <span class='st'>"bike"</span>))
-</div><div class='output co'>#&gt; [1] "car long name" "bus"           "bike"          "a bike"       </div><div class='input'><span class='fu'>tc_recode</span>(<span class='kw'>x</span>, pattern = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"car.+"</span> = <span class='st'>"car"</span>, <span class='st'>".+bike.+"</span> = <span class='st'>"bike"</span>))
-</div><div class='output co'>#&gt; [1] "car"    "bus"    "bike"   "a bike"</div><div class='input'><span class='fu'>tc_recode</span>(<span class='kw'>x</span>, pattern_match = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"car"</span> = <span class='st'>"car"</span>, <span class='st'>"bike"</span> = <span class='st'>"bike"</span>))
-</div><div class='output co'>#&gt; [1] "car"  "bus"  "bike" "bike"</div></pre>
+    <pre class="examples"><div class='input'>(<span class='kw'>x</span> <span class='op'>=</span> <span class='kw'>stats19</span>::<span class='kw'><a href='https://docs.ropensci.org/stats19/reference/casualties_sample.html'>casualties_sample</a></span><span class='op'>$</span><span class='kw'>casualty_type</span>)
+</div><div class='output co'>#&gt; [1] "Motorcycle 125cc and under rider or passenger"
+#&gt; [2] "Pedestrian"                                   
+#&gt; [3] "Car occupant"                                 </div><div class='input'><span class='fu'>tc_recode_casualties</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] "Motorcyclist" "Pedestrian"   "Car_occupant"</div><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>cas</span> <span class='op'>=</span> <span class='kw'>stats19</span>::<span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span>(<span class='fl'>2018</span>, <span class='st'>"casualties"</span>)
+<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type_simple</span> <span class='op'>=</span> <span class='fu'>tc_recode_casualties</span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type_simple</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
