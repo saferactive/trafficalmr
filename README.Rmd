@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 <!-- [![Build status](https://ci.appveyor.com/api/projects/status/gqp3smc04as3qg85?svg=true)](https://ci.appveyor.com/project/layik/trafficalmr-05ana) -->
 [![R build status](https://github.com/saferactive/trafficalmr/workflows/R-CMD-check/badge.svg)](https://github.com/saferactive/trafficalmr/actions)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-
+[![Codecov test coverage](https://codecov.io/gh/saferactive/trafficalmr/branch/master/graph/badge.svg)](https://codecov.io/gh/saferactive/trafficalmr?branch=master)
 
 # trafficalmr
 

@@ -12,6 +12,8 @@ status](https://github.com/saferactive/trafficalmr/workflows/R-CMD-check/badge.s
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Codecov test
+coverage](https://codecov.io/gh/saferactive/trafficalmr/branch/master/graph/badge.svg)](https://codecov.io/gh/saferactive/trafficalmr?branch=master)
 
 # trafficalmr
 
@@ -56,7 +58,7 @@ v = stats19::get_stats19(year = 2018, type = "vehicles")
 #> Files identified: dftRoadSafetyData_Vehicles_2018.csv
 #>    http://data.dft.gov.uk.s3.amazonaws.com/road-accidents-safety-data/dftRoadSafetyData_Vehicles_2018.csv
 #> Attempt downloading from:
-#> Data saved at /var/folders/z7/l4z5fwqs2ksfv22ghh2n9smh0000gp/T//RtmpnCR13T/dftRoadSafetyData_Vehicles_2018.csv
+#> Data saved at /var/folders/z7/l4z5fwqs2ksfv22ghh2n9smh0000gp/T//RtmpFerJDz/dftRoadSafetyData_Vehicles_2018.csv
 v$vehicle_type_simple = tc_recode_vehicle_type(v$vehicle_type)
 barplot(table(v$vehicle_type))
 barplot(table(v$vehicle_type_simple))
