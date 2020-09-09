@@ -22,3 +22,7 @@ Has the form \code{c("Car long name" = "Car", "Taxi/Private hire car" = "Taxi")}
 \description{
 Recode maxspeed values in OSM
 }
+\examples{
+x = c("30 mph", "10 mph", "60 mph", "25 mph", "30", "national")
+tc_recode_speeds_uk(x)
+}

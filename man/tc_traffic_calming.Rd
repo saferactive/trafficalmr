@@ -4,11 +4,14 @@
 \alias{tc_traffic_calming}
 \title{Ge traffic calming measures for an area from OSM}
 \usage{
-tc_traffic_calming(place = NULL)
+tc_traffic_calming(place = NULL, convert_to_points = FALSE)
 }
 \arguments{
 \item{place}{Geographic name or coordinates as per \code{osmextract}
 function \code{oe_get}.}
+
+\item{convert_to_points}{Should linestring geometries be converted to points?
+\code{FALSE} by default.}
 }
 \description{
 Use \code{osmextract} to get the roads and then filter on \code{other_tags}
@@ -18,6 +21,13 @@ Currently it only takes the \code{place} argument.
 }
 \examples{
 \dontrun{
-tc_traffic_calming("Isle of Wight")
+tc_interventions = tc_traffic_calming("Isle of Wight")
+plot(tc_interventions)
+tc_interventions
+summary(tc_interventions$geometry) # points and lines in there
+tc_points = tc_traffic_calming("Isle of Wight", convert_to_points = TRUE)
+summary(tc_points$geometry) # points only
+tc_wy = tc_traffic_calming("West Yorkshire")
+table(tc_wy$traffic_calming)
 }
 }

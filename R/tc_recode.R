@@ -27,9 +27,12 @@ tc_recode = function(x, pattern = NULL, pattern_match = NULL) {
   }
   stringr::str_replace_all(x, pattern)
 }
-#' Recode vehicle types
+
+#' Recode vehicle type
+#'
+#' @inheritParams tc_recode
 #' @export
-#' @rdname tc_recode
+#' @seealso tc_recode
 #' @examples
 #' (x = stats19::vehicles_sample$vehicle_type)
 #' tc_recode_vehicle_type(x)
@@ -50,7 +53,9 @@ tc_recode_vehicle_type = function(
   ) {
   tc_recode(x, pattern)
 }
-#' @rdname tc_recode
+#' Recode casualty_type variable from STATS19 data
+#'
+#' @inheritParams tc_recode
 #' @export
 #' @examples
 #' (x = stats19::casualties_sample$casualty_type)
@@ -67,13 +72,12 @@ tc_recode_casualties = function(x,
   tc_recode(x, pattern = pattern, pattern_match = pattern_match)
 }
 
-#' just make sure global var casualties_lookup is in scope
+# just make sure global var casualties_lookup is in scope
 utils::globalVariables(
   c(
     "casualties_lookup"
   )
 )
-
 #' Recode maxspeed values in OSM
 #'
 #' @inheritParams tc_recode
@@ -83,7 +87,6 @@ utils::globalVariables(
 #' @examples
 #' x = c("30 mph", "10 mph", "60 mph", "25 mph", "30", "national")
 #' tc_recode_speeds_uk(x)
-#' }
 tc_recode_speeds_uk = function(
   x,
   allowed_values = c("20 mph", "30 mph", "40 mph", "50 mph", "60 mph", "70 mph"),

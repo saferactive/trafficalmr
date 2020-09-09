@@ -18,7 +18,7 @@ BugReports: https://github.com/saferactive/trafficalmr/issues
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5.0)
 Imports:
     usethis,
     devtools,
@@ -28,6 +28,8 @@ Imports:
     magrittr,
     dplyr,
     tidyr,
+    ComplexUpset,
+    sf,
     osmextract (>= 0.1.0)
 RoxygenNote: 7.1.1
 Suggests: 
@@ -37,11 +39,9 @@ Suggests:
     testthat,
     stats19,
     bookdown,
-    ComplexUpset,
     ggplot2,
     scales,
     curl,
-    sf
 Remotes:
     krassowski/complex-upset,
     itsleeds/osmextract
