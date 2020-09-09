@@ -7,13 +7,18 @@
 #'
 #' @param place Geographic name or coordinates as per `osmextract`
 #' function `oe_get`.
+#' @param convert_to_points Should linestring geometries be converted to points?
+#' `FALSE` by default.
 #'
 #' @examples
 #' \dontrun{
-#' tc_traffic_calming("Isle of Wight")
+#' tc_interventions = tc_traffic_calming("Isle of Wight")
+#' plot(tc_interventions)
+#' tc_interventions
+#' summary(tc_interventions$geometry) # points and lines in there
 #' }
 #' @export
-tc_traffic_calming = function(place = NULL) {
+tc_traffic_calming = function(place = NULL, convert_to_points = FALSE) {
   stopifnot(!is.null(place) || !is.na(place))
   # any value for traffic_calming key
   ql = "SELECT * FROM 'lines' WHERE traffic_calming LIKE '%'"
@@ -27,6 +32,9 @@ tc_traffic_calming = function(place = NULL) {
     place = place, query = qp, extra_tags = e,
     layer = "points")
   # they have different column names
+  if(convert_to_points) {
+    tc_l = sf::st_centroid(tc_l)
+  }
   i = intersect(names(tc_l), names(tc_p))
   # TODO: do some checks
   tc_pl = rbind(tc_l[, i], tc_p[, i])
