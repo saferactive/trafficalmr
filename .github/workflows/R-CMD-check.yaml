@@ -116,3 +116,11 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+
+      - name: Upload coverage report
+        if: ${{ success() }} && runner.os == 'macOS'
+        run: covr::codecov()
+        shell: Rscript {0}
+        env:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
