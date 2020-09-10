@@ -96,21 +96,17 @@
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"saferactive/trafficalmr"</span>)
-</pre></div>
+<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"saferactive/trafficalmr"</span>)</pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/saferactive/trafficalmr">trafficalmr</a></span>)
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/saferactive/trafficalmr">trafficalmr</a></span>)</pre></div>
 </div>
 <div id="get-traffic-calming-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#get-traffic-calming-data" class="anchor"></a>Get traffic calming data</h1>
 <div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">traffic_calming_points</span> <span class="op">=</span> <span class="fu"><a href="reference/tc_get_osm.html">tc_get_osm</a></span>(bbox = <span class="st">"chapeltown leeds"</span>)
-</pre></div>
+<span class="kw">traffic_calming_points</span> <span class="op">=</span> <span class="fu"><a href="reference/tc_get_osm.html">tc_get_osm</a></span>(bbox = <span class="st">"chapeltown leeds"</span>)</pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="kw">mapview</span>::<span class="fu">mapview</span>(<span class="kw">traffic_calming_points</span>[<span class="st">"traffic_calming"</span>])
-</pre></div>
+<span class="kw">mapview</span>::<span class="fu">mapview</span>(<span class="kw">traffic_calming_points</span>[<span class="st">"traffic_calming"</span>])</pre></div>
 <p><img src="https://user-images.githubusercontent.com/1825120/87041987-f2e7b180-c1ea-11ea-9731-b2b9512fd0ea.png"></p>
 </div>
 <div id="recoding-data" class="section level1">
@@ -119,19 +115,17 @@
 <p>Recode vehicle types:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="fu"><a href="reference/tc_recode_vehicle_type.html">tc_recode_vehicle_type</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Bus long"</span>, <span class="st">"Motorcycle long name"</span>))
-<span class="co">#&gt; [1] "Bus"        "Motorcycle"</span>
-</pre></div>
+<span class="co">#&gt; [1] "Bus"        "Motorcycle"</span></pre></div>
 <p>This can be useful in visualisation:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
 <span class="kw">v</span> <span class="op">=</span> <span class="kw">stats19</span>::<span class="fu"><a href="https://docs.ropensci.org/stats19/reference/get_stats19.html">get_stats19</a></span>(year = <span class="fl">2018</span>, type = <span class="st">"vehicles"</span>)
 <span class="co">#&gt; Files identified: dftRoadSafetyData_Vehicles_2018.csv</span>
 <span class="co">#&gt;    http://data.dft.gov.uk.s3.amazonaws.com/road-accidents-safety-data/dftRoadSafetyData_Vehicles_2018.csv</span>
 <span class="co">#&gt; Attempt downloading from:</span>
-<span class="co">#&gt; Data saved at /var/folders/z7/l4z5fwqs2ksfv22ghh2n9smh0000gp/T//RtmpnCR13T/dftRoadSafetyData_Vehicles_2018.csv</span>
+<span class="co">#&gt; Data saved at /var/folders/z7/l4z5fwqs2ksfv22ghh2n9smh0000gp/T//RtmpFerJDz/dftRoadSafetyData_Vehicles_2018.csv</span>
 <span class="kw">v</span><span class="op">$</span><span class="kw">vehicle_type_simple</span> <span class="op">=</span> <span class="fu"><a href="reference/tc_recode_vehicle_type.html">tc_recode_vehicle_type</a></span>(<span class="kw">v</span><span class="op">$</span><span class="kw">vehicle_type</span>)
 <span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="kw">v</span><span class="op">$</span><span class="kw">vehicle_type</span>))
-<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="kw">v</span><span class="op">$</span><span class="kw">vehicle_type_simple</span>))
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="kw">v</span><span class="op">$</span><span class="kw">vehicle_type_simple</span>))</pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="50%"><img src="reference/figures/README-unnamed-chunk-8-2.png" width="50%"></p>
 <p>Note that the second plot on the right is much easier to interpret. See <a href="https://saferactive.github.io/trafficalmr/reference/tc_recode.html"><code>?tc_recode()</code></a> for details.</p>
 </div>
@@ -179,6 +173,7 @@
 <ul class="list-unstyled">
 <li><a href="https://github.com/saferactive/trafficalmr/actions"><img src="https://github.com/saferactive/trafficalmr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
+<li><a href="https://codecov.io/gh/saferactive/trafficalmr?branch=master"><img src="https://codecov.io/gh/saferactive/trafficalmr/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 </div>
