@@ -3,10 +3,14 @@ Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
 Authors@R: c(
+    person("Robin", "Lovelace", email = "rob00x@gmail.com",      role = c("aut","cre"),
+      comment = c(ORCID = "0000-0001-5679-6536")),
     person("Malcolm", "Morgan", email = "m.morgan1@leeds.ac.uk", role = c("aut"), 
       comment = c(ORCID = "0000-0002-9488-9183")),
-    person("Robin", "Lovelace", email = "rob00x@gmail.com",      role = c("aut","cre"),
-      comment = c(ORCID = "0000-0001-5679-6536"))
+    person("Layik", "Hama", role = c("aut"),
+      comment = c(ORCID = "0000-0003-1912-4890")),
+    person("Caroline", "Tait", role = c("aut"),
+      comment = c(ORCID = "0000-0002-4781-4111"))
     )
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
