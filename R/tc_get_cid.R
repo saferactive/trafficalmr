@@ -14,8 +14,6 @@
 #' @param borough Which borough of London is of interest?
 #' `NULL` (all boroughs) is the default.
 #'
-#'
-#'
 #' @return An sf object representing traffic calming interventions
 #' @export
 #' @examples
