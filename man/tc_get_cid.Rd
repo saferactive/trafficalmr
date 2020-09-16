@@ -2,16 +2,31 @@
 % Please edit documentation in R/tc_get_cid.R
 \name{tc_get_cid}
 \alias{tc_get_cid}
-\title{get cid data}
+\title{Get traffic calming data from the Cycling Infrastructure Database (CID)}
 \usage{
-tc_get_cid(borough = NULL)
+tc_get_cid(type = "traffic_calming", tc_type = NULL, borough = NULL)
 }
 \arguments{
-\item{borough}{}
+\item{type}{What type of CID data?
+Options include "advanced_stop_line", "crossing", "cycle_lane_track" and}
+
+\item{tc_type}{What type of traffic calming intervention to get?
+Options are \code{NULL} (the default, meaning all traffic calming interventions)
+or "TRF_RAISED", "TRF_ENTRY", "TRF_CUSHI", "TRF_HUMP", "TRF_SINUSO",}
+
+\item{borough}{Which borough of London is of interest?
+\code{NULL} (all boroughs) is the default.}
 }
 \value{
-
+An sf object representing traffic calming interventions
 }
 \description{
-get cid data
+This function gets data from the CID.
+See  for more info.
+}
+\examples{
+cid_traffic_calming = tc_get_cid()
+summary(cid_traffic_calming)
+cid_barriers = tc_get_cid(type = "TRF_BARIER")
+summary(cid_traffic_calming)
 }
