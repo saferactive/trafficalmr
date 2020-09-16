@@ -21,7 +21,7 @@
 #' @examples
 #' cid_traffic_calming = tc_get_cid()
 #' summary(cid_traffic_calming)
-#' cid_barriers = tc_get_cid(type = "TRF_BARIER")
+#' cid_barriers = tc_get_cid(tc_type = "TRF_BARIER")
 #' summary(cid_traffic_calming)
 tc_get_cid = function(type = "traffic_calming", tc_type = NULL, borough = NULL) {
   # download CID traffic calming data using the Cycle Infra Lnd package
