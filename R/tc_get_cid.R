@@ -19,10 +19,28 @@
 #' @return An sf object representing traffic calming interventions
 #' @export
 #' @examples
-#' cid_traffic_calming = tc_get_cid()
-#' summary(cid_traffic_calming)
-#' cid_barriers = tc_get_cid(tc_type = "TRF_BARIER")
-#' summary(cid_traffic_calming)
+#' # cid_traffic_calming = tc_get_cid()
+#' # summary(cid_traffic_calming)
+#' #   FEATURE_ID            SVDATE           TRF_RAISED      TRF_ENTRY       TRF_CUSHI
+#' # Length:58565       Min.   :2017-01-06   Mode :logical   Mode :logical   Mode :logical
+#' # Class :character   1st Qu.:2017-08-13   FALSE:55793     FALSE:50984     FALSE:45939
+#' # Mode  :character   Median :2017-10-19   TRUE :2772      TRUE :7581      TRUE :12626
+#' # Mean   :2017-10-14
+#' # 3rd Qu.:2017-12-15
+#' # Max.   :2018-08-21
+#' # TRF_HUMP       TRF_SINUSO      TRF_BARIER      TRF_NAROW        TRF_CALM
+#' # Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical
+#' # FALSE:25294     FALSE:51845     FALSE:57630     FALSE:57903     FALSE:57844
+#' # TRUE :33271     TRUE :6720      TRUE :935       TRUE :662       TRUE :721
+#' #
+#' #
+#' #
+#' # BOROUGH           PHOTO1_URL         PHOTO2_URL                 geometry
+#' # Length:58565       Length:58565       Length:58565       POINT        :58565
+#' # Class :character   Class :character   Class :character   epsg:4326    :    0
+#' # Mode  :character   Mode  :character   Mode  :character   +proj=long...:    0
+#' # cid_barriers = tc_get_cid(tc_type = "TRF_BARIER")
+#' # summary(cid_barriers)
 tc_get_cid = function(type = "traffic_calming", tc_type = NULL, borough = NULL) {
   # download CID traffic calming data using the Cycle Infra Lnd package
 
@@ -51,7 +69,7 @@ tc_get_cid = function(type = "traffic_calming", tc_type = NULL, borough = NULL) 
 
   # select traffic calming barriers
   if(!is.null(type)) {
-    traffic_calming = traffic_calming[traffic_calming[[type]], ]
+    traffic_calming = traffic_calming[traffic_calming[[tc_type]], ]
   }
   traffic_calming
 }
