@@ -5,4 +5,7 @@ test_that("tc_traffic_calming works", {
   expect_true(nrow(iow) > 50)
   opal = summary(sf::st_geometry_type(iow))
   expect_true(opal['POINT'] > 0 && opal['LINESTRING'] > 0)
+  points = tc_traffic_calming("Isle of Wight", convert_to_points = TRUE)
+  points = summary(sf::st_geometry_type(points))
+  expect_true(points['POINT'] > 0 && points['LINESTRING'] == 0)
 })
