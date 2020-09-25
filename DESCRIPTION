@@ -1,6 +1,6 @@
 Package: trafficalmr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Download and Analyse Data for Road Safety Research
 Version: 0.1.0
 Authors@R: c(
     person("Robin", "Lovelace", email = "rob00x@gmail.com",      role = c("aut","cre"),
@@ -12,9 +12,9 @@ Authors@R: c(
     person("Caroline", "Tait", role = c("aut"),
       comment = c(ORCID = "0000-0002-4781-4111"))
     )
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Downloads data on 'traffic calming' interventions from OpenStreetMap
+    and other sources.
+    Provides a range of functions for processing and analysing datasets.
 Language: EN-GB
 License: file LICENSE
 URL: https://github.com/saferactive/trafficalmr, https://saferactive.github.io/trafficalmr/
