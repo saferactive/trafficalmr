@@ -35,10 +35,28 @@ Preliminary results, based on a General Additive Model (GAM) are shown in Figure
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-uptake-la-london-smoothed.png")
 ```
 
+Building on results for London, we scaled-up the approach to provide nationwide spatio-temporal estimates of cycling.
+[JT content here]
 
 
-# Spatial analysis
 
+# Geographic data analysis
+
+Building on methods we initially developed for the [CyIPT](https://www.cyipt.bike/) project, we have developed new techniques for allocating crashes to features on the road network, such as junctions and road sections.
+Preliminary results comparing CyIPT results and results from this project are shown in Figure \@ref(fig:cyipt-crash).
+
+```{r cyipt-crash, fig.cap="CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right).", out.width="50%", fig.show='hold', echo=FALSE}
+knitr::include_graphics(c(
+  "https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cyipt-crashes1.png",
+  "https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cyipt-crashes2.png"
+))
+```
+
+
+
+
+The method works as follows.
+[MM content here.]
 
 # Analysis of data on traffic calming
 
