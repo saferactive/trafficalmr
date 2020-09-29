@@ -22,15 +22,41 @@ library(trafficalmr)
 
 # Software development
 
-Underlying our work is data science, which requires the development of code to ensure reproducible and scalable analysis.
+One of the objectives of the project was to develop software to enable access to data on traffic calming interventions.
 We have progressed with the development of the `trafficalmr` package for reproducible road safety analysis, supporting the project and other projects on road safety.
 We would like feedback from stakeholders: is it easy to use? what additional functionality would you like to see? The list of functions provided by the package can be found here: https://saferactive.github.io/trafficalmr/reference/index.html
 
 # Temporal analysis
 
+We have analysed the DfT's manual traffic count data to explore it's potential to provide estimates of the geographic distribution of cycling uptake over time.
+Preliminary results, based on a General Additive Model (GAM) are shown in Figure \@ref(fig:gam1).
 
-# Spatial analysis
+```{r gam1, fig.cap="Preliminary estimates of cycling uptake in London boroughs relative to 2011 levels, 2000-2018. A selection of boroughs of interest are highlighted for reference.", echo=FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-uptake-la-london-smoothed.png")
+```
 
+Building on results for London, we scaled-up the approach to provide nationwide spatio-temporal estimates of cycling.
+[JT content here]
+
+
+
+# Geographic data analysis
+
+Building on methods we initially developed for the [CyIPT](https://www.cyipt.bike/) project, we have developed new techniques for allocating crashes to features on the road network, such as junctions and road sections.
+Preliminary results comparing CyIPT results and results from this project are shown in Figure \@ref(fig:cyipt-crash).
+
+```{r cyipt-crash, fig.cap="CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right).", out.width="40%", fig.show='hold', echo=FALSE}
+knitr::include_graphics(c(
+  "https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cyipt-crashes1-2.png",
+  "https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cyipt-crashes2.png"
+))
+```
+
+
+
+
+The method works as follows.
+[MM content here.]
 
 # Analysis of data on traffic calming
 
