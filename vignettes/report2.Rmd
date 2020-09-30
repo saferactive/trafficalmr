@@ -12,7 +12,8 @@ bibliography: saferactive.bib
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  echo = FALSE
 )
 ```
 
@@ -28,7 +29,24 @@ We would like feedback from stakeholders: is it easy to use? what additional fun
 
 # Temporal analysis
 
-We have analysed the DfT's manual traffic count data to explore it's potential to provide estimates of the geographic distribution of cycling uptake over time.
+We analysed the DfT's manual traffic count data to explore its potential to provide estimates of the geographic distribution of cycling uptake over time.
+There is an uneven number of locations where annual average daily flow estimates are available, as shown in Figure \@ref(fig:aadf-counts-per-year).
+
+```{r aadf-counts-per-year, fig.cap="AADF counts per year in the DfT's traffic counter dataset", out.width="49%", fig.show='hold'}
+knitr::include_graphics(c(
+  "https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-counts-per-year.png",
+  "https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-counts-per-year-2-plus.png"
+  ))
+```
+
+Taking 5,361 count locations which had continuous readings in the 10 years from 2010 to 2019, we were able to generate estimates of cycling uptake at the local authority level.
+These are presented, relative to 2011 cycling levels, in Figure \@ref(fig:aadf-uptake-2011-multiplier-line-mean).
+
+```{r aadf-uptake-2011-multiplier-line-mean, fig.cap="Cycling uptake estimates for all local authorities in Great Britain. Black line width represents the number of counters in each local authority, the white line represents no cycling uptake, and the red line is the weighted mean for all cycle counters from 2010 to 2019.", out.width="100%"}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-uptake-2011-multiplier-line-mean.png")
+```
+
+
 Preliminary results, based on a General Additive Model (GAM) are shown in Figure \@ref(fig:gam1).
 
 ```{r gam1, fig.cap="Preliminary estimates of cycling uptake in London boroughs relative to 2011 levels, 2000-2018. A selection of boroughs of interest are highlighted for reference.", echo=FALSE}
@@ -51,8 +69,6 @@ knitr::include_graphics(c(
   "https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cyipt-crashes2.png"
 ))
 ```
-
-
 
 
 The method works as follows.
