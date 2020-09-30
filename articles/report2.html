@@ -96,8 +96,6 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/saferactive/trafficalmr">trafficalmr</a></span>)</pre></div>
 <div id="software-development" class="section level1">
 <h1 class="hasAnchor">
 <a href="#software-development" class="anchor"></a>Software development</h1>
@@ -106,7 +104,19 @@
 <div id="temporal-analysis" class="section level1">
 <h1 class="hasAnchor">
 <a href="#temporal-analysis" class="anchor"></a>Temporal analysis</h1>
-<p>We have analysed the DfT’s manual traffic count data to explore it’s potential to provide estimates of the geographic distribution of cycling uptake over time. Preliminary results, based on a General Additive Model (GAM) are shown in Figure @ref(fig:gam1).</p>
+<p>We analysed the DfT’s manual traffic count data to explore its potential to provide estimates of the geographic distribution of cycling uptake over time. There is an uneven number of locations where annual average daily flow estimates are available, as shown in Figure @ref(fig:aadf-counts-per-year).</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-counts-per-year.png" alt="AADF counts per year in the DfT's traffic counter dataset" width="49%"><img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-counts-per-year-2-plus.png" alt="AADF counts per year in the DfT's traffic counter dataset" width="49%"><p class="caption">
+AADF counts per year in the DfT’s traffic counter dataset
+</p>
+</div>
+<p>Taking 5,361 count locations which had continuous readings in the 10 years from 2010 to 2019, we were able to generate estimates of cycling uptake at the local authority level. These are presented, relative to 2011 cycling levels, in Figure @ref(fig:aadf-uptake-2011-multiplier-line-mean).</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-uptake-2011-multiplier-line-mean.png" alt="Cycling uptake estimates for all local authorities in Great Britain. Black line width represents the number of counters in each local authority, the white line represents no cycling uptake, and the red line is the weighted mean for all cycle counters from 2010 to 2019." width="100%"><p class="caption">
+Cycling uptake estimates for all local authorities in Great Britain. Black line width represents the number of counters in each local authority, the white line represents no cycling uptake, and the red line is the weighted mean for all cycle counters from 2010 to 2019.
+</p>
+</div>
+<p>Preliminary results, based on a General Additive Model (GAM) are shown in Figure @ref(fig:gam1).</p>
 <div class="figure">
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-uptake-la-london-smoothed.png" alt=""><p class="caption">Preliminary estimates of cycling uptake in London boroughs relative to 2011 levels, 2000-2018. A selection of boroughs of interest are highlighted for reference.</p>
 </div>
