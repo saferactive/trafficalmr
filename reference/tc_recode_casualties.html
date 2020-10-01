@@ -135,7 +135,7 @@
     <p>Recode casualty_type variable from STATS19 data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tc_recode_casualties</span>(<span class='kw'>x</span>, pattern = <span class='kw'>NULL</span>, pattern_match = <span class='kw'>casualties_lookup</span>)</pre>
+    <pre class="usage"><span class='fu'>tc_recode_casualties</span><span class='op'>(</span><span class='va'>x</span>, pattern <span class='op'>=</span> <span class='cn'>NULL</span>, pattern_match <span class='op'>=</span> <span class='va'>casualties_lookup</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,16 +159,16 @@ Has the form <code><a href='https://rdrr.io/r/base/c.html'>c("Car long name" = "
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>(<span class='kw'>x</span> <span class='op'>=</span> <span class='kw'>stats19</span>::<span class='kw'><a href='https://docs.ropensci.org/stats19/reference/casualties_sample.html'>casualties_sample</a></span><span class='op'>$</span><span class='kw'>casualty_type</span>)
+    <pre class="examples"><div class='input'><span class='op'>(</span><span class='va'>x</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='va'><a href='https://docs.ropensci.org/stats19/reference/casualties_sample.html'>casualties_sample</a></span><span class='op'>$</span><span class='va'>casualty_type</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "Motorcycle 125cc and under rider or passenger"
 #&gt; [2] "Pedestrian"                                   
-#&gt; [3] "Car occupant"                                 </div><div class='input'><span class='fu'>tc_recode_casualties</span>(<span class='kw'>x</span>)
-</div><div class='output co'>#&gt; [1] "Motorcyclist" "Pedestrian"   "Car_occupant"</div><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='kw'>cas</span> <span class='op'>=</span> <span class='kw'>stats19</span>::<span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span>(<span class='fl'>2018</span>, <span class='st'>"casualties"</span>)
-<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type_simple</span> <span class='op'>=</span> <span class='fu'>tc_recode_casualties</span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>cas</span><span class='op'>$</span><span class='kw'>casualty_type_simple</span>)
-}
+#&gt; [3] "Car occupant"                                 </div><div class='input'><span class='fu'>tc_recode_casualties</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "Motorcyclist" "Pedestrian"   "Car_occupant"</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>cas</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span><span class='op'>(</span><span class='fl'>2018</span>, <span class='st'>"casualties"</span><span class='op'>)</span>
+<span class='va'>cas</span><span class='op'>$</span><span class='va'>casualty_type_simple</span> <span class='op'>=</span> <span class='fu'>tc_recode_casualties</span><span class='op'>(</span><span class='va'>cas</span><span class='op'>$</span><span class='va'>casualty_type</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>cas</span><span class='op'>$</span><span class='va'>casualty_type</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>cas</span><span class='op'>$</span><span class='va'>casualty_type_simple</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
