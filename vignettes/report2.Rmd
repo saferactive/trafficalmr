@@ -9,6 +9,7 @@ vignette: >
 bibliography: saferactive.bib
 pkgdown:
   as_is: true
+  set_null_theme: false
 ---
 
 ```{r, include = FALSE}
