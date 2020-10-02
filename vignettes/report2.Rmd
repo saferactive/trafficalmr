@@ -86,8 +86,17 @@ knitr::include_graphics(c(
 ```
 
 
-The method works as follows.
-[MM content here.]
+The objective of this part of the project is to increase to measure to level of risk of collisions at a very high level of spatial detail. Ideally we seek to use historical data to identify specific roads and junctions which are especially dangerous and thus need to be fixed.
+
+The first stage of the process is to separate crashes which occurred at junctions, and those that did not.  Junctions are a known “hotspot” for collisions thus should be treated separately from roads in general.  Fortunately the stats19 data indicated whether a collision occurred at or near a junction.
+The second stage of the process it to simplify the road and junction network for analysis.  This is a complex multistage process, but the overall objective is to reduce the road network so simple an easily comprehensible from by excluding and aggregating unnecessary details. For example, a single road will be represented within the OpenStreetMap as many geometries. For our purposes, a single line representing the main centreline of the road is sufficient. Thus small details just a turning lanes, or alleyways are removed and road segments are combined into a single linestring.  Road segments are grouped by road name and reference allowing for “human legible” road units to be constructed. In the case of very long roads (over 1km) roads are broken into 500m sections.
+
+Junctions are similarly simplified.  Firstly, all junction points are extracted from the OSM. Junction points are then clustered together to reflect how we naturally think about junctions.  For example, a roundabout is a single large junction not 4 - 10 small junctions arranged in a circle. Here a balance has to be struck between making the clusters large enough that big complex junctions are grouped together, while not being so large that densely packed urban streets become a single super-junction. We found a 15 metre buffer to be the optimal size for coalescing junction clusters.
+
+The third stage is to associate the point crash data with the appropriate road or junction. Here we had to balance accuracy against performance.  Measuring the distance between every crash and every road would take an inordinate about of time.  Thus we must use cleaver shortcuts to reduce to computational load without risking incorrectly matching crashed and roads.
+
+Once matching is completed is it possible to map the number of crashes or casualties for each road and junction over the last 10 years.
+
 
 # Analysis of data on traffic calming
 
