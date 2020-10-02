@@ -43,12 +43,17 @@ knitr::include_graphics(c(
 ```
 
 Taking 5,361 count locations which had continuous readings in the 10 years from 2010 to 2019, we were able to generate estimates of cycling uptake at the local authority level.
-These are presented, relative to 2011 cycling levels, in Figure \@ref(fig:aadf-uptake-2011-multiplier-line-mean).
+These are presented, relative to 2011 cycling levels, in Figure \@ref(fig:aadf-uptake-2011-multiplier-line-mean), showing an upward trend in cycling uptake in the years 2010-2014. 
 
 ```{r aadf-uptake-2011-multiplier-line-mean, fig.cap="Cycling uptake estimates for all local authorities in Great Britain. Black line width represents the number of counters in each local authority, the white line represents no cycling uptake, and the red line is the weighted mean for all cycle counters from 2010 to 2019.", out.width="100%"}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-uptake-2011-multiplier-line-mean.png")
 ```
 
+We can further investigate cycle flows on different types of road. For count points with continuous readings in the years 2010-2019, 75% are on 'C' and unclassified roads, 24% on 'B' roads, and less than 1% on principal or trunk 'A' roads. By comparison, in the complete count point dataset.....
+
+Of the road types studied, mean AADF is highest on Principal 'A' roads at 214 cycles per day, and lowest on Trunk 'A' roads at 2.4 cycles per day. On Trunk 'A' roads, zero cyclists were recorded at 34% of counts; many of these may represent locations on major national routes that are unsuitable for most cyclists. However, the increase in cycling uptake during the years 2010-2014 corresponds to counts from minor roads ('B', 'C' and unclassified roads). These roads that 
+
+Using all cycle count points in London over the years 2010-2019, we produced a GAM model 
 
 Preliminary results, based on a General Additive Model (GAM) are shown in Figure \@ref(fig:gam1).
 
@@ -56,7 +61,14 @@ Preliminary results, based on a General Additive Model (GAM) are shown in Figure
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-uptake-la-london-smoothed.png")
 ```
 
-Building on results for London, we scaled-up the approach to provide nationwide spatio-temporal estimates of cycling.
+Building on results for London, we scaled-up the approach to provide nationwide spatio-temporal estimates of cycling. 
+
+The national GAM model has smooth terms for the variables year, space and road category.
+
+
+figure
+
+
 [JT content here]
 
 
