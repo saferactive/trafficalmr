@@ -97,6 +97,10 @@ The third stage is to associate the point crash data with the appropriate road o
 
 Once matching is completed is it possible to map the number of crashes or casualties for each road and junction over the last 10 years.
 
+```{r cyipt-crash, fig.cap="Preliminary maps of London roads showing number of casualties over the last 10 years from crashed not at junctions", out.width="40%", fig.show='hold', echo=FALSE}
+knitr::include_graphics("vignettes/london_cas_2010-2019_roads.png")
+```
+
 
 # Analysis of data on traffic calming
 
