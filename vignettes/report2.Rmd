@@ -53,7 +53,7 @@ We can further investigate cycle flows on different types of road. For count poi
 
 Of the road types studied, mean AADF is highest on Principal 'A' roads at 214 cycles per day, and lowest on Trunk 'A' roads at 2.4 cycles per day. On Trunk 'A' roads, zero cyclists were recorded at 34% of counts; many of these may represent locations on major national routes that are unsuitable for most cyclists. However, the increase in cycling uptake during the years 2010-2014 corresponds to counts from minor roads ('B', 'C' and unclassified roads). These roads that 
 
-Using all cycle count points in London over the years 2010-2019, we produced a GAM model 
+Using all cycle count points in London over the years 2010-2019, we produced a GAM model with smooth terms for year, space, road category....
 
 Preliminary results, based on a General Additive Model (GAM) are shown in Figure \@ref(fig:gam1).
 
@@ -63,10 +63,25 @@ knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferacti
 
 Building on results for London, we scaled-up the approach to provide nationwide spatio-temporal estimates of cycling. 
 
-The national GAM model has smooth terms for the variables year, space and road category.
+The national GAM model has smooth terms for the variables year, space and road category. 
 
+The smooth term for year uses a cubic regression spline with 5 knots. The cubic spline utilises a low number of knots spread at even intervals through the range of parameter values. This helps to prevent overfitting.
 
-figure
+Road category is included as a random effect in the model. The inclusion of this is vital given that cycling levels vary greatly according to road category, and the number of counts from roads of each category varies from year to year. 
+
+British National Grid eastings and northings are represented in a duchon spline, wihch allows for two dimensional smoothing. This spline has 100 knots, enabling the representation of complex spatial patterns in cycling levels across the UK. 
+
+The partial effects of year are shown in Figure \@ref(fig:gam-year.)
+
+```{r gam-year, fig.cap = "Partial effects of year in a national GAM model for cycle counts 2010-2019"}
+knitr::include_graphics("../../saferactive/figures/GAM-partial-effect-of-year.png")
+```
+
+The partial effects of space are shown in Figure \@ref(fig:gam-space.)
+
+```{r gam-space, fig.cap = "Partial effects of year in a national GAM model for cycle counts 2010-2019"}
+knitr::include_graphics("../../saferactive/figures/GAM-partial-effect-of-space.png")
+```
 
 
 [JT content here]
@@ -97,8 +112,8 @@ The third stage is to associate the point crash data with the appropriate road o
 
 Once matching is completed is it possible to map the number of crashes or casualties for each road and junction over the last 10 years.
 
-```{r cyipt-crash, fig.cap="Preliminary maps of London roads showing number of casualties over the last 10 years from crashed not at junctions", out.width="40%", fig.show='hold', echo=FALSE}
-knitr::include_graphics("vignettes/london_cas_2010-2019_roads.png")
+```{r cyipt-crash2, fig.cap="Preliminary maps of London roads showing number of casualties over the last 10 years from crashed not at junctions", out.width="40%", fig.show='hold', echo=FALSE}
+knitr::include_graphics("./london_cas_2010-2019_roads.png")
 ```
 
 
