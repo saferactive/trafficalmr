@@ -34,18 +34,18 @@ Imports:
     tidyr,
     ComplexUpset,
     sf,
-    osmextract (>= 0.1.0)
+    osmextract (>= 0.1.0),
+    stats19
 RoxygenNote: 7.1.1
 Suggests: 
     covr,
     knitr,
     rmarkdown,
     testthat,
-    stats19,
     bookdown,
     ggplot2,
     scales,
-    curl,
+    curl
 Remotes:
     krassowski/complex-upset,
     itsleeds/osmextract
