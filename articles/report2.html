@@ -54,9 +54,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/data.html">Data on traffic calming</a>
-    </li>
-    <li>
       <a href="../articles/report1.html">SaferActive Report 1: Data</a>
     </li>
     <li>
@@ -124,7 +121,7 @@ Figure 2: Cycling uptake estimates for all local authorities in Great Britain. B
 </div>
 <p>We can further investigate cycle flows on different types of road. For count points with continuous readings in the years 2010-2019, 75% are on ‘C’ and unclassified roads, 24% on ‘B’ roads, and less than 1% on principal or trunk ‘A’ roads. By comparison, of all count points during these years, 47% of counts are on ‘C’ and unclassified roads, 14% on ‘B’ roads, 31% on principal ‘A’ roads and 8% on trunk ‘A’ roads.</p>
 <p>Of the road types studied, mean AADF is highest on Principal ‘A’ roads at 214 cycles per day, and lowest on Trunk ‘A’ roads at 2.4 cycles per day. On Trunk ‘A’ roads, zero cyclists were recorded at 34% of counts; many of these may represent locations on major national routes that are unsuitable for most cyclists. However, the increase in cycling uptake during the years 2010-2014 corresponds to counts from minor roads (‘B’, ‘C’ and unclassified roads). These roads that</p>
-<p>Using all cycle count points in London over the years 2010-2019, we produced a GAM model</p>
+<p>Using all cycle count points in London over the years 2010-2019, we produced a GAM model with smooth terms for year, space, road category….</p>
 <p>Preliminary results, based on a General Additive Model (GAM) are shown in Figure <a href="#fig:gam1">3</a>.</p>
 <div class="figure">
 <span id="fig:gam1"></span>
@@ -134,18 +131,33 @@ Figure 3: Preliminary estimates of cycling uptake in London boroughs relative to
 </div>
 <p>Building on results for London, we scaled-up the approach to provide nationwide spatio-temporal estimates of cycling.</p>
 <p>The national GAM model has smooth terms for the variables year, space and road category.</p>
-<p>figure</p>
-<p>[JT content here]</p>
+<p>The smooth term for year uses a cubic regression spline with 5 knots. The cubic spline utilises a low number of knots spread at even intervals through the range of parameter values. This helps to prevent overfitting.</p>
+<p>Road category is included as a random effect in the model. The inclusion of this is vital given that cycling levels vary greatly according to road category, and the number of counts from roads of each category varies from year to year.</p>
+<p>British National Grid eastings and northings are represented in a duchon spline, wihch allows for two dimensional smoothing. This spline has 100 knots, enabling the representation of complex spatial patterns in cycling levels across the UK.</p>
+<p>The partial effects of year are shown in Figure @ref(fig:gam-year.)</p>
+<div class="figure">
+<span id="fig:gam-year"></span>
+<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/GAM-partial-effect-of-year.png" alt="Partial effects of year in a national GAM model for cycle counts 2010-2019"><p class="caption">
+Figure 4: Partial effects of year in a national GAM model for cycle counts 2010-2019
+</p>
+</div>
+<p>The partial effects of space are shown in Figure @ref(fig:gam-space.)</p>
+<div class="figure">
+<span id="fig:gam-space"></span>
+<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/GAM-partial-effect-of-space.png" alt="Partial effects of year in a national GAM model for cycle counts 2010-2019"><p class="caption">
+Figure 5: Partial effects of year in a national GAM model for cycle counts 2010-2019
+</p>
+</div>
 </div>
 <div id="geographic-data-analysis" class="section level1">
 <h1 class="hasAnchor">
 <a href="#geographic-data-analysis" class="anchor"></a>Geographic data analysis</h1>
 <p>Building on methods we initially developed for the <a href="https://www.cyipt.bike/">CyIPT</a> project, we have developed new techniques for allocating crashes to features on the road network, such as junctions and road sections.
-Preliminary results comparing CyIPT results and results from this project are shown in Figure <a href="#fig:cyipt-crash">4</a>.</p>
+Preliminary results comparing CyIPT results and results from this project are shown in Figure <a href="#fig:cyipt-crash">6</a>.</p>
 <div class="figure">
 <span id="fig:cyipt-crash"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cyipt-crashes1-2.png" alt="CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right)." width="40%"><img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cyipt-crashes2.png" alt="CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right)." width="40%"><p class="caption">
-Figure 4: CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right).
+Figure 6: CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right).
 </p>
 </div>
 <p>The objective of this part of the project is to increase to measure to level of risk of collisions at a very high level of spatial detail. Ideally we seek to use historical data to identify specific roads and junctions which are especially dangerous and thus need to be fixed.</p>
@@ -154,6 +166,12 @@ The second stage of the process it to simplify the road and junction network for
 <p>Junctions are similarly simplified. Firstly, all junction points are extracted from the OSM. Junction points are then clustered together to reflect how we naturally think about junctions. For example, a roundabout is a single large junction not 4 - 10 small junctions arranged in a circle. Here a balance has to be struck between making the clusters large enough that big complex junctions are grouped together, while not being so large that densely packed urban streets become a single super-junction. We found a 15 metre buffer to be the optimal size for coalescing junction clusters.</p>
 <p>The third stage is to associate the point crash data with the appropriate road or junction. Here we had to balance accuracy against performance. Measuring the distance between every crash and every road would take an inordinate about of time. Thus we must use cleaver shortcuts to reduce to computational load without risking incorrectly matching crashed and roads.</p>
 <p>Once matching is completed is it possible to map the number of crashes or casualties for each road and junction over the last 10 years.</p>
+<div class="figure">
+<span id="fig:cyipt-crash2"></span>
+<img src="london_cas_2010-2019_roads.png" alt="Preliminary maps of London roads showing number of casualties over the last 10 years from crashed not at junctions" width="40%"><p class="caption">
+Figure 7: Preliminary maps of London roads showing number of casualties over the last 10 years from crashed not at junctions
+</p>
+</div>
 </div>
 <div id="analysis-of-data-on-traffic-calming" class="section level1">
 <h1 class="hasAnchor">
