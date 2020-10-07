@@ -74,17 +74,14 @@ British National Grid eastings and northings are represented in a duchon spline,
 The partial effects of year are shown in Figure \@ref(fig:gam-year.)
 
 ```{r gam-year, fig.cap = "Partial effects of year in a national GAM model for cycle counts 2010-2019"}
-knitr::include_graphics("../../saferactive/figures/GAM-partial-effect-of-year.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/GAM-partial-effect-of-year.png")
 ```
 
 The partial effects of space are shown in Figure \@ref(fig:gam-space.)
 
 ```{r gam-space, fig.cap = "Partial effects of year in a national GAM model for cycle counts 2010-2019"}
-knitr::include_graphics("../../saferactive/figures/GAM-partial-effect-of-space.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/GAM-partial-effect-of-space.png")
 ```
-
-
-[JT content here]
 
 
 
