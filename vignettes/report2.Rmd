@@ -33,27 +33,46 @@ We would like feedback from stakeholders: is it easy to use? what additional fun
 # Temporal analysis
 
 We analysed the DfT's manual traffic count data to explore its potential to provide estimates of the geographic distribution of cycling uptake over time.
-There is an uneven number of locations where annual average daily flow estimates are available, as shown in Figure \@ref(fig:aadf-counts-per-year).
+There is an uneven number of locations where annual average daily flow (AADF) estimates are available, as shown in Figure \@ref(fig:aadf-counts-per-year).
 
-```{r aadf-counts-per-year, fig.cap="AADF counts per year in the DfT's traffic counter dataset", out.width="49%", fig.show='hold'}
+```{r aadf-counts-per-year, fig.cap="AADF counts per year in the DfT's traffic counter dataset (left), and the number of annual surveys per count location (right)", out.width="49%", fig.show='hold'}
 knitr::include_graphics(c(
   "https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-counts-per-year.png",
   "https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-counts-per-year-2-plus.png"
   ))
 ```
 
-Taking 3,049 count locations which had continuous readings in the 10 years from 2010 to 2019 (representing 35% of the total counts in these years), we were able to generate estimates of cycling uptake at the local authority level.
-These are presented, relative to 2011 cycling levels, in Figure \@ref(fig:aadf-uptake-2011-multiplier-line-mean), showing an upward trend in cycling uptake in the years 2010-2014. 
+Figure \@ref(fig:aadf-counts-per-year) reveals there are >2000 locations that have been sampled just once over the years 2000-2019, and >4000 locations that have been sampled in just two years across these decades.
+Relatively few locations have been sampled in more than 11 years.
+However, sampling location selection has been more consistent over the period 2010-2019. 
+
+Over the years 2010 to 2019, there are 3,049 count locations which had continuous readings for each of these 10 years. 
+This represents 35% of the total counts in these years.
+Taking solely these 3,049 count locations, we are able to generate estimates of cycling uptake at the local authority level which are fully independent of year-to-year changes in the location and type of roads chosen for cycle counts.
+These uptake estimates are presented, relative to 2011 cycling levels, in Figure \@ref(fig:aadf-uptake-2011-multiplier-line-mean), showing an upward trend in cycling uptake in the first half of the decade. 
 
 ```{r aadf-uptake-2011-multiplier-line-mean, fig.cap="Cycling uptake estimates for all local authorities in Great Britain. Black line width represents the number of counters in each local authority, the white line represents no cycling uptake, and the red line is the weighted mean for all cycle counters from 2010 to 2019.", out.width="100%"}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-uptake-2011-multiplier-line-mean.png")
 ```
 
-We can further investigate cycle flows on different types of road. For count points with continuous readings in the years 2010-2019, 75% are on 'C' and unclassified roads, 24% on 'B' roads, and less than 1% on principal or trunk 'A' roads. By comparison, of all count points during these years, 47% of counts are on 'C' and unclassified roads, 14% on 'B' roads, 31% on principal 'A' roads and 8% on trunk 'A' roads.
+The mean AADF per year, across the 3,049 count locations with complete annual data for the years 2010-2019, is shown in Table /@ref(tab:tab1).
 
-Of the road types studied, mean AADF is highest on Principal 'A' roads at 214 cycles per day, and lowest on Trunk 'A' roads at 2.4 cycles per day. On Trunk 'A' roads, zero cyclists were recorded at 34% of counts; many of these may represent locations on major national routes that are unsuitable for most cyclists. However, the increase in cycling uptake during the years 2010-2014 corresponds to counts from minor roads ('B', 'C' and unclassified roads). These roads that 
 
-Using all cycle count points in London over the years 2010-2019, we produced a GAM model with smooth terms for year, space, road category....
+
+By contrast, if we include all cycle count points, the trend is very different...
+One reason for this is that counts are made on roads of very different types.
+From year to year, the number of counts held on roads of different types varies, although there is greater consistently in the decade 2010-2019 than in previous years.
+
+
+We further investigate cycle flows on different types of road. 
+For count points with continuous readings in the years 2010-2019, 75% are on 'C' and unclassified roads, 24% on 'B' roads, and less than 1% on principal or trunk 'A' roads. 
+By comparison, of all count points during these years, 47% of counts are on 'C' and unclassified roads, 14% on 'B' roads, 31% on principal 'A' roads and 8% on trunk 'A' roads.
+
+Of the road types studied, mean AADF is highest on Principal 'A' roads at 214 cycles per day, and lowest on Trunk 'A' roads at 2.4 cycles per day. 
+On Trunk 'A' roads, zero cyclists were recorded at 34% of counts; many of these may represent locations on major national routes that are unsuitable for most cyclists. 
+However, the increase in cycling uptake during the years 2010-2014 corresponds to counts from minor roads ('B', 'C' and unclassified roads). 
+
+<!-- Using all cycle count points in London over the years 2010-2019, we produced a GAM model with smooth terms for year, space, road category.... -->
 
 Preliminary results, based on a General Additive Model (GAM) are shown in Figure \@ref(fig:gam1).
 
@@ -63,27 +82,33 @@ knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferacti
 
 Building on results for London, we scaled-up the approach to provide nationwide spatio-temporal estimates of cycling. 
 
-The national GAM model has smooth terms for the variables year, space and road category. 
+The national GAM model has smooth terms for the variables year, space and road category, each of which were found to be significant at p<0.05. 
+This model uses all counts during the years 2010-2019, not just the counts from locations that were sampled every year. 
+This allows us to make full use of the available data.
 
-The smooth term for year uses a cubic regression spline with 5 knots. The cubic spline utilises a low number of knots spread at even intervals through the range of parameter values. This helps to prevent overfitting.
+The smooth term for year uses a cubic regression spline with 5 knots. 
+The cubic spline utilises a low number of knots spread at even intervals through the range of parameter values. 
+This helps to prevent overfitting.
 
-Road category is included as a random effect in the model. The inclusion of this is vital given that cycling levels vary greatly according to road category, and the number of counts from roads of each category varies from year to year. 
+British National Grid eastings and northings are represented in a duchon spline, which allows for two dimensional smoothing. 
+This spline has 100 knots, enabling the representation of complex spatial patterns in cycling levels across the UK. 
 
-British National Grid eastings and northings are represented in a duchon spline, wihch allows for two dimensional smoothing. This spline has 100 knots, enabling the representation of complex spatial patterns in cycling levels across the UK. 
+Road category is included as a random effect in the model. 
+Its inclusion is vital given that cycling levels vary greatly according to the type of road surveyed, and the number of counts from roads of each category varies from year to year. 
 
-The partial effects of year are shown in Figure \@ref(fig:gam-year.)
+The partial effects of year are shown in Figure \@ref(fig:gam-year).
 
 ```{r gam-year, fig.cap = "Partial effects of year in a national GAM model for cycle counts 2010-2019"}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/GAM-partial-effect-of-year.png")
 ```
 
-The partial effects of space are shown in Figure \@ref(fig:gam-space.)
+The partial effects of space are shown in Figure \@ref(fig:gam-space).
 
 ```{r gam-space, fig.cap = "Partial effects of year in a national GAM model for cycle counts 2010-2019"}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/GAM-partial-effect-of-space.png")
 ```
 
-
+The results of this GAM model can be applied to Local Authorities....
 
 # Geographic data analysis
 
