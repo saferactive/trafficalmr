@@ -2,9 +2,14 @@
 % Please edit documentation in R/tc_join_stats19.R
 \name{tc_join_stats19}
 \alias{tc_join_stats19}
-\title{Join stats19 tables}
+\title{Basic draft of tc_join_stats19_ac whilst I try to understand issue #24.}
 \usage{
-tc_join_stats19(crashes, casualties, vehicles, pattern_match = NULL)
+tc_join_stats19(
+  crashes = NULL,
+  casualties = NULL,
+  vehicles = NULL,
+  level = "accident"
+)
 }
 \arguments{
 \item{crashes}{The accidents table of crashes from STATS19 data}
@@ -13,9 +18,17 @@ tc_join_stats19(crashes, casualties, vehicles, pattern_match = NULL)
 
 \item{vehicles}{The vehicles table from STATS19 data}
 
-\item{pattern_match}{Character string in the form of
-\code{c("car" = "car", "bike" = "bike")} that replaces all parts of the match.}
+\item{level}{one of "accidents", "casualities" or "vehicles".
+Shorter versions is ok too as a regex of first three letters is used.}
 }
 \description{
-Join stats19 tables
+Basic draft of tc_join_stats19_ac whilst I try to understand issue #24.
+}
+\examples{
+\dontrun{
+ac = stats19::get_stats19(year = 2019, type = "ac", output_format = "sf")
+ca = stats19::get_stats19(year = 2019, type = "ca")
+ve = stats19::get_stats19(year = 2019, type = "ve")
+tc_join_stats19(ac, ca, veh, level = "veh")
+}
 }

@@ -9,7 +9,7 @@
 #' @param vehicles The vehicles table from STATS19 data
 #' @inheritParams tc_recode
 #' @export
-tc_join_stats19 = function(crashes,
+tc_join_stats19_for_upset = function(crashes,
                            casualties,
                            vehicles,
                            pattern_match = NULL
@@ -77,13 +77,24 @@ tc_join_stats19 = function(crashes,
 
 #' Basic draft of tc_join_stats19_ac whilst I try to understand issue #24.
 #'
-#' @inheritParams tc_join_stats19
-#' do not export
-#' TODO: understand the requirements first
-tc_join_stats19_ac = function(crashes = NULL,
+#' @param crashes The accidents table of crashes from STATS19 data
+#' @param casualties The casualty table from STATS19 data
+#' @param vehicles The vehicles table from STATS19 data
+#' @param level one of "accidents", "casualties" or "vehicles".
+#' Shorter versions is ok too as a regex of first three letters is used.
+#'
+#'@export
+#'@examples
+#' \dontrun{
+#' ac = stats19::get_stats19(year = 2019, type = "ac", output_format = "sf")
+#' ca = stats19::get_stats19(year = 2019, type = "ca")
+#' ve = stats19::get_stats19(year = 2019, type = "ve")
+#' tc_join_stats19(ac, ca, ve, level = "veh")
+#' }
+tc_join_stats19 = function(crashes = NULL,
                               casualties = NULL,
                               vehicles = NULL,
-                              only_counts = FALSE) {
+                              level = "accident") {
   if(is.null(crashes) || is.null(casualties) ||
      is.null(vehicles)) {
     stop("All three tables are required for the join.")
@@ -97,24 +108,17 @@ tc_join_stats19_ac = function(crashes = NULL,
   }
   # assuming accident_index is unique across the tables and
   # vehicles and casualties have matching columns
-  # crash_summary = crashes %>%
-  #   group_by(accident_index) %>% summarise(crash_records = n())
-
-  crash_summary = casualties %>%
-    group_by(accident_index, casualty_type) %>%
-    summarise(casualty_counts = n()) %>%
-    select(accident_index, casualty_counts) %>%
-    inner_join(crashes, by = "accident_index")
-
-  crash_summary = vehicles %>%
-    group_by(accident_index, vehicle_type) %>%
-    summarise(vehicle_counts = n()) %>%
-    select(accident_index, vehicle_counts) %>%
-    inner_join(crash_summary, by = "accident_index")
-
-  if(only_counts) {
-    crash_summary = crash_summary %>%
-      select(accident_index, casualty_counts, vehicle_counts)
+  ac = crashes[which(!is.na(crashes$accident_index)), ]
+  # now remove those that are not in crash table
+  # remove ai not in ac
+  ca = casualties[which(casualties$accident_index %in% ac$accident_index), ]
+  ve = vehicles[which(vehicles$accident_index %in% ac$accident_index), ]
+  crash_summary = dplyr::left_join(ac, dplyr::left_join(ve, ca)) # accident level
+  if(grepl("cas", level)) {
+    crash_summary = dplyr::right_join(ca, dplyr::left_join(ve, ac)) # casualty level
+  }
+  if(grepl("veh", level)) {
+    crash_summary = dplyr::left_join(ve, dplyr::left_join(ca, ac)) # vehicle level
   }
   crash_summary
 }
