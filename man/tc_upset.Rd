@@ -22,7 +22,7 @@ tc_upset(
 Create 'who-hit-who' visualisations
 }
 \examples{
-crash_summary = tc_join_stats19(crashes_wf, casualties_wf, vehicles_wf)
+crash_summary = tc_join_stats19_for_upset(crashes_wf, casualties_wf, vehicles_wf)
 names(crash_summary)
 summary(crash_summary)
 tc_upset(crash_summary)
@@ -48,6 +48,6 @@ vehicles_wf2 = dplyr::mutate(
      TRUE ~ "Other"
     )
   )
-crash_summary = tc_join_stats19(crashes_wf, casualties_wf2, vehicles_wf2)
+crash_summary = tc_join_stats19_for_upset(crashes_wf, casualties_wf2, vehicles_wf2)
 tc_upset(crash_summary, casualty_type = c("Car", "Pedestrian", "Bicycle", "Other"))
 }
