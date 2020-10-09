@@ -30,7 +30,7 @@ This report outlines progress on the SaferActive project since the 1st report's 
 Overall we have been working on the following areas:
 
 - Development of the trafficalmr R package, adding functionality for cleaning and visualising road crash data (see [saferactive.github.io/trafficalmr](https://saferactive.github.io/trafficalmr) for details)
-- Collecting and analysing data on cycling levels from the DfT's traffic count data, recently updated to include 2019 data and undertaking spatio-temporal analysis of cycling resulting from these estimates
+- Collecting and analysing data on cycling levels from the DfT's traffic count data, recently updated to include 2019 data and undertaking spatio-temporal analysis of cycling resulting from these estimates, building on our work in Report 1 (Section [8](https://saferactive.github.io/trafficalmr/articles/report1.html#analysis)), which provided geographic estimates of cycling uptake.
 - Developing new methods for the geographic analysis and visualisation of road safety outcomes
 - Exploring additional datasets to use as 'explanatory variables' to assess the impacts of different interventions
 
