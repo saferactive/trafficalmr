@@ -172,7 +172,7 @@ cluster_junction = function(x, dist = 15, nQuadSegs = 3){
   res = data.frame(cluster_id = seq(1, length(geoms)))
   res$junction_ids = ints_clus
   res$geometry = geoms
-  res = sf::st_sf(res, crs = st_crs(x))
+  res = sf::st_sf(res, crs = sf::st_crs(x))
   return(res)
 }
 
@@ -408,7 +408,7 @@ line_segment_sf = function(l, n_segments, segment_length = NA) {
   geom = st_as_sfc(geom)
 
   st_geometry(attrib) = geom
-  st_crs(attrib) = st_crs(l)
+  sf::st_crs(attrib) = sf::st_crs(l)
 
   return(attrib)
 }
