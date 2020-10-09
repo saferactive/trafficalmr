@@ -29,11 +29,16 @@ The OpenSteetMap contains a lot of detail, this function subsets the
 data to just the main roads used by cars by filtering on the highway tag.
 }
 \examples{
-\dontrun{
-osm = osmextract::oe_read("greater-london-latest.osm.pbf")
-osm = osm_main_roads(osm)
-}
-
+region_name = "Isle of Wight"
+# osm = osmextract::oe_get(region_name) # test for IoW
+# region_name = "Greater London" # test for London
+osm = tc_data_osm
+osm_main = osm_main_roads(osm)
+nrow(osm)
+nrow(osm_main)
+nrow(osm_main) / nrow(osm) # keeps ~10-25\% of lines
+plot(osm$geometry, col = "grey")
+plot(osm_main$geometry, add = TRUE)
 }
 \seealso{
 Other OSM: 

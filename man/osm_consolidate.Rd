@@ -25,16 +25,20 @@ are defined by \code{segment} 3) Casting MULTILINESTRINGs into LINESTRING
 Note: to avoid splitting short roads, roads are only split once they are 2x
 \code{segment}, but are then splits into lengths as defined by \code{segment}. For
 example a 600m road will not be split, but a 1100m road will be split into
-approximately 500m segments.
+approximately 500m segments when \code{segment = 500}.
 }
 \examples{
-\dontrun{
-osm = osmextract::oe_read("greater-london-latest.osm.pbf")
-osm = osm_main_roads(osm)
-osm = sf::st_transform(osm, 27700)
-osm = osm_consolidate(osm)
-}
-
+osm = osm_main_roads(tc_data_osm)
+x = sf::st_transform(osm, 27700)
+osm_consolidated_200m = osm_consolidate(x, segment = 200)
+nrow(x)
+nrow(osm_consolidated_200m) / nrow(x) # fewer lines
+table(x$name)
+table(osm_consolidated_200m$name)
+plot(x$geometry, col = 1:nrow(x))
+plot(osm_consolidated_200m$geometry, col = 1:nrow(osm_consolidated_200m))
+summary(sf::st_length(x))
+summary(sf::st_length(osm_consolidated_200m))
 }
 \seealso{
 Other OSM: 

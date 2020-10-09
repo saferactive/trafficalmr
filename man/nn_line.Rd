@@ -34,7 +34,6 @@ magnitude faster. To increase accuracy increase \code{k}.
 \dontrun{
 crash_road_nn = nn_line(crash_road, osm, ncores = 5)
 }
-
 }
 \seealso{
 Other OSM: 

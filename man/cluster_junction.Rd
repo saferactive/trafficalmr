@@ -4,12 +4,14 @@
 \alias{cluster_junction}
 \title{Cluster junction points into polygons}
 \usage{
-cluster_junction(x, dist = 15)
+cluster_junction(x, dist = 15, nQuadSegs = 3)
 }
 \arguments{
 \item{x}{a SF data frame of joints}
 
 \item{dist}{buffer distance past to sf::st_buffer}
+
+\item{nQuadSegs}{how many segments per quatrant? 5 is the default.}
 }
 \value{
 Returns an SF data frame of POLYGONS
@@ -26,10 +28,13 @@ returned. A column called junction_ids provides a looup list between the
 junction clusters and the junction points.
 }
 \examples{
-\dontrun{
-junctions = osm_get_junctions(osm)
-}
-
+x = osm_main_roads(tc_data_osm)
+junctions = osm_get_junctions(x)
+junction_polygons_15 = cluster_junction(junctions)
+junction_polygons_30 = cluster_junction(junctions, dist = 30)
+plot(x$geometry, col = "grey")
+plot(junction_polygons_30, add = TRUE)
+plot(junction_polygons_15, add = TRUE)
 }
 \seealso{
 Other OSM: 

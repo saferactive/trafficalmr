@@ -183,7 +183,6 @@ cluster_junction = function(x, dist = 15, nQuadSegs = 3){
 #' @family internal
 #' @return Returns integer
 #' @details Identifies clusters of intersecting geometries objects
-#'
 cluster_ints = function(x){
   res = list()
   pb = progress::progress_bar$new(total = length(x))
@@ -213,7 +212,6 @@ cluster_ints = function(x){
 #' @family internal
 #' @return integer
 #' @details recursively searches a list for values
-#'
 recursive_ints = function(sub, x){
   sub = unique(sub)
   sub = sub[order(sub)]
@@ -312,7 +310,6 @@ nn_point = function(x, y, clusters = NULL){
 #' \dontrun{
 #' crash_road_nn = nn_line(crash_road, osm, ncores = 5)
 #' }
-#'
 nn_line = function(point, lines, k = 50, ncores = 1){
   if(sf::st_is_longlat(point)){
     stop("point must use projected coordinates")
@@ -362,7 +359,6 @@ nn_line = function(point, lines, k = 50, ncores = 1){
 #' @family internal
 #' @return list
 #' @details for checking line point distance
-#'
 nn_int = function(sub){
   dists = as.numeric(sf::st_distance(sub$point, sub$lines))
   dists_min = min(dists)
@@ -373,8 +369,6 @@ nn_int = function(sub){
   return(res)
 
 }
-
-
 #' Break a line into segments
 #'
 #' @param l line
@@ -384,7 +378,6 @@ nn_int = function(sub){
 #' @family OSM
 #' @return list
 #' @details see stplanr::line_segment note: does not make perfect breaks
-#'
 line_segment_sf = function(l, n_segments, segment_length = NA) {
   if (!is.na(segment_length)) {
     l_length = as.numeric(sf::st_length(l))
