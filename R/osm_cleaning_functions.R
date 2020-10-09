@@ -1,6 +1,9 @@
 #' Select the main roads from OSM
 #'
 #' @param x A data frame of OSM lines
+#' @param highway_values Which highway values to use to define 'main' roads?
+#' Default includes primary, secondar, trunk, motorway, residential and 'mini_roundabout'
+#' road values.
 #' @export
 #' @family OSM
 #' @return Returns an data frame
@@ -9,19 +12,26 @@
 #'   data to just the main roads used by cars by filtering on the highway tag.
 #' @examples
 #' \dontrun{
-#' osm = osmextract::oe_read("greater-london-latest.osm.pbf")
-#' osm = osm_main_roads(osm)
+#' region_name = "Isle of Wight"
+#' # region_name = "Greater London" # test for London
+#' osm = osmextract::oe_get(region_name)
+#' osm_main = osm_main_roads(osm)
+#' nrow(osm)
+#' nrow(osm_main)
+#' nrow(osm_main) / nrow(osm) # keeps ~10% of lines
+#' plot(osm$geometry, col = "grey", xlim = c(-1.59, -1.1), ylim = c(50.5, 50.8))
+#' plot(osm_main$geometry, add = TRUE)
 #' }
 #'
-osm_main_roads = function(x){
+osm_main_roads = function(x, highway_values = c("primary","primary_link",
+                                                "secondary","secondary_link",
+                                                "tertiary","tertiary_link",
+                                                "trunk","trunk_link",
+                                                "motorway","motorway_link",
+                                                "unclassified","residential",
+                                                "road","mini_roundabout")){
   x = x[!is.na(x$highway),]
-  x = x[x$highway %in% c("primary","primary_link",
-                          "secondary","secondary_link",
-                          "tertiary","tertiary_link",
-                          "trunk","trunk_link",
-                          "motorway","motorway_link",
-                          "unclassified","residential",
-                          "road","mini_roundabout"),]
+  x = x[x$highway %in% highway_values,]
   x
 }
 
@@ -44,17 +54,23 @@ osm_main_roads = function(x){
 #'   approximately 500m segments.
 #' @examples
 #' \dontrun{
-#' osm = osmextract::oe_read("greater-london-latest.osm.pbf")
+#' region_name = "Isle of Wight"
+#' # region_name = "Greater London" # test for London
+#' osm = osmextract::oe_get(region_name, extra_tags = c("ref", "maxspeed", "bicycle"))
 #' osm = osm_main_roads(osm)
-#' osm = sf::st_transform(osm, 27700)
-#' osm = osm_consolidate(osm)
+#' x = sf::st_transform(osm, 27700)
+#' osm_consolidated = osm_consolidate(x)
+#' osm_consolidated_1000m = osm_consolidate(x, segment = 1000)
+#' nrow(x) / nrow(osm_consolidated)
 #' }
 #'
 osm_consolidate = function(x, segment = 500){
   if(sf::st_is_longlat(x)){
     stop("Must use projected coordinates")
   }
-  x = x[,c("name", "ref", "highway")]
+  n = names(x)
+  stopifnot(all(c("name", "ref", "highway") %in% n))
+  x = x[, c("name", "ref", "highway")]
   # Group
   x = dplyr::group_by(x, name, ref, highway)
   x = dplyr::summarise(x, do_union = FALSE)
