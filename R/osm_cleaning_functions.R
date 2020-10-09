@@ -125,6 +125,7 @@ osm_get_junctions = function(x){
 #'
 #' @param x a SF data frame of joints
 #' @param dist buffer distance past to sf::st_buffer
+#' @param nQuadSegs how many segments per quatrant? 5 is the default.
 #' @export
 #' @family OSM
 #' @return Returns an SF data frame of POLYGONS
@@ -136,17 +137,19 @@ osm_get_junctions = function(x){
 #'   returned. A column called junction_ids provides a looup list between the
 #'   junction clusters and the junction points.
 #' @examples
-#' \dontrun{
-#' region_name = "Isle of Wight"
-#' # region_name = "Greater London" # test for London
-#' osm = osmextract::oe_get(region_name, extra_tags = c("ref", "maxspeed", "bicycle"))
-#' plot(osm$geometry, col = "grey", xlim = c(-1.59, -1.1), ylim = c(50.5, 50.8))
-#' junctions = osm_get_junctions(osm)
-#' plot(junctions, add = TRUE)
-#' }
-#'
-cluster_junction = function(x, dist = 15){
-  buff = sf::st_buffer(x, dist = dist, nQuadSegs = 15)
+#' x = osm_main_roads(tc_data_osm)
+#' junctions = osm_get_junctions(x)
+#' junction_polygons_15 = cluster_junction(junctions)
+#' junction_polygons_30 = cluster_junction(junctions, dist = 30)
+#' plot(x$geometry, col = "grey")
+#' plot(junction_polygons_30, add = TRUE)
+#' plot(junction_polygons_15, add = TRUE)
+cluster_junction = function(x, dist = 15, nQuadSegs = 3){
+  if(sf::st_is_longlat(x)) {
+    buff = stplanr::geo_buffer(x, dist = dist, nQuadSegs = nQuadSegs)
+  } else {
+    buff = sf::st_buffer(x, dist = dist, nQuadSegs = nQuadSegs)
+  }
   ints = sf::st_intersects(buff)
   message(paste0("Clustering ",length(ints)," junctions"))
   ints_clus = cluster_ints(ints)
@@ -154,7 +157,7 @@ cluster_junction = function(x, dist = 15){
 
   message(paste0("Creating ",length(ints_clus)," geometries"))
   geoms = list()
-  pb = progress_bar$new(total = length(ints_clus))
+  pb = progress::progress_bar$new(total = length(ints_clus))
   for(i in seq_len(length(ints_clus))){
     pb$tick()
     sub = buff[ints_clus[[i]]]
@@ -183,7 +186,7 @@ cluster_junction = function(x, dist = 15){
 #'
 cluster_ints = function(x){
   res = list()
-  pb = progress_bar$new(total = length(x))
+  pb = progress::progress_bar$new(total = length(x))
   for(i in seq_len(length(x))){
     pb$tick()
     if(length(x[[i]]) == 1){
