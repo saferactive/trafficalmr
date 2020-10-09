@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Join stats19 tables — tc_join_stats19 • trafficalmr</title>
+<title>Basic draft of tc_join_stats19_ac whilst I try to understand issue #24. — tc_join_stats19 • trafficalmr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Join stats19 tables — tc_join_stats19" />
-<meta property="og:description" content="Join stats19 tables" />
+<meta property="og:title" content="Basic draft of tc_join_stats19_ac whilst I try to understand issue #24. — tc_join_stats19" />
+<meta property="og:description" content="Basic draft of tc_join_stats19_ac whilst I try to understand issue #24." />
 
 
 
@@ -123,16 +123,21 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Join stats19 tables</h1>
-    <small class="dont-index">Source: <a href='https://github.com/saferactive/trafficalmr/blob/master/R/upset.R'><code>R/upset.R</code></a></small>
+    <h1>Basic draft of tc_join_stats19_ac whilst I try to understand issue #24.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/saferactive/trafficalmr/blob/master/R/tc_join_stats19.R'><code>R/tc_join_stats19.R</code></a></small>
     <div class="hidden name"><code>tc_join_stats19.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Join stats19 tables</p>
+    <p>Basic draft of tc_join_stats19_ac whilst I try to understand issue #24.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tc_join_stats19</span><span class='op'>(</span><span class='va'>crashes</span>, <span class='va'>casualties</span>, <span class='va'>vehicles</span>, pattern_match <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tc_join_stats19</span><span class='op'>(</span>
+  crashes <span class='op'>=</span> <span class='cn'>NULL</span>,
+  casualties <span class='op'>=</span> <span class='cn'>NULL</span>,
+  vehicles <span class='op'>=</span> <span class='cn'>NULL</span>,
+  level <span class='op'>=</span> <span class='st'>"accident"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,13 +155,21 @@
       <td><p>The vehicles table from STATS19 data</p></td>
     </tr>
     <tr>
-      <th>pattern_match</th>
-      <td><p>Character string in the form of
-<code><a href='https://rdrr.io/r/base/c.html'>c("car" = "car", "bike" = "bike")</a></code> that replaces all parts of the match.</p></td>
+      <th>level</th>
+      <td><p>one of "accidents", "casualities" or "vehicles".
+Shorter versions is ok too as a regex of first three letters is used.</p></td>
     </tr>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>ac</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='fl'>2019</span>, type <span class='op'>=</span> <span class='st'>"ac"</span>, output_format <span class='op'>=</span> <span class='st'>"sf"</span><span class='op'>)</span>
+<span class='va'>ca</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='fl'>2019</span>, type <span class='op'>=</span> <span class='st'>"ca"</span><span class='op'>)</span>
+<span class='va'>ve</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='fl'>2019</span>, type <span class='op'>=</span> <span class='st'>"ve"</span><span class='op'>)</span>
+<span class='fu'>tc_join_stats19</span><span class='op'>(</span><span class='va'>ac</span>, <span class='va'>ca</span>, <span class='va'>veh</span>, level <span class='op'>=</span> <span class='st'>"veh"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
