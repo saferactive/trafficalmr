@@ -40,7 +40,7 @@ One of the objectives of the project was to develop software to enable access to
 We have progressed with the development of the `trafficalmr` package for reproducible road safety analysis, supporting the project and other projects on road safety.
 We would like feedback from stakeholders: is it easy to use? what additional functionality would you like to see? The list of functions provided by the package can be found here: https://saferactive.github.io/trafficalmr/reference/index.html
 
-# Temporal analysis
+# Analysis of cycle counter data
 
 We analysed the DfT's manual traffic count data to explore its potential to provide estimates of the geographic distribution of cycling uptake over time.
 There is an uneven number of locations where annual average daily flow (AADF) estimates are available, as shown in Figure \@ref(fig:aadf-counts-per-year).
