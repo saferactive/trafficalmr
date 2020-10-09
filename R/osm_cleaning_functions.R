@@ -104,16 +104,10 @@ osm_consolidate = function(x, segment = 500){
 #' @details This function finds all junction points in a road network, i.e.
 #'   where two roads meet. It excludes road crossings e.g. bridges.
 #' @examples
-#' \dontrun{
-#' region_name = "Isle of Wight"
-#' # region_name = "Greater London" # test for London
-#' osm = osmextract::oe_get(region_name, extra_tags = c("ref", "maxspeed", "bicycle"))
-#' x = osm_main_roads(osm)
+#' x = osm_main_roads(tc_data_osm)
 #' junctions = osm_get_junctions(x)
-#' plot(x$geometry, col = "grey", xlim = c(-1.59, -1.1), ylim = c(50.5, 50.8))
+#' plot(x$geometry, col = "grey")
 #' plot(junctions, add = TRUE)
-#' }
-#'
 osm_get_junctions = function(x){
   points = sf::st_cast(x,"MULTIPOINT")
   points = points$geometry
