@@ -45,6 +45,8 @@ We would like feedback from stakeholders: is it easy to use? what additional fun
 We analysed the DfT's manual traffic count data to explore its potential to provide estimates of the spatio-teamporal estimates of cycling levels --- measured in km (or billion km, bkm, for compatibility with international road safety research) cycled per year --- over time.
 A key component of this work was the expansion of the geographical scope from our London case study, to cover the whole of England, Wales and Scotland.
 
+## Year-to-year changes in the location and number of count points  
+
 Over the period 2000-2019, there is an uneven number of locations where annual average daily flow (AADF) estimates are available, as shown in Figure \@ref(fig:aadf-counts-per-year).
 
 
@@ -55,12 +57,14 @@ knitr::include_graphics(c(
   ))
 ```
 
-Figure \@ref(fig:aadf-counts-per-year) reveals a high degree of mobility of cycle count points over the last two decades. 
+Figure \@ref(fig:aadf-counts-per-year) reveals the number of count points has fluctuated from year to year, with over 14,000 count points in 2008, but less than 7000 counts in 2014.
+In addition, there has been a high degree of mobility of cycle count points over the last two decades. 
 There are >2000 locations that have been sampled just once over the years 2000-2019, and >4000 locations that have been sampled in just two of these years.
 Relatively few locations have been sampled in more than 11 years. 
-This flux in the location of count points makes it more difficult to assess changes in cycling uptake, because we do not have a consistent dataset from one year to the next.
-In addition, the number of count points has fluctuated from year to year, with over 14,000 count points in 2008, but less than 7000 counts in 2014. 
-However, sampling location selection has been more consistent over the period 2010-2019. 
+This flux in the number and location of count points makes it more difficult to assess changes in cycling uptake, because we do not have a consistent dataset from one year to the next.
+However, sampling location selection has been more consistent over the period 2010-2019 so we have focused our analysis on this ten-year period. 
+
+## Road category and temporal trends in AADF
 
 Over the years 2010 to 2019, there are 3,049 count locations which had continuous readings for each of these 10 years. 
 This represents 35% of the total counts in these years.
@@ -74,7 +78,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferacti
 The mean AADF per year, for the years 2010-2019, is shown in Figure \@ref(fig:aadf-years).
 We include three different estimates of mean AADF: across all 13,303 locations with at least two years of data, across the 5,895 locations with at least 5 years of sampling, and across the 3,049 count locations with complete annual data.
 
-```{r aadf-years, fig.cap="Mean annual average daily flows of pedal cycles 2010-2019, for count locations with at least 1 year, 5 years, and 10 years of counts across this time period"}
+```{r aadf-years, fig.cap="Mean annual average daily flows of pedal cycles 2010-2019, for count locations with at least 2 years, 5 years, and 10 years of counts across this time period"}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/AADF-by-n-years-sample.png")
 ```
 
@@ -84,19 +88,42 @@ Of the count points with continuous readings in the years 2010-2019, 75% are on 
 By comparison, of all count points during these years, 47% of counts are on 'C' and unclassified roads, 14% on 'B' roads, 31% on principal 'A' roads and 8% on trunk 'A' roads. [switch to all count points with at least 2 years of data]
 
 This is relevant because mean AADF varies greatly by road type. 
-
-For count points with complete annual data, the increase in cycling uptake during the years 2010-2014 closely corresponds with counts from minor roads ('B', 'C' and unclassified roads).
+For count points with complete annual data (Figure \@ref(fig:road-cat)), the increase in cycling uptake during the years 2010-2014 closely corresponds with counts from minor roads ('B', 'C' and unclassified roads).
 However, mean AADF is highest on Principal 'A' roads at 214 cycles per day, and lowest on Trunk 'A' roads at 2.4 cycles per day. 
-On Trunk 'A' roads, zero cyclists were recorded at 34% of counts; many of these may represent locations on major national routes that are unsuitable for most cyclists. 
+On Trunk 'A' roads, zero cyclists were recorded at 34% of counts; these may represent locations on major national routes that are unsuitable for most cyclists. 
+
+<switch this figure to ggplot>
+```{r road-cat, fig.cap="Mean annual average daily flows of pedal cycles by road category 2010-2019, for count locations with complete annual data across this time period. PA = Principal 'A' road; MB = 'B' road; MCU = 'C' or Unclassified road; TA = Trunk 'A' road.}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/mean-count-by-road-cat-2010-2019.png")
+```
 
 The number of counts held on roads of different types also varies from year to year, although there is greater consistently in the decade 2010-2019 than in the previous decade.
 
-We further investigate cycle flows on different types of road. 
+<add in another figure showing number of counts by road category>
 
+## Mean normalised change in AADF at Local Authority level 
 
+As we have seen, the count point locations are not stable, and not all locations are surveyed every year. 
+This presents difficulties when assessing change through time, since an apparent increase in cycling in a given year may simply be due to the selection of count points on busy roads that year.
 
+To avoid problems associated with this, we assessed relative change at each count point, by calculating, for each year the point was surveyed, the relative divergence from the mean AADF across all years at that count point.
+We then calculated the mean of these values for each Local Authority and year, and normalised these around a baseline year of 2011.
 
-<!-- Using all cycle count points in London over the years 2010-2019, we produced a GAM model with smooth terms for year, space, road category.... -->
+```{r la-change, fig.cap="Relative change from a 2011 baseline in estimated pedal cycle AADF for each Local Authority. Line thickness represents the total number of pedal cycles surveyed (across all years) within the LA. Selected LAs are highlighted."}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/change-by-la.png")
+```
+
+## General Additive Models of AADF 
+
+General Additive Models were chosen for their flexibility to accommodate non-linear trends in spatial and temporal variables, and the ability to include random effects within the model.
+They also allow the production of easily interpretable partial effects for each model parameter.
+
+<GAM models should be recalculated based on relative change in cycle counts, instead of absolute counts>
+
+### London model
+
+Initially, GAM models were developed for London only.
+Using the raw hourly count data all cycle count points in London over the years 2010-2019, we produced a GAM model with smooth terms for year, day of the year, hour, space, road category, and an interaction term for year and space.....
 
 Preliminary results, based on a General Additive Model (GAM) are shown in Figure \@ref(fig:gam1).
 
@@ -104,11 +131,14 @@ Preliminary results, based on a General Additive Model (GAM) are shown in Figure
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-uptake-la-london-smoothed.png")
 ```
 
-Building on results for London, we scaled-up the approach to provide nationwide spatio-temporal estimates of cycling. 
+### National model
 
-The national GAM model has smooth terms for the variables year, space and road category, each of which were found to be significant at p<0.05. 
+Building on results for London, we scaled-up the approach to provide nationwide spatio-temporal estimates of cycling. 
+For the national GAM model we simplified the inputs, basing it on the AADF data rather than the raw hourly count data.
+
+The model has smooth terms for the variables year, space and road category, each of which were found to be significant at p<0.05. 
 This model uses all counts during the years 2010-2019, not just the counts from locations that were sampled every year. 
-This allows us to make full use of the available data.
+This allows us to make full use of the available data, with all road types represented.
 
 The smooth term for year uses a cubic regression spline with 5 knots. 
 The cubic spline utilises a low number of knots spread at even intervals through the range of parameter values. 
