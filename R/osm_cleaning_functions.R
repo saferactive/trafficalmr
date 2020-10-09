@@ -405,7 +405,7 @@ line_segment_sf = function(l, n_segments, segment_length = NA) {
   geom = pbapply::pblapply(seq(1, length(geom)),
                            FUN = split_int)
   geom = unlist(geom, recursive = FALSE)
-  geom = st_as_sfc(geom)
+  geom = sf::st_as_sfc(geom)
 
   st_geometry(attrib) = geom
   sf::st_crs(attrib) = sf::st_crs(l)

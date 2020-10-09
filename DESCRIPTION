@@ -36,7 +36,11 @@ Imports:
     sf,
     osmextract (>= 0.1.0),
     pbapply,
-    progress
+    progress,
+    lwgeom,
+    nabor,
+    purrr,
+    stplanr
 RoxygenNote: 7.1.1
 Suggests: 
     covr,
