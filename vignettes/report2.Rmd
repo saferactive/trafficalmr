@@ -42,8 +42,11 @@ We would like feedback from stakeholders: is it easy to use? what additional fun
 
 # Analysis of cycle counter data
 
-We analysed the DfT's manual traffic count data to explore its potential to provide estimates of the spatio-temporal estimates of cycling levels --- measured in km (or billion km, bkm, for compatibility with international road safety research) cycled per year --- over time.
-There is an uneven number of locations where annual average daily flow (AADF) estimates are available, as shown in Figure \@ref(fig:aadf-counts-per-year).
+We analysed the DfT's manual traffic count data to explore its potential to provide estimates of the spatio-teamporal estimates of cycling levels --- measured in km (or billion km, bkm, for compatibility with international road safety research) cycled per year --- over time.
+A key component of this work was the expansion of the geographical scope from our London case study, to cover the whole of England, Wales and Scotland.
+
+Over the period 2000-2019, there is an uneven number of locations where annual average daily flow (AADF) estimates are available, as shown in Figure \@ref(fig:aadf-counts-per-year).
+
 
 ```{r aadf-counts-per-year, fig.cap="AADF counts per year in the DfT's traffic counter dataset (left), and the number of annual surveys per count location (right)", out.width="49%", fig.show='hold'}
 knitr::include_graphics(c(
@@ -52,8 +55,11 @@ knitr::include_graphics(c(
   ))
 ```
 
-Figure \@ref(fig:aadf-counts-per-year) reveals there are >2000 locations that have been sampled just once over the years 2000-2019, and >4000 locations that have been sampled in just two years across these decades.
-Relatively few locations have been sampled in more than 11 years.
+Figure \@ref(fig:aadf-counts-per-year) reveals a high degree of mobility of cycle count points over the last two decades. 
+There are >2000 locations that have been sampled just once over the years 2000-2019, and >4000 locations that have been sampled in just two of these years.
+Relatively few locations have been sampled in more than 11 years. 
+This flux in the location of count points makes it more difficult to assess changes in cycling uptake, because we do not have a consistent dataset from one year to the next.
+In addition, the number of count points has fluctuated from year to year, with over 14,000 count points in 2008, but less than 7000 counts in 2014. 
 However, sampling location selection has been more consistent over the period 2010-2019. 
 
 Over the years 2010 to 2019, there are 3,049 count locations which had continuous readings for each of these 10 years. 
@@ -65,22 +71,30 @@ These uptake estimates are presented, relative to 2011 cycling levels, in Figure
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-uptake-2011-multiplier-line-mean.png")
 ```
 
-The mean AADF per year, across the 3,049 count locations with complete annual data for the years 2010-2019, is shown in Table /@ref(tab:tab1).
+The mean AADF per year, for the years 2010-2019, is shown in Figure \@ref(fig:aadf-years).
+We include three different estimates of mean AADF: across all 13,303 locations with at least two years of data, across the 5,895 locations with at least 5 years of sampling, and across the 3,049 count locations with complete annual data.
 
+```{r aadf-years, fig.cap="Mean annual average daily flows of pedal cycles 2010-2019, for count locations with at least 1 year, 5 years, and 10 years of counts across this time period"}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/AADF-by-n-years-sample.png")
+```
 
+We can see that not only is the temporal trend different if we include a greater number of cycle count points, but the mean AADF is also higher.
+One reason for this is that counts are made on roads of a wide range of types.
+Of the count points with continuous readings in the years 2010-2019, 75% are on 'C' and unclassified roads, 24% on 'B' roads, and less than 1% on principal or trunk 'A' roads. 
+By comparison, of all count points during these years, 47% of counts are on 'C' and unclassified roads, 14% on 'B' roads, 31% on principal 'A' roads and 8% on trunk 'A' roads. [switch to all count points with at least 2 years of data]
 
-By contrast, if we include all cycle count points, the trend is very different...
-One reason for this is that counts are made on roads of very different types.
-From year to year, the number of counts held on roads of different types varies, although there is greater consistently in the decade 2010-2019 than in previous years.
+This is relevant because mean AADF varies greatly by road type. 
 
+For count points with complete annual data, the increase in cycling uptake during the years 2010-2014 closely corresponds with counts from minor roads ('B', 'C' and unclassified roads).
+However, mean AADF is highest on Principal 'A' roads at 214 cycles per day, and lowest on Trunk 'A' roads at 2.4 cycles per day. 
+On Trunk 'A' roads, zero cyclists were recorded at 34% of counts; many of these may represent locations on major national routes that are unsuitable for most cyclists. 
+
+The number of counts held on roads of different types also varies from year to year, although there is greater consistently in the decade 2010-2019 than in the previous decade.
 
 We further investigate cycle flows on different types of road. 
-For count points with continuous readings in the years 2010-2019, 75% are on 'C' and unclassified roads, 24% on 'B' roads, and less than 1% on principal or trunk 'A' roads. 
-By comparison, of all count points during these years, 47% of counts are on 'C' and unclassified roads, 14% on 'B' roads, 31% on principal 'A' roads and 8% on trunk 'A' roads.
 
-Of the road types studied, mean AADF is highest on Principal 'A' roads at 214 cycles per day, and lowest on Trunk 'A' roads at 2.4 cycles per day. 
-On Trunk 'A' roads, zero cyclists were recorded at 34% of counts; many of these may represent locations on major national routes that are unsuitable for most cyclists. 
-However, the increase in cycling uptake during the years 2010-2014 corresponds to counts from minor roads ('B', 'C' and unclassified roads). 
+
+
 
 <!-- Using all cycle count points in London over the years 2010-2019, we produced a GAM model with smooth terms for year, space, road category.... -->
 
@@ -151,11 +165,24 @@ knitr::include_graphics("./london_cas_2010-2019_roads.png")
 
 # Analysis of data on traffic calming
 
+[Which types of traffic calming measure to investigate]
+
+[The CID]
+
+[Measures to represent filtered permeability and Low Traffic Neighbourhoods]
+
 
 # Scenario development
 
 
 # Next steps
 
+Use our annual Local Authority level estimates of exposure and of collision rates to assess temporal and spatial changes in risk. 
+This is primarily analysed as KSI/bkm.
 
+Investigate the impact of traffic calming measures.
+
+Launch our scalable web application.
+
+[Look ]
 
