@@ -11,10 +11,9 @@
 #' @details The OpenSteetMap contains a lot of detail, this function subsets the
 #'   data to just the main roads used by cars by filtering on the highway tag.
 #' @examples
-#' \dontrun{
 #' region_name = "Isle of Wight"
+#' # osm = osmextract::oe_get(region_name) # test for IoW
 #' # region_name = "Greater London" # test for London
-#' # osm = osmextract::oe_get(region_name)
 #' osm = tc_data_osm
 #' osm_main = osm_main_roads(osm)
 #' nrow(osm)
@@ -22,7 +21,6 @@
 #' nrow(osm_main) / nrow(osm) # keeps ~10-25% of lines
 #' plot(osm$geometry, col = "grey")
 #' plot(osm_main$geometry, add = TRUE)
-#' }
 osm_main_roads = function(x, highway_values = c("primary","primary_link",
                                                 "secondary","secondary_link",
                                                 "tertiary","tertiary_link",
@@ -53,20 +51,17 @@ osm_main_roads = function(x, highway_values = c("primary","primary_link",
 #'   example a 600m road will not be split, but a 1100m road will be split into
 #'   approximately 500m segments when `segment = 500`.
 #' @examples
-#' \dontrun{
-#' region_name = "Isle of Wight"
-#' # region_name = "Greater London" # test for London
-#' osm = osmextract::oe_get(region_name, extra_tags = c("ref", "maxspeed", "bicycle"))
-#' osm = osm_main_roads(osm)
+#' osm = osm_main_roads(tc_data_osm)
 #' x = sf::st_transform(osm, 27700)
-#' osm_consolidated = osm_consolidate(x)
-#' nrow(x) / nrow(osm_consolidated)
-#' osm_consolidated_1000m = osm_consolidate(x, segment = 1000)
-#' nrow(x) / nrow(osm_consolidated_1000m)
 #' osm_consolidated_200m = osm_consolidate(x, segment = 200)
-#' nrow(x) / nrow(osm_consolidated_200m)
-#' }
-#'
+#' nrow(x)
+#' nrow(osm_consolidated_200m) / nrow(x) # fewer lines
+#' table(x$name)
+#' table(osm_consolidated_200m$name)
+#' plot(x$geometry, col = 1:nrow(x))
+#' plot(osm_consolidated_200m$geometry, col = 1:nrow(osm_consolidated_200m))
+#' summary(sf::st_length(x))
+#' summary(sf::st_length(osm_consolidated_200m))
 osm_consolidate = function(x, segment = 500){
   if(sf::st_is_longlat(x)){
     stop("Must use projected coordinates")
