@@ -51,6 +51,7 @@ osm_main_roads = function(x, highway_values = c("primary","primary_link",
 #'   example a 600m road will not be split, but a 1100m road will be split into
 #'   approximately 500m segments when `segment = 500`.
 #' @examples
+#' library(sf)
 #' osm = osm_main_roads(tc_data_osm)
 #' x = sf::st_transform(osm, 27700)
 #' osm_consolidated_200m = osm_consolidate(x, segment = 200)
@@ -104,6 +105,7 @@ osm_consolidate = function(x, segment = 500){
 #' @details This function finds all junction points in a road network, i.e.
 #'   where two roads meet. It excludes road crossings e.g. bridges.
 #' @examples
+#' library(sf)
 #' x = osm_main_roads(tc_data_osm)
 #' junctions = osm_get_junctions(x)
 #' plot(x$geometry, col = "grey")
@@ -407,7 +409,7 @@ line_segment_sf = function(l, n_segments, segment_length = NA) {
   geom = unlist(geom, recursive = FALSE)
   geom = sf::st_as_sfc(geom)
 
-  st_geometry(attrib) = geom
+  sf::st_geometry(attrib) = geom
   sf::st_crs(attrib) = sf::st_crs(l)
 
   return(attrib)

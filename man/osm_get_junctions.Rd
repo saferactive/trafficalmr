@@ -20,6 +20,7 @@ This function finds all junction points in a road network, i.e.
 where two roads meet. It excludes road crossings e.g. bridges.
 }
 \examples{
+library(sf)
 x = osm_main_roads(tc_data_osm)
 junctions = osm_get_junctions(x)
 plot(x$geometry, col = "grey")

@@ -28,6 +28,7 @@ example a 600m road will not be split, but a 1100m road will be split into
 approximately 500m segments when \code{segment = 500}.
 }
 \examples{
+library(sf)
 osm = osm_main_roads(tc_data_osm)
 x = sf::st_transform(osm, 27700)
 osm_consolidated_200m = osm_consolidate(x, segment = 200)
