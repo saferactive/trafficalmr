@@ -30,7 +30,7 @@ This report outlines progress on the SaferActive project since the 1st report's 
 Overall we have been working on the following areas:
 
 - Development of the trafficalmr R package, adding functionality for cleaning and visualising road crash data (see [saferactive.github.io/trafficalmr](https://saferactive.github.io/trafficalmr) for details)
-- Collecting and analysing data on cycling levels from the DfT's traffic count data, recently updated to include 2019 data and undertaking spatio-temporal analysis of cycling resulting from these estimates
+- Collecting and analysing data on cycling levels from the DfT's traffic count data, recently updated to include 2019 data and undertaking spatio-temporal analysis of cycling resulting from these estimates, building on our work in Report 1 (Section [8](https://saferactive.github.io/trafficalmr/articles/report1.html#analysis)), which provided geographic estimates of cycling uptake.
 - Developing new methods for the geographic analysis and visualisation of road safety outcomes
 - Exploring additional datasets to use as 'explanatory variables' to assess the impacts of different interventions
 
@@ -40,13 +40,13 @@ One of the objectives of the project was to develop software to enable access to
 We have progressed with the development of the `trafficalmr` package for reproducible road safety analysis, supporting the project and other projects on road safety.
 We would like feedback from stakeholders: is it easy to use? what additional functionality would you like to see? The list of functions provided by the package can be found here: https://saferactive.github.io/trafficalmr/reference/index.html
 
-# Temporal analysis
+# Analysis of cycle counter data
 
-We analysed the DfT's manual traffic count data to explore its potential to provide estimates of the geographic distribution of cycling uptake over time.
-
+We analysed the DfT's manual traffic count data to explore its potential to provide estimates of the spatio-teamporal estimates of cycling levels --- measured in km (or billion km, bkm, for compatibility with international road safety research) cycled per year --- over time.
 A key component of this work was the expansion of the geographical scope from our London case study, to cover the whole of England, Wales and Scotland.
 
 Over the period 2000-2019, there is an uneven number of locations where annual average daily flow (AADF) estimates are available, as shown in Figure \@ref(fig:aadf-counts-per-year).
+
 
 ```{r aadf-counts-per-year, fig.cap="AADF counts per year in the DfT's traffic counter dataset (left), and the number of annual surveys per count location (right)", out.width="49%", fig.show='hold'}
 knitr::include_graphics(c(
