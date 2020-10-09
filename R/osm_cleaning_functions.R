@@ -109,7 +109,7 @@ osm_consolidate = function(x, segment = 500){
 #' plot(x$geometry, col = "grey")
 #' plot(junctions, add = TRUE)
 osm_get_junctions = function(x){
-  points = sf::st_cast(x,"MULTIPOINT")
+  points = sf::st_cast(x, "MULTIPOINT")
   points = points$geometry
   points = sf::st_cast(points,"POINT")
   # TO be a junction their must be duplication of points

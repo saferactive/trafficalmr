@@ -1,5 +1,6 @@
 utils::globalVariables(
   c(
+    "tc_data_osm",
     "accident_index",
     "vehicle_type_simple",
     "vehicle_type_simple",

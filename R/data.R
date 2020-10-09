@@ -63,6 +63,8 @@ NULL
 #'  filter(!is.na(highway))
 #' mapview::mapview(tc_data_osm)
 #' object.size(tc_data_osm) / 1e6 # ~0.5MB
-#' usethis::use_data(tc_data_osm)
+#' class(tc_data_osm)
+#' class(tc_data_osm$geometry)
+#' usethis::use_data(tc_data_osm, overwrite = TRUE)
 #' }
 NULL
