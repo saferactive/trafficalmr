@@ -14,15 +14,15 @@
 #' \dontrun{
 #' region_name = "Isle of Wight"
 #' # region_name = "Greater London" # test for London
-#' osm = osmextract::oe_get(region_name)
+#' # osm = osmextract::oe_get(region_name)
+#' osm = tc_data_osm
 #' osm_main = osm_main_roads(osm)
 #' nrow(osm)
 #' nrow(osm_main)
-#' nrow(osm_main) / nrow(osm) # keeps ~10% of lines
-#' plot(osm$geometry, col = "grey", xlim = c(-1.59, -1.1), ylim = c(50.5, 50.8))
+#' nrow(osm_main) / nrow(osm) # keeps ~10-25% of lines
+#' plot(osm$geometry, col = "grey")
 #' plot(osm_main$geometry, add = TRUE)
 #' }
-#'
 osm_main_roads = function(x, highway_values = c("primary","primary_link",
                                                 "secondary","secondary_link",
                                                 "tertiary","tertiary_link",
@@ -51,7 +51,7 @@ osm_main_roads = function(x, highway_values = c("primary","primary_link",
 #'   Note: to avoid splitting short roads, roads are only split once they are 2x
 #'   `segment`, but are then splits into lengths as defined by `segment`. For
 #'   example a 600m road will not be split, but a 1100m road will be split into
-#'   approximately 500m segments.
+#'   approximately 500m segments when `segment = 500`.
 #' @examples
 #' \dontrun{
 #' region_name = "Isle of Wight"
@@ -60,8 +60,11 @@ osm_main_roads = function(x, highway_values = c("primary","primary_link",
 #' osm = osm_main_roads(osm)
 #' x = sf::st_transform(osm, 27700)
 #' osm_consolidated = osm_consolidate(x)
-#' osm_consolidated_1000m = osm_consolidate(x, segment = 1000)
 #' nrow(x) / nrow(osm_consolidated)
+#' osm_consolidated_1000m = osm_consolidate(x, segment = 1000)
+#' nrow(x) / nrow(osm_consolidated_1000m)
+#' osm_consolidated_200m = osm_consolidate(x, segment = 200)
+#' nrow(x) / nrow(osm_consolidated_200m)
 #' }
 #'
 osm_consolidate = function(x, segment = 500){
@@ -107,7 +110,13 @@ osm_consolidate = function(x, segment = 500){
 #'   where two roads meet. It excludes road crossings e.g. bridges.
 #' @examples
 #' \dontrun{
-#' junctions = osm_get_junctions(osm)
+#' region_name = "Isle of Wight"
+#' # region_name = "Greater London" # test for London
+#' osm = osmextract::oe_get(region_name, extra_tags = c("ref", "maxspeed", "bicycle"))
+#' x = osm_main_roads(osm)
+#' junctions = osm_get_junctions(x)
+#' plot(x$geometry, col = "grey", xlim = c(-1.59, -1.1), ylim = c(50.5, 50.8))
+#' plot(junctions, add = TRUE)
 #' }
 #'
 osm_get_junctions = function(x){
@@ -139,7 +148,12 @@ osm_get_junctions = function(x){
 #'   junction clusters and the junction points.
 #' @examples
 #' \dontrun{
+#' region_name = "Isle of Wight"
+#' # region_name = "Greater London" # test for London
+#' osm = osmextract::oe_get(region_name, extra_tags = c("ref", "maxspeed", "bicycle"))
+#' plot(osm$geometry, col = "grey", xlim = c(-1.59, -1.1), ylim = c(50.5, 50.8))
 #' junctions = osm_get_junctions(osm)
+#' plot(junctions, add = TRUE)
 #' }
 #'
 cluster_junction = function(x, dist = 15){
