@@ -2,12 +2,18 @@
 % Please edit documentation in R/osm_cleaning_functions.R
 \name{osm_get_junctions}
 \alias{osm_get_junctions}
+\alias{osm_get_junctions2}
 \title{Extract junction points from OSM road linestrings}
 \usage{
 osm_get_junctions(x)
+
+osm_get_junctions2(x, overline = TRUE)
 }
 \arguments{
 \item{x}{a SF data frame of OSM linestrings}
+
+\item{overline}{should the route network be pre-processed with the overline
+function?}
 }
 \value{
 Returns an SF data frame of POINTS
@@ -23,6 +29,7 @@ where two roads meet. It excludes road crossings e.g. bridges.
 library(sf)
 x = osm_main_roads(tc_data_osm)
 junctions = osm_get_junctions(x)
+junctions2 = osm_get_junctions2(x)
 plot(x$geometry, col = "grey")
 plot(junctions, add = TRUE)
 }
