@@ -1,5 +1,9 @@
 utils::globalVariables(
   c(
+    "highway",
+    "name",
+    "ref",
+    "tc_data_osm",
     "accident_index",
     "vehicle_type_simple",
     "vehicle_type_simple",
@@ -8,6 +12,8 @@ utils::globalVariables(
     "type",
     "is_present",
     "intersection",
-    "accident_severity"
+    "accident_severity",
+    "X",
+    "Y"
   )
 )
