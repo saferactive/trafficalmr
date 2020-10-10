@@ -28,6 +28,7 @@ osm_main_roads = function(x, highway_values = c("primary","primary_link",
                                                 "motorway","motorway_link",
                                                 "unclassified","residential",
                                                 "road","mini_roundabout")){
+  requireNamespace("sf")
   x = x[!is.na(x$highway),]
   x = x[x$highway %in% highway_values,]
   x
@@ -114,6 +115,7 @@ osm_consolidate = function(x, segment = 500){
 #'   where two roads meet. It excludes road crossings e.g. bridges.
 #' @examples
 #' x = osm_main_roads(tc_data_osm)
+#' class(x$geometry)
 #' junctions = osm_get_junctions(x)
 #' boundary_points = stplanr::rnet_get_nodes(x)
 #' summary(duplicated(boundary_points))

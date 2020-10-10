@@ -30,6 +30,7 @@ where two roads meet. It excludes road crossings e.g. bridges.
 }
 \examples{
 x = osm_main_roads(tc_data_osm)
+class(x$geometry)
 junctions = osm_get_junctions(x)
 boundary_points = stplanr::rnet_get_nodes(x)
 summary(duplicated(boundary_points))
