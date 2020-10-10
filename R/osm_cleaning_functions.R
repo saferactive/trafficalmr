@@ -100,6 +100,10 @@ osm_consolidate = function(x, segment = 500){
 #' @param x a SF data frame of OSM linestrings
 #' @param overline should the route network be pre-processed with the overline
 #' function?
+#' @param method which method to use? The default, "stplanr" uses the
+#' `rnet_breakup_vertices()` function in the stplanr package.
+#' An alternative method, "duplicated", is simpler but returns junctions on
+#' straight road sections, e.g. where a road name changes.
 #' @export
 #' @family OSM
 #' @return Returns an SF data frame of POINTS
@@ -110,36 +114,35 @@ osm_consolidate = function(x, segment = 500){
 #' library(sf)
 #' x = osm_main_roads(tc_data_osm)
 #' junctions = osm_get_junctions(x)
-#' junctions2 = osm_get_junctions2(x)
+#' boundary_points = stplanr::rnet_get_nodes(x)
+#' summary(duplicated(boundary_points))
+#' junctions2 = osm_get_junctions(x, method = "duplicates")
 #' length(junctions)
 #' length(junctions2)
 #' plot(x$geometry, col = "grey")
 #' plot(junctions, add = TRUE)
 #' plot(junctions2, add = TRUE, col = "red", cex = 0.5)
-osm_get_junctions = function(x){
-  # points = sf::st_cast(x, "MULTIPOINT")
-  # nrow(points) # 125
-  # points = points$geometry
-  # points = sf::st_cast(points,"POINT")
-  # length(points) # 542
-  points = sf::st_cast(x, "POINT")$geometry
-  nrow(points) # 542
-  # TO be a junction their must be duplication of points
-  dup = duplicated(points)
-  points = points[dup]
-  # But we only want on version of the junction
-  dup = duplicated(points)
-  points = points[!dup]
-  return(points)
-}
-
-#' @rdname osm_get_junctions
-#' @export
-osm_get_junctions2 = function(x, overline = FALSE) {
+osm_get_junctions = function(x, method = "stplanr", overline = FALSE){
   if(overline) {
     x$attrib = 1
     x = stplanr::overline(x, "attrib")
   }
+  if(method == "duplicates") {
+    # points = sf::st_cast(x, "MULTIPOINT")
+    # nrow(points) # 125
+    # points = points$geometry
+    # points = sf::st_cast(points,"POINT")
+    points = sf::st_cast(x, "POINT")$geometry
+    # length(points) # 542
+    # TO be a junction their must be duplication of points
+    dup = duplicated(points)
+    points = points[dup]
+    # But we only want on version of the junction
+    dup = duplicated(points)
+    points = points[!dup]
+    return(points)
+  }
+
   rnet_vertices = stplanr::rnet_breakup_vertices(x)
   nrow(rnet_vertices) / nrow(x) # vertices have been added...
   boundaries = stplanr::line2points(rnet_vertices)
@@ -147,9 +150,10 @@ osm_get_junctions2 = function(x, overline = FALSE) {
   boundaries_n = dplyr::summarise(dplyr::group_by(boundaries_df, X, Y), n = dplyr::n())
   junction_df = boundaries_n[boundaries_n$n >= 3, ]
   nrow(junction_df) / nrow(x)
-  sf::st_as_sf(junction_df, coords = c("X", "Y"), crs = sf::st_crs(x))
-  # plot(rnet_vertices)
+  points = sf::st_as_sf(junction_df, coords = c("X", "Y"), crs = sf::st_crs(x))
+  return(points$geometry)
 }
+
 #' Cluster junction points into polygons
 #'
 #' @param x a SF data frame of joints

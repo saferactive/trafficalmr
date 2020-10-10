@@ -2,15 +2,17 @@
 % Please edit documentation in R/osm_cleaning_functions.R
 \name{osm_get_junctions}
 \alias{osm_get_junctions}
-\alias{osm_get_junctions2}
 \title{Extract junction points from OSM road linestrings}
 \usage{
-osm_get_junctions(x)
-
-osm_get_junctions2(x, overline = TRUE)
+osm_get_junctions(x, method = "stplanr", overline = FALSE)
 }
 \arguments{
 \item{x}{a SF data frame of OSM linestrings}
+
+\item{method}{which method to use? The default, "stplanr" uses the
+\code{rnet_breakup_vertices()} function in the stplanr package.
+An alternative method, "duplicated", is simpler but returns junctions on
+straight road sections, e.g. where a road name changes.}
 
 \item{overline}{should the route network be pre-processed with the overline
 function?}
@@ -29,9 +31,14 @@ where two roads meet. It excludes road crossings e.g. bridges.
 library(sf)
 x = osm_main_roads(tc_data_osm)
 junctions = osm_get_junctions(x)
+boundary_points = stplanr::rnet_get_nodes(x)
+summary(duplicated(boundary_points))
 junctions2 = osm_get_junctions2(x)
+length(junctions)
+length(junctions2)
 plot(x$geometry, col = "grey")
 plot(junctions, add = TRUE)
+plot(junctions2, add = TRUE, col = "red", cex = 0.5)
 }
 \seealso{
 Other OSM: 
