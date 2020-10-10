@@ -145,6 +145,7 @@ osm_get_junctions = function(x, method = "stplanr", overline = FALSE){
     return(points)
   }
 
+  # browser()
   rnet_vertices = stplanr::rnet_breakup_vertices(x)
   nrow(rnet_vertices) / nrow(x) # vertices have been added...
   boundaries = stplanr::line2points(rnet_vertices)
@@ -180,6 +181,7 @@ osm_get_junctions = function(x, method = "stplanr", overline = FALSE){
 #' plot(junction_polygons_30, add = TRUE)
 #' plot(junction_polygons_15, add = TRUE)
 cluster_junction = function(x, dist = 15, nQuadSegs = 3){
+  # browser()
   if(sf::st_is_longlat(x)) {
     buff = stplanr::geo_buffer(x, dist = dist, nQuadSegs = nQuadSegs)
   } else {
@@ -294,10 +296,10 @@ nn_point = function(x, y, clusters = NULL){
   if(sf::st_is_longlat(y)){
     stop("y must use projected coordinates")
   }
-  if(!"sfc_POINT" %in% class(sf::st_geometry(x))){
+  if(unique(sf::st_geometry_type(x)) != "POINT"){
     stop("x must be POINT")
   }
-  if(!"sfc_POINT" %in% class(sf::st_geometry(y))){
+  if(unique(sf::st_geometry_type(y)) != "POINT"){
     stop("y must be POINT")
   }
   x = sf::st_coordinates(x)
@@ -320,7 +322,6 @@ nn_point = function(x, y, clusters = NULL){
   result = list(cluster_index = indx_clus,
                  distance = dist)
   return(result)
-
 
 }
 
@@ -352,11 +353,11 @@ nn_line = function(point, lines, k = 50, ncores = 1){
   if(sf::st_is_longlat(lines)){
     stop("lines must use projected coordinates")
   }
-  if(!"sfc_POINT" %in% class(sf::st_geometry(point))){
+  if(unique(sf::st_geometry_type(point)) != "POINT"){
     stop("point must be POINT")
   }
-  lines = sf::st_geometry(lines)
-  point = sf::st_geometry(point)
+  lines = lines$geometry
+  point = point$geometry
   cents = sf::st_centroid(lines)
   cents = sf::st_coordinates(cents)
   message(paste0(Sys.time()," finding approximate distance for nearest ",k," centroids"))
