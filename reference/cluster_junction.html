@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ge traffic calming measures for an area from OSM — tc_traffic_calming • trafficalmr</title>
+<title>Cluster junction points into polygons — cluster_junction • trafficalmr</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,8 @@
 
 
 
-<meta property="og:title" content="Ge traffic calming measures for an area from OSM — tc_traffic_calming" />
-<meta property="og:description" content="Use osmextract to get the roads and then filter on other_tags
-with keyword traffic_calming
-(see OSM Wiki).
-Currently it only takes the place argument." />
+<meta property="og:title" content="Cluster junction points into polygons — cluster_junction" />
+<meta property="og:description" content="Cluster junction points into polygons" />
 
 
 
@@ -126,48 +123,64 @@ Currently it only takes the place argument." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Ge traffic calming measures for an area from OSM</h1>
-    <small class="dont-index">Source: <a href='https://github.com/saferactive/trafficalmr/blob/master/R/tc_traffic_calming.R'><code>R/tc_traffic_calming.R</code></a></small>
-    <div class="hidden name"><code>tc_traffic_calming.Rd</code></div>
+    <h1>Cluster junction points into polygons</h1>
+    <small class="dont-index">Source: <a href='https://github.com/saferactive/trafficalmr/blob/master/R/osm_cleaning_functions.R'><code>R/osm_cleaning_functions.R</code></a></small>
+    <div class="hidden name"><code>cluster_junction.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Use <code>osmextract</code> to get the roads and then filter on <code>other_tags</code>
-with keyword <code>traffic_calming</code>
-(see <a href='https://wiki.openstreetmap.org/wiki/Key:traffic_calming'>OSM Wiki</a>).
-Currently it only takes the <code>place</code> argument.</p>
+    <p>Cluster junction points into polygons</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tc_traffic_calming</span><span class='op'>(</span>place <span class='op'>=</span> <span class='cn'>NULL</span>, convert_to_points <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>cluster_junction</span><span class='op'>(</span><span class='va'>x</span>, dist <span class='op'>=</span> <span class='fl'>15</span>, nQuadSegs <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>place</th>
-      <td><p>Geographic name or coordinates as per <code>osmextract</code>
-function <code>oe_get</code>.</p></td>
+      <th>x</th>
+      <td><p>a SF data frame of joints</p></td>
     </tr>
     <tr>
-      <th>convert_to_points</th>
-      <td><p>Should linestring geometries be converted to points?
-<code>FALSE</code> by default.</p></td>
+      <th>dist</th>
+      <td><p>buffer distance past to sf::st_buffer</p></td>
+    </tr>
+    <tr>
+      <th>nQuadSegs</th>
+      <td><p>how many segments per quatrant? 5 is the default.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Returns an SF data frame of POLYGONS</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function clusters points together and defines junction
+polygons, the size of the polygons is dictated by <code>dist</code>. For single
+junction points a circle around the junction point is returned. For
+clustered junctions a polygon enclosing the whole junction area is
+returned. A column called junction_ids provides a looup list between the
+junction clusters and the junction points.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other OSM: 
+<code><a href='line_segment_sf.html'>line_segment_sf</a>()</code>,
+<code><a href='nn_line.html'>nn_line</a>()</code>,
+<code><a href='nn_point.html'>nn_point</a>()</code>,
+<code><a href='osm_consolidate.html'>osm_consolidate</a>()</code>,
+<code><a href='osm_get_junctions.html'>osm_get_junctions</a>()</code>,
+<code><a href='osm_main_roads.html'>osm_main_roads</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>tc_interventions</span> <span class='op'>=</span> <span class='fu'>tc_traffic_calming</span><span class='op'>(</span><span class='st'>"Isle of Wight"</span><span class='op'>)</span>
-<span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>tc_interventions</span><span class='op'>)</span>
-<span class='va'>tc_interventions</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>tc_interventions</span><span class='op'>$</span><span class='va'>geometry</span><span class='op'>)</span> <span class='co'># points and lines in there</span>
-<span class='va'>tc_points</span> <span class='op'>=</span> <span class='fu'>tc_traffic_calming</span><span class='op'>(</span><span class='st'>"Isle of Wight"</span>, convert_to_points <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>tc_points</span><span class='op'>$</span><span class='va'>geometry</span><span class='op'>)</span> <span class='co'># points only</span>
-<span class='va'>tc_wy</span> <span class='op'>=</span> <span class='fu'>tc_traffic_calming</span><span class='op'>(</span><span class='st'>"West Yorkshire"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>tc_wy</span><span class='op'>$</span><span class='va'>traffic_calming</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='osm_main_roads.html'>osm_main_roads</a></span><span class='op'>(</span><span class='va'>tc_data_osm</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: sf</span></div><div class='input'><span class='va'>junctions</span> <span class='op'>=</span> <span class='fu'><a href='osm_get_junctions.html'>osm_get_junctions</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Linking to GEOS 3.8.1, GDAL 3.1.1, PROJ 6.3.1</span></div><div class='output co'>#&gt; <span class='message'>Splitting rnet object at the shared boundary points.</span></div><div class='input'><span class='va'>junction_polygons_15</span> <span class='op'>=</span> <span class='fu'>cluster_junction</span><span class='op'>(</span><span class='va'>junctions</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='output co'>#&gt; <span class='message'>Clustering 50 junctions</span></div><div class='output co'>#&gt; <span class='message'>Creating 35 geometries</span></div><div class='input'><span class='va'>junction_polygons_30</span> <span class='op'>=</span> <span class='fu'>cluster_junction</span><span class='op'>(</span><span class='va'>junctions</span>, dist <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersects assumes that they are planar</span></div><div class='output co'>#&gt; <span class='message'>Clustering 50 junctions</span></div><div class='output co'>#&gt; <span class='message'>Creating 22 geometries</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>geometry</span>, col <span class='op'>=</span> <span class='st'>"grey"</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>junction_polygons_30</span>, add <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: ignoring all but the first attribute</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>junction_polygons_15</span>, add <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: ignoring all but the first attribute</span></div><div class='img'><img src='cluster_junction-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
