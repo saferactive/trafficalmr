@@ -28,12 +28,11 @@ This function finds all junction points in a road network, i.e.
 where two roads meet. It excludes road crossings e.g. bridges.
 }
 \examples{
-library(sf)
 x = osm_main_roads(tc_data_osm)
 junctions = osm_get_junctions(x)
 boundary_points = stplanr::rnet_get_nodes(x)
 summary(duplicated(boundary_points))
-junctions2 = osm_get_junctions2(x)
+junctions2 = osm_get_junctions(x, method = "duplicates")
 length(junctions)
 length(junctions2)
 plot(x$geometry, col = "grey")

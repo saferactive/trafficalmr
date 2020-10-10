@@ -111,7 +111,6 @@ osm_consolidate = function(x, segment = 500){
 #' @details This function finds all junction points in a road network, i.e.
 #'   where two roads meet. It excludes road crossings e.g. bridges.
 #' @examples
-#' library(sf)
 #' x = osm_main_roads(tc_data_osm)
 #' junctions = osm_get_junctions(x)
 #' boundary_points = stplanr::rnet_get_nodes(x)
@@ -123,6 +122,7 @@ osm_consolidate = function(x, segment = 500){
 #' plot(junctions, add = TRUE)
 #' plot(junctions2, add = TRUE, col = "red", cex = 0.5)
 osm_get_junctions = function(x, method = "stplanr", overline = FALSE){
+  requireNamespace(sf)
   if(overline) {
     x$attrib = 1
     x = stplanr::overline(x, "attrib")

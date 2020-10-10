@@ -12,6 +12,8 @@ utils::globalVariables(
     "type",
     "is_present",
     "intersection",
-    "accident_severity"
+    "accident_severity",
+    "X",
+    "Y"
   )
 )
