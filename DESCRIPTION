@@ -34,7 +34,13 @@ Imports:
     tidyr,
     ComplexUpset,
     sf,
-    osmextract (>= 0.1.0)
+    osmextract (>= 0.1.0),
+    pbapply,
+    progress,
+    lwgeom,
+    nabor,
+    purrr,
+    stplanr
 RoxygenNote: 7.1.1
 Suggests: 
     covr,

@@ -37,3 +37,34 @@ NULL
 #' vehicles = vehicles_wf
 #' }
 NULL
+
+#' Example OSM dataset
+#'
+#' @docType data
+#' @keywords datasets
+#' @name tc_data_osm
+#' @examples
+#' \dontrun{
+#' library(dplyr)
+#' library(sf)
+#' library(osmextract)
+#' osm_lines = oe_get("Greater London", extra_tags = c("ref", "maxspeed", "bicyle", "traffic_calming"))
+#' names(osm_lines)
+#' stamford = osm_lines %>%
+#'  filter(name == "Stamford Street")
+#' stamford_buffer = stamford %>%
+#'  sf::st_union() %>%
+#'  stplanr::geo_buffer(dist = 200)
+#' mapview::mapview(stamford_buffer)
+#' osm_case_study = osm_lines[stamford_buffer, , op = sf::st_within]
+#' table(osm_case_study$highway)
+#' table(osm_case_study$traffic_calming)
+#' tc_data_osm = osm_case_study %>%
+#'  filter(!is.na(highway))
+#' mapview::mapview(tc_data_osm)
+#' object.size(tc_data_osm) / 1e6 # ~0.5MB
+#' class(tc_data_osm)
+#' class(tc_data_osm$geometry)
+#' usethis::use_data(tc_data_osm, overwrite = TRUE)
+#' }
+NULL
