@@ -97,6 +97,8 @@ osm_consolidate = function(x, segment = 500){
 
 #' Extract junction points from OSM road linestrings
 #'
+#' Gets junction points from route networks, building on functions in the
+#' `stplanr` package: https://github.com/ropensci/stplanr/blob/master/R/rnet-clean.R
 #' @param x a SF data frame of OSM linestrings
 #' @param overline should the route network be pre-processed with the overline
 #' function?
@@ -122,7 +124,7 @@ osm_consolidate = function(x, segment = 500){
 #' plot(junctions, add = TRUE)
 #' plot(junctions2, add = TRUE, col = "red", cex = 0.5)
 osm_get_junctions = function(x, method = "stplanr", overline = FALSE){
-  requireNamespace(sf)
+  requireNamespace("sf")
   if(overline) {
     x$attrib = 1
     x = stplanr::overline(x, "attrib")

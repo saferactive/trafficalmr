@@ -21,7 +21,8 @@ function?}
 Returns an SF data frame of POINTS
 }
 \description{
-Extract junction points from OSM road linestrings
+Gets junction points from route networks, building on functions in the
+\code{stplanr} package: https://github.com/ropensci/stplanr/blob/master/R/rnet-clean.R
 }
 \details{
 This function finds all junction points in a road network, i.e.
