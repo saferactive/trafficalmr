@@ -113,6 +113,16 @@ We then calculated the mean of these values for each Local Authority and year, a
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/change-by-la.png")
 ```
 
+The results presented in Figure \@ref(la-change) can also be represented as an animated map, as shown in Figure \@ref(fig:la-gif).
+This provides an approximation of the relative change in cycling levels compared the the 2011 baseline, for which we have good data from the 2011 Census.
+The results shown if Figure \@ref(fig:la-gif) show that, according to DfT's seasonally adjusted 'AADF' (annual average daily flow) dataset dataset, cycling has tended to grow in densly populated, cosmopolitan areas such as London (especially central north London boroughs), Bristol, Manchester and Leeds.
+
+<!-- Todo: add link to interactive map. -->
+
+```{r la-gif, fig.cap="Animated map showing change in cycling levels relative to 2011 baseline."}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/la-multipliers.gif")
+```
+
 ## General Additive Models of AADF 
 
 General Additive Models were chosen for their flexibility to accommodate non-linear trends in spatial and temporal variables, and the ability to include random effects within the model.
@@ -207,17 +217,26 @@ knitr::include_graphics(c(
 ))
 ```
 
-# Analysis of data on traffic calming
+<!-- # Analysis of data on traffic calming -->
 
-[Which types of traffic calming measure to investigate]
+<!-- [Which types of traffic calming measure to investigate] -->
 
-[The CID]
+<!-- [The CID] -->
 
-[Measures to represent filtered permeability and Low Traffic Neighbourhoods]
-
+<!-- [Measures to represent filtered permeability and Low Traffic Neighbourhoods] -->
 
 # Scenario development
 
+We have considered a range of scenarios that we plan to implement in the next months.
+These are at a conceptual but each could be implemented based on the data we have.
+Scenarios could be implemented either as area-wide interventions or (more challenging) as specific intervention on specific roads (e.g. Chapletown Road in Leeds becomes one way for motor traffic freeing-up space for a 2 way cycleway and increased space for walking).
+
+- Traffic calming: the creation of traffic calming interventions of the type seen in the CID
+- 20s Plenty: The roll-out of 20 mph zones in areas and local authorities
+- Cycleways: The construction of protected cycleways in an area
+- Low traffic: Reduction in traffic, e.g. due to congestion charge
+- Oneway streets: the conversion of roads from 2 way to one way streets, e.g. as done in Torrington place
+- LTNs: If every residential zone was a Low Traffic Neighbourhood
 
 # Next steps
 
