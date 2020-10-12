@@ -180,7 +180,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferacti
 
 # Geographic data analysis
 
-Building on methods we initially developed for the [CyIPT](https://www.cyipt.bike/) project, we have developed new techniques for allocating crashes to features on the road network, such as junctions and road sections.
+Building on methods we initially developed for the [CyIPT](https://www.cyipt.bike/) project, we developed new techniques for allocating crashes to features on the road network, such as junctions and road sections.
 Preliminary results comparing CyIPT results and results from this project are shown in Figure \@ref(fig:cyipt-crash).
 
 ```{r cyipt-crash, fig.cap="CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right).", out.width="40%", fig.show='hold', echo=FALSE}
@@ -196,9 +196,33 @@ The objective of this part of the project is to increase to measure to level of 
 The first stage of the process is to separate crashes which occurred at junctions, and those that did not.  Junctions are a known “hotspot” for collisions thus should be treated separately from roads in general.  Fortunately the stats19 data indicated whether a collision occurred at or near a junction.
 The second stage of the process it to simplify the road and junction network for analysis.  This is a complex multistage process, but the overall objective is to reduce the road network so simple an easily comprehensible from by excluding and aggregating unnecessary details. For example, a single road will be represented within the OpenStreetMap as many geometries. For our purposes, a single line representing the main centreline of the road is sufficient. Thus small details just a turning lanes, or alleyways are removed and road segments are combined into a single linestring.  Road segments are grouped by road name and reference allowing for “human legible” road units to be constructed. In the case of very long roads (over 1km) roads are broken into 500m sections.
 
-Junctions are similarly simplified.  Firstly, all junction points are extracted from the OSM. Junction points are then clustered together to reflect how we naturally think about junctions.  For example, a roundabout is a single large junction not 4 - 10 small junctions arranged in a circle. Here a balance has to be struck between making the clusters large enough that big complex junctions are grouped together, while not being so large that densely packed urban streets become a single super-junction. We found a 15 metre buffer to be the optimal size for coalescing junction clusters.
+Junctions are similarly simplified in a three stage process:
 
-The third stage is to associate the point crash data with the appropriate road or junction. Here we had to balance accuracy against performance.  Measuring the distance between every crash and every road would take an inordinate about of time.  Thus we must use cleaver shortcuts to reduce to computational load without risking incorrectly matching crashed and roads.
+1. All junction points are extracted from the input data (OSM in the case study example).
+2. Junction points are clustered together to reflect how we naturally think about junctions.  For example, a roundabout is a single large junction not 4 - 10 small junctions arranged in a circle. Here a balance has to be struck between making the clusters large enough that big complex junctions are grouped together, while not being so large that densely packed urban streets become a single super-junction.
+We found a 15 metre buffer diameter to work well for coalescing junction clusters when focussing on relatively small case study areas (e.g. a single small local authority) and 30 m diameter for a larger study region (e.g. all or London), as shown in Figure \@ref(fig:junctions).
+1. Associate the point crash data with the appropriate road or junction. Here we had to balance accuracy against performance.  Measuring the distance between every crash and every road would take an inordinate about of time.  We developed a computationally efficient solution, documented in the script [`osm_cleaning.R`](https://github.com/saferactive/saferactive/blob/master/code/osm_cleaning.R).
+
+A reproducible example showing how the junction identification method works is shown in the code chunk below, which starts by installing the `trafficalmr` package and uses a number of other functions developed for this project:
+
+```r
+remotes::install_github("saferactive/trafficalmr")
+```
+
+```{r, echo=TRUE, message=FALSE}
+library(trafficalmr)
+road_data = tc_data_osm
+nrow(tc_data_osm)
+road_data_major = trafficalmr::osm_main_roads(road_data)
+nrow(road_data_major) # find the main roads
+road_data_junctions = osm_get_junctions(road_data_major)
+road_data_clusters = cluster_junction(road_data_junctions, dist = 30)
+plot(road_data$geometry, col = "grey")
+plot(road_data_clusters, add = TRUE)
+plot(road_data_junctions, add = TRUE)
+plot(road_data_major$geometry, col = "black", add = TRUE)
+```
+
 
 Once matching is completed is it possible to map the number of crashes or casualties for each road and junction over the last 10 years.
 
@@ -206,11 +230,10 @@ Once matching is completed is it possible to map the number of crashes or casual
 knitr::include_graphics("./london_cas_2010-2019_roads.png")
 ```
 
-The definition of a 'junction' depends on a number of factors, including the way that junctions are represented in the input data and, when aggregagating nearby junction entities e.g. on a roundabout, the threshold distance beyond which two junctions are treated separately.
+The definition of a 'junction' depends on a number of factors, including the way that junctions are represented in the input data and, when aggregating nearby junction entities e.g. on a roundabout, the threshold distance beyond which two junctions are treated separately.
 To do this in a reproducible way, the `osm_get_junctions()` function was developed, details of which can be found on the trafficalmr website at [saferactive.github.io/trafficalmr](https://saferactive.github.io/trafficalmr/reference/osm_get_junctions.html).
 The `cluster_junctions()` function was developed to cluster junctions.
 Different geographic approaches for defining junctions using OSM data as an input are shown in Figure \@ref(fig:junctions).
-
 
 
 ```{r junctions, fig.cap="Junction clustering with 15m and 30m threshold distances (top) and illustration of an edge case in OSM data where junctions are not represented by a shared node (bottom)", out.width="100%", fig.show='hold'}
