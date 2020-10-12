@@ -192,6 +192,9 @@ Once matching is completed is it possible to map the number of crashes or casual
 knitr::include_graphics("./london_cas_2010-2019_roads.png")
 ```
 
+The definition of a 'junction' depends on a number of factors, including the way that junctions are represented in the input data and, when aggregagating nearby junction entities e.g. on a roundabout, the threshold distance beyond which two junctions are treated separately.
+To do this in a reproducible way, the `osm_get_junctions()` function was developed, details of which can be found on the trafficalmr website at [saferactive.github.io/trafficalmr](https://saferactive.github.io/trafficalmr/reference/osm_get_junctions.html).
+
 
 # Analysis of data on traffic calming
 
