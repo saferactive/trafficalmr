@@ -224,7 +224,7 @@ A reproducible example showing how the junction identification method works is s
 remotes::install_github("saferactive/trafficalmr")
 ```
 
-```{r, echo=TRUE, message=FALSE, fig.cap="Illustration of junction identification and OSM data cleaning methods."}
+```{r, echo=TRUE, message=FALSE, fig.cap="Illustration of junction identification and OSM data cleaning methods.", out.width="100%"}
 library(trafficalmr)
 road_data = tc_data_osm
 nrow(tc_data_osm)
@@ -289,6 +289,16 @@ This is primarily analysed as KSI/bkm.
 - Validate the cycle count-based exposure estimates, by comparing DfT counters with TfL counters for the years 2015-2019, for which TfL data are available.
 - Develop case studies of the impact of various traffic calming or road safety measures, and use these to illuminate the scenarios described in the previous section.
 - Launch our scalable web application.
+
+<!-- Questions: -->
+
+<!-- General comments about direction of travel? -->
+
+<!-- Are there any other good sources of cycling/walking uptake data that you know of? -->
+
+<!-- We've asked colleagues in the DfT for data on DfT funded interventions, any way to help access that data from Guy's team? -->
+
+<!-- What do they see as the most important scenarios to consider? -->
 
 # References
 
