@@ -263,7 +263,15 @@ Figure 10: Preliminary maps of London roads showing number of casualties over th
 </p>
 </div>
 <p>The definition of a ‘junction’ depends on a number of factors, including the way that junctions are represented in the input data and, when aggregagating nearby junction entities e.g. on a roundabout, the threshold distance beyond which two junctions are treated separately.
-To do this in a reproducible way, the <code><a href="../reference/osm_get_junctions.html">osm_get_junctions()</a></code> function was developed, details of which can be found on the trafficalmr website at <a href="https://saferactive.github.io/trafficalmr/reference/osm_get_junctions.html">saferactive.github.io/trafficalmr</a>.</p>
+To do this in a reproducible way, the <code><a href="../reference/osm_get_junctions.html">osm_get_junctions()</a></code> function was developed, details of which can be found on the trafficalmr website at <a href="https://saferactive.github.io/trafficalmr/reference/osm_get_junctions.html">saferactive.github.io/trafficalmr</a>.
+The <code>cluster_junctions()</code> function was developed to cluster junctions.
+Different geographic approaches for defining junctions using OSM data as an input are shown in Figure <a href="#fig:junctions">11</a>.</p>
+<div class="figure">
+<span id="fig:junctions"></span>
+<img src="https://saferactive.github.io/trafficalmr/reference/cluster_junction-1.png" alt="Junction clustering with 15m and 30m threshold distances (top) and illustration of an edge case in OSM data where junctions are not represented by a shared node (bottom)" width="100%"><img src="https://camo.githubusercontent.com/fa444bd3436032cfc7b1643753cba5656ed22e04/68747470733a2f2f692e696d6775722e636f6d2f666b32307a33662e706e67" alt="Junction clustering with 15m and 30m threshold distances (top) and illustration of an edge case in OSM data where junctions are not represented by a shared node (bottom)" width="100%"><p class="caption">
+Figure 11: Junction clustering with 15m and 30m threshold distances (top) and illustration of an edge case in OSM data where junctions are not represented by a shared node (bottom)
+</p>
+</div>
 </div>
 <div id="analysis-of-data-on-traffic-calming" class="section level1">
 <h1 class="hasAnchor">
