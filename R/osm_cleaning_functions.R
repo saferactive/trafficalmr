@@ -131,6 +131,18 @@ osm_get_junctions = function(x, method = "stplanr", overline = FALSE){
     x$attrib = 1
     x = stplanr::overline(x, "attrib")
   }
+
+  if (! method %in% c("stplanr", "duplicates")) {
+    warning(
+      "The input method does not correspond to 'stplanr' or 'duplicates'.",
+      " Defaulting to 'stplanr'",
+      call. = FALSE,
+      immediate. = TRUE
+    )
+    method = "stplanr"
+  }
+
+
   if(method == "duplicates") {
     # points = sf::st_cast(x, "MULTIPOINT")
     # nrow(points) # 125
