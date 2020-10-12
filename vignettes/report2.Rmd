@@ -290,6 +290,11 @@ This is primarily analysed as KSI/bkm.
 - Develop case studies of the impact of various traffic calming or road safety measures, and use these to illuminate the scenarios described in the previous section.
 - Launch our scalable web application.
 
+<!-- TfL definition of rush hour: -->
+
+<!-- 7-10 am -->
+<!-- 4-7 pm -->
+
 <!-- Questions: -->
 
 <!-- General comments about direction of travel? -->
@@ -299,6 +304,17 @@ This is primarily analysed as KSI/bkm.
 <!-- We've asked colleagues in the DfT for data on DfT funded interventions, any way to help access that data from Guy's team? -->
 
 <!-- What do they see as the most important scenarios to consider? -->
+
+<!-- We don't have data on individual interventions -->
+
+<!-- Only data we have on this is where LAs originally proposed for funding -->
+
+<!-- 2010 and 2015 - monitors -->
+
+<!-- Traffic and technology team has been working on this stuff also - a lot of noise -->
+
+<!-- Don't have have this data... working on this at the moment... -->
+
 
 # References
 
