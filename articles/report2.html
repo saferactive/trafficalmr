@@ -186,21 +186,28 @@ Figure 5: Number of count points on roads of different categories, for all locat
 <p>As we have seen, the count point locations are not stable, and not all locations are surveyed every year.
 This presents difficulties when assessing change through time, since an apparent increase in cycling in a given year may simply be due to the selection of count points on busy roads that year.</p>
 <p>To avoid problems associated with this, we assessed relative change at each count point, by calculating, for each year the point was surveyed, the relative divergence from the mean AADF across all years at that count point.
-We then calculated the mean of these values for each Local Authority and year, and normalised these around a baseline year of 2011.</p>
+Figure <a href="#fig:rel-change">6</a> shows these relative changes in weighted mean AADF, in the same way as absolute changes in AADF are shown in Figure <a href="#fig:aadf-years">3</a>.</p>
+<div class="figure">
+<span id="fig:rel-change"></span>
+<img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/rel-change-weighted.png" alt="Weighted mean relative change in estimated pedal cycle AADF, for count locations with at least 2 years, 5 years, and 10 years of counts across this time period. Values are weighted by AADF."><p class="caption">
+Figure 6: Weighted mean relative change in estimated pedal cycle AADF, for count locations with at least 2 years, 5 years, and 10 years of counts across this time period. Values are weighted by AADF.
+</p>
+</div>
+<p>We then calculated the mean of these values for each Local Authority and year, and normalised these around a baseline year of 2011.</p>
 <div class="figure">
 <span id="fig:la-change"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/change-by-la.png" alt="Relative change from a 2011 baseline in estimated pedal cycle AADF for each Local Authority. Line thickness represents the total number of pedal cycles surveyed (across all years) within the LA. Selected LAs are highlighted."><p class="caption">
-Figure 6: Relative change from a 2011 baseline in estimated pedal cycle AADF for each Local Authority. Line thickness represents the total number of pedal cycles surveyed (across all years) within the LA. Selected LAs are highlighted.
+Figure 7: Relative change from a 2011 baseline in estimated pedal cycle AADF for each Local Authority. Line thickness represents the total number of pedal cycles surveyed (across all years) within the LA. Selected LAs are highlighted.
 </p>
 </div>
-<p>The results presented in Figure <a href="#fig:la-change">6</a> can also be represented as an animated map, as shown in Figure <a href="#fig:la-gif">7</a>.
+<p>The results presented in Figure <a href="#fig:la-change">7</a> can also be represented as an animated map, as shown in Figure <a href="#fig:la-gif">8</a>.
 This provides an approximation of the relative change in cycling levels compared the the 2011 baseline, for which we have good data from the 2011 Census.
-The results shown if Figure <a href="#fig:la-gif">7</a> show that, according to DfT’s seasonally adjusted ‘AADF’ (annual average daily flow) dataset dataset, cycling has tended to grow in densly populated, cosmopolitan areas such as London (especially central north London boroughs), Bristol, Manchester and Leeds.</p>
+The results shown if Figure <a href="#fig:la-gif">8</a> show that, according to DfT’s seasonally adjusted ‘AADF’ (annual average daily flow) dataset dataset, cycling has tended to grow in densly populated, cosmopolitan areas such as London (especially central north London boroughs), Bristol, Manchester and Leeds.</p>
 <!-- Todo: add link to interactive map. -->
 <div class="figure">
 <span id="fig:la-gif"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/la-multipliers.gif" alt="Animated map showing change in cycling levels relative to 2011 baseline."><p class="caption">
-Figure 7: Animated map showing change in cycling levels relative to 2011 baseline.
+Figure 8: Animated map showing change in cycling levels relative to 2011 baseline.
 </p>
 </div>
 </div>
@@ -217,11 +224,11 @@ We used the function <code>bam()</code> in the <code>mgcv</code> R package (Wood
 <a href="#london-model" class="anchor"></a>London model</h3>
 <p>Initially, GAM models were developed for London only.
 Using the raw hourly count data all cycle count points in London over the years 2010-2019, we produced a GAM model with smooth terms for year, day of the year, hour, space, road category, and an interaction term for year and space.</p>
-<p>Preliminary results, based on a General Additive Model (GAM) are shown in Figure <a href="#fig:gam1">8</a>.</p>
+<p>Preliminary results, based on a General Additive Model (GAM) are shown in Figure <a href="#fig:gam1">9</a>.</p>
 <div class="figure">
 <span id="fig:gam1"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-uptake-la-london-smoothed.png" alt="Preliminary estimates of cycling uptake in London boroughs relative to 2011 levels, 2000-2018. A selection of boroughs of interest are highlighted for reference."><p class="caption">
-Figure 8: Preliminary estimates of cycling uptake in London boroughs relative to 2011 levels, 2000-2018. A selection of boroughs of interest are highlighted for reference.
+Figure 9: Preliminary estimates of cycling uptake in London boroughs relative to 2011 levels, 2000-2018. A selection of boroughs of interest are highlighted for reference.
 </p>
 </div>
 </div>
@@ -242,18 +249,18 @@ This is a generalization of a thin plate spline (Duchon 1977; Wood 2003), which 
 We specified 100 knots for this spline, enabling the representation of complex spatial patterns in cycling levels across the UK.</p>
 <p>Road category is included as a random effect in the model.
 Its inclusion is vital given that cycling levels vary greatly according to the type of road surveyed, and the number of counts from roads of each category varies from year to year.</p>
-<p>The partial effects of year are shown in Figure <a href="#fig:gam-year">9</a>.</p>
+<p>The partial effects of year are shown in Figure <a href="#fig:gam-year">10</a>.</p>
 <div class="figure">
 <span id="fig:gam-year"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/GAM-partial-effect-of-year.png" alt="Partial effects of year in a national GAM model for cycle counts 2010-2019"><p class="caption">
-Figure 9: Partial effects of year in a national GAM model for cycle counts 2010-2019
+Figure 10: Partial effects of year in a national GAM model for cycle counts 2010-2019
 </p>
 </div>
-<p>The partial effects of space are shown in Figure <a href="#fig:gam-space">10</a>.</p>
+<p>The partial effects of space are shown in Figure <a href="#fig:gam-space">11</a>.</p>
 <div class="figure">
 <span id="fig:gam-space"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/GAM-partial-effect-of-space.png" alt="Partial effects of year in a national GAM model for cycle counts 2010-2019"><p class="caption">
-Figure 10: Partial effects of year in a national GAM model for cycle counts 2010-2019
+Figure 11: Partial effects of year in a national GAM model for cycle counts 2010-2019
 </p>
 </div>
 <!-- The results of this GAM model can be applied to Local Authorities.... -->
@@ -264,11 +271,11 @@ Figure 10: Partial effects of year in a national GAM model for cycle counts 2010
 <h1 class="hasAnchor">
 <a href="#geographic-data-analysis" class="anchor"></a>Geographic data analysis</h1>
 <p>Building on methods we initially developed for the <a href="https://www.cyipt.bike/">CyIPT</a> project, we have developed new techniques for allocating crashes to features on the road network, such as junctions and road sections.
-Preliminary results comparing CyIPT results and results from this project are shown in Figure <a href="#fig:cyipt-crash">11</a>.</p>
+Preliminary results comparing CyIPT results and results from this project are shown in Figure <a href="#fig:cyipt-crash">12</a>.</p>
 <div class="figure">
 <span id="fig:cyipt-crash"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cyipt-crashes1-2.png" alt="CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right)." width="40%"><img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cyipt-crashes2.png" alt="CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right)." width="40%"><p class="caption">
-Figure 11: CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right).
+Figure 12: CyIPT methods for allocating crashes to juctions (left) compared with preliminary results of updated methods developed for the SaferActive project (right).
 </p>
 </div>
 <p>The objective of this part of the project is to increase to measure to level of risk of collisions at a very high level of spatial detail. Ideally we seek to use historical data to identify specific roads and junctions which are especially dangerous and thus need to be fixed.</p>
@@ -280,17 +287,17 @@ The second stage of the process it to simplify the road and junction network for
 <div class="figure">
 <span id="fig:cyipt-crash2"></span>
 <img src="london_cas_2010-2019_roads.png" alt="Preliminary maps of London roads showing number of casualties over the last 10 years from crashed not at junctions" width="100%"><p class="caption">
-Figure 12: Preliminary maps of London roads showing number of casualties over the last 10 years from crashed not at junctions
+Figure 13: Preliminary maps of London roads showing number of casualties over the last 10 years from crashed not at junctions
 </p>
 </div>
 <p>The definition of a ‘junction’ depends on a number of factors, including the way that junctions are represented in the input data and, when aggregagating nearby junction entities e.g. on a roundabout, the threshold distance beyond which two junctions are treated separately.
 To do this in a reproducible way, the <code><a href="../reference/osm_get_junctions.html">osm_get_junctions()</a></code> function was developed, details of which can be found on the trafficalmr website at <a href="https://saferactive.github.io/trafficalmr/reference/osm_get_junctions.html">saferactive.github.io/trafficalmr</a>.
 The <code>cluster_junctions()</code> function was developed to cluster junctions.
-Different geographic approaches for defining junctions using OSM data as an input are shown in Figure <a href="#fig:junctions">13</a>.</p>
+Different geographic approaches for defining junctions using OSM data as an input are shown in Figure <a href="#fig:junctions">14</a>.</p>
 <div class="figure">
 <span id="fig:junctions"></span>
 <img src="https://saferactive.github.io/trafficalmr/reference/cluster_junction-1.png" alt="Junction clustering with 15m and 30m threshold distances (top) and illustration of an edge case in OSM data where junctions are not represented by a shared node (bottom)" width="100%"><img src="https://camo.githubusercontent.com/fa444bd3436032cfc7b1643753cba5656ed22e04/68747470733a2f2f692e696d6775722e636f6d2f666b32307a33662e706e67" alt="Junction clustering with 15m and 30m threshold distances (top) and illustration of an edge case in OSM data where junctions are not represented by a shared node (bottom)" width="100%"><p class="caption">
-Figure 13: Junction clustering with 15m and 30m threshold distances (top) and illustration of an edge case in OSM data where junctions are not represented by a shared node (bottom)
+Figure 14: Junction clustering with 15m and 30m threshold distances (top) and illustration of an edge case in OSM data where junctions are not represented by a shared node (bottom)
 </p>
 </div>
 <!-- # Analysis of data on traffic calming -->
