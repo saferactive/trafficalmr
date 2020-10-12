@@ -92,7 +92,7 @@ For count points with complete annual data (Figure \@ref(fig:road-cat)), the inc
 However, mean AADF is highest on Principal 'A' roads at 214 cycles per day, and lowest on Trunk 'A' roads at 2.4 cycles per day. 
 On Trunk 'A' roads, zero cyclists were recorded at 34% of counts; these may represent locations on major national routes that are unsuitable for most cyclists. 
 
-<switch this figure to ggplot>
+<!-- <switch this figure to ggplot> -->
 ```{r road-cat, fig.cap="Mean annual average daily flows of pedal cycles by road category 2010-2019, for count locations with complete annual data across this time period. PA = Principal 'A' road; MB = 'B' road; MCU = 'C' or Unclassified road; TA = Trunk 'A' road."}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/mean-count-by-road-cat-2010-2019.png")
 ```
