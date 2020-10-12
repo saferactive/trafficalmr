@@ -144,6 +144,7 @@ The smooth term for year uses a cubic regression spline with 5 knots.
 The cubic spline utilises a low number of knots spread at even intervals through the range of parameter values. 
 This helps to prevent overfitting.
 
+<!-- Todo: what is a duchon spline? I suggest adding a link and, even better, a reference. -->
 British National Grid eastings and northings are represented in a duchon spline, which allows for two dimensional smoothing. 
 This spline has 100 knots, enabling the representation of complex spatial patterns in cycling levels across the UK. 
 
@@ -162,7 +163,7 @@ The partial effects of space are shown in Figure \@ref(fig:gam-space).
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/GAM-partial-effect-of-space.png")
 ```
 
-The results of this GAM model can be applied to Local Authorities....
+<!-- The results of this GAM model can be applied to Local Authorities.... -->
 
 # Geographic data analysis
 
