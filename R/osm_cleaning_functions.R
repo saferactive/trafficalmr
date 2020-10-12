@@ -131,6 +131,18 @@ osm_get_junctions = function(x, method = "stplanr", overline = FALSE){
     x$attrib = 1
     x = stplanr::overline(x, "attrib")
   }
+
+  if (! method %in% c("stplanr", "duplicates")) {
+    warning(
+      "The input method does not correspond to 'stplanr' or 'duplicates'.",
+      " Defaulting to 'stplanr'.",
+      call. = FALSE,
+      immediate. = TRUE
+    )
+    method = "stplanr"
+  }
+
+
   if(method == "duplicates") {
     # points = sf::st_cast(x, "MULTIPOINT")
     # nrow(points) # 125
@@ -149,12 +161,12 @@ osm_get_junctions = function(x, method = "stplanr", overline = FALSE){
 
   # browser()
   rnet_vertices = stplanr::rnet_breakup_vertices(x)
-  nrow(rnet_vertices) / nrow(x) # vertices have been added...
+  # nrow(rnet_vertices) / nrow(x) # vertices have been added...
   boundaries = stplanr::line2points(rnet_vertices)
   boundaries_df = as.data.frame(sf::st_coordinates(boundaries))
   boundaries_n = dplyr::summarise(dplyr::group_by(boundaries_df, X, Y), n = dplyr::n())
   junction_df = boundaries_n[boundaries_n$n >= 3, ]
-  nrow(junction_df) / nrow(x)
+  # nrow(junction_df) / nrow(x)
   points = sf::st_as_sf(junction_df, coords = c("X", "Y"), crs = sf::st_crs(x))
   return(points$geometry)
 }
