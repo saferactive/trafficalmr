@@ -112,6 +112,12 @@ As we have seen, the count point locations are not stable, and not all locations
 This presents difficulties when assessing change through time, since an apparent increase in cycling in a given year may simply be due to the selection of count points on busy roads that year.
 
 To avoid problems associated with this, we assessed relative change at each count point, by calculating, for each year the point was surveyed, the relative divergence from the mean AADF across all years at that count point.
+Figure \@ref(fig:rel-change) shows these relative changes in weighted mean AADF, in the same way as absolute changes in AADF are shown in Figure \@ref(fig:aadf-years).
+
+```{r rel-change, fig.cap="Weighted mean relative change in estimated pedal cycle AADF, for count locations with at least 2 years, 5 years, and 10 years of counts across this time period. Values are weighted by AADF."}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/rel-change-weighted.png")
+```
+
 We then calculated the mean of these values for each Local Authority and year, and normalised these around a baseline year of 2011.
 
 ```{r la-change, fig.cap="Relative change from a 2011 baseline in estimated pedal cycle AADF for each Local Authority. Line thickness represents the total number of pedal cycles surveyed (across all years) within the LA. Selected LAs are highlighted."}
