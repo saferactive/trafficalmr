@@ -135,7 +135,7 @@ osm_get_junctions = function(x, method = "stplanr", overline = FALSE){
   if (! method %in% c("stplanr", "duplicates")) {
     warning(
       "The input method does not correspond to 'stplanr' or 'duplicates'.",
-      " Defaulting to 'stplanr'",
+      " Defaulting to 'stplanr'.",
       call. = FALSE,
       immediate. = TRUE
     )
