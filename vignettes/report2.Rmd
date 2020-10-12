@@ -128,7 +128,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferacti
 General Additive Models were chosen for their flexibility to accommodate non-linear trends in spatial and temporal variables, and the ability to include random effects within the model.
 They also allow the production of easily interpretable partial effects for each model parameter.
 
-<GAM models should be recalculated based on relative change in cycle counts, instead of absolute counts>
+<!-- <GAM models should be recalculated based on relative change in cycle counts, instead of absolute counts> -->
 
 ### London model
 
@@ -229,7 +229,7 @@ knitr::include_graphics(c(
 
 We have considered a range of scenarios that we plan to implement in the next months.
 These are at a conceptual but each could be implemented based on the data we have.
-Scenarios could be implemented either as area-wide interventions or (more challenging) as specific intervention on specific roads (e.g. Chapletown Road in Leeds becomes one way for motor traffic freeing-up space for a 2 way cycleway and increased space for walking).
+Scenarios could be implemented either as 'global' scenarios, as implemented in the Propensity to Cycle Tool [@lovelace_propensity_2017], as area-wide interventions or (more challenging) as specific intervention on specific roads (e.g. Chapletown Road in Leeds becomes one way for motor traffic freeing-up space for a 2 way cycleway and increased space for walking).
 
 - Traffic calming: the creation of traffic calming interventions of the type seen in the CID
 - 20s Plenty: The roll-out of 20 mph zones in areas and local authorities
@@ -248,4 +248,6 @@ Investigate the impact of traffic calming measures.
 Launch our scalable web application.
 
 [Look ]
+
+# References
 
