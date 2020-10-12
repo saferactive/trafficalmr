@@ -209,7 +209,7 @@ A reproducible example showing how the junction identification method works is s
 remotes::install_github("saferactive/trafficalmr")
 ```
 
-```{r, echo=TRUE, message=FALSE}
+```{r, echo=TRUE, message=FALSE, fig.cap="Illustration of junction identification and OSM data cleaning methods."}
 library(trafficalmr)
 road_data = tc_data_osm
 nrow(tc_data_osm)
