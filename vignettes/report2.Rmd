@@ -79,7 +79,7 @@ The mean AADF per year, for the years 2010-2019, is shown in Figure \@ref(fig:aa
 We include three different estimates of mean AADF: across all 13,303 locations with at least two years of data, across the 5,895 locations with at least 5 years of sampling, and across the 3,049 count locations with complete annual data.
 
 ```{r aadf-years, fig.cap="Mean annual average daily flows of pedal cycles 2010-2019, for count locations with at least 2 years, 5 years, and 10 years of counts across this time period"}
-knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/AADF-by-n-years-sample.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-by-years-sampled.png")
 ```
 
 We can see that not only is the temporal trend different if we include a greater number of cycle count points, but the mean AADF is also higher.
@@ -118,7 +118,7 @@ We then calculated the mean of these values for each Local Authority and year, a
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/change-by-la.png")
 ```
 
-The results presented in Figure \@ref(la-change) can also be represented as an animated map, as shown in Figure \@ref(fig:la-gif).
+The results presented in Figure \@ref(fig:la-change) can also be represented as an animated map, as shown in Figure \@ref(fig:la-gif).
 This provides an approximation of the relative change in cycling levels compared the the 2011 baseline, for which we have good data from the 2011 Census.
 The results shown if Figure \@ref(fig:la-gif) show that, according to DfT's seasonally adjusted 'AADF' (annual average daily flow) dataset dataset, cycling has tended to grow in densly populated, cosmopolitan areas such as London (especially central north London boroughs), Bristol, Manchester and Leeds.
 
@@ -128,17 +128,20 @@ The results shown if Figure \@ref(fig:la-gif) show that, according to DfT's seas
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/la-multipliers.gif")
 ```
 
-## General Additive Models of AADF 
+## Generalized Additive Models of AADF 
 
-General Additive Models were chosen for their flexibility to accommodate non-linear trends in spatial and temporal variables, and the ability to include random effects within the model.
+Generalized Additive Models were chosen for their flexibility to accommodate non-linear trends in spatial and temporal variables, and the ability to include random effects within the model.
 They also allow the production of easily interpretable partial effects for each model parameter.
+We used the function `bam()` in the `mgcv` R package (Wood et al. 2014) which is specifically designed for use with large datasets as it is less computationally intensive than other methods.
+
+The models currently use the absolute count data as the response variable, and follow a negative binomial error distribution with a log link function. 
 
 <!-- <GAM models should be recalculated based on relative change in cycle counts, instead of absolute counts> -->
 
 ### London model
 
 Initially, GAM models were developed for London only.
-Using the raw hourly count data all cycle count points in London over the years 2010-2019, we produced a GAM model with smooth terms for year, day of the year, hour, space, road category, and an interaction term for year and space.....
+Using the raw hourly count data all cycle count points in London over the years 2010-2019, we produced a GAM model with smooth terms for year, day of the year, hour, space, road category, and an interaction term for year and space.
 
 Preliminary results, based on a General Additive Model (GAM) are shown in Figure \@ref(fig:gam1).
 
@@ -160,8 +163,9 @@ The cubic spline utilises a low number of knots spread at even intervals through
 This helps to prevent overfitting.
 
 <!-- Todo: what is a duchon spline? I suggest adding a link and, even better, a reference. -->
-British National Grid eastings and northings are represented in a duchon spline, which allows for two dimensional smoothing. 
-This spline has 100 knots, enabling the representation of complex spatial patterns in cycling levels across the UK. 
+British National Grid eastings and northings are represented in a [duchon spline](https://www.rdocumentation.org/packages/mgcv/versions/1.8-31/topics/smooth.construct.ds.smooth.spec).
+This is a generalization of a thin plate spline (Duchon 1977; Wood 2003), which allows for two dimensional smoothing. 
+We specified 100 knots for this spline, enabling the representation of complex spatial patterns in cycling levels across the UK. 
 
 Road category is included as a random effect in the model. 
 Its inclusion is vital given that cycling levels vary greatly according to the type of road surveyed, and the number of counts from roads of each category varies from year to year. 
@@ -233,8 +237,8 @@ knitr::include_graphics(c(
 # Scenario development
 
 We have considered a range of scenarios that we plan to implement in the next months.
-These are at a conceptual but each could be implemented based on the data we have.
-Scenarios could be implemented either as 'global' scenarios, as implemented in the Propensity to Cycle Tool [@lovelace_propensity_2017], as area-wide interventions or (more challenging) as specific intervention on specific roads (e.g. Chapletown Road in Leeds becomes one way for motor traffic freeing-up space for a 2 way cycleway and increased space for walking).
+These are at a conceptual level but each could be implemented based on the data we have.
+Scenarios could be implemented either as 'global' scenarios, as implemented in the Propensity to Cycle Tool [@lovelace_propensity_2017], as area-wide interventions or (more challenging) as specific intervention on specific roads (e.g. Chapeltown Road in Leeds becomes one way for motor traffic freeing-up space for a 2 way cycleway and increased space for walking).
 
 - Traffic calming: the creation of traffic calming interventions of the type seen in the CID
 - 20s Plenty: The roll-out of 20 mph zones in areas and local authorities
@@ -245,14 +249,19 @@ Scenarios could be implemented either as 'global' scenarios, as implemented in t
 
 # Next steps
 
-Use our annual Local Authority level estimates of exposure and of collision rates to assess temporal and spatial changes in risk. 
+We have a series of improvements and further investigations in progress or planning, that will be needed to reach the next stage of the project. 
+
+- Adapt the GAM models to use relative change in cycle counts, rather than the raw counts. This should improve the accuracy of the partial effects curves, enabling improved estimates of changes in cycle uptake through time and space.
+- Use our annual Local Authority level estimates of exposure together with similar estimates of collision rates, to assess temporal and spatial changes in collision risk across the country.
 This is primarily analysed as KSI/bkm.
-
-Investigate the impact of traffic calming measures.
-
-Launch our scalable web application.
-
-[Look ]
+- Validate the cycle count-based exposure estimates, by comparing DfT counters with TfL counters for the years 2015-2019, for which TfL data are available.
+- Develop case studies of the impact of various traffic calming or road safety measures, and use these to illuminate the scenarios described in the previous section.
+- Launch our scalable web application.
 
 # References
 
+Duchon, Jean. â€˜Splines Minimizing Rotation-Invariant Semi-Norms in Sobolev Spacesâ€™. In Constructive Theory of Functions of Several Variables, edited by Walter Schempp and Karl Zeller, 85â€“100. Lecture Notes in Mathematics. Berlin, Heidelberg: Springer, 1977. https://doi.org/10.1007/BFb0086566.
+
+Wood, Simon N. â€˜Thin Plate Regression Splinesâ€™. Journal of the Royal Statistical Society: Series B (Statistical Methodology) 65, no. 1 (2003): 95â€“114. https://doi.org/10.1111/1467-9868.00374.
+
+Wood, Simon N., Yannig Goude, and Simon Shaw. â€˜Generalized Additive Models for Large Data Setsâ€™. Journal of the Royal Statistical Society: Series C (Applied Statistics) 64, no. 1 (2015): 139â€“55. https://doi.org/10.1111/rssc.12068.
