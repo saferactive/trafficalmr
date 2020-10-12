@@ -194,7 +194,17 @@ knitr::include_graphics("./london_cas_2010-2019_roads.png")
 
 The definition of a 'junction' depends on a number of factors, including the way that junctions are represented in the input data and, when aggregagating nearby junction entities e.g. on a roundabout, the threshold distance beyond which two junctions are treated separately.
 To do this in a reproducible way, the `osm_get_junctions()` function was developed, details of which can be found on the trafficalmr website at [saferactive.github.io/trafficalmr](https://saferactive.github.io/trafficalmr/reference/osm_get_junctions.html).
+The `cluster_junctions()` function was developed to cluster junctions.
+Different geographic approaches for defining junctions using OSM data as an input are shown in Figure \@ref(fig:junctions).
 
+
+
+```{r junctions, fig.cap="Junction clustering with 15m and 30m threshold distances (top) and illustration of an edge case in OSM data where junctions are not represented by a shared node (bottom)", out.width="100%", fig.show='hold'}
+knitr::include_graphics(c(
+  "https://saferactive.github.io/trafficalmr/reference/cluster_junction-1.png",
+  "https://camo.githubusercontent.com/fa444bd3436032cfc7b1643753cba5656ed22e04/68747470733a2f2f692e696d6775722e636f6d2f666b32307a33662e706e67"
+))
+```
 
 # Analysis of data on traffic calming
 
