@@ -121,7 +121,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferacti
 We then calculated the mean of these values for each Local Authority and year, and normalised these around a baseline year of 2011.
 
 ```{r la-change, fig.cap="Relative change from a 2011 baseline in estimated pedal cycle AADF for each Local Authority. Line thickness represents the total number of pedal cycles surveyed (across all years) within the LA. Selected LAs are highlighted."}
-knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/change-by-la.png")
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/aadf-counts-la-multipliers.png")
 ```
 
 The results presented in Figure \@ref(fig:la-change) can also be represented as an animated map, as shown in Figure \@ref(fig:la-gif).
