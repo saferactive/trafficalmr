@@ -29,7 +29,9 @@ library(trafficalmr)
 
 # Introduction
 
-This report outlines progress on the SaferActive project since the 1st report's publication in July 2020.
+This report outlines progress on the SaferActive project, which aims to provide a strong evidence base for interventions that simultaneously boost walking and cycling *and* greatly improve road safety.
+An overview of the project's context and aims can be found at the open access project page [github.com/saferactive/saferactive](https://github.com/saferactive/saferactive).
+This is the 2nd quarterly report, building on the [1st SaferActive report](https://saferactive.github.io/trafficalmr/articles/report1.html), published July 2020.
 Overall we have been working on the following areas:
 
 - Development of the trafficalmr R package, adding functionality for cleaning and visualising road crash data (see [saferactive.github.io/trafficalmr](https://saferactive.github.io/trafficalmr) for details)
