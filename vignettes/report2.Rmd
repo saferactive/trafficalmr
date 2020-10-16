@@ -2,9 +2,9 @@
 title: "SaferActive Report 2: Scenarios"
 author: Institute for Transport Studies
 output:
-  bookdown::html_vignette2:
+  bookdown::word_document2:
     number_sections: true
-    toc: true
+    # toc: true
 vignette: >
   %\VignetteIndexEntry{SaferActive Report 2: Scenarios}
   %\VignetteEngine{knitr::rmarkdown}
