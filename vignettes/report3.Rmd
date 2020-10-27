@@ -1,0 +1,93 @@
+---
+title: "SaferActive Report 3"
+author: Institute for Transport Studies
+output:
+  bookdown::html_vignette2:
+    number_sections: true
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{SaferActive Report 3}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: saferactive.bib
+pkgdown:
+  as_is: true
+  set_null_theme: false
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  echo = FALSE
+)
+```
+
+```{r setup}
+library(trafficalmr)
+```
+
+# Introduction
+
+
+
+
+# Risk models
+
+
+## Assigning collision data to a spatial grid
+
+
+## Assigning census-derived cycling data to a spatial grid   
+
+
+## Modelling spatio-temporal change in cycling uptake based on count data
+
+
+## Validation of cycling uptake model results
+
+
+## Modelling spatio-temporal change in collision risk
+
+
+
+
+# Scenarios of change
+
+
+## Traffic calming measures
+
+
+## 20 mph zones
+
+
+## Protected cycleways
+
+
+## Traffic reduction
+
+
+## Roadspace reallocation
+
+
+## Low Traffic Neighbourhoods
+
+
+
+
+# Data visualisation
+
+
+
+
+# Web development
+
+
+
+
+# Next steps
+
+
+
+
+# References
