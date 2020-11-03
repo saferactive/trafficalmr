@@ -102,9 +102,21 @@ Analyse the commute crash numbers divided by the estimated commute cycling activ
 
 Joey ~500 words
 
+We are able to estimate spatio-temporal change in cycling uptake over a ten year period from 2010 to 2019.  
+This will involve using a GAM model of relative change in Annual Average Daily Flow of pedal cycles, based on data from DfT count points across England, Wales and Scotland. 
+The model includes smoothing terms for year and for space.
+Using these parameters, predictions can be derived, generating a smoothed surface representing modelled change in AADF across time and space.
+This allows us to obtain estimates of change in cycling uptake at the same spatial resolution as the collision data.
+
 ## Validation of cycling uptake model results
 
 Joey ~500 words
+
+The model results require validation and verification. 
+We should obtain confidence intervals to constrain the cycling uptake predictions.
+One form of validation will be to assess predictions against TfL count data, which gives us an independent data set for London for the years 2015 - 2019.  
+At first pass the coefficient of determination of the variance of these data sets seems to be very low, but this may improve now we have done more data cleaning.
+We should also investigate how it changes with greater temporal and spatial aggregation of data points. 
 
 ## Modelling spatio-temporal change in collision risk
 
@@ -120,15 +132,24 @@ Joey and Robin
 
 ## Traffic calming measures
 
+There is OSM data for the years 2014 - 2019, providing insight on the date of installation of traffic calming measures. 
+Using two time points (i.e. 2014 and 2018), we can investigate differences between the first and second halves of the decade. 
+
 <!-- ## 20 mph zones -->
 
 ## Protected cycleways
+
+Counts from cycle superhighways and quietways are available from TfL, typically including 1 year of baseline count data from before installation, and around 4 years of post-installation count data. 
+We can speak to TfL to get better insight on the exact timings of implementation of these schemes.
 
 <!-- ## Traffic reduction -->
 
 ## Roadspace reallocation
 
 ## Low Traffic Neighbourhoods
+
+Counts from Mini-Holland schemes are available from TfL, typically including 1 year of baseline count data from before installation, and around 4 years of post-installation count data. 
+We can speak to TfL to get better insight on the exact timings of implementation of these schemes.
 
 # Data visualisation
 
