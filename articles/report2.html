@@ -300,10 +300,10 @@ We found a 15 metre buffer diameter to work well for coalescing junction cluster
 <li>Associate the point crash data with the appropriate road or junction. Here we had to balance accuracy against performance. Measuring the distance between every crash and every road would take an inordinate about of time. We developed a computationally efficient solution, documented in the script <a href="https://github.com/saferactive/saferactive/blob/master/code/osm_cleaning.R"><code>osm_cleaning.R</code></a>.</li>
 </ol>
 <p>A reproducible example showing how the junction identification method works is shown in the code chunk below, which starts by installing the <code>trafficalmr</code> package and uses a number of other functions developed for this project:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"saferactive/trafficalmr"</span><span class="op">)</span></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/saferactive/trafficalmr">trafficalmr</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"saferactive/trafficalmr"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/saferactive/trafficalmr">trafficalmr</a></span><span class="op">)</span>
 <span class="va">road_data</span> <span class="op">=</span> <span class="va">tc_data_osm</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">tc_data_osm</span><span class="op">)</span>
 <span class="co">#&gt; [1] 499</span>
@@ -317,7 +317,7 @@ We found a 15 metre buffer diameter to work well for coalescing junction cluster
 <span class="co">#&gt; Warning in plot.sf(road_data_clusters, add = TRUE): ignoring all but the first</span>
 <span class="co">#&gt; attribute</span>
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">road_data_junctions</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">road_data_major</span><span class="op">$</span><span class="va">geometry</span>, col <span class="op">=</span> <span class="st">"black"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">road_data_major</span><span class="op">$</span><span class="va">geometry</span>, col <span class="op">=</span> <span class="st">"black"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <span id="fig:unnamed-chunk-2"></span>
 <img src="report2_files/figure-html/unnamed-chunk-2-1.png" alt="Illustration of junction identification and OSM data cleaning methods." width="100%"><p class="caption">

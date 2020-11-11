@@ -110,7 +110,29 @@
 <div id="collision" class="section level2">
 <h2 class="hasAnchor">
 <a href="#collision" class="anchor"></a><span class="header-section-number">2.1</span> Assigning collision data to a spatial grid</h2>
-<p>Malcolm ~500</p>
+<p>Grouping crashes together at a small spatial scale help to identify crash hot spots, areas where crashes happen unusually often. To this end crash data for the last 10 years was rasterised to a 500m grid. With each raster a single pixel covers a 500m x 500m area and contains a single value, for example, the number of people killed in that area in 2018. It is also possible to create a stack of multiple raster layers to represent a chaining variable, such as time.</p>
+<p>We created twelve raster stacks with each stack covering the years ten years of available data 2010 to 2019. Each raster stack was created for the whole of Great Britain.</p>
+<ul>
+<li><p>Cyclists killed or seriously injured during commuting hours</p></li>
+<li><p>Cyclists killed or seriously injured during any time of day</p></li>
+<li><p>Cyclists with any injury during commuting hours</p></li>
+<li><p>Cyclists with any injury during during any time of day</p></li>
+<li><p>Pedestrians killed or seriously injured during commuting hours</p></li>
+<li><p>Pedestrians killed or seriously injured during any time of day</p></li>
+<li><p>Pedestrians with any injury during commuting hours</p></li>
+<li><p>Pedestrians with any injury during during any time of day</p></li>
+<li><p>All people killed or seriously injured during commuting hours</p></li>
+<li><p>All people killed or seriously injured during any time of day</p></li>
+<li><p>All people with any injury during commuting hours</p></li>
+<li><p>All people with any injury during during any time of day</p></li>
+</ul>
+<p>Commuting hours where defined as being between 7 - 10 AM and 4 - 7 PM, and where selected for special study as the PCT estimates of cycling levels are based on travel to work data.</p>
+<div class="figure">
+<span id="fig:raster"></span>
+<img src="raster_example.JPG" alt="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"><p class="caption">
+Figure 2.1: Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red
+</p>
+</div>
 </div>
 <div id="exploratory-analysis-of-walking-and-cycling-casualties-at-the-local-authority-level" class="section level2">
 <h2 class="hasAnchor">
@@ -137,11 +159,11 @@ d_y = t_s * t_y * d_s
 <a href="https://github.com/saferactive/saferactive/blob/master/code/rasters-rnet.R#L56">Summing</a> these values for all route network segments across England and Wales yielded a total of 1.1 billion km cycled in 2011, roughly a quarter of the 4.5 billion km cycled by any mode in England and Wales according to the National Travel Survey (see table NTS0303 and analysis in the script <a href="https://github.com/saferactive/saferactive/blob/master/code/nts-national-distance-cycled-year.R"><code>nts-national-distance-cycled-year.R</code></a> for details).</li>
 <li>Add the total distance cycled of each segment per grid cell, based on the centre point (centroid) of each segment of 200 m or less.</li>
 </ul>
-<p>The results are shown in Figure <a href="#fig:cycled-yr">2.1</a>.</p>
+<p>The results are shown in Figure <a href="#fig:cycled-yr">2.2</a>.</p>
 <div class="figure">
 <span id="fig:cycled-yr"></span>
 <img src="https://camo.githubusercontent.com/4404fcf913b19c521aa249cd14e8b047c8a2a646/68747470733a2f2f692e696d6775722e636f6d2f57596b6c59476a2e706e67" alt="Estimates of distance cycled per year (thousand km per year of cycle commuting distance) passing through each 500 m grid cell, based on analysis of Census data on the route network from the PCT, for a rural area (Herefordshire, left) and an urban area (London, right)." width="40%"><img src="https://user-images.githubusercontent.com/1825120/97345445-fed2ae80-1881-11eb-8b1e-18553c1805c1.png" alt="Estimates of distance cycled per year (thousand km per year of cycle commuting distance) passing through each 500 m grid cell, based on analysis of Census data on the route network from the PCT, for a rural area (Herefordshire, left) and an urban area (London, right)." width="40%"><p class="caption">
-Figure 2.1: Estimates of distance cycled per year (thousand km per year of cycle commuting distance) passing through each 500 m grid cell, based on analysis of Census data on the route network from the PCT, for a rural area (Herefordshire, left) and an urban area (London, right).
+Figure 2.2: Estimates of distance cycled per year (thousand km per year of cycle commuting distance) passing through each 500 m grid cell, based on analysis of Census data on the route network from the PCT, for a rural area (Herefordshire, left) and an urban area (London, right).
 </p>
 </div>
 </div>
