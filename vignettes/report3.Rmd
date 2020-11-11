@@ -42,7 +42,30 @@ Lead author: Joey - link to paper
 
 ## Assigning collision data to a spatial grid {#collision}
 
-Malcolm ~500
+Grouping crashes together at a small spatial scale help to identify crash hot spots, areas where crashes happen unusually often. To this end crash data for the last 10 years was rasterised to a 500m grid. With each raster a single pixel covers a 500m x 500m area and contains a single value, for example, the number of people killed in that area in 2018. It is also possible to create a stack of multiple raster layers to represent a chaining variable, such as time.
+
+We created twelve raster stacks with each stack covering the years ten years of available data 2010 to 2019. Each raster stack was created for the whole of Great Britain.
+
+* Cyclists killed or seriously injured during commuting hours
+* Cyclists killed or seriously injured during any time of day
+* Cyclists with any injury during commuting hours
+* Cyclists with any injury during during any time of day
+
+* Pedestrians killed or seriously injured during commuting hours
+* Pedestrians killed or seriously injured during any time of day
+* Pedestrians with any injury during commuting hours
+* Pedestrians with any injury during during any time of day
+
+* All people killed or seriously injured during commuting hours
+* All people killed or seriously injured during any time of day
+* All people with any injury during commuting hours
+* All people with any injury during during any time of day
+
+Commuting hours where defined as being between 7 - 10 AM and 4 - 7 PM, and where selected for special study as the PCT estimates of cycling levels are based on travel to work data.
+
+```{r raster, fig.cap="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"}
+knitr::include_graphics("raster_example.JPG")
+```
 
 ## Exploratory analysis of walking and cycling casualties at the local authority level
 
