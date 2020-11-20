@@ -102,6 +102,41 @@ Analyse the commute crash numbers divided by the estimated commute cycling activ
 
 Joey ~500 words
 
+We have used two key data sources to model spatio-temporal change in cycling uptake.
+The first is DfT count data.
+This is open source data available from the Department for Transport website https://roadtraffic.dft.gov.uk/downloads.
+While the raw data is available for the years 2000 - 2019, we have focused on the decade 2010-2019, since there is more consistency in the type of roads being surveyed over this time period.
+
+The second data source is Transport for London cycle counts, collected as part of three programmes, for Central London, Inner London and Outer London https://cycling.data.tfl.gov.uk/.
+The Central London counts are available from 2014, but the other counts are only available from 2015 to 2019, so we have used this time period.
+
+In Central London, four Survey waves are conducted per year, corresponding with the standard quarterly periods. 
+The final wave for which data is available is 2019 Q3.
+Cycling uptake varies across the year, and TfL has produced seasonal adjustment factors to account for this. 
+We have used these adjustment factors to control for seasonality, and to calculate a mean annual count for each Central London site.
+This better corresponds with the Inner and Outer London counts which are conducted annually, representing the second quaterly period (April to June).
+We used the Q2 adjustment factor to normalise these counts.
+
+Our primary spatial model of cycling potential is derived from the Propensity to Cycle Tool, with this count data being used to model changes through time. 
+, among other data cleaning steps, we made efforts to correspond closely with the Propensity to Cycle Tool methodologies. 
+This included combining bi-directional data to get a single measure of cycle volume per site, similarly to the Propensity to Cycle Tool which combines journeys in both directions between a common origin and destination. 
+The TfL counts run from 06:00 to 22:00, but we only used counts from the commuter hours of 07:00 - 10:00 and 16:00 - 19:00, since the PCT data is for travel to work only.
+
+GAM models were produced using splines to represent temporal and spatial change in cycling levels. 
+Temporal change is modelled as a cubic regression spline for the term `year`. 
+We gave this 5 knots, a relatively low number, to prevent 
+Cubic regression splines are appropriate for variables with relatively low numbers of knots, spread evenly across the extent of the parameter values.
+
+Space (eastings and northings) is modelled using a Duchon spline, which works well with two-dimensional parameters. 
+We used 100 knots, to allow more complex spatial patterns to be represented.
+
+
+
+
+
+
+
+
 We are able to estimate spatio-temporal change in cycling uptake over a ten year period from 2010 to 2019.  
 This will involve using a GAM model of relative change in Annual Average Daily Flow of pedal cycles, based on data from DfT count points across England, Wales and Scotland. 
 The model includes smoothing terms for year and for space.
