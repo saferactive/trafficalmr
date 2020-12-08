@@ -200,7 +200,7 @@ We gave this 5 knots, a relatively low number, to prevent
 Cubic regression splines are appropriate for variables with relatively low numbers of knots, spread evenly across the extent of the parameter values.</p>
 <p>Space (eastings and northings) is modelled using a Duchon spline, which works well with two-dimensional parameters.
 We used 100 knots, to allow more complex spatial patterns to be represented.</p>
-<p>We are able to estimate spatio-temporal change in cycling uptake over a ten year period from 2010 to 2019.<br>
+<p>We are able to estimate spatio-temporal change in cycling uptake over a ten year period from 2010 to 2019.
 This will involve using a GAM model of relative change in Annual Average Daily Flow of pedal cycles, based on data from DfT count points across England, Wales and Scotland.
 The model includes smoothing terms for year and for space.
 Using these parameters, predictions can be derived, generating a smoothed surface representing modelled change in AADF across time and space.
@@ -212,7 +212,7 @@ This allows us to obtain estimates of change in cycling uptake at the same spati
 <p>Joey ~500 words</p>
 <p>The model results require validation and verification.
 We should obtain confidence intervals to constrain the cycling uptake predictions.
-One form of validation will be to assess predictions against TfL count data, which gives us an independent data set for London for the years 2015 - 2019.<br>
+One form of validation will be to assess predictions against TfL count data, which gives us an independent data set for London for the years 2015 - 2019.
 At first pass the coefficient of determination of the variance of these data sets seems to be very low, but this may improve now we have done more data cleaning.
 We should also investigate how it changes with greater temporal and spatial aggregation of data points.</p>
 </div>
@@ -256,7 +256,52 @@ We can speak to TfL to get better insight on the exact timings of implementation
 <div id="data-visualisation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#data-visualisation" class="anchor"></a><span class="header-section-number">4</span> Data visualisation</h1>
+<p>We continue to develop approaches to visually analysing road crash data and have divided our efforts here into two areas: <strong>exploring</strong> and <strong>quantifying</strong> risk.</p>
+<div id="exploring-risk" class="section level2">
+<h2 class="hasAnchor">
+<a href="#exploring-risk" class="anchor"></a><span class="header-section-number">4.1</span> Exploring risk</h2>
+<p>Road crash data are spatially and temporally precise but also attribute-rich. The Stast19 dataset for example has many variables describing numerous aspects associated with road conditions and vehicle types. Exploratory visual analysis interfaces provide a mechanism for quickly investigating these.</p>
+<p>As a quick way of illustrating this, below are bar charts displaying crash frequencies for all (left) and active casualties (right) by road speed classification. Crashes resulting in a KSI (fatal or serious injury) are dark red, those resulting a slight injury light red. It is not surprising that 30mph roads are the modal category of road for all crahses, but especially those involving active travel modes. A more interesting question is around how relative injury severity varies by road type and vehicle mode. To quickly investigate this we generate <a href="https://en.wikipedia.org/wiki/Mosaic_plot">mosaic plots</a>, a sort of visual contingency table where plot width varies according to <em>absolute number</em> of crashes in this case and height according to <em>relative number</em> of crashes resulting in a KSI (e.g. the relative height of the dark red bars). Whilst the pattern implied by this layout again could be anticipated, it does demonstrate the obvious effect on injury severity of increasing road speed limits on KSI rates for crashes involving pedestrians and cyclists.</p>
+<div class="figure">
+<span id="fig:crashes-speed"></span>
+<img src="crashes_speed_all.png" alt="Plots of road crashes by road type – comparison of all versus active-only crashes. Recorded crashes in GB 2017-2019." width="45%"><img src="crashes_speed_active.png" alt="Plots of road crashes by road type – comparison of all versus active-only crashes. Recorded crashes in GB 2017-2019." width="45%"><p class="caption">
+Figure 4.1: Plots of road crashes by road type – comparison of all versus active-only crashes. Recorded crashes in GB 2017-2019.
+</p>
+</div>
+<p>Once the code template for these plots is created, it is very easy to substitute in other variables that we think may be discriminating – lighting and surface condition (wetness). Here again we the see strong effect on relative injury severity. We do not advocate using these plots for decision-making, for example prioritising lighting and surface drainage over other candidate interventions, but instead for their application as a low-cost mechanism for initially proposing factors that might then be incorporayed into a more formal data analysis.</p>
+<div class="figure">
+<span id="fig:crashes-surface"></span>
+<img src="crashes_all_conditions.png" alt="Plots of road crashes by road condition – comparison of all versus active-only crashes. Recorded crashes in GB 2017-2019." width="45%"><img src="crashes_active_conditions.png" alt="Plots of road crashes by road condition – comparison of all versus active-only crashes. Recorded crashes in GB 2017-2019." width="45%"><p class="caption">
+Figure 4.2: Plots of road crashes by road condition – comparison of all versus active-only crashes. Recorded crashes in GB 2017-2019.
+</p>
+</div>
+<p>A benefit of using Mosaic plots for presenting categorical data such as this is that they are data rich. For example, we might extend this analysis to profile crashes by travel mode. In the plots below we focus on London. That cars are the modal vehicle category is to be expected, but it is again useful to emphasise the fact that relative injury severity increases with motorbikes and bikes and also that the vehicle-crash mix varies according to geographic context.</p>
+<div class="figure">
+<span id="fig:crashes-borough"></span>
+<img src="spine_aspatial.png" alt="Plots of road crashes by vehicle type. All recorded crashes in London 2009-2019." width="95%"><p class="caption">
+Figure 4.3: Plots of road crashes by vehicle type. All recorded crashes in London 2009-2019.
+</p>
+</div>
+<div class="figure">
+<span id="fig:crashes-borough-spatial"></span>
+<img src="spines_borough.png" alt="Plots of road crashes by vehicle type and London borough. All recorded crashes in London 2009-2019." width="95%"><p class="caption">
+Figure 4.4: Plots of road crashes by vehicle type and London borough. All recorded crashes in London 2009-2019.
+</p>
+</div>
+</div>
+<div id="quantifying-risk" class="section level2">
+<h2 class="hasAnchor">
+<a href="#quantifying-risk" class="anchor"></a><span class="header-section-number">4.2</span> Quantifying risk</h2>
+<p>Inevitably when analysing road crash data we wish to make inferences about casualty rates through comparison – over time and by geographic areas. There are difficulties with doing this – comparing rates across areas (and time) – that are more idiosyncratic relating to the way in which road crash data are collected and choice of denominator, but also established problems in statistics – for example, uncertainties due to sampling size and multiple comparison.</p>
+<p>Key to this work is incorporating appropriate denominators for estimating exposure, discussed above. However, we are also implementing visual data analysis approaches to uncertainty representation. For illustrative purposes below are maps of relative risk comparing relative injury severity ratio for crashes in each Police Force area against that which would be expected given the national average. Where a Police Force has an injury severity ratio greater than the national average it is red, less than the national average blue. The left-most map contains risk ratios derived from crash data between 2017-2019; in the middle we demonstrate how these have shifted year-on-year, with no adjustment made for CRASH and COPA re-coding and in the right-most map we represent model uncertainty by drawing year-on-year lines that result from a bootstrap resample. Whilst representing a full empirical bootstrap distribution may be one means of representing uncertainty, we are currently investigating others, for example <a href="https://medium.com/hci-design-at-uw/hypothetical-outcomes-plots-experiencing-the-uncertain-b9ea60d7c740">hypothetical outcome plots</a>, increasingly used in journalism and public-facing domains.</p>
+<div class="figure">
+<span id="fig:rr-force"></span>
+<img src="rr_cots.png" alt="KSI risk ratios by Police Force area in England and Wales, year-on-year analysis, plus bootstrapped raw KSI rates.." width="95%"><p class="caption">
+Figure 4.5: KSI risk ratios by Police Force area in England and Wales, year-on-year analysis, plus bootstrapped raw KSI rates..
+</p>
+</div>
 <p>Roger ~500 words - ideas from paper</p>
+</div>
 </div>
 <div id="web-development" class="section level1">
 <h1 class="hasAnchor">
