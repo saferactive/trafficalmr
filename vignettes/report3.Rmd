@@ -42,30 +42,7 @@ Lead author: Joey - link to paper
 
 ## Assigning collision data to a spatial grid {#collision}
 
-Grouping crashes together at a small spatial scale help to identify crash hot spots, areas where crashes happen unusually often. To this end crash data for the last 10 years was rasterised to a 500m grid. With each raster a single pixel covers a 500m x 500m area and contains a single value, for example, the number of people killed in that area in 2018. It is also possible to create a stack of multiple raster layers to represent a chaining variable, such as time.
-
-We created twelve raster stacks with each stack covering the years ten years of available data 2010 to 2019. Each raster stack was created for the whole of Great Britain.
-
-* Cyclists killed or seriously injured during commuting hours
-* Cyclists killed or seriously injured during any time of day
-* Cyclists with any injury during commuting hours
-* Cyclists with any injury during during any time of day
-
-* Pedestrians killed or seriously injured during commuting hours
-* Pedestrians killed or seriously injured during any time of day
-* Pedestrians with any injury during commuting hours
-* Pedestrians with any injury during during any time of day
-
-* All people killed or seriously injured during commuting hours
-* All people killed or seriously injured during any time of day
-* All people with any injury during commuting hours
-* All people with any injury during during any time of day
-
-Commuting hours where defined as being between 7 - 10 AM and 4 - 7 PM, and where selected for special study as the PCT estimates of cycling levels are based on travel to work data.
-
-```{r raster, fig.cap="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"}
-knitr::include_graphics("raster_example.JPG")
-```
+Malcolm ~500
 
 ## Exploratory analysis of walking and cycling casualties at the local authority level
 
@@ -125,56 +102,14 @@ Analyse the commute crash numbers divided by the estimated commute cycling activ
 
 Joey ~500 words
 
-We have used two key data sources to model spatio-temporal change in cycling uptake.
-The first is DfT count data.
-This is open source data available from the Department for Transport website https://roadtraffic.dft.gov.uk/downloads.
-While the raw data is available for the years 2000 - 2019, we have focused on the decade 2010-2019, since there is more consistency in the type of roads being surveyed over this time period.
+```{r}
+knitr::include_graphics("https://github.com/saferactive/saferactive/releases/download/0.1.2/peak-flow-trend-early-years.png")
+```
 
-The second data source is Transport for London cycle counts, collected as part of three programmes, for Central London, Inner London and Outer London https://cycling.data.tfl.gov.uk/.
-The Central London counts are available from 2014, but the other counts are only available from 2015 to 2019, so we have used this time period.
-
-In Central London, four Survey waves are conducted per year, corresponding with the standard quarterly periods. 
-The final wave for which data is available is 2019 Q3.
-Cycling uptake varies across the year, and TfL has produced seasonal adjustment factors to account for this. 
-We have used these adjustment factors to control for seasonality, and to calculate a mean annual count for each Central London site.
-This better corresponds with the Inner and Outer London counts which are conducted annually, representing the second quaterly period (April to June).
-We used the Q2 adjustment factor to normalise these counts.
-
-Our primary spatial model of cycling potential is derived from the Propensity to Cycle Tool, with this count data being used to model changes through time. 
-, among other data cleaning steps, we made efforts to correspond closely with the Propensity to Cycle Tool methodologies. 
-This included combining bi-directional data to get a single measure of cycle volume per site, similarly to the Propensity to Cycle Tool which combines journeys in both directions between a common origin and destination. 
-The TfL counts run from 06:00 to 22:00, but we only used counts from the commuter hours of 07:00 - 10:00 and 16:00 - 19:00, since the PCT data is for travel to work only.
-
-GAM models were produced using splines to represent temporal and spatial change in cycling levels. 
-Temporal change is modelled as a cubic regression spline for the term `year`. 
-We gave this 5 knots, a relatively low number, to prevent 
-Cubic regression splines are appropriate for variables with relatively low numbers of knots, spread evenly across the extent of the parameter values.
-
-Space (eastings and northings) is modelled using a Duchon spline, which works well with two-dimensional parameters. 
-We used 100 knots, to allow more complex spatial patterns to be represented.
-
-
-
-
-
-
-
-
-We are able to estimate spatio-temporal change in cycling uptake over a ten year period from 2010 to 2019.  
-This will involve using a GAM model of relative change in Annual Average Daily Flow of pedal cycles, based on data from DfT count points across England, Wales and Scotland. 
-The model includes smoothing terms for year and for space.
-Using these parameters, predictions can be derived, generating a smoothed surface representing modelled change in AADF across time and space.
-This allows us to obtain estimates of change in cycling uptake at the same spatial resolution as the collision data.
 
 ## Validation of cycling uptake model results
 
 Joey ~500 words
-
-The model results require validation and verification. 
-We should obtain confidence intervals to constrain the cycling uptake predictions.
-One form of validation will be to assess predictions against TfL count data, which gives us an independent data set for London for the years 2015 - 2019.  
-At first pass the coefficient of determination of the variance of these data sets seems to be very low, but this may improve now we have done more data cleaning.
-We should also investigate how it changes with greater temporal and spatial aggregation of data points. 
 
 ## Modelling spatio-temporal change in collision risk
 
@@ -190,24 +125,15 @@ Joey and Robin
 
 ## Traffic calming measures
 
-There is OSM data for the years 2014 - 2019, providing insight on the date of installation of traffic calming measures. 
-Using two time points (i.e. 2014 and 2018), we can investigate differences between the first and second halves of the decade. 
-
 <!-- ## 20 mph zones -->
 
 ## Protected cycleways
-
-Counts from cycle superhighways and quietways are available from TfL, typically including 1 year of baseline count data from before installation, and around 4 years of post-installation count data. 
-We can speak to TfL to get better insight on the exact timings of implementation of these schemes.
 
 <!-- ## Traffic reduction -->
 
 ## Roadspace reallocation
 
 ## Low Traffic Neighbourhoods
-
-Counts from Mini-Holland schemes are available from TfL, typically including 1 year of baseline count data from before installation, and around 4 years of post-installation count data. 
-We can speak to TfL to get better insight on the exact timings of implementation of these schemes.
 
 # Data visualisation
 
