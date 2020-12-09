@@ -34,11 +34,18 @@ Add context, how the work done in this quarter relates to previous work, the lon
 
 <!-- ~300 words -->
 
-Lead author: Joey
+What kind of interventions are available?
 
-# Risk modelling
+Reference under-review.
 
-Lead author: Joey - link to paper
+Where do collisions happen?
+
+
+# Is active travel getting safer?
+
+The aim of this section is to provide estimates of casualty risk for walking and cycling.
+
+<!-- High level aim. -->
 
 ## Assigning collision data to a spatial grid {#collision}
 
@@ -64,7 +71,7 @@ We created twelve raster stacks with each stack covering the years ten years of 
 Commuting hours where defined as being between 7 - 10 AM and 4 - 7 PM, and where selected for special study as the PCT estimates of cycling levels are based on travel to work data.
 
 ```{r raster, fig.cap="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"}
-knitr::include_graphics("raster_example.JPG")
+# knitr::include_graphics("raster_example.JPG")
 ```
 
 ## Exploratory analysis of walking and cycling casualties at the local authority level
@@ -202,9 +209,23 @@ Depending on the outcome of the previous analysis.
 
 Which kinds of areas seem to becoming safer for walking and cycling in relation to the modelling?
 
+```{r, eval=FALSE}
+u = "https://github.com/saferactive/saferactive/releases/download/0.1.2/gam-full-results-peak-grid.Rds"
+cycle_count_predictions = readRDS(url(u))
+head(cycle_count_predictions$change_cycles)
+summary(cycle_count_predictions$change_cycles)
+summary(cycle_count_predictions$change_cycles[cycle_count_predictions$year == 2011])
+
+```
+
+
+
+
 # Scenarios of change
 
 Joey and Robin
+
+Majority of collisions on boundary roads.
 
 ## Traffic calming measures
 
@@ -237,7 +258,12 @@ Road crash data are spatially and temporally precise but also attribute-rich. Th
 
 As a quick way of illustrating this, below are bar charts displaying crash frequencies for all (left) and active casualties (right) by road speed classification. Crashes resulting in a KSI (fatal or serious injury) are dark red, those resulting a slight injury light red. It is not surprising that 30mph roads are the modal category of road for all crahses, but especially those involving active travel modes. A more interesting question is around how relative injury severity varies by road type and vehicle mode. To quickly investigate this we generate [mosaic plots](https://en.wikipedia.org/wiki/Mosaic_plot), a sort of visual contingency table where plot width varies according to _absolute number_ of crashes in this case and height according to _relative number_ of crashes resulting in a KSI (e.g. the relative height of the dark red bars). Whilst the pattern implied by this layout again could be anticipated, it does demonstrate the obvious effect on injury severity of increasing road speed limits on KSI rates for crashes involving pedestrians and cyclists.
 
-```{r crashes-speed, fig.cap="Plots of road crashes by road type – comparison of all versus active-only crashes. Recorded crashes in GB 2017-2019.", out.width="45%", fig.show='hold'}
+<!-- Link to crashes on hierarchy of vulnerability:  -->
+<!-- https://itsleeds.github.io/rrsrr/join.html#joining-vehicle-data -->
+
+<!-- can we make total height of each bar proportional to total n. crashes? -->
+
+```{r crashes-speed, fig.cap="Plots of road crashes by road type – comparison of all versus active-only crashes. Top row: rural, bottom row: urban. Recorded crashes in GB 2017-2019.", out.width="45%", fig.show='hold'}
 knitr::include_graphics(c(
   "crashes_speed_all.png", "crashes_speed_active.png"
 ))
@@ -272,7 +298,7 @@ Inevitably when analysing road crash data we wish to make inferences about casua
 
 Key to this work is incorporating appropriate denominators for estimating exposure, discussed above. However, we are also implementing visual data analysis approaches to uncertainty representation. For illustrative purposes below are maps of relative risk comparing relative injury severity ratio for crashes in each Police Force area against that which would be expected given the national average. Where a Police Force has an injury severity ratio greater than the national average it is red, less than  the national average blue. The left-most map contains risk ratios derived from crash data between 2017-2019; in the middle we demonstrate how these have shifted year-on-year, with no adjustment made for CRASH and COPA re-coding and in the right-most map we represent model uncertainty by drawing year-on-year lines that result from a bootstrap resample. Whilst representing a full empirical bootstrap distribution may be one means of representing uncertainty, we are currently investigating others, for example [hypothetical outcome plots](https://medium.com/hci-design-at-uw/hypothetical-outcomes-plots-experiencing-the-uncertain-b9ea60d7c740), increasingly used in journalism and public-facing domains.    
 
-```{r rr-force, fig.cap="KSI risk ratios by Police Force area in England and Wales, year-on-year analysis, plus bootstrapped raw KSI rates..", out.width="95%", fig.show='hold'}
+```{r rr-force, fig.cap="KSI risk ratios by Police Force area in England and Wales, year-on-year analysis, plus bootstrapped raw KSI rates. 2017-2019 data shown in left plot, 2009-2019 data shown in middle and right plots.", out.width="95%", fig.show='hold'}
 knitr::include_graphics(c(
   "rr_cots.png"
 ))
