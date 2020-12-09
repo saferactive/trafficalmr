@@ -42,7 +42,30 @@ Lead author: Joey - link to paper
 
 ## Assigning collision data to a spatial grid {#collision}
 
-Malcolm ~500
+Grouping crashes together at a small spatial scale help to identify crash hot spots, areas where crashes happen unusually often. To this end crash data for the last 10 years was rasterised to a 500m grid. With each raster a single pixel covers a 500m x 500m area and contains a single value, for example, the number of people killed in that area in 2018. It is also possible to create a stack of multiple raster layers to represent a chaining variable, such as time.
+
+We created twelve raster stacks with each stack covering the years ten years of available data 2010 to 2019. Each raster stack was created for the whole of Great Britain.
+
+* Cyclists killed or seriously injured during commuting hours
+* Cyclists killed or seriously injured during any time of day
+* Cyclists with any injury during commuting hours
+* Cyclists with any injury during during any time of day
+
+* Pedestrians killed or seriously injured during commuting hours
+* Pedestrians killed or seriously injured during any time of day
+* Pedestrians with any injury during commuting hours
+* Pedestrians with any injury during during any time of day
+
+* All people killed or seriously injured during commuting hours
+* All people killed or seriously injured during any time of day
+* All people with any injury during commuting hours
+* All people with any injury during during any time of day
+
+Commuting hours where defined as being between 7 - 10 AM and 4 - 7 PM, and where selected for special study as the PCT estimates of cycling levels are based on travel to work data.
+
+```{r raster, fig.cap="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"}
+knitr::include_graphics("raster_example.JPG")
+```
 
 ## Exploratory analysis of walking and cycling casualties at the local authority level
 
@@ -63,20 +86,20 @@ wordcountaddin::text_stats_chr("text here") # paste in text-here
 ```
 
 
-To estimate the spatial distribution of cycling activity, measured in km per year, we started with data from the Propensity to Cycle Tool (PCT). 
-The Route Network layer in the PCT provides an indication of the number of commuter cyclists on different parts of the network, based on 2011 Census data reporting the number of people travelling between small (LSOA, average population \~2000) zones by mode of travel. 
+To estimate the spatial distribution of cycling activity, measured in km per year, we started with data from the Propensity to Cycle Tool (PCT).
+The Route Network layer in the PCT provides an indication of the number of commuter cyclists on different parts of the network, based on 2011 Census data reporting the number of people travelling between small (LSOA, average population \~2000) zones by mode of travel.
 The route network in the PCT represents the 'fastest' routes for cycling between these LSOA zones and is not therefore designed to represent where cycling takes place (there are may be some links on the route network where the people prefer a slower but safer route).
 
-Converting the spatial network representation of cycling to a spatial grid has the advantage of 'smoothing' out cycling activity across cities and allowing cycling levels to be presented in a form that is directly comparable with the crash data, which as also assigned to the spatial grid, as described in Section \@ref(collision). 
+Converting the spatial network representation of cycling to a spatial grid has the advantage of 'smoothing' out cycling activity across cities and allowing cycling levels to be presented in a form that is directly comparable with the crash data, which as also assigned to the spatial grid, as described in Section \@ref(collision).
 The three main steps were:
 
--   Break-up long route network segments so that only segments with a length of 200 m or less remained. 
-To do this we initially solved the problem in R, developing the function [`line_breakup()`](https://docs.ropensci.org/stplanr/reference/line_breakup.html) in the `stplanr` package for the purpose. 
+-   Break-up long route network segments so that only segments with a length of 200 m or less remained.
+To do this we initially solved the problem in R, developing the function [`line_breakup()`](https://docs.ropensci.org/stplanr/reference/line_breakup.html) in the `stplanr` package for the purpose.
 After realising that this implementation would take several hours to complete on the national route network, we opted for a more computationally efficient approach that used R's interface to GIS algorithms in the `qgisprocess` package.
 -   Calculate the distance cycled, in km per year, on each of the shortened segments on the updated route networks as follows: $$
     d_y = t_s * t_y * d_s
-    $$ where $d_y$ is distance cycled per year per segment, $t_s$ is the number of trips per segment, $t_y$ is the number of trips in either direction made, on average, per year and $d_s$ is the distance of each segment. 
-    $t_s$ and $d_s$ are taken directly from the PCT and $t_y$ was set to 253 commute trips per day multiplied by two, based on guidance from @departmentfortransport_active_2020 and based on the fact that the PCT counts only record cycling flows in one direction. 
+    $$ where $d_y$ is distance cycled per year per segment, $t_s$ is the number of trips per segment, $t_y$ is the number of trips in either direction made, on average, per year and $d_s$ is the distance of each segment.
+    $t_s$ and $d_s$ are taken directly from the PCT and $t_y$ was set to 253 commute trips per day multiplied by two, based on guidance from @departmentfortransport_active_2020 and based on the fact that the PCT counts only record cycling flows in one direction.
     [Summing](https://github.com/saferactive/saferactive/blob/master/code/rasters-rnet.R#L56) these values for all route network segments across England and Wales yielded a total of 1.1 billion km cycled in 2011, roughly a quarter of the 4.5 billion km cycled by any mode in England and Wales according to the National Travel Survey (see table NTS0303 and analysis in the script [`nts-national-distance-cycled-year.R`](https://github.com/saferactive/saferactive/blob/master/code/nts-national-distance-cycled-year.R) for details).
 -   Add the total distance cycled of each segment per grid cell, based on the centre point (centroid) of each segment of 200 m or less.
 
@@ -102,14 +125,56 @@ Analyse the commute crash numbers divided by the estimated commute cycling activ
 
 Joey ~500 words
 
-```{r}
-knitr::include_graphics("https://github.com/saferactive/saferactive/releases/download/0.1.2/peak-flow-trend-early-years.png")
-```
+We have used two key data sources to model spatio-temporal change in cycling uptake.
+The first is DfT count data.
+This is open source data available from the Department for Transport website https://roadtraffic.dft.gov.uk/downloads.
+While the raw data is available for the years 2000 - 2019, we have focused on the decade 2010-2019, since there is more consistency in the type of roads being surveyed over this time period.
 
+The second data source is Transport for London cycle counts, collected as part of three programmes, for Central London, Inner London and Outer London https://cycling.data.tfl.gov.uk/.
+The Central London counts are available from 2014, but the other counts are only available from 2015 to 2019, so we have used this time period.
+
+In Central London, four Survey waves are conducted per year, corresponding with the standard quarterly periods.
+The final wave for which data is available is 2019 Q3.
+Cycling uptake varies across the year, and TfL has produced seasonal adjustment factors to account for this.
+We have used these adjustment factors to control for seasonality, and to calculate a mean annual count for each Central London site.
+This better corresponds with the Inner and Outer London counts which are conducted annually, representing the second quaterly period (April to June).
+We used the Q2 adjustment factor to normalise these counts.
+
+Our primary spatial model of cycling potential is derived from the Propensity to Cycle Tool, with this count data being used to model changes through time.
+, among other data cleaning steps, we made efforts to correspond closely with the Propensity to Cycle Tool methodologies.
+This included combining bi-directional data to get a single measure of cycle volume per site, similarly to the Propensity to Cycle Tool which combines journeys in both directions between a common origin and destination.
+The TfL counts run from 06:00 to 22:00, but we only used counts from the commuter hours of 07:00 - 10:00 and 16:00 - 19:00, since the PCT data is for travel to work only.
+
+GAM models were produced using splines to represent temporal and spatial change in cycling levels.
+Temporal change is modelled as a cubic regression spline for the term `year`.
+We gave this 5 knots, a relatively low number, to prevent
+Cubic regression splines are appropriate for variables with relatively low numbers of knots, spread evenly across the extent of the parameter values.
+
+Space (eastings and northings) is modelled using a Duchon spline, which works well with two-dimensional parameters.
+We used 100 knots, to allow more complex spatial patterns to be represented.
+
+
+
+
+
+
+
+
+We are able to estimate spatio-temporal change in cycling uptake over a ten year period from 2010 to 2019.
+This will involve using a GAM model of relative change in Annual Average Daily Flow of pedal cycles, based on data from DfT count points across England, Wales and Scotland.
+The model includes smoothing terms for year and for space.
+Using these parameters, predictions can be derived, generating a smoothed surface representing modelled change in AADF across time and space.
+This allows us to obtain estimates of change in cycling uptake at the same spatial resolution as the collision data.
 
 ## Validation of cycling uptake model results
 
 Joey ~500 words
+
+The model results require validation and verification.
+We should obtain confidence intervals to constrain the cycling uptake predictions.
+One form of validation will be to assess predictions against TfL count data, which gives us an independent data set for London for the years 2015 - 2019.
+At first pass the coefficient of determination of the variance of these data sets seems to be very low, but this may improve now we have done more data cleaning.
+We should also investigate how it changes with greater temporal and spatial aggregation of data points.
 
 ## Modelling spatio-temporal change in collision risk
 
@@ -125,9 +190,15 @@ Joey and Robin
 
 ## Traffic calming measures
 
+There is OSM data for the years 2014 - 2019, providing insight on the date of installation of traffic calming measures.
+Using two time points (i.e. 2014 and 2018), we can investigate differences between the first and second halves of the decade.
+
 <!-- ## 20 mph zones -->
 
 ## Protected cycleways
+
+Counts from cycle superhighways and quietways are available from TfL, typically including 1 year of baseline count data from before installation, and around 4 years of post-installation count data.
+We can speak to TfL to get better insight on the exact timings of implementation of these schemes.
 
 <!-- ## Traffic reduction -->
 
@@ -135,7 +206,60 @@ Joey and Robin
 
 ## Low Traffic Neighbourhoods
 
+Counts from Mini-Holland schemes are available from TfL, typically including 1 year of baseline count data from before installation, and around 4 years of post-installation count data.
+We can speak to TfL to get better insight on the exact timings of implementation of these schemes.
+
 # Data visualisation
+
+We continue to develop approaches to visually analysing road crash data and have divided our efforts here into two areas: **exploring** and **quantifying** risk.
+
+## Exploring risk
+
+Road crash data are spatially and temporally precise but also attribute-rich. The Stast19 dataset for example has many  variables describing numerous aspects associated with road conditions and vehicle types. Exploratory visual analysis interfaces provide a mechanism for quickly investigating these.
+
+As a quick way of illustrating this, below are bar charts displaying crash frequencies for all (left) and active casualties (right) by road speed classification. Crashes resulting in a KSI (fatal or serious injury) are dark red, those resulting a slight injury light red. It is not surprising that 30mph roads are the modal category of road for all crahses, but especially those involving active travel modes. A more interesting question is around how relative injury severity varies by road type and vehicle mode. To quickly investigate this we generate [mosaic plots](https://en.wikipedia.org/wiki/Mosaic_plot), a sort of visual contingency table where plot width varies according to _absolute number_ of crashes in this case and height according to _relative number_ of crashes resulting in a KSI (e.g. the relative height of the dark red bars). Whilst the pattern implied by this layout again could be anticipated, it does demonstrate the obvious effect on injury severity of increasing road speed limits on KSI rates for crashes involving pedestrians and cyclists.
+
+```{r crashes-speed, fig.cap="Plots of road crashes by road type – comparison of all versus active-only crashes. Recorded crashes in GB 2017-2019.", out.width="45%", fig.show='hold'}
+knitr::include_graphics(c(
+  "crashes_speed_all.png", "crashes_speed_active.png"
+))
+```
+
+Once the code template for these plots is created, it is very easy to substitute in other variables that we think may be discriminating -- lighting and surface condition (wetness). Here again we the see strong effect on relative injury severity. We do not advocate using these plots for decision-making, for example prioritising lighting and surface drainage over other candidate interventions, but instead for their application as a low-cost mechanism for initially proposing factors that might then be incorporayed into a more formal data analysis.    
+
+```{r crashes-surface, fig.cap="Plots of road crashes by road condition – comparison of all versus active-only crashes. Recorded crashes in GB 2017-2019.", out.width="45%", fig.show='hold'}
+knitr::include_graphics(c(
+  "crashes_all_conditions.png", "crashes_active_conditions.png"
+))
+```
+
+A benefit of using Mosaic plots for presenting categorical data such as this is that they are data rich. For example, we might extend this analysis to profile crashes by travel mode. In the plots below we focus on London. That cars are the modal vehicle category is to be expected, but it is again useful to emphasise the fact that relative injury severity increases with motorbikes and bikes and also that the vehicle-crash mix varies according to geographic context.
+
+```{r crashes-borough, fig.cap="Plots of road crashes by vehicle type. All recorded crashes in London 2009-2019.", out.width="95%", fig.show='hold'}
+knitr::include_graphics(c(
+  "spine_aspatial.png"
+))
+```
+
+```{r crashes-borough-spatial, fig.cap="Plots of road crashes by vehicle type and London borough. All recorded crashes in London 2009-2019.", out.width="95%", fig.show='hold'}
+knitr::include_graphics(c(
+  "spines_borough.png"
+))
+```
+
+
+## Quantifying risk
+
+Inevitably when analysing road crash data we wish to make inferences about casualty rates through comparison -- over time and by geographic areas. There are difficulties with doing this -- comparing rates across areas (and time) -- that are more idiosyncratic relating to the way in which road crash data are collected and choice of denominator, but also established problems in statistics -- for example, uncertainties due to sampling size and multiple comparison. 
+
+Key to this work is incorporating appropriate denominators for estimating exposure, discussed above. However, we are also implementing visual data analysis approaches to uncertainty representation. For illustrative purposes below are maps of relative risk comparing relative injury severity ratio for crashes in each Police Force area against that which would be expected given the national average. Where a Police Force has an injury severity ratio greater than the national average it is red, less than  the national average blue. The left-most map contains risk ratios derived from crash data between 2017-2019; in the middle we demonstrate how these have shifted year-on-year, with no adjustment made for CRASH and COPA re-coding and in the right-most map we represent model uncertainty by drawing year-on-year lines that result from a bootstrap resample. Whilst representing a full empirical bootstrap distribution may be one means of representing uncertainty, we are currently investigating others, for example [hypothetical outcome plots](https://medium.com/hci-design-at-uw/hypothetical-outcomes-plots-experiencing-the-uncertain-b9ea60d7c740), increasingly used in journalism and public-facing domains.    
+
+```{r rr-force, fig.cap="KSI risk ratios by Police Force area in England and Wales, year-on-year analysis, plus bootstrapped raw KSI rates..", out.width="95%", fig.show='hold'}
+knitr::include_graphics(c(
+  "rr_cots.png"
+))
+```
+
 
 Roger ~500 words - ideas from paper
 
