@@ -132,45 +132,75 @@ Analyse the commute crash numbers divided by the estimated commute cycling activ
 
 Joey ~500 words
 
-We have used two key data sources to model spatio-temporal change in cycling uptake.
+To estimate levels of cycling activity across space, our primary data source is the Propensity to Cycle Tool. 
+This takes 2011 Census data on method of travel to work, and routes these journeys using a CycleStreets routing algorithm, allowing us to estimate cycle potential on each link of the road network. 
+However, this does not give us any information on changes in cycling uptake through time. 
+To estimate changes through time, we must investigate data from manual cycle counters.
+
+We have used two key data sources to model this spatio-temporal change in cycling uptake.
 The first is DfT count data.
 This is open source data available from the Department for Transport website https://roadtraffic.dft.gov.uk/downloads.
 While the raw data is available for the years 2000 - 2019, we have focused on the decade 2010-2019, since there is more consistency in the type of roads being surveyed over this time period.
 
 The second data source is Transport for London cycle counts, collected as part of three data collection programmes, for Central London, Inner London and Outer London https://cycling.data.tfl.gov.uk/. 
-There are other TfL count programmes focusing on specific interventions such as the cycle superhighways and Mini-Holland schemes; we have not used these to keep our results representative of London as a whole. 
+There are other TfL count programmes focusing on specific interventions such as the cycle superhighways and Mini-Holland schemes, but we have not used these to keep our results representative of London as a whole. 
 The Central London counts are available from 2014, but the other counts are only available from 2015 to 2019, so we have used this time period.
 
 To make the best possible use of the available data, we have developed two models.
-For change in cycling uptake over the years 2010-2015, we have a model based solely on the DfT counts.
+For change in cycling uptake over the years 2010-2015, we have a model based solely on the DfT counts, as these are the only ones available during this time period.
 For the years 2015-2019, our model combines both the DfT and TfL counts.
 To assess change across the full decade, we combine these two models, computing changes since 2015 on top of the changes seen up to this point.
 
-In Central London, four Survey waves are conducted per year, corresponding with the standard quarterly periods.
+Rather than using the raw cycle counts, i.e. number of cyclists passing a given point per hour, we assess relative change in these cycle counts. The number of cyclists varies greatly from one road to another, and the same count points are not always used each year. Therefore the variable of interest is the change in cycle volumes at a given count point: $$
+Ch_y = C_y / C_m
+$$ where $Ch_y$ is the change in cycle count for a given year, $C_y$ is the cycle count for the year of interest, and $C_m$ is the mean cycle count at that count point across all years within the model period that the count point is in use. 
+
+### Data cleaning steps
+
+Since our primary spatial model of cycling potential is derived from Census 2011 data accessed via the Propensity to Cycle Tool, we had to adapt the count data accordingly. 
+As part of the data cleaning process, we made efforts to correspond closely with Propensity to Cycle Tool methodologies. 
+All of these adjustments were made on the raw count data, prior to calculating change in cycle volumes.
+Firstly, we combined bi-directional data to get a single measure of cycle volume per site, similar to the PCT which combines journeys in both directions between a common origin and destination. 
+Secondly, we used peak hour flows only. 
+Our spatial model is based solely on travel to work, so temporal changes to this model should reflect changes in commuter volumes, not changes in whole-day cycle volumes. 
+The TfL counts run from 06:00 to 22:00, while the DfT counts run from 07:00 to 19:00, but we selected only the counts from peak commuter hours, defined by TfL as being 07:00 - 10:00 and 16:00 - 19:00.
+
+Further data cleaning was conducted for the seasonal adjustment of cycle flows and the generation of single annual estimates for each count point.
+In the TfL Central London dataset, four Survey waves are conducted per year, corresponding with the standard quarterly periods.
 The final wave for which data is available is 2019 Q3.
-Cycling uptake varies across the year, and TfL has produced seasonal adjustment factors to account for this.
+By contrast, in the TfL Inner and Outer London counts and the DfT counts, each location is surveyed at most once per year. 
+
+Cycling uptake varies across the year due to factors such as weather conditions.
+TfL has produced seasonal adjustment factors for each of the four quarterly periods, to account for this.
 We have used these adjustment factors to control for seasonality, and to calculate a mean annual count for each Central London site.
-This better corresponds with the Inner and Outer London counts which are conducted annually, representing the second quaterly period (April to June).
-We used the Q2 adjustment factor to normalise these counts.
+We desired a single annual figure to avoid giving these central London locations four times the weighting of the other counts when generating the GAM models, as described below.
+Meanwhile, the Inner and Outer London TfL counts are designed to represent the second quarterly period (April to June), so we used the Q2 adjustment factor to normalise these counts.
+For the DfT counts, we normalised the raw values based on the adjustment factor for whichever quarterly period the count date fell within.
 
-Our primary spatial model of cycling potential is derived from the Propensity to Cycle Tool, with this count data being used to model changes through time.
-As part of the data cleaning process, we made efforts to correspond closely with the Propensity to Cycle Tool methodologies.
-This included combining bi-directional data to get a single measure of cycle volume per site, similarly to the Propensity to Cycle Tool which combines journeys in both directions between a common origin and destination.
-The TfL counts run from 06:00 to 22:00, but we only used counts from the commuter hours of 07:00 - 10:00 and 16:00 - 19:00, since the PCT data is for travel to work only.
+### Trends in mean cycle flows
 
-GAM models were produced using splines to represent temporal and spatial change in cycling levels.
+Mean change in cycle flows over the years 2010-2015 is shown for all DfT count points in London in Figure \@ref(fig:early-year). 
+
+```{r early-year, fig.cap = "Mean change in peak cycle flows for count points in London in the years 2010-2015"}
+knitr::include_graphics(c("peak-flow-trend-early-years.png"))
+```
+
+In Figure \@ref(fig:late-year), we show mean change in cycle counts over the years 2015-2019, for both DfT and TfL count points. We can see that the trends are quite different in TfL and DfT count points. 
+The TfL counts rise throughout this period, while the DfT counts peak in 2016 and fall thereafter.
+
+```{r late-year, fig.cap = "Mean change in peak cycle flows for count points in London in the years 2015-2019"}
+knitr::include_graphics(c("peak-flow-trend-late-years.png"))
+```
+
+### Predicting cycle uptake using GAM models
+
+Two GAM models were produced using splines to represent temporal and spatial change in cycling levels.
+The two models follow the same structure, but the first is for the years 2010-2015, using DfT data only, while the second is for the years 2015-2019 and uses both DfT and TfL data.
 Temporal change is modelled as a cubic regression spline for the term `year`.
-We gave this 5 knots, a relatively low number, to prevent
+We gave this 4 knots, a relatively low number, to prevent overfitting.
 Cubic regression splines are appropriate for variables with relatively low numbers of knots, spread evenly across the extent of the parameter values.
-
 Space (eastings and northings) is modelled using a Duchon spline, which works well with two-dimensional parameters.
 We used 100 knots, to allow more complex spatial patterns to be represented.
-
-
-
-
-
-
 
 
 We are able to estimate spatio-temporal change in cycling uptake over a ten year period from 2010 to 2019.
@@ -185,19 +215,16 @@ Joey ~500 words
 
 We have examined the coefficient of determination (R squared), to investigate correlations between data sets. 
 
-For the years 2015-2019, the trends are quite different in TfL and DfT count points. As seen in Figure \@ref(fig:x), the TfL counts rise throughout this period, while the DfT counts peak in 2016 and fall thereafter.
 
-```{r fig x}
-knitr::include_graphics("https://rstudio.robinlovelace.net/s/5c3af61ebe310325bfffb/files/saferactive/figures/peak-flow-trend-late-years.png")
-```
-
-We have verified the GAM predictions against the raw TfL count data, to ensure we are representing the true variability of the data. This gives an R squared of 0.194, showing the extent to which the model is able to predict counts across London in the years 2015-2019 (see Figure \@ref(fig:xx)).
+We have verified the GAM predictions against the raw TfL count data, to ensure we are representing the true variability of the data. 
+This gives an R squared of 0.194, showing the extent to which the model is able to predict counts across London in the years 2015-2019 (see Figure \@ref(fig:xx)).
 
 ```{r fig xx}
-knitr::include_graphics("https://rstudio.robinlovelace.net/s/5c3af61ebe310325bfffb/files/saferactive/figures/peak-hour-correlation.png")
+knitr::include_graphics(c("peak-hour-correlation.png"))
 ```
 
-Further validation work should include sensitivity analysis involving the exclusion of portions of the dataset, and the prediction of these excluded portions. We also need to obtain confidence intervals to constrain the cycling uptake predictions.
+Further validation work should include sensitivity analysis involving the exclusion of portions of the dataset, and the prediction of these excluded portions. 
+We also need to obtain confidence intervals to constrain the cycling uptake predictions.
 
 We should also investigate how correlations change with greater temporal and spatial aggregation of data points.
 
