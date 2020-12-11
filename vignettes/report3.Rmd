@@ -132,7 +132,7 @@ Analyse the commute crash numbers divided by the estimated commute cycling activ
 
 Joey ~500 words
 
-To estimate levels of cycling activity across space, our primary data source is the Propensity to Cycle Tool. 
+As described in Section #2.3, our primary data source for estimating levels of cycling activity across space is the Propensity to Cycle Tool. 
 This takes 2011 Census data on method of travel to work, and routes these journeys using a CycleStreets routing algorithm, allowing us to estimate cycle potential on each link of the road network. 
 However, this does not give us any information on changes in cycling uptake through time. 
 To estimate changes through time, we must investigate data from manual cycle counters.
@@ -154,6 +154,9 @@ To assess change across the full decade, we combine these two models, computing 
 Rather than using the raw cycle counts, i.e. number of cyclists passing a given point per hour, we assess relative change in these cycle counts. The number of cyclists varies greatly from one road to another, and the same count points are not always used each year. Therefore the variable of interest is the change in cycle volumes at a given count point: $$
 Ch_y = C_y / C_m
 $$ where $Ch_y$ is the change in cycle count for a given year, $C_y$ is the cycle count for the year of interest, and $C_m$ is the mean cycle count at that count point across all years within the model period that the count point is in use. 
+
+To avoid the impacts of high relative change in cycle flows at count points with very low absolute numbers of cyclists, we excluded all data from locations with a mean cycle flow < 5, or with zero cyclists in any single year.
+We also excluded locations that did not have at least two years of data within the relevant period.
 
 ### Data cleaning steps
 
@@ -182,32 +185,49 @@ For the DfT counts, we normalised the raw values based on the adjustment factor 
 Mean change in cycle flows over the years 2010-2015 is shown for all DfT count points in London in Figure \@ref(fig:early-year). 
 
 ```{r early-year, fig.cap = "Mean change in peak cycle flows for count points in London in the years 2010-2015"}
-knitr::include_graphics(c("peak-flow-trend-early-years.png"))
+knitr::include_graphics("peak-flow-trend-early-years.png")
 ```
 
 In Figure \@ref(fig:late-year), we show mean change in cycle counts over the years 2015-2019, for both DfT and TfL count points. We can see that the trends are quite different in TfL and DfT count points. 
 The TfL counts rise throughout this period, while the DfT counts peak in 2016 and fall thereafter.
 
 ```{r late-year, fig.cap = "Mean change in peak cycle flows for count points in London in the years 2015-2019"}
-knitr::include_graphics(c("peak-flow-trend-late-years.png"))
+knitr::include_graphics("peak-flow-trend-late-years.png")
 ```
 
 ### Predicting cycle uptake using GAM models
 
-Two GAM models were produced using splines to represent temporal and spatial change in cycling levels.
+To estimate spatio-temporal changes in cycling uptake over the decade 2010-2019, we have created two GAM models, which use the count data to generate smoothed estimates of change in cycling levels in London across this period.
+The models use splines to represent the partial effects of time and space on cycling uptake.
 The two models follow the same structure, but the first is for the years 2010-2015, using DfT data only, while the second is for the years 2015-2019 and uses both DfT and TfL data.
+
+The response variable in these models is $Ch_y$ (change in cycle flows).
+However, total number of cycles (across all years within the model period) per count point is used as a weighting factor. 
+This avoids giving undue influence to locations where the relative change in cycle flows may be high but the absolute number of cycles is low.
+It also reduces the influence of count locations that are sampled in some years only, compared to those sampled every year.
+
 Temporal change is modelled as a cubic regression spline for the term `year`.
 We gave this 4 knots, a relatively low number, to prevent overfitting.
 Cubic regression splines are appropriate for variables with relatively low numbers of knots, spread evenly across the extent of the parameter values.
-Space (eastings and northings) is modelled using a Duchon spline, which works well with two-dimensional parameters.
+Space (`eastings` and `northings`) is modelled using a Duchon spline, which works well with two-dimensional parameters.
 We used 100 knots, to allow more complex spatial patterns to be represented.
 
+The partial effects of `year` in these models are shown in Figure \@ref(fig:gam-year). These closely resemble the trends observed in the raw data, in Figures \@ref(fig:early-year) and \@ref(fig:late-year).
 
-We are able to estimate spatio-temporal change in cycling uptake over a ten year period from 2010 to 2019.
-This will involve using a GAM model of relative change in Annual Average Daily Flow of pedal cycles, based on data from DfT count points across England, Wales and Scotland.
-The model includes smoothing terms for year and for space.
-Using these parameters, predictions can be derived, generating a smoothed surface representing modelled change in AADF across time and space.
-This allows us to obtain estimates of change in cycling uptake at the same spatial resolution as the collision data.
+```{r gam-year, fig.cap = "Partial effects of year in the GAM models. a) left: for the years 2010-2015; b) right: for the years 2015-2019", out.width="40%", fig.show='hold'}
+knitr::include_graphics(c("gam-partial-effect-year-early.png", "gam-partial-effect-year-late.png"))
+```
+
+
+We use the models to predict annual changes in cycling uptake over a 500m grid covering the whole of London.
+This creates a smoothed surface that matches the resolution of the spatial grids we have already generated for collision and census-derived cycling data.
+We can therefore obtain estimates of change in cycling uptake at the same spatial resolution as the collision data.
+
+By assigning each grid point to a London Borough, we can then investigate changes in cycling uptake at the Borough level. These can be seen in Figure \@ref(fig:borough-preds). ***change this to use weighted values***
+
+```{r borough-preds, fig.cap = "Predicted change in cycling uptake for each London Borough, over the years 2010-2019"}
+knitr::include_graphics("peak-boroughs.png")
+```
 
 ## Validation of cycling uptake model results
 
