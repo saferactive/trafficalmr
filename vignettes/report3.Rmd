@@ -156,9 +156,7 @@ Analyse the commute crash numbers divided by the estimated commute cycling activ
 
 ## Modelling spatio-temporal change in cycling uptake based on count data
 
-Joey ~500 words
-
-As described in Section #2.3, our primary data source for estimating levels of cycling activity across space is the Propensity to Cycle Tool. 
+As described in [Section 2.3](#assigning-collision-data-to-a-spatial-grid), our primary data source for estimating levels of cycling activity across space is the Propensity to Cycle Tool. 
 This takes 2011 Census data on method of travel to work, and routes these journeys using a CycleStreets routing algorithm, allowing us to estimate cycle potential on each link of the road network. 
 However, this does not give us any information on changes in cycling uptake through time. 
 To estimate changes through time, we must investigate data from manual cycle counters.
@@ -223,7 +221,8 @@ knitr::include_graphics("peak-flow-trend-late-years.png")
 
 ### Predicting cycle uptake using GAM models
 
-To estimate spatio-temporal changes in cycling uptake over the decade 2010-2019, we have created two GAM models, which use the count data to generate smoothed estimates of change in cycling levels in London across this period.
+To estimate spatio-temporal changes in cycling uptake over the decade 2010-2019, we have created two GAM models using the `mgcv` R library.
+These use the count data to generate smoothed estimates of change in cycling levels in London across this period.
 The models use splines to represent the partial effects of time and space on cycling uptake.
 The two models follow the same structure, but the first is for the years 2010-2015, using DfT data only, while the second is for the years 2015-2019 and uses both DfT and TfL data.
 
@@ -232,9 +231,11 @@ However, total number of cycles (across all years within the model period) per c
 This avoids giving undue influence to locations where the relative change in cycle flows may be high but the absolute number of cycles is low.
 It also reduces the influence of count locations that are sampled in some years only, compared to those sampled every year.
 
+The error structure in both models follows a Scaled-t distribution.
+This is appropriate for continuous response variables which are heavily tailed.
 Temporal change is modelled as a cubic regression spline for the term `year`.
-We gave this 4 knots, a relatively low number, to prevent overfitting.
-Cubic regression splines are appropriate for variables with relatively low numbers of knots, spread evenly across the extent of the parameter values.
+We gave a low number of knots (4 knots for 2010-2015 and 3 knots for 2015-2019) to prevent overfitting.
+Cubic regression splines are appropriate for variables with relatively few knots, spread evenly across the extent of the parameter values.
 Space (`eastings` and `northings`) is modelled using a Duchon spline, which works well with two-dimensional parameters.
 We used 100 knots, to allow more complex spatial patterns to be represented.
 
@@ -243,7 +244,6 @@ The partial effects of `year` in these models are shown in Figure \@ref(fig:gam-
 ```{r gam-year, fig.cap = "Partial effects of year in the GAM models. a) left: for the years 2010-2015; b) right: for the years 2015-2019", out.width="40%", fig.show='hold'}
 knitr::include_graphics(c("gam-partial-effect-year-early.png", "gam-partial-effect-year-late.png"))
 ```
-
 
 We use the models to predict annual changes in cycling uptake over a 500m grid covering the whole of London.
 This creates a smoothed surface that matches the resolution of the spatial grids we have already generated for collision and census-derived cycling data.
@@ -257,22 +257,19 @@ knitr::include_graphics("peak-boroughs.png")
 
 ## Validation of cycling uptake model results
 
-Joey ~500 words
+We have verified the GAM predictions against the TfL count data, to ensure we are representing the true variability of the data. 
+This is conducted using the coefficient of determination (R squared).
+The result gives an R squared of 0.194, showing the extent to which the model is able to predict counts across London in the years 2015-2019 (see Figure \@ref(fig:validation)).
 
-We have examined the coefficient of determination (R squared), to investigate correlations between data sets. 
-
-
-We have verified the GAM predictions against the raw TfL count data, to ensure we are representing the true variability of the data. 
-This gives an R squared of 0.194, showing the extent to which the model is able to predict counts across London in the years 2015-2019 (see Figure \@ref(fig:xx)).
-
-```{r fig xx}
+```{r validation, fig.cap = "Correlation between mean TfL cycle counts and GAM predictions of change, per year and per London Borough"}
 knitr::include_graphics(c("peak-hour-correlation.png"))
 ```
 
 Further validation work should include sensitivity analysis involving the exclusion of portions of the dataset, and the prediction of these excluded portions. 
 We also need to obtain confidence intervals to constrain the cycling uptake predictions.
 
-We should also investigate how correlations change with greater temporal and spatial aggregation of data points.
+We can also investigate how correlations change with greater temporal and spatial aggregation of data points. 
+This may include aggregation to the Borough level, and the grouping of neighbouring Boroughs. 
 
 ## Modelling spatio-temporal change in collision risk
 
