@@ -76,7 +76,33 @@ Commuting hours where defined as being between 7 - 10 AM and 4 - 7 PM, and where
 
 ## Exploratory analysis of walking and cycling casualties at the local authority level
 
-Malcom ~500 words
+We have adjusted the plots to show KSI rate of active travellers per 100,000 people (left map). The KSI rate varies significantly with 90% of LAs being between 8.2 and 24.1 per 100,000 people. Scotland has notably low KSI rates while, Cumbria, has a very high rate.
+
+```{r LAtrends2, fig.cap="Actiuve travel KSI per 100,000 resident population (left) and working population (right)"}
+ knitr::include_graphics("crash_la_plot-1.png")
+```
+
+The City of London is an extreme outline due to it very low resident population. This highlights the denominator issue. That the KSI rate is depended on the value chosen as the denominator. In the case of the City of London, the resident population of about 2,500 is not representative of the amount of people travelling by road. A similar affect may be taking place in Cumbria which is a popular tourist destination and may have more active travellers than is represented by its population.
+
+The right plot uses the 2011 census workplace population for England and Wales. The workplace population favours areas like the City of London which have high daytime activity but few night time residents. As people working is a subset of all people KSI rates will naturally appear higher. However the relative distribution of risk does change under a workplace population approach suggesting that in at least some areas this is an appropriate way to consider the data.
+
+We can also compare the proportion of slightly injured people vs the proportion of KSI casualties. This we are using the weighting factors to account for the adjusted proportion of serious causalities caused by the historic use of different reporting systems. However this difference may still be due to different reporting practices across the country.
+
+If this represent a genuine difference in safety, then LAs with a high ratio (dark green) are having proportionally more slight casualties than serious and fatal ones. This could be use to more segregation of active travellers from motor traffic, lower traffic speed or greater driver awareness of active travellers.
+
+Looking at absolute number of KSI, the top 10 and bottom 10 are the same in 2010 and 2019 suggesting no overall change. The plot blow shows the Active Travel KSI rate per 100,000 workplace population from 2010 to 2019. The majority of LAs are shown with the thin grey lines, while the top 5 and bottom 5 LAs are highlighted in colour
+
+```{r LAtrends3, fig.cap="Top and bottom LAs for KSI per 100,000)"}
+ knitr::include_graphics("trends_plot-1.png")
+```
+
+If we look for areas with the biggest change in KSI rates between 2010 and 2019 we can see some weak noisy trends, with areas such a Torbay increasing in KSIs and Stoke on Trent declining.
+
+If we instead compare KSI against the resident population (adding in Scotland to the analysis) we can see that Aberdeen City have made a sustained decline in KSI rates over the last ten years, down over 60% from their high in 2011. Unlike some other LAs where the rate appears variable but steady, the KSI rate in Aberdeen has fallen almost every year and thus may represent a real world change in safety worthy of detailed study. In particular the Launch of Scotland’s Road Safety Framework in 2009 may have been successful in reducing Active Travel KSIs.
+
+```{r LAtrends4, fig.cap="Las with the greatest change in KSI per 100,000 between 2010 and 2019"}
+ knitr::include_graphics("trends3_plot-1.png")
+```
 
 ## Assigning census-derived cycling data to a spatial grid
 
