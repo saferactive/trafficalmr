@@ -54,8 +54,8 @@ It is now almost a year since the coronavirus pandemic caused major changes to s
 Although the future course of the pandemic (despite the planned roll-out of vaccination programs during 2021), let alone long-term impacts, are still uncertain, there are several clear trends that have consequences for road safety in relation to walking and cycling that look highly likely to continue for the next 12 months at least:
 
 - More working from home: [31](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronavirustheukeconomyandsocietyfasterindicators/10december2020)% of people reported working exclusively from home in December 2020, a figure that has increased slightly since summer (Figure \@ref(fig:wfh)). There are several reasons why this trend will stick [@barrero_why_2020].
-- Reduction in peak hour traffic, as shown in reduced travel on working days, the troughs in Figure \@ref(fig:peak).
-- People are walking and cycling more, possibly as a result of having to stay in their local area. Data on walking uptake are not reported by in the DfT's COVID-19 transport statistics but the trend from Figure \@ref(fig:covid) suggests the mode shift to cycling in May looks set to continue.
+- Reduction in peak hour traffic, as shown in reduced travel on working days, the troughs in Figure \@ref(fig:peak). This increases the potential for road space reallocation for safe walking and cycling.
+- People are walking and cycling more. Data on walking uptake are not reported by in the DfT's COVID-19 transport statistics but the trend from Figure \@ref(fig:covid) suggests the mode shift to cycling persists, even during winter months.
 
 ```{r wfh, fig.cap="Proportion of adults, Great Britain, 14 May to 6 December 2020, who worked from home exclusively has hovered around 30%, a huge increase compared with the 5% who worked from home in [2019](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/articles/coronavirusandhomeworkingintheuklabourmarket/2019). Source: [ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronavirustheukeconomyandsocietyfasterindicators/10december2020)."}
 knitr::include_graphics("wfh-trends-2020-12.png")
@@ -67,7 +67,7 @@ knitr::include_graphics("traffic-trends-2020-12.png")
 knitr::include_graphics("traffic-trends-tomtom-2020-12.png")
 ```
 
-```{r covid-transport, fig.cap="Travel by different modes of transport relative to pre-pandemic (early March) levels. Source: DfT", warning=FALSE, out.width="100%", message=FALSE}
+```{r covid, fig.cap="Travel by different modes of transport relative to pre-pandemic (early March) levels. Dark lines represent 30 day rolling averages. Source: [DfT](https://www.gov.uk/government/statistics/transport-use-during-the-coronavirus-covid-19-pandemic)", warning=FALSE, out.width="100%", message=FALSE}
 # Aim: get daily summary tables from UK's DfT
 
 library(dplyr)
@@ -108,12 +108,22 @@ w
 removed = file.remove("COVID-19-transport-use-statistics.ods")
 ```
 
+In the policy realm, the £250m Active Travel Fund has now been fully allocated and is being spent in local authorities nationwide, with particular emphasis on LTNs and new walking and cycling improvements.
+Academic research on historic LTNs suggest that they can lead to substantial increases of walking and cycling, with reported walking and cycling levels increasing by 29% and 51% in Waltham Forest between 2016 and 2019 and reduced overall risk levels for these modes reducing by three-to-four fold [@goodman_impact_Underreview].
+Such increases in road safety for active modes could, if they are repeated across multiple local authorities nationwide, herald the start of a step change in road safety for walking and cycling.
 
-
+This report sets out to explore the evidence for changes at the city level across London and nationwide.
 
 # Is active travel getting safer?
 
-The aim of this section is to provide estimates of casualty risk for walking and cycling.
+The aim of this section is to provide estimates of casualty risk for walking and cycling at high geographic resolution and over time.
+This is not an easy task: evidence on cycling and particularly walking levels is patchy, while crash datasets are intermittent and sporadic.
+This section outlines the approach we took to help answer the question, which consists of the following main stages, each of which support the aim of quantifying risk over space and time in established measures, primarily the number of people killed and seriously injured per billion km (KSI/bkm):
+<!-- and equivalent metrics for all injuries (I/bkm) and fatalities (K/bkm): -->
+
+- Calculate the change in different types of crashes at high geographic resolution over time (and analysis of the shifting trends in crash data), the 'numerator' in risk calculations
+- Calculate the exposure in terms of distanced walked/cycled
+- Calculate change in safety levels over time
 
 <!-- High level aim. -->
 
@@ -121,7 +131,7 @@ The aim of this section is to provide estimates of casualty risk for walking and
 
 Grouping crashes together at a small spatial scale help to identify crash hot spots, areas where crashes happen unusually often. To this end crash data for the last 10 years was rasterised to a 500m grid. With each raster a single pixel covers a 500m x 500m area and contains a single value, for example, the number of people killed in that area in 2018. It is also possible to create a stack of multiple raster layers to represent a chaining variable, such as time.
 
-We created twelve raster stacks with each stack covering the years ten years of available data 2010 to 2019. Each raster stack was created for the whole of Great Britain.
+We created twelve raster stacks with each stack covering the years ten years of available data 2010 to 2019. Each raster stack was created for the whole of Great Britain (results shown below for London for all modes).
 
 * Cyclists killed or seriously injured during commuting hours
 * Cyclists killed or seriously injured during any time of day
@@ -141,24 +151,29 @@ We created twelve raster stacks with each stack covering the years ten years of 
 Commuting hours where defined as being between 7 - 10 AM and 4 - 7 PM, and where selected for special study as the PCT estimates of cycling levels are based on travel to work data.
 
 ```{r raster, fig.cap="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"}
-# knitr::include_graphics("raster_example.JPG")
+knitr::include_graphics("https://user-images.githubusercontent.com/15819577/96473494-9fddbb80-1229-11eb-9efb-aef24154e7db.png")
 ```
 
-## Exploratory analysis of walking and cycling casualties at the local authority level
+## Measures of active travel safety at the local authority level
 
 We have adjusted the plots to show KSI rate of active travellers per 100,000 people (left map). The KSI rate varies significantly with 90% of LAs being between 8.2 and 24.1 per 100,000 people. Scotland has notably low KSI rates while, Cumbria, has a very high rate.
 
-```{r LAtrends2, fig.cap="Actiuve travel KSI per 100,000 resident population (left) and working population (right)"}
+```{r LAtrends2, fig.cap="Number of active travel (walking and cycling) casualties killed and seriously injured (KSI) per 100,000 resident population (left) and working population (right), 2010-2019."}
  knitr::include_graphics("crash_la_plot-1.png")
 ```
 
-The City of London is an extreme outline due to it very low resident population. This highlights the denominator issue. That the KSI rate is depended on the value chosen as the denominator. In the case of the City of London, the resident population of about 2,500 is not representative of the amount of people travelling by road. A similar affect may be taking place in Cumbria which is a popular tourist destination and may have more active travellers than is represented by its population.
+Based on these population-based measures, the City of London is an outlier due to it very low resident population, highlighting the importance of denominator selection in road safety research.
+In the case of the City of London, the resident population of about 2,500 is not representative of the amount active travel. It is notable that Cumbria is a popular tourist destination and may have more active travel than is represented by its population.
 
-The right plot uses the 2011 census workplace population for England and Wales. The workplace population favours areas like the City of London which have high daytime activity but few night time residents. As people working is a subset of all people KSI rates will naturally appear higher. However the relative distribution of risk does change under a workplace population approach suggesting that in at least some areas this is an appropriate way to consider the data.
+The right plot uses the 2011 census workplace population for England and Wales. The workplace population favours areas like the City of London which have high daytime activity but few night time residents. As people working is a subset of all people KSI rates will naturally appear higher. However the relative distribution of risk does change under a workplace population approach suggesting that in at least some areas this is an appropriate way to consider the data, in the absence of robust estimates of travel presented in subsequent sections.
 
-We can also compare the proportion of slightly injured people vs the proportion of KSI casualties. This we are using the weighting factors to account for the adjusted proportion of serious causalities caused by the historic use of different reporting systems. However this difference may still be due to different reporting practices across the country.
+We can also compare the proportion of slightly injured people vs the proportion of KSI casualties. Weighting factors account for the adjusted proportion of serious causalities caused by the historic use of different reporting systems. However this difference may still be due to different reporting practices across the country.
 
-If this represent a genuine difference in safety, then LAs with a high ratio (dark green) are having proportionally more slight casualties than serious and fatal ones. This could be use to more segregation of active travellers from motor traffic, lower traffic speed or greater driver awareness of active travellers.
+If the 'proportion of KSI' represents a genuine difference in safety, then LAs with a high ratio (dark green in Figure \@ref(fig:slight-ksi)) are having proportionally more slight casualties than serious and fatal ones. This could be use to more segregation of active travellers from motor traffic, lower traffic speed or greater driver awareness of active travellers.
+
+```{r slight-ksi, fig.cap="The proportion of casualties that are 'slight' at the LA level nationwide based on 2010-2019 STATS19 data."}
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/LA_trends_files/figure-gfm/crash_la_plot2-1.png")
+```
 
 Looking at absolute number of KSI, the top 10 and bottom 10 are the same in 2010 and 2019 suggesting no overall change. The plot blow shows the Active Travel KSI rate per 100,000 workplace population from 2010 to 2019. The majority of LAs are shown with the thin grey lines, while the top 5 and bottom 5 LAs are highlighted in colour
 
@@ -175,19 +190,6 @@ If we instead compare KSI against the resident population (adding in Scotland to
 ```
 
 ## Assigning census-derived cycling data to a spatial grid
-
-<!-- This section is around 500 words -->
-
-```{r, eval=FALSE, echo=FALSE}
-wordcountaddin::text_stats_chr("text here") # paste in text-here
-# |Method          |koRpus      |stringi       |
-# |:---------------|:-----------|:-------------|
-# |Word count      |444         |433           |
-# |Character count |2524        |2548          |
-# |Sentence count  |16          |Not available |
-# |Reading time    |2.2 minutes |2.2 minutes   |
-```
-
 
 To estimate the spatial distribution of cycling activity, measured in km per year, we started with data from the Propensity to Cycle Tool (PCT).
 The Route Network layer in the PCT provides an indication of the number of commuter cyclists on different parts of the network, based on 2011 Census data reporting the number of people travelling between small (LSOA, average population \~2000) zones by mode of travel.
