@@ -276,8 +276,10 @@ Temporal change is modelled as a cubic regression spline for the term <code>year
 We gave a low number of knots (4 knots for 2010-2015 and 3 knots for 2015-2019) to prevent overfitting.
 Cubic regression splines are appropriate for variables with relatively few knots, spread evenly across the extent of the parameter values.
 Space (<code>eastings</code> and <code>northings</code>) is modelled using a Duchon spline, which works well with two-dimensional parameters.
-We used 100 knots, to allow more complex spatial patterns to be represented.</p>
-<p>The partial effects of <code>year</code> in these models are shown in Figure <a href="#fig:gam-year">2.7</a>. These closely resemble the trends observed in the raw data, in Figures <a href="#fig:early-year">2.5</a> and <a href="#fig:late-year">2.6</a>.</p>
+We used 100 knots, to allow more complex spatial patterns to be represented.
+An interaction term (using the same spline types and numbers of knots) is used for the interaction between time and space.</p>
+<p>The partial effects of <code>year</code> in these models are shown in Figure <a href="#fig:gam-year">2.7</a>. These closely resemble the trends observed in the raw data, in Figures <a href="#fig:early-year">2.5</a> and <a href="#fig:late-year">2.6</a>.
+These graphs show the mean effect of <code>year</code>, but this will vary spatially due to the presence of the interaction terms in the GAM models.</p>
 <div class="figure">
 <span id="fig:gam-year"></span>
 <img src="gam-partial-effect-year-early.png" alt="Partial effects of year in the GAM models. a) left: for the years 2010-2015; b) right: for the years 2015-2019" width="40%"><img src="gam-partial-effect-year-late.png" alt="Partial effects of year in the GAM models. a) left: for the years 2010-2015; b) right: for the years 2015-2019" width="40%"><p class="caption">
@@ -436,7 +438,7 @@ Figure 4.5: KSI risk ratios by Police Force area in England and Wales, year-on-y
 
 
       <footer><div class="copyright">
-  <p>Developed by Robin Lovelace, Malcolm Morgan, Layik Hama, Caroline Tait.</p>
+  <p>Developed by Robin Lovelace, Malcolm Morgan, Layik Hama, Caroline Tait, Joey Talbot.</p>
 </div>
 
 <div class="pkgdown">
