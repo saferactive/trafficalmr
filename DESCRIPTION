@@ -54,7 +54,9 @@ Suggests:
     ggplot2,
     scales,
     curl,
-    tmap
+    tmap,
+    readODS,
+    plotly
 Remotes:
     krassowski/complex-upset,
     itsleeds/osmextract
