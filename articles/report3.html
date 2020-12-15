@@ -134,7 +134,32 @@
 <div id="exploratory-analysis-of-walking-and-cycling-casualties-at-the-local-authority-level" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exploratory-analysis-of-walking-and-cycling-casualties-at-the-local-authority-level" class="anchor"></a><span class="header-section-number">2.2</span> Exploratory analysis of walking and cycling casualties at the local authority level</h2>
-<p>Malcom ~500 words</p>
+<p>We have adjusted the plots to show KSI rate of active travellers per 100,000 people (left map). The KSI rate varies significantly with 90% of LAs being between 8.2 and 24.1 per 100,000 people. Scotland has notably low KSI rates while, Cumbria, has a very high rate.</p>
+<div class="figure">
+<span id="fig:LAtrends2"></span>
+<img src="crash_la_plot-1.png" alt="Actiuve travel KSI per 100,000 resident population (left) and working population (right)" width="672"><p class="caption">
+Figure 2.1: Actiuve travel KSI per 100,000 resident population (left) and working population (right)
+</p>
+</div>
+<p>The City of London is an extreme outline due to it very low resident population. This highlights the denominator issue. That the KSI rate is depended on the value chosen as the denominator. In the case of the City of London, the resident population of about 2,500 is not representative of the amount of people travelling by road. A similar affect may be taking place in Cumbria which is a popular tourist destination and may have more active travellers than is represented by its population.</p>
+<p>The right plot uses the 2011 census workplace population for England and Wales. The workplace population favours areas like the City of London which have high daytime activity but few night time residents. As people working is a subset of all people KSI rates will naturally appear higher. However the relative distribution of risk does change under a workplace population approach suggesting that in at least some areas this is an appropriate way to consider the data.</p>
+<p>We can also compare the proportion of slightly injured people vs the proportion of KSI casualties. This we are using the weighting factors to account for the adjusted proportion of serious causalities caused by the historic use of different reporting systems. However this difference may still be due to different reporting practices across the country.</p>
+<p>If this represent a genuine difference in safety, then LAs with a high ratio (dark green) are having proportionally more slight casualties than serious and fatal ones. This could be use to more segregation of active travellers from motor traffic, lower traffic speed or greater driver awareness of active travellers.</p>
+<p>Looking at absolute number of KSI, the top 10 and bottom 10 are the same in 2010 and 2019 suggesting no overall change. The plot blow shows the Active Travel KSI rate per 100,000 workplace population from 2010 to 2019. The majority of LAs are shown with the thin grey lines, while the top 5 and bottom 5 LAs are highlighted in colour</p>
+<div class="figure">
+<span id="fig:LAtrends3"></span>
+<img src="trends_plot-1.png" alt="Top and bottom LAs for KSI per 100,000)" width="672"><p class="caption">
+Figure 2.2: Top and bottom LAs for KSI per 100,000)
+</p>
+</div>
+<p>If we look for areas with the biggest change in KSI rates between 2010 and 2019 we can see some weak noisy trends, with areas such a Torbay increasing in KSIs and Stoke on Trent declining.</p>
+<p>If we instead compare KSI against the resident population (adding in Scotland to the analysis) we can see that Aberdeen City have made a sustained decline in KSI rates over the last ten years, down over 60% from their high in 2011. Unlike some other LAs where the rate appears variable but steady, the KSI rate in Aberdeen has fallen almost every year and thus may represent a real world change in safety worthy of detailed study. In particular the Launch of Scotland’s Road Safety Framework in 2009 may have been successful in reducing Active Travel KSIs.</p>
+<div class="figure">
+<span id="fig:LAtrends4"></span>
+<img src="trends3_plot-1.png" alt="Las with the greatest change in KSI per 100,000 between 2010 and 2019" width="672"><p class="caption">
+Figure 2.3: Las with the greatest change in KSI per 100,000 between 2010 and 2019
+</p>
+</div>
 </div>
 <div id="assigning-census-derived-cycling-data-to-a-spatial-grid" class="section level2">
 <h2 class="hasAnchor">
@@ -156,11 +181,11 @@ d_y = t_s * t_y * d_s
 <a href="https://github.com/saferactive/saferactive/blob/master/code/rasters-rnet.R#L56">Summing</a> these values for all route network segments across England and Wales yielded a total of 1.1 billion km cycled in 2011, roughly a quarter of the 4.5 billion km cycled by any mode in England and Wales according to the National Travel Survey (see table NTS0303 and analysis in the script <a href="https://github.com/saferactive/saferactive/blob/master/code/nts-national-distance-cycled-year.R"><code>nts-national-distance-cycled-year.R</code></a> for details).</li>
 <li>Add the total distance cycled of each segment per grid cell, based on the centre point (centroid) of each segment of 200 m or less.</li>
 </ul>
-<p>The results are shown in Figure <a href="#fig:cycled-yr">2.1</a>.</p>
+<p>The results are shown in Figure <a href="#fig:cycled-yr">2.4</a>.</p>
 <div class="figure">
 <span id="fig:cycled-yr"></span>
 <img src="https://camo.githubusercontent.com/4404fcf913b19c521aa249cd14e8b047c8a2a646/68747470733a2f2f692e696d6775722e636f6d2f57596b6c59476a2e706e67" alt="Estimates of distance cycled per year (thousand km per year of cycle commuting distance) passing through each 500 m grid cell, based on analysis of Census data on the route network from the PCT, for a rural area (Herefordshire, left) and an urban area (London, right)." width="40%"><img src="https://user-images.githubusercontent.com/1825120/97345445-fed2ae80-1881-11eb-8b1e-18553c1805c1.png" alt="Estimates of distance cycled per year (thousand km per year of cycle commuting distance) passing through each 500 m grid cell, based on analysis of Census data on the route network from the PCT, for a rural area (Herefordshire, left) and an urban area (London, right)." width="40%"><p class="caption">
-Figure 2.1: Estimates of distance cycled per year (thousand km per year of cycle commuting distance) passing through each 500 m grid cell, based on analysis of Census data on the route network from the PCT, for a rural area (Herefordshire, left) and an urban area (London, right).
+Figure 2.4: Estimates of distance cycled per year (thousand km per year of cycle commuting distance) passing through each 500 m grid cell, based on analysis of Census data on the route network from the PCT, for a rural area (Herefordshire, left) and an urban area (London, right).
 </p>
 </div>
 </div>
@@ -174,51 +199,119 @@ Figure 2.1: Estimates of distance cycled per year (thousand km per year of cycle
 <div id="modelling-spatio-temporal-change-in-cycling-uptake-based-on-count-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#modelling-spatio-temporal-change-in-cycling-uptake-based-on-count-data" class="anchor"></a><span class="header-section-number">2.5</span> Modelling spatio-temporal change in cycling uptake based on count data</h2>
-<p>Joey ~500 words</p>
-<p>We have used two key data sources to model spatio-temporal change in cycling uptake.
+<p>As described in <a href="#assigning-collision-data-to-a-spatial-grid">Section 2.3</a>, our primary data source for estimating levels of cycling activity across space is the Propensity to Cycle Tool.
+This takes 2011 Census data on method of travel to work, and routes these journeys using a CycleStreets routing algorithm, allowing us to estimate cycle potential on each link of the road network.
+However, this does not give us any information on changes in cycling uptake through time.
+To estimate changes through time, we must investigate data from manual cycle counters.</p>
+<p>We have used two key data sources to model this spatio-temporal change in cycling uptake.
 The first is DfT count data.
 This is open source data available from the Department for Transport website <a href="https://roadtraffic.dft.gov.uk/downloads" class="uri">https://roadtraffic.dft.gov.uk/downloads</a>.
 While the raw data is available for the years 2000 - 2019, we have focused on the decade 2010-2019, since there is more consistency in the type of roads being surveyed over this time period.</p>
 <p>The second data source is Transport for London cycle counts, collected as part of three data collection programmes, for Central London, Inner London and Outer London <a href="https://cycling.data.tfl.gov.uk/" class="uri">https://cycling.data.tfl.gov.uk/</a>.
-There are other TfL count programmes focusing on specific interventions such as the cycle superhighways and Mini-Holland schemes; we have not used these to keep our results representative of London as a whole.
+There are other TfL count programmes focusing on specific interventions such as the cycle superhighways and Mini-Holland schemes, but we have not used these to keep our results representative of London as a whole.
 The Central London counts are available from 2014, but the other counts are only available from 2015 to 2019, so we have used this time period.</p>
 <p>To make the best possible use of the available data, we have developed two models.
-For change in cycling uptake over the years 2010-2015, we have a model based solely on the DfT counts.
+For change in cycling uptake over the years 2010-2015, we have a model based solely on the DfT counts, as these are the only ones available during this time period.
 For the years 2015-2019, our model combines both the DfT and TfL counts.
 To assess change across the full decade, we combine these two models, computing changes since 2015 on top of the changes seen up to this point.</p>
-<p>In Central London, four Survey waves are conducted per year, corresponding with the standard quarterly periods.
+<p>Rather than using the raw cycle counts, i.e. number of cyclists passing a given point per hour, we assess relative change in these cycle counts. The number of cyclists varies greatly from one road to another, and the same count points are not always used each year. Therefore the variable of interest is the change in cycle volumes at a given count point: <span class="math display">\[
+Ch_y = C_y / C_m
+\]</span> where <span class="math inline">\(Ch_y\)</span> is the change in cycle count for a given year, <span class="math inline">\(C_y\)</span> is the cycle count for the year of interest, and <span class="math inline">\(C_m\)</span> is the mean cycle count at that count point across all years within the model period that the count point is in use.</p>
+<p>To avoid the impacts of high relative change in cycle flows at count points with very low absolute numbers of cyclists, we excluded all data from locations with a mean cycle flow &lt; 5, or with zero cyclists in any single year.
+We also excluded locations that did not have at least two years of data within the relevant period.</p>
+<div id="data-cleaning-steps" class="section level3">
+<h3 class="hasAnchor">
+<a href="#data-cleaning-steps" class="anchor"></a><span class="header-section-number">2.5.1</span> Data cleaning steps</h3>
+<p>Since our primary spatial model of cycling potential is derived from Census 2011 data accessed via the Propensity to Cycle Tool, we had to adapt the count data accordingly.
+As part of the data cleaning process, we made efforts to correspond closely with Propensity to Cycle Tool methodologies.
+All of these adjustments were made on the raw count data, prior to calculating change in cycle volumes.
+Firstly, we combined bi-directional data to get a single measure of cycle volume per site, similar to the PCT which combines journeys in both directions between a common origin and destination.
+Secondly, we used peak hour flows only.
+Our spatial model is based solely on travel to work, so temporal changes to this model should reflect changes in commuter volumes, not changes in whole-day cycle volumes.
+The TfL counts run from 06:00 to 22:00, while the DfT counts run from 07:00 to 19:00, but we selected only the counts from peak commuter hours, defined by TfL as being 07:00 - 10:00 and 16:00 - 19:00.</p>
+<p>Further data cleaning was conducted for the seasonal adjustment of cycle flows and the generation of single annual estimates for each count point.
+In the TfL Central London dataset, four Survey waves are conducted per year, corresponding with the standard quarterly periods.
 The final wave for which data is available is 2019 Q3.
-Cycling uptake varies across the year, and TfL has produced seasonal adjustment factors to account for this.
+By contrast, in the TfL Inner and Outer London counts and the DfT counts, each location is surveyed at most once per year.</p>
+<p>Cycling uptake varies across the year due to factors such as weather conditions.
+TfL has produced seasonal adjustment factors for each of the four quarterly periods, to account for this.
 We have used these adjustment factors to control for seasonality, and to calculate a mean annual count for each Central London site.
-This better corresponds with the Inner and Outer London counts which are conducted annually, representing the second quaterly period (April to June).
-We used the Q2 adjustment factor to normalise these counts.</p>
-<p>Our primary spatial model of cycling potential is derived from the Propensity to Cycle Tool, with this count data being used to model changes through time.
-As part of the data cleaning process, we made efforts to correspond closely with the Propensity to Cycle Tool methodologies.
-This included combining bi-directional data to get a single measure of cycle volume per site, similarly to the Propensity to Cycle Tool which combines journeys in both directions between a common origin and destination.
-The TfL counts run from 06:00 to 22:00, but we only used counts from the commuter hours of 07:00 - 10:00 and 16:00 - 19:00, since the PCT data is for travel to work only.</p>
-<p>GAM models were produced using splines to represent temporal and spatial change in cycling levels.
+We desired a single annual figure to avoid giving these central London locations four times the weighting of the other counts when generating the GAM models, as described below.
+Meanwhile, the Inner and Outer London TfL counts are designed to represent the second quarterly period (April to June), so we used the Q2 adjustment factor to normalise these counts.
+For the DfT counts, we normalised the raw values based on the adjustment factor for whichever quarterly period the count date fell within.</p>
+</div>
+<div id="trends-in-mean-cycle-flows" class="section level3">
+<h3 class="hasAnchor">
+<a href="#trends-in-mean-cycle-flows" class="anchor"></a><span class="header-section-number">2.5.2</span> Trends in mean cycle flows</h3>
+<p>Mean change in cycle flows over the years 2010-2015 is shown for all DfT count points in London in Figure <a href="#fig:early-year">2.5</a>.</p>
+<div class="figure">
+<span id="fig:early-year"></span>
+<img src="peak-flow-trend-early-years.png" alt="Mean change in peak cycle flows for count points in London in the years 2010-2015" width="621"><p class="caption">
+Figure 2.5: Mean change in peak cycle flows for count points in London in the years 2010-2015
+</p>
+</div>
+<p>In Figure <a href="#fig:late-year">2.6</a>, we show mean change in cycle counts over the years 2015-2019, for both DfT and TfL count points. We can see that the trends are quite different in TfL and DfT count points.
+The TfL counts rise throughout this period, while the DfT counts peak in 2016 and fall thereafter.</p>
+<div class="figure">
+<span id="fig:late-year"></span>
+<img src="peak-flow-trend-late-years.png" alt="Mean change in peak cycle flows for count points in London in the years 2015-2019" width="621"><p class="caption">
+Figure 2.6: Mean change in peak cycle flows for count points in London in the years 2015-2019
+</p>
+</div>
+</div>
+<div id="predicting-cycle-uptake-using-gam-models" class="section level3">
+<h3 class="hasAnchor">
+<a href="#predicting-cycle-uptake-using-gam-models" class="anchor"></a><span class="header-section-number">2.5.3</span> Predicting cycle uptake using GAM models</h3>
+<p>To estimate spatio-temporal changes in cycling uptake over the decade 2010-2019, we have created two GAM models using the <code>mgcv</code> R library.
+These use the count data to generate smoothed estimates of change in cycling levels in London across this period.
+The models use splines to represent the partial effects of time and space on cycling uptake.
+The two models follow the same structure, but the first is for the years 2010-2015, using DfT data only, while the second is for the years 2015-2019 and uses both DfT and TfL data.</p>
+<p>The response variable in these models is <span class="math inline">\(Ch_y\)</span> (change in cycle flows).
+However, total number of cycles (across all years within the model period) per count point is used as a weighting factor.
+This avoids giving undue influence to locations where the relative change in cycle flows may be high but the absolute number of cycles is low.
+It also reduces the influence of count locations that are sampled in some years only, compared to those sampled every year.</p>
+<p>The error structure in both models follows a Scaled-t distribution.
+This is appropriate for continuous response variables which are heavily tailed.
 Temporal change is modelled as a cubic regression spline for the term <code>year</code>.
-We gave this 5 knots, a relatively low number, to prevent
-Cubic regression splines are appropriate for variables with relatively low numbers of knots, spread evenly across the extent of the parameter values.</p>
-<p>Space (eastings and northings) is modelled using a Duchon spline, which works well with two-dimensional parameters.
+We gave a low number of knots (4 knots for 2010-2015 and 3 knots for 2015-2019) to prevent overfitting.
+Cubic regression splines are appropriate for variables with relatively few knots, spread evenly across the extent of the parameter values.
+Space (<code>eastings</code> and <code>northings</code>) is modelled using a Duchon spline, which works well with two-dimensional parameters.
 We used 100 knots, to allow more complex spatial patterns to be represented.</p>
-<p>We are able to estimate spatio-temporal change in cycling uptake over a ten year period from 2010 to 2019.
-This will involve using a GAM model of relative change in Annual Average Daily Flow of pedal cycles, based on data from DfT count points across England, Wales and Scotland.
-The model includes smoothing terms for year and for space.
-Using these parameters, predictions can be derived, generating a smoothed surface representing modelled change in AADF across time and space.
-This allows us to obtain estimates of change in cycling uptake at the same spatial resolution as the collision data.</p>
+<p>The partial effects of <code>year</code> in these models are shown in Figure <a href="#fig:gam-year">2.7</a>. These closely resemble the trends observed in the raw data, in Figures <a href="#fig:early-year">2.5</a> and <a href="#fig:late-year">2.6</a>.</p>
+<div class="figure">
+<span id="fig:gam-year"></span>
+<img src="gam-partial-effect-year-early.png" alt="Partial effects of year in the GAM models. a) left: for the years 2010-2015; b) right: for the years 2015-2019" width="40%"><img src="gam-partial-effect-year-late.png" alt="Partial effects of year in the GAM models. a) left: for the years 2010-2015; b) right: for the years 2015-2019" width="40%"><p class="caption">
+Figure 2.7: Partial effects of year in the GAM models. a) left: for the years 2010-2015; b) right: for the years 2015-2019
+</p>
+</div>
+<p>We use the models to predict annual changes in cycling uptake over a 500m grid covering the whole of London.
+This creates a smoothed surface that matches the resolution of the spatial grids we have already generated for collision and census-derived cycling data.
+We can therefore obtain estimates of change in cycling uptake at the same spatial resolution as the collision data.</p>
+<p>By assigning each grid point to a London Borough, we can then investigate changes in cycling uptake at the Borough level. These can be seen in Figure <a href="#fig:borough-preds">2.8</a>. <strong><em>change this to use weighted values</em></strong></p>
+<div class="figure">
+<span id="fig:borough-preds"></span>
+<img src="peak-boroughs.png" alt="Predicted change in cycling uptake for each London Borough, over the years 2010-2019" width="971"><p class="caption">
+Figure 2.8: Predicted change in cycling uptake for each London Borough, over the years 2010-2019
+</p>
+</div>
+</div>
 </div>
 <div id="validation-of-cycling-uptake-model-results" class="section level2">
 <h2 class="hasAnchor">
 <a href="#validation-of-cycling-uptake-model-results" class="anchor"></a><span class="header-section-number">2.6</span> Validation of cycling uptake model results</h2>
-<p>Joey ~500 words</p>
-<p>We have examined the coefficient of determination (R squared), to investigate correlations between data sets.</p>
-<p>For the years 2015-2019, the trends are quite different in TfL and DfT count points. As seen in Figure <a href="#fig:x"><strong>??</strong></a>, the TfL counts rise throughout this period, while the DfT counts peak in 2016 and fall thereafter.</p>
-<p><img src="https://rstudio.robinlovelace.net/s/5c3af61ebe310325bfffb/files/saferactive/figures/peak-flow-trend-late-years.png"><!-- --></p>
-<p>We have verified the GAM predictions against the raw TfL count data, to ensure we are representing the true variability of the data. This gives an R squared of 0.194, showing the extent to which the model is able to predict counts across London in the years 2015-2019 (see Figure <a href="#fig:xx"><strong>??</strong></a>).</p>
-<p><img src="https://rstudio.robinlovelace.net/s/5c3af61ebe310325bfffb/files/saferactive/figures/peak-hour-correlation.png"><!-- --></p>
-<p>Further validation work should include sensitivity analysis involving the exclusion of portions of the dataset, and the prediction of these excluded portions. We also need to obtain confidence intervals to constrain the cycling uptake predictions.</p>
-<p>We should also investigate how correlations change with greater temporal and spatial aggregation of data points.</p>
+<p>We have verified the GAM predictions against the TfL count data, to ensure we are representing the true variability of the data.
+This is conducted using the coefficient of determination (R squared).
+The result gives an R squared of 0.194, showing the extent to which the model is able to predict counts across London in the years 2015-2019 (see Figure <a href="#fig:validation">2.9</a>).</p>
+<div class="figure">
+<span id="fig:validation"></span>
+<img src="peak-hour-correlation.png" alt="Correlation between mean TfL cycle counts and GAM predictions of change, per year and per London Borough" width="586"><p class="caption">
+Figure 2.9: Correlation between mean TfL cycle counts and GAM predictions of change, per year and per London Borough
+</p>
+</div>
+<p>Further validation work should include sensitivity analysis involving the exclusion of portions of the dataset, and the prediction of these excluded portions.
+We also need to obtain confidence intervals to constrain the cycling uptake predictions.</p>
+<p>We can also investigate how correlations change with greater temporal and spatial aggregation of data points.
+This may include aggregation to the Borough level, and the grouping of neighbouring Boroughs.</p>
 </div>
 <div id="modelling-spatio-temporal-change-in-collision-risk" class="section level2">
 <h2 class="hasAnchor">
