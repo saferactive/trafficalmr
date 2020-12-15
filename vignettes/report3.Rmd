@@ -54,9 +54,17 @@ It is now almost a year since the coronavirus pandemic caused major changes to s
 Although the future course of the pandemic (despite the planned roll-out of vaccination programs during 2021), let alone long-term impacts, are still uncertain, there are several clear trends that have consequences for road safety in relation to walking and cycling that look highly likely to continue for the next 12 months at least:
 
 - More working from home: [31](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronavirustheukeconomyandsocietyfasterindicators/10december2020)% of people reported working exclusively from home in December 2020, a figure that has increased slightly since summer (Figure \@ref(fig:wfh)). There are several reasons why this trend will stick [@barrero_why_2020].
+- Reduction in peak hour traffic, as shown in reduced travel on working days, the troughs in Figure \@ref(fig:peak).
+- People are walking and cycling more, possibly as a result of having to stay in their local area. Data on walking uptake are not reported by in the DfT's COVID-19 transport statistics but the trend from Figure \@ref(fig:covid) suggests the mode shift to cycling in May looks set to continue.
 
-```{r wfh, fig.cap="Proportion of adults, Great Britain, 14 May to 6 December 2020, who worked from home exclusively has hovered around 30%, a huge increase compared with the 5% who worked from home in [2019](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/articles/coronavirusandhomeworkingintheuklabourmarket/2019)."}
+```{r wfh, fig.cap="Proportion of adults, Great Britain, 14 May to 6 December 2020, who worked from home exclusively has hovered around 30%, a huge increase compared with the 5% who worked from home in [2019](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/articles/coronavirusandhomeworkingintheuklabourmarket/2019). Source: [ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronavirustheukeconomyandsocietyfasterindicators/10december2020)."}
 knitr::include_graphics("wfh-trends-2020-12.png")
+```
+
+
+```{r peak, fig.cap="Top: Traffic has been substantially down compared with pre-pandemic levels, especially during the rush hour peak. Source: [ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronavirustheukeconomyandsocietyfasterindicators/10december2020).. Bottom: traffic levels in the Leeds-Bradford area by day of week over time in 2020. Source: [TomTom](https://www.tomtom.com/en_gb/traffic-index/leeds-bradford-traffic/).", fig.show='hold'}
+knitr::include_graphics("traffic-trends-2020-12.png")
+knitr::include_graphics("traffic-trends-tomtom-2020-12.png")
 ```
 
 
