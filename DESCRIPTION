@@ -57,7 +57,8 @@ Suggests:
     tmap,
     readODS,
     plotly,
-    janitor
+    janitor,
+    zoo
 Remotes:
     krassowski/complex-upset,
     itsleeds/osmextract
