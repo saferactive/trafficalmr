@@ -1,6 +1,5 @@
 ---
-title: "SaferActive Report 3: Modelling change"
-# add name e.g. : Web tool if ready
+title: "SaferActive Report 3: Modelling uptake and safety"
 author: Institute for Transport Studies
 output:
   bookdown::html_vignette2:
@@ -30,15 +29,36 @@ library(trafficalmr)
 
 # Introduction
 
-Add context, how the work done in this quarter relates to previous work, the long term aims of the project -  seehttps://github.com/saferactive/saferactive/issues/59
+<!-- Add context, how the work done in this quarter relates to previous work, the long term aims of the project -  see https://github.com/saferactive/saferactive/issues/59 -->
 
-<!-- ~300 words -->
+<!-- What kind of interventions are available? -->
 
-What kind of interventions are available?
+<!-- Reference under-review. -->
 
-Reference under-review.
+<!-- Where do collisions happen? -->
 
-Where do collisions happen?
+This document reports on work done during the third quarter of the SaferActive project.
+To put this work in context, the report comes around half way in the overall project timeline, which can be defined in terms of the following quarterly milestones:
+
+1. [Report 1](https://saferactive.github.io/trafficalmr/articles/report1.html): on input data
+2. [Report 2](https://saferactive.github.io/trafficalmr/articles/report2.html): scenarios
+3. [Report 3](https://saferactive.github.io/trafficalmr/articles/report3.html) (this report): modelling uptake and safety levels of active travel over time
+4. Final project report and end-of-project workshop
+5. Refined project web app pending feedback from workshop and stakeholders
+
+We have adapted the project since its initial inception in the pre-pandemic world, to broaden the definition of 'traffic calming measures' to include 'Low Traffic Neighbourhood' (LTN) interventions.
+This, and unexpected issues around the analysis of cycle counter datasets from DfT and TfL has led to more time spent on the analysis phase and less work on the web app.
+In terms of timelines, the project has been extended by 4 months, meaning that milestones 4 and 5 above will be delivered by the end of July and October 2021.
+
+It is now almost a year since the coronavirus pandemic caused major changes to social, economic and transport systems.
+Although the future course of the pandemic (despite the planned roll-out of vaccination programs during 2021), let alone long-term impacts, are still uncertain, there are several clear trends that have consequences for road safety in relation to walking and cycling that look highly likely to continue for the next 12 months at least:
+
+- More working from home: [31](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronavirustheukeconomyandsocietyfasterindicators/10december2020)% of people reported working exclusively from home in December 2020, a figure that has increased slightly since summer (Figure \@ref(fig:wfh)). There are several reasons why this trend will stick [@barrero_why_2020].
+
+```{r wfh, fig.cap="Proportion of adults, Great Britain, 14 May to 6 December 2020, who worked from home exclusively has hovered around 30%, a huge increase compared with the 5% who worked from home in [2019](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/articles/coronavirusandhomeworkingintheuklabourmarket/2019)."}
+knitr::include_graphics("wfh-trends-2020-12.png")
+```
+
 
 
 # Is active travel getting safer?
