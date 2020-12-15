@@ -56,7 +56,8 @@ Suggests:
     curl,
     tmap,
     readODS,
-    plotly
+    plotly,
+    janitor
 Remotes:
     krassowski/complex-upset,
     itsleeds/osmextract
