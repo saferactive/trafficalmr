@@ -238,8 +238,10 @@ We gave a low number of knots (4 knots for 2010-2015 and 3 knots for 2015-2019) 
 Cubic regression splines are appropriate for variables with relatively few knots, spread evenly across the extent of the parameter values.
 Space (`eastings` and `northings`) is modelled using a Duchon spline, which works well with two-dimensional parameters.
 We used 100 knots, to allow more complex spatial patterns to be represented.
+An interaction term (using the same spline types and numbers of knots) is used for the interaction between time and space.
 
-The partial effects of `year` in these models are shown in Figure \@ref(fig:gam-year). These closely resemble the trends observed in the raw data, in Figures \@ref(fig:early-year) and \@ref(fig:late-year).
+The partial effects of `year` in these models are shown in Figure \@ref(fig:gam-year). These closely resemble the trends observed in the raw data, in Figures \@ref(fig:early-year) and \@ref(fig:late-year). 
+These graphs show the mean effect of `year`, but this will vary spatially due to the presence of the interaction terms in the GAM models.
 
 ```{r gam-year, fig.cap = "Partial effects of year in the GAM models. a) left: for the years 2010-2015; b) right: for the years 2015-2019", out.width="40%", fig.show='hold'}
 knitr::include_graphics(c("gam-partial-effect-year-early.png", "gam-partial-effect-year-late.png"))

@@ -10,7 +10,9 @@ Authors@R: c(
     person("Layik", "Hama", role = c("aut"),
       comment = c(ORCID = "0000-0003-1912-4890")),
     person("Caroline", "Tait", role = c("aut"),
-      comment = c(ORCID = "0000-0002-4781-4111"))
+      comment = c(ORCID = "0000-0002-4781-4111")),
+    person("Joey", "Talbot", email = "j.d.talbot@leeds.ac.uk", role = c("aut"), 
+      comment = c(ORCID = "0000-0002-6520-4560"))
     )
 Description: Downloads data on 'traffic calming' interventions from OpenStreetMap
     and other sources.
