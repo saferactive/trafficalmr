@@ -472,9 +472,9 @@ The next steps on the project are to:
 
 - Explore the relationships between interventions and change in risk
 - Generate models that allow predicting the safety and active travel implications of change
-- Visualise the results in an interactive web application: we have a scalable prototype of an interactive web application that is ready to add any of the outputs above. For instance, currently it shows a cycling level route network overlaid with points from STATS19 (the latter only London at the moment). We are looking at various visualization methods to present the outputs and allow users to use the tool to query the data. Figure 5.1 shows what the "test deployment" looks like right now.
+- Visualise the results in an interactive web application: we have a scalable prototype of an interactive web application that is ready to add any of the outputs above. For instance, currently it shows a cycling level route network overlaid with points from STATS19 (the latter only London at the moment). We are looking at various visualization methods to present the outputs and allow users to use the tool to query the data. Figure 5.1 shows what the "test deployment" looks like right now. We are also testing real-time querying of the entire STATS19 dataset back to 1979.
 
-```{r web-app, fig.cap="A screen shot of current test deployment of our interactive web application", out.width="95%", fig.show='hold'}
+```{r web-app, fig.cap="A screenshot of current test deployment of our interactive web application", out.width="95%", fig.show='hold'}
 knitr::include_graphics(c(
   "https://user-images.githubusercontent.com/408568/102349641-8e036500-3f9b-11eb-8362-05769ba973c4.png"
 ))
