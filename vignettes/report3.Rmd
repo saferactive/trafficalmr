@@ -148,7 +148,8 @@ We created twelve raster stacks with each stack covering the years ten years of 
 * All people with any injury during commuting hours
 * All people with any injury during during any time of day
 
-Commuting hours where defined as being between 7 - 10 AM and 4 - 7 PM, and where selected for special study as the PCT estimates of cycling levels are based on travel to work data.
+Commuting hours were defined as being between 7-10 AM and 4-7 PM. 
+Crashes during these hours can be compared with estimates of cycling levels from the PCT's travel to work layer.
 
 ```{r raster, fig.cap="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"}
 knitr::include_graphics("https://user-images.githubusercontent.com/15819577/96473494-9fddbb80-1229-11eb-9efb-aef24154e7db.png")
