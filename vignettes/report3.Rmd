@@ -218,13 +218,28 @@ knitr::include_graphics(c(
 ))
 ```
 
-## Spatial analysis of inferred risk over
+## Spatial analysis of risk levels
 
-Robin ~500 words
+In the first SaferActive report ([Section 8](https://saferactive.github.io/trafficalmr/articles/report1.html#analysis)) we reported estimated KSI/bkm at the local authority level across London, highlighting the fact that although more crashes happen in the city centre, the risk *per km cycled* is higher in the outskirts of the city.
 
-Which areas seem to be safer?
+The additional datasets generated using methods outlined in the previous sections allow us to generate these estimates at higher levels of geographic resolution, as illustrated in Figure \@ref(fig:ksi-raster).
 
-Analyse the commute crash numbers divided by the estimated commute cycling activite.
+```{r ksi-raster, out.width="48%", fig.show='hold', fig.cap="Estimates of the geographic distribution of commuter cycling risk measured in KSI/bkm at 500 m and 4 km grid cell resolutions (top) and all commuter cycling injuries at 500 m and 2 km resolution (bottom), 2010-2019."}
+knitr::include_graphics(c(
+  "https://user-images.githubusercontent.com/1825120/102290552-316f5e00-3f39-11eb-8120-07aa46cb8e75.png",
+  "https://user-images.githubusercontent.com/1825120/102290718-80b58e80-3f39-11eb-8a23-9bce6dbb7435.png",
+  "https://user-images.githubusercontent.com/1825120/102291180-76e05b00-3f3a-11eb-971e-e1ec7e3bef3b.png",
+  "https://user-images.githubusercontent.com/1825120/102291276-b0b16180-3f3a-11eb-844b-a9690b1bfa74.png"
+  ))
+```
+
+
+It is clear from the results that outer London is a more dangerous place to cycle than inner London. However, the extent to which places with high crash rates per KM are an artefact of low cycling levels in that area or are real places of concern is not totally clear.
+There are at least three ways of dealing with this issue, that places with low estimated levels of exposure will tend to have more variable crash rates with less certainty:
+
+- Only focus on areas with a level of exposure (cycling km in this case) sufficiently high, with some cut-off (e.g. 1000 km per 500m grid cell per year minimum).
+- Geographic aggregation, as shown in the figures above.
+- Visualisation or other techniques to communicate uncertainty, e.g. by making estimates based on lower levels of exposure more transparent.
 
 ## Modelling spatio-temporal change in cycling uptake based on count data
 
