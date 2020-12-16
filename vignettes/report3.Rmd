@@ -360,7 +360,7 @@ We also need to obtain confidence intervals to constrain the cycling uptake pred
 We can also investigate how correlations change with greater temporal and spatial aggregation of data points. 
 This may include aggregation to the Borough level, and the grouping of neighbouring Boroughs. 
 
-## Modelling spatio-temporal change in collision risk
+<!-- ## Modelling spatio-temporal change in collision risk -->
 
 <!-- Joey ~500 words -->
 
@@ -377,28 +377,24 @@ summary(cycle_count_predictions$change_cycles[cycle_count_predictions$year == 20
 
 ```
 
-
-
-
 # Scenarios of change
 
-Joey and Robin
+<!-- Joey and Robin -->
 
-Majority of collisions on boundary roads.
+<!-- Majority of collisions on boundary roads. -->
 
 ## Traffic calming measures
 
 There is OSM data for the years 2014 - 2019, providing insight on the date of installation of traffic calming measures.
-Using two time points (i.e. 2014 and 2018), we can investigate differences between the first and second halves of the decade.
+Using two time points (e.g. 2016 and 2018), we have found ways to investigate differences before and after changes go in.
 
 <!-- ## 20 mph zones -->
 
 ## Protected cycleways
 
 Counts from cycle superhighways and quietways are available from TfL, typically including 1 year of baseline count data from before installation, and around 4 years of post-installation count data.
-We can speak to TfL to get better insight on the exact timings of implementation of these schemes.
-
-<!-- ## Traffic reduction -->
+<!-- We can speak to TfL to get better insight on the exact timings of implementation of these schemes. -->
+We have found a reliable way to access data on *change* in cycle provision, based on a broad definition of cycle infrastructure from the [ohsome](https://ohsome.org/apps/osm-history-explorer/#/cycleways_w/2020-06-01T00:00:00Z/11/51.55754480495398/-0.09713066502234728) project.
 
 ## Roadspace reallocation
 
@@ -464,14 +460,18 @@ knitr::include_graphics(c(
 ```
 
 
-Roger ~500 words - ideas from paper
+<!-- Roger ~500 words - ideas from paper -->
 
-# Web development
+<!-- # Web development -->
 
-Layik ~500 words
+<!-- Layik ~500 words -->
 
 # Next steps
 
-Robin + Joey
+The next steps on the project are to:
+
+- Explore the relationships between interventions and change in risk
+- Generate models that allow predicting the safety and active travel implications of change
+- Visualise the results in an interactive web application
 
 # References
