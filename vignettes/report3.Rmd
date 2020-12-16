@@ -419,22 +419,22 @@ We continue to develop approaches to visually analysing road crash data and have
 
 ## Exploring risk
 
-Road crash data are spatially and temporally precise but also attribute-rich. The Stast19 dataset for example has many  variables describing numerous aspects associated with road conditions and vehicle types. Exploratory visual analysis interfaces provide a mechanism for quickly investigating these.
+Road crash data are spatially and temporally precise but also attribute-rich. The Stats19 dataset for example has many  variables describing numerous aspects associated with road conditions and vehicle types. Exploratory visual analysis interfaces provide a mechanism for quickly investigating these.
 
-As a quick way of illustrating this, below are bar charts displaying crash frequencies for all (left) and active casualties (right) by road speed classification. Crashes resulting in a KSI (fatal or serious injury) are dark red, those resulting a slight injury light red. It is not surprising that 30mph roads are the modal category of road for all crashes, but especially those involving active travel modes. A more interesting question is around how relative injury severity varies by road type and vehicle mode. To quickly investigate this we generate [mosaic plots](https://en.wikipedia.org/wiki/Mosaic_plot), a sort of visual contingency table where plot width varies according to _absolute number_ of crashes in this case and height according to _relative number_ of crashes resulting in a KSI (e.g. the relative height of the dark red bars). Whilst the pattern implied by this layout again could be anticipated, it does demonstrate the obvious effect of increasing road speed limits on injury severity (quantified as KSI rates), for crashes involving pedestrians and cyclists.
+As a quick way of illustrating this, below are bar charts displaying crash frequencies for all  and active casualties by road speed classification. Crashes resulting in a KSI (fatal or serious injury) are dark red, those resulting a slight injury light red. It is not surprising that 30mph roads are the modal category of road for all crashes, but especially those involving active travel modes. A more interesting question is around how relative injury severity varies by road type and vehicle mode. To quickly investigate this we generate [mosaic plots](https://en.wikipedia.org/wiki/Mosaic_plot), a sort of visual contingency table where plot width varies according to _absolute number_ of crashes in this case and height according to _relative number_ of crashes resulting in a KSI (e.g. the relative height of the dark red bars). Whilst the pattern implied by this layout again could be anticipated, it does demonstrate the obvious effect of increasing road speed limits on injury severity (quantified as KSI rates), for crashes involving pedestrians and cyclists.
 
 <!-- Link to crashes on hierarchy of vulnerability:  -->
 <!-- https://itsleeds.github.io/rrsrr/join.html#joining-vehicle-data -->
 
 <!-- can we make total height of each bar proportional to total n. crashes? -->
 
-```{r crashes-speed, fig.cap="Plots of road crashes by road type, speed limit and injury severity – comparison of all versus active-only crashes. Top row: rural, bottom row: urban. KSI in dark red, slight injuries in light red. Recorded crashes in GB 2017-2019.", out.width="45%", fig.show='hold'}
+```{r crashes-speed, fig.cap="Plots of road crashes by road type, speed limit and injury severity – comparison of all versus active-only crashes. Top row: rural, bottom row: urban. KSI in dark red, slight injuries in light red. Recorded crashes in GB 2017-2019.", out.width="80%", fig.show='hold'}
 knitr::include_graphics(c(
   "crashes_speed_all.png", "crashes_speed_active.png"
 ))
 ```
 
-Once the code template for these plots is created, it is very easy to substitute in other variables that we think may be discriminating -- lighting and surface condition (wetness). Here again we see the strong effect on relative injury severity. We do not advocate using these plots for decision-making, for example prioritising lighting and surface drainage over other candidate interventions, but instead for their application as a low-cost mechanism for initially proposing factors that might then be incorporated into a more formal data analysis.    
+Once the code template for these plots is created, it is very easy to substitute in other variables that we think may be discriminating -- lighting and surface condition (wetness). Here again we see the strong effect on relative injury severity.    
 
 ```{r crashes-surface, fig.cap="Plots of road crashes by road condition and injury severity – comparison of all versus active-only crashes. KSI in dark red, slight injuries in light red. Recorded crashes in GB 2017-2019.", out.width="45%", fig.show='hold'}
 knitr::include_graphics(c(
@@ -442,7 +442,18 @@ knitr::include_graphics(c(
 ))
 ```
 
-A benefit of using Mosaic plots for presenting categorical data such as this is that they are data rich. For example, we might extend this analysis to profile crashes by travel mode. In the plots below we focus on London. That cars are the modal vehicle category is to be expected, but it is again useful to emphasise the fact that relative injury severity increases with motorbikes and bikes and also that the vehicle-crash mix varies according to geographic context.
+And here by road class and whether or not the crash involved some form of junction. Note that the plot size is kept consistent here by road class -- casualties involving active modes occuring on Motorways will be a very low base.
+
+```{r crashes-class-junction, fig.cap="Plots of road crashes by road class, whether or not the crash occured on a junction and injury severity – comparison of all versus active-only crashes. KSI in dark red, slight injuries in light red. Recorded crashes in GB 2017-2019.", out.width="65%", fig.show='hold'}
+knitr::include_graphics(c(
+  "crashes_all_class.png", "crashes_active_class.png"
+))
+```
+
+We do not advocate using these plots for decision-making, for example prioritising lighting and surface drainage over other candidate interventions, but instead for their application as a low-cost mechanism for initially proposing factors that might then be incorporated into a more formal data analysis. 
+
+
+A benefit of using Mosaic plots for presenting categorical data such as this is that they are space-filling. For example, we might extend this analysis to profile crashes by travel mode. In the plots below we focus on London. That cars are the modal vehicle category is to be expected, but it is again useful to emphasise the fact that relative injury severity increases with motorbikes and bikes and also that the vehicle-crash mix varies according to geographic context.
 
 ```{r crashes-borough, fig.cap="Plots of road crashes by vehicle type. All recorded crashes in London 2009-2019.", out.width="95%", fig.show='hold'}
 knitr::include_graphics(c(
@@ -453,6 +464,20 @@ knitr::include_graphics(c(
 ```{r crashes-borough-spatial, fig.cap="Plots of road crashes by vehicle type and London borough. The graphics show two different ways of representing the numbers of weekday v. weekend crashes involving each vehicle type. All recorded crashes in London 2009-2019.", out.width="95%", fig.show='hold'}
 knitr::include_graphics(c(
   "spines_borough.png"
+))
+```
+
+We could further update these plots to generate a 'who-hit-who' type representation. Here, crashes are organised according to the largest vehicle that was involved -- we call this the dominant or aggressor vehicle. We then identify the casualty types by travel mode attached to each of these crashes. So in the plot immediately below, if a crash involved an HGV and a car, that crash would appear in the fourth row of the plot (HGV is the aggressor) and we colour according to the travel mode of the casualties involved. Mosaic plots are necessary here as it is very difficult to see the vehicle-casualty mix for dominant/aggressor vehicles that appear less frequently. Again we present these by borough and with an approximate spatial arrangement. 
+
+```{r crashes-borough-who-hit-who, fig.cap="Plots of road crashes by 'dominant' or 'aggressor' vehicle type and coloured by vehicle types injured. All recorded crashes in London 2017-2019.", out.width="95%", fig.show='hold'}
+knitr::include_graphics(c(
+  "spine_aspatial_who_hit_who.png"
+))
+```
+
+```{r crashes-borough-spatial-who-hit-who, fig.cap="Plots of road crashes by 'dominant' or 'aggressor' vehicle type and coloured by vehicle types injured and ordered by London borough. In the left plot, lightness is varied according to overall crash frequencies by borough. All recorded crashes in London 2017-2019.", out.width="95%", fig.show='hold'}
+knitr::include_graphics(c(
+  "spine_borough_who_hit_who.png"
 ))
 ```
 
