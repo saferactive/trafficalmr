@@ -148,7 +148,10 @@ We created twelve raster stacks with each stack covering the years ten years of 
 * All people with any injury during commuting hours
 * All people with any injury during during any time of day
 
-Commuting hours were defined as being between 7 - 10 AM and 4 - 7 PM, and where selected for special study as the PCT estimates of cycling levels are based on travel to work data.
+
+Commuting hours were defined as being between 7-10 AM and 4-7 PM. 
+Crashes during these hours can be compared with estimates of cycling levels from the PCT's travel to work layer.
+
 
 ```{r raster, fig.cap="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"}
 knitr::include_graphics("https://user-images.githubusercontent.com/15819577/96473494-9fddbb80-1229-11eb-9efb-aef24154e7db.png")
@@ -479,6 +482,12 @@ The next steps on the project are to:
 
 - Explore the relationships between interventions and change in risk
 - Generate models that allow predicting the safety and active travel implications of change
-- Visualise the results in an interactive web application
+- Visualise the results in an interactive web application: we have a scalable prototype of an interactive web application that is ready to add any of the outputs above. For instance, currently it shows a cycling level route network overlaid with points from STATS19 (the latter only London at the moment). We are looking at various visualization methods to present the outputs and allow users to use the tool to query the data. Figure 5.1 shows what the "test deployment" looks like right now. We are also testing real-time querying of the entire STATS19 dataset back to 1979.
+
+```{r web-app, fig.cap="A screenshot of current test deployment of our interactive web application", out.width="95%", fig.show='hold'}
+knitr::include_graphics(c(
+  "https://user-images.githubusercontent.com/408568/102349641-8e036500-3f9b-11eb-8362-05769ba973c4.png"
+))
+```
 
 # References
