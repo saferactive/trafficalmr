@@ -226,8 +226,8 @@ The additional datasets generated using methods outlined in the previous section
 
 ```{r ksi-raster, out.width="48%", fig.show='hold', fig.cap="Estimates of the geographic distribution of commuter cycling risk measured in KSI/bkm at 500 m and 4 km grid cell resolutions (top) and all commuter cycling injuries at 500 m and 2 km resolution (bottom), 2010-2019."}
 knitr::include_graphics(c(
-  "https://user-images.githubusercontent.com/1825120/102290552-316f5e00-3f39-11eb-8120-07aa46cb8e75.png",
-  "https://user-images.githubusercontent.com/1825120/102290718-80b58e80-3f39-11eb-8a23-9bce6dbb7435.png",
+  "https://user-images.githubusercontent.com/1825120/102293622-6088ce00-3f3f-11eb-80c4-8eda9fe0fd4e.png",
+  "https://user-images.githubusercontent.com/1825120/102293822-c37a6500-3f3f-11eb-993d-b26271cfa8ef.png",
   "https://user-images.githubusercontent.com/1825120/102291180-76e05b00-3f3a-11eb-971e-e1ec7e3bef3b.png",
   "https://user-images.githubusercontent.com/1825120/102291276-b0b16180-3f3a-11eb-844b-a9690b1bfa74.png"
   ))
@@ -362,11 +362,11 @@ This may include aggregation to the Borough level, and the grouping of neighbour
 
 ## Modelling spatio-temporal change in collision risk
 
-Joey ~500 words
+<!-- Joey ~500 words -->
 
-Depending on the outcome of the previous analysis.
+<!-- Depending on the outcome of the previous analysis. -->
 
-Which kinds of areas seem to becoming safer for walking and cycling in relation to the modelling?
+<!-- Which kinds of areas seem to becoming safer for walking and cycling in relation to the modelling? -->
 
 ```{r, eval=FALSE}
 u = "https://github.com/saferactive/saferactive/releases/download/0.1.2/gam-full-results-peak-grid.Rds"
