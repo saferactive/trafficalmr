@@ -396,7 +396,7 @@ Counts from cycle superhighways and quietways are available from TfL, typically 
 <!-- We can speak to TfL to get better insight on the exact timings of implementation of these schemes. -->
 We have found a reliable way to access data on *change* in cycle provision, based on a broad definition of cycle infrastructure from the [ohsome](https://ohsome.org/apps/osm-history-explorer/#/cycleways_w/2020-06-01T00:00:00Z/11/51.55754480495398/-0.09713066502234728) project.
 
-## Roadspace reallocation
+<!-- ## Roadspace reallocation -->
 
 ## Low Traffic Neighbourhoods
 
