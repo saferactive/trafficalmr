@@ -122,14 +122,14 @@ This section outlines the approach we took to help answer the question, which co
 <!-- and equivalent metrics for all injuries (I/bkm) and fatalities (K/bkm): -->
 
 - Calculate the change in different types of crashes at high geographic resolution over time (and analysis of the shifting trends in crash data), the 'numerator' in risk calculations
-- Calculate the exposure in terms of distanced walked/cycled
+- Calculate the exposure in terms of distance walked/cycled
 - Calculate change in safety levels over time
 
 <!-- High level aim. -->
 
 ## Assigning collision data to a spatial grid {#collision}
 
-Grouping crashes together at a small spatial scale help to identify crash hot spots, areas where crashes happen unusually often. To this end crash data for the last 10 years was rasterised to a 500m grid. With each raster a single pixel covers a 500m x 500m area and contains a single value, for example, the number of people killed in that area in 2018. It is also possible to create a stack of multiple raster layers to represent a chaining variable, such as time.
+Grouping crashes together at a small spatial scale help to identify crash hot spots, areas where crashes happen unusually often. To this end crash data for the last 10 years was rasterised to a 500m grid. In each raster a single pixel covers a 500m x 500m area and contains a single value, for example, the number of people killed in that area in 2018. It is also possible to create a stack of multiple raster layers to represent a chaining variable, such as time.
 
 We created twelve raster stacks with each stack covering the years ten years of available data 2010 to 2019. Each raster stack was created for the whole of Great Britain (results shown below for London for all modes).
 
@@ -148,7 +148,7 @@ We created twelve raster stacks with each stack covering the years ten years of 
 * All people with any injury during commuting hours
 * All people with any injury during during any time of day
 
-Commuting hours where defined as being between 7 - 10 AM and 4 - 7 PM, and where selected for special study as the PCT estimates of cycling levels are based on travel to work data.
+Commuting hours were defined as being between 7 - 10 AM and 4 - 7 PM, and where selected for special study as the PCT estimates of cycling levels are based on travel to work data.
 
 ```{r raster, fig.cap="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"}
 knitr::include_graphics("https://user-images.githubusercontent.com/15819577/96473494-9fddbb80-1229-11eb-9efb-aef24154e7db.png")
@@ -156,26 +156,28 @@ knitr::include_graphics("https://user-images.githubusercontent.com/15819577/9647
 
 ## Measures of active travel safety at the local authority level
 
-We have adjusted the plots to show KSI rate of active travellers per 100,000 people (left map). The KSI rate varies significantly with 90% of LAs being between 8.2 and 24.1 per 100,000 people. Scotland has notably low KSI rates while, Cumbria, has a very high rate.
+We have adjusted the plots to show KSI rate of active travellers per 100,000 people in the resident (left map) and working (right map) populations. The KSI rate varies significantly with 90% of LAs having rates between 8.2 and 24.1 per 100,000 residents. Scotland has notably low KSI rates, while Cumbria and Lancashire have high rates.
 
 ```{r LAtrends2, fig.cap="Number of active travel (walking and cycling) casualties killed and seriously injured (KSI) per 100,000 resident population (left) and working population (right), 2010-2019."}
  knitr::include_graphics("crash_la_plot-1.png")
 ```
 
-Based on these population-based measures, the City of London is an outlier due to it very low resident population, highlighting the importance of denominator selection in road safety research.
-In the case of the City of London, the resident population of about 2,500 is not representative of the amount active travel. It is notable that Cumbria is a popular tourist destination and may have more active travel than is represented by its population.
+Based on these population-based measures, the City of London is an outlier due to its very low resident population, highlighting the importance of denominator selection in road safety research.
+In the case of the City of London, the resident population of about 2,500 is not representative of the amount of active travel. 
+It is notable that Cumbria is a popular tourist destination and may have more active travel than is represented by its population. 
+The same may be true of other popular tourist areas and seaside towns, such as North Wales, the south coast and the Scottish Highlands.
 
 The right plot uses the 2011 census workplace population for England and Wales. The workplace population favours areas like the City of London which have high daytime activity but few night time residents. As people working is a subset of all people KSI rates will naturally appear higher. However the relative distribution of risk does change under a workplace population approach suggesting that in at least some areas this is an appropriate way to consider the data, in the absence of robust estimates of travel presented in subsequent sections.
 
 We can also compare the proportion of slightly injured people vs the proportion of KSI casualties. Weighting factors account for the adjusted proportion of serious causalities caused by the historic use of different reporting systems. However this difference may still be due to different reporting practices across the country.
 
-If the 'proportion of KSI' represents a genuine difference in safety, then LAs with a high ratio (dark green in Figure \@ref(fig:slight-ksi)) are having proportionally more slight casualties than serious and fatal ones. This could be use to more segregation of active travellers from motor traffic, lower traffic speed or greater driver awareness of active travellers.
+If the 'proportion of KSI' represents a genuine difference in safety, then LAs with a high ratio (dark green in Figure \@ref(fig:slight-ksi)) are having proportionally more slight casualties than serious and fatal ones. This could be due to more segregation of active travellers from motor traffic, lower traffic speed or greater driver awareness of active travellers.
 
 ```{r slight-ksi, fig.cap="The proportion of casualties that are 'slight' at the LA level nationwide based on 2010-2019 STATS19 data."}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/LA_trends_files/figure-gfm/crash_la_plot2-1.png")
 ```
 
-Looking at absolute number of KSI, the top 10 and bottom 10 are the same in 2010 and 2019 suggesting no overall change. The plot blow shows the Active Travel KSI rate per 100,000 workplace population from 2010 to 2019. The majority of LAs are shown with the thin grey lines, while the top 5 and bottom 5 LAs are highlighted in colour
+Looking at absolute number of KSI, the top 10 and bottom 10 are the same in 2010 and 2019 suggesting no overall change. The plot below shows the Active Travel KSI rate per 100,000 workplace population from 2010 to 2019. The majority of LAs are shown with the thin grey lines, while the top 5 and bottom 5 LAs are highlighted in colour. Three of the top five are London Boroughs, with the others being the seaside towns of Portsmouth and Blackpool.
 
 ```{r LAtrends3, fig.cap="Top and bottom LAs for KSI per 100,000)"}
  knitr::include_graphics("trends_plot-1.png")
@@ -234,12 +236,17 @@ knitr::include_graphics(c(
 ```
 
 
-It is clear from the results that outer London is a more dangerous place to cycle than inner London. However, the extent to which places with high crash rates per KM are an artefact of low cycling levels in that area or are real places of concern is not totally clear.
-There are at least three ways of dealing with this issue, that places with low estimated levels of exposure will tend to have more variable crash rates with less certainty:
+It is clear from the results that outer London is a more dangerous place to cycle than inner London. 
+However, places where cycling levels are low will tend to have more variable collision rates with less certainty, which means that an apparent high rate in a given year could actually be an artefact of the high variability in collision rates per km cycled.
+There are at least three ways of dealing with this issue:
 
-- Only focus on areas with a level of exposure (cycling km in this case) sufficiently high, with some cut-off (e.g. 1000 km per 500m grid cell per year minimum).
+- Only focus on areas with a sufficiently high level of exposure (cycling km in this case), with some cut-off (e.g. 1000 km per 500m grid cell per year minimum).
 - Geographic aggregation, as shown in the figures above.
 - Visualisation or other techniques to communicate uncertainty, e.g. by making estimates based on lower levels of exposure more transparent.
+
+A second potential source of error is that, even in peak hours, many cycle journeys will be for non-commute purposes. 
+The proportion of journeys that are for the purpose of travel to work will vary from one area to another.
+Since we are only counting journeys to work, our estimated collision rates per km cycled will be relatively higher than they should be in areas where less cycle journeys are for commuting purposes.
 
 ## Modelling spatio-temporal change in cycling uptake based on count data
 
@@ -293,7 +300,7 @@ For the DfT counts, we normalised the raw values based on the adjustment factor 
 
 ### Trends in mean cycle flows
 
-Mean change in cycle flows over the years 2010-2015 is shown for all DfT count points in London in Figure \@ref(fig:early-year). 
+Mean change in cycle flows over the years 2010-2015 is shown for all DfT count points in London in Figure \@ref(fig:early-year). This shows a steady increase in cycling uptake over the length of the period.
 
 ```{r early-year, fig.cap = "Mean change in peak cycle flows for count points in London in the years 2010-2015"}
 knitr::include_graphics("peak-flow-trend-early-years.png")
@@ -338,7 +345,7 @@ We use the models to predict annual changes in cycling uptake over a 500m grid c
 This creates a smoothed surface that matches the resolution of the spatial grids we have already generated for collision and census-derived cycling data.
 We can therefore obtain estimates of change in cycling uptake at the same spatial resolution as the collision data.
 
-By assigning each grid point to a London Borough, we can then investigate changes in cycling uptake at the Borough level. These can be seen in Figure \@ref(fig:borough-preds). ***change this to use weighted values***
+By assigning each grid point to a London Borough, we can then investigate changes in cycling uptake at the Borough level. These can be seen in Figure \@ref(fig:borough-preds) (figure shows unweighted values).
 
 ```{r borough-preds, fig.cap = "Predicted change in cycling uptake for each London Borough, over the years 2010-2019"}
 knitr::include_graphics("peak-boroughs.png")
@@ -411,22 +418,22 @@ We continue to develop approaches to visually analysing road crash data and have
 
 Road crash data are spatially and temporally precise but also attribute-rich. The Stast19 dataset for example has many  variables describing numerous aspects associated with road conditions and vehicle types. Exploratory visual analysis interfaces provide a mechanism for quickly investigating these.
 
-As a quick way of illustrating this, below are bar charts displaying crash frequencies for all (left) and active casualties (right) by road speed classification. Crashes resulting in a KSI (fatal or serious injury) are dark red, those resulting a slight injury light red. It is not surprising that 30mph roads are the modal category of road for all crahses, but especially those involving active travel modes. A more interesting question is around how relative injury severity varies by road type and vehicle mode. To quickly investigate this we generate [mosaic plots](https://en.wikipedia.org/wiki/Mosaic_plot), a sort of visual contingency table where plot width varies according to _absolute number_ of crashes in this case and height according to _relative number_ of crashes resulting in a KSI (e.g. the relative height of the dark red bars). Whilst the pattern implied by this layout again could be anticipated, it does demonstrate the obvious effect on injury severity of increasing road speed limits on KSI rates for crashes involving pedestrians and cyclists.
+As a quick way of illustrating this, below are bar charts displaying crash frequencies for all (left) and active casualties (right) by road speed classification. Crashes resulting in a KSI (fatal or serious injury) are dark red, those resulting a slight injury light red. It is not surprising that 30mph roads are the modal category of road for all crashes, but especially those involving active travel modes. A more interesting question is around how relative injury severity varies by road type and vehicle mode. To quickly investigate this we generate [mosaic plots](https://en.wikipedia.org/wiki/Mosaic_plot), a sort of visual contingency table where plot width varies according to _absolute number_ of crashes in this case and height according to _relative number_ of crashes resulting in a KSI (e.g. the relative height of the dark red bars). Whilst the pattern implied by this layout again could be anticipated, it does demonstrate the obvious effect of increasing road speed limits on injury severity (quantified as KSI rates), for crashes involving pedestrians and cyclists.
 
 <!-- Link to crashes on hierarchy of vulnerability:  -->
 <!-- https://itsleeds.github.io/rrsrr/join.html#joining-vehicle-data -->
 
 <!-- can we make total height of each bar proportional to total n. crashes? -->
 
-```{r crashes-speed, fig.cap="Plots of road crashes by road type – comparison of all versus active-only crashes. Top row: rural, bottom row: urban. Recorded crashes in GB 2017-2019.", out.width="45%", fig.show='hold'}
+```{r crashes-speed, fig.cap="Plots of road crashes by road type, speed limit and injury severity – comparison of all versus active-only crashes. Top row: rural, bottom row: urban. KSI in dark red, slight injuries in light red. Recorded crashes in GB 2017-2019.", out.width="45%", fig.show='hold'}
 knitr::include_graphics(c(
   "crashes_speed_all.png", "crashes_speed_active.png"
 ))
 ```
 
-Once the code template for these plots is created, it is very easy to substitute in other variables that we think may be discriminating -- lighting and surface condition (wetness). Here again we the see strong effect on relative injury severity. We do not advocate using these plots for decision-making, for example prioritising lighting and surface drainage over other candidate interventions, but instead for their application as a low-cost mechanism for initially proposing factors that might then be incorporayed into a more formal data analysis.    
+Once the code template for these plots is created, it is very easy to substitute in other variables that we think may be discriminating -- lighting and surface condition (wetness). Here again we see the strong effect on relative injury severity. We do not advocate using these plots for decision-making, for example prioritising lighting and surface drainage over other candidate interventions, but instead for their application as a low-cost mechanism for initially proposing factors that might then be incorporated into a more formal data analysis.    
 
-```{r crashes-surface, fig.cap="Plots of road crashes by road condition – comparison of all versus active-only crashes. Recorded crashes in GB 2017-2019.", out.width="45%", fig.show='hold'}
+```{r crashes-surface, fig.cap="Plots of road crashes by road condition and injury severity – comparison of all versus active-only crashes. KSI in dark red, slight injuries in light red. Recorded crashes in GB 2017-2019.", out.width="45%", fig.show='hold'}
 knitr::include_graphics(c(
   "crashes_all_conditions.png", "crashes_active_conditions.png"
 ))
@@ -440,7 +447,7 @@ knitr::include_graphics(c(
 ))
 ```
 
-```{r crashes-borough-spatial, fig.cap="Plots of road crashes by vehicle type and London borough. All recorded crashes in London 2009-2019.", out.width="95%", fig.show='hold'}
+```{r crashes-borough-spatial, fig.cap="Plots of road crashes by vehicle type and London borough. The graphics show two different ways of representing the numbers of weekday v. weekend crashes involving each vehicle type. All recorded crashes in London 2009-2019.", out.width="95%", fig.show='hold'}
 knitr::include_graphics(c(
   "spines_borough.png"
 ))
