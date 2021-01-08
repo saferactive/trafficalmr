@@ -36,3 +36,7 @@ ca_joined = inner_join(ca_joined, veh_largest)
 write_csv(ca_joined, "ca_joined.csv")
 piggyback::pb_upload("ca_joined.csv")
 piggyback::pb_download_url("ca_joined.csv")
+
+# show geographic extent
+ca_sf = stats19::format_sf(ca_joined, lonlat = TRUE)
+mapview::mapview(ca_sf)
