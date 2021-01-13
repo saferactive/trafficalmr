@@ -149,10 +149,8 @@ We created twelve raster stacks with each stack covering the years ten years of 
 * All people with any injury during commuting hours
 * All people with any injury during during any time of day
 
-
 Commuting hours were defined as being between 7-10 AM and 4-7 PM. 
 Crashes during these hours can be compared with estimates of cycling levels from the PCT's travel to work layer.
-
 
 ```{r raster, fig.cap="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"}
 knitr::include_graphics("https://user-images.githubusercontent.com/15819577/96473494-9fddbb80-1229-11eb-9efb-aef24154e7db.png")
@@ -309,6 +307,14 @@ Mean change in cycle flows over the years 2010-2015 is shown for all DfT count p
 ```{r early-year, fig.cap = "Mean change in peak cycle flows for count points in London in the years 2010-2015"}
 knitr::include_graphics("peak-flow-trend-early-years.png")
 ```
+
+We found a strong correspondence between cycling levels inferred from the cycle count data and from the National Travel Survey at the national level, as illustrated in Figure \@ref(fig:nts-counter).
+
+```{r nts-counter, fig.cap="Comparison of data on cycling levels across Great Britain from the National Travel Survey (left) with raw counter data (right).", out.width="100%"}
+# see "~/saferactive/saferactive/code/nts-national-distance-cycled-year.R" for code
+knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/figures/nts-counter-comparison.png")
+```
+
 
 In Figure \@ref(fig:late-year), we show mean change in cycle counts over the years 2015-2019, for both DfT and TfL count points. We can see that the trends are quite different in TfL and DfT count points. 
 The TfL counts rise throughout this period, while the DfT counts peak in 2016 and fall thereafter.
