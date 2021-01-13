@@ -6,7 +6,7 @@ output:
     number_sections: true
     toc: true
 vignette: >
-  %\VignetteIndexEntry{SaferActive Report 3}
+  %\VignetteIndexEntry{SaferActive Report 3: Modelling uptake and safety}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 bibliography: saferactive.bib
