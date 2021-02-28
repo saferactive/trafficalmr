@@ -58,9 +58,8 @@ Suggests:
     readODS,
     plotly,
     janitor,
-    zoo
-Remotes:
-    krassowski/complex-upset,
-    itsleeds/osmextract
+    zoo,
+    tibble,
+    lubridate
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)

@@ -3,8 +3,9 @@ title: "SaferActive Report 3: Modelling uptake and safety"
 author: Institute for Transport Studies
 output:
   bookdown::html_vignette2:
+  # bookdown::word_document2:
     number_sections: true
-    toc: true
+    # toc: true
 vignette: >
   %\VignetteIndexEntry{SaferActive Report 3: Modelling uptake and safety}
   %\VignetteEngine{knitr::rmarkdown}
@@ -53,7 +54,7 @@ In terms of timelines, the project has been extended by 4 months, meaning that m
 It is now almost a year since the coronavirus pandemic caused major changes to social, economic and transport systems.
 Although the future course of the pandemic (despite the planned roll-out of vaccination programs during 2021), let alone long-term impacts, are still uncertain, there are several clear trends that have consequences for road safety in relation to walking and cycling that look highly likely to continue for the next 12 months at least:
 
-- More working from home: [31](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronavirustheukeconomyandsocietyfasterindicators/10december2020)% of people reported working exclusively from home in December 2020, a figure that has increased slightly since summer (Figure \@ref(fig:wfh)). There are several reasons why this trend will stick [@barrero_why_2020].
+- More working from home: [31](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronavirustheukeconomyandsocietyfasterindicators/10december2020)% of people reported working exclusively from home in December 2020, a figure that has increased slightly since summer (Figure \@ref(fig:wfh)). There are several reasons why the the proportion of people working from home is likely to remain substantially above pre-pandemic levels (of ~5% in the UK) [@barrero_why_2020].
 - Reduction in peak hour traffic, as shown in reduced travel on working days, the troughs in Figure \@ref(fig:peak). This increases the potential for road space reallocation for safe walking and cycling.
 - People are walking and cycling more. Data on walking uptake are not reported by in the DfT's COVID-19 transport statistics but the trend from Figure \@ref(fig:covid) suggests the mode shift to cycling persists, even during winter months.
 
@@ -112,6 +113,9 @@ removed = file.remove("COVID-19-transport-use-statistics.ods")
 In the policy realm, the £250m Active Travel Fund has now been fully allocated and is being spent in local authorities nationwide, with particular emphasis on LTNs and new walking and cycling improvements.
 Academic research on historic LTNs suggest that they can lead to substantial increases of walking and cycling, with reported walking and cycling levels increasing by 29% and 51% in Waltham Forest between 2016 and 2019 and reduced overall risk levels for these modes reducing by three-to-four fold [@goodman_impact_Underreview].
 Such increases in road safety for active modes could, if they are repeated across multiple local authorities nationwide, herald the start of a step change in road safety for walking and cycling.
+Increases in active travel levels according to localised count data should not be over-interpreted, however: according to the DfT's [All Change](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/957596/DfT-All-change-travel-tracker-wave_2-report.odt)? report tracking behaviour changes in response to the pandemic, 73% and 28% of respondents to a major survey reported *no* walking or cycling within the past week in June/July 2020, respectively.
+Furthermore, data published by [Sport England](https://www.sportengland.org/know-your-audience/data/active-lives) in February 2021 suggests that despite the perception of a boom in physical activity fuelled by sights of parks full of people exercising, the physical inactivity epidemic actually got *worse* during the pandemic.
+These findings emphasise the need for policies to enable substantial uptake of walking and cycling as physical distancing measures gradually ease.
 
 This report sets out to explore the evidence for changes at the city level across London and nationwide.
 
@@ -130,12 +134,12 @@ This section outlines the approach we took to help answer the question, which co
 
 ## Assigning collision data to a spatial grid {#collision}
 
-Grouping crashes together at a small spatial scale help to identify crash hot spots, areas where crashes happen unusually often. To this end crash data for the last 10 years was rasterised to a 500m grid. In each raster a single pixel covers a 500m x 500m area and contains a single value, for example, the number of people killed in that area in 2018. It is also possible to create a stack of multiple raster layers to represent a chaining variable, such as time.
+Grouping crashes together at a small spatial scale help to identify crash hot spots, areas where crashes happen unusually often. To this end crash data for the last 10 years was 'rasterised' (aggregated to rectangular chunks, with crash counts per pixel) to a 500m grid. In each raster a single pixel covers a 500m x 500m area and contains a single value, for example, the number of people killed in that area in 2018. It is also possible to create a stack of multiple raster layers to represent a chaining variable, such as time.
 
-We created twelve raster stacks with each stack covering the years ten years of available data 2010 to 2019. Each raster stack was created for the whole of Great Britain (results shown below for London for all modes).
+We created twelve raster stacks with each stack covering the years ten years of available STATS19 data (which contains a known under-reporting of slight injuries) 2010 to 2019. Each raster stack was created for the whole of Great Britain (results shown below for London for all modes).
 
 * Cyclists killed or seriously injured during commuting hours
-* Cyclists killed or seriously injured during any time of day
+* Cyclists killed or seriously injured during any time of day or night
 * Cyclists with any injury during commuting hours
 * Cyclists with any injury during during any time of day
 
@@ -149,7 +153,7 @@ We created twelve raster stacks with each stack covering the years ten years of 
 * All people with any injury during commuting hours
 * All people with any injury during during any time of day
 
-Commuting hours were defined as being between 7-10 AM and 4-7 PM. 
+Commuting hours were defined as being between 7-10 AM and 4-7 PM, Monday to Friday. 
 Crashes during these hours can be compared with estimates of cycling levels from the PCT's travel to work layer.
 
 ```{r raster, fig.cap="Example of the rastered crash data from 2019 for London, showing areas with more casualties in darker red"}
@@ -158,7 +162,7 @@ knitr::include_graphics("https://user-images.githubusercontent.com/15819577/9647
 
 ## Measures of active travel safety at the local authority level
 
-We have adjusted the plots to show KSI rate of active travellers per 100,000 people in the resident (left map) and working (right map) populations. The KSI rate varies significantly with 90% of LAs having rates between 8.2 and 24.1 per 100,000 residents. Scotland has notably low KSI rates, while Cumbria and Lancashire have high rates.
+We have adjusted the plots to show KSI rate for people walking and cycling per 100,000 people in the resident (left map) and working (right map) populations. The KSI rate varies significantly with 90% of LAs having rates between 8.2 and 24.1 per 100,000 residents. Scotland has notably low KSI rates, while Cumbria and Lancashire have high rates.
 
 ```{r LAtrends2, fig.cap="Number of active travel (walking and cycling) casualties killed and seriously injured (KSI) per 100,000 resident population (left) and working population (right), 2010-2019."}
  knitr::include_graphics("crash_la_plot-1.png")
@@ -169,27 +173,28 @@ In the case of the City of London, the resident population of about 2,500 is not
 It is notable that Cumbria is a popular tourist destination and may have more active travel than is represented by its population. 
 The same may be true of other popular tourist areas and seaside towns, such as North Wales, the south coast and the Scottish Highlands.
 
-The right plot uses the 2011 census workplace population for England and Wales. The workplace population favours areas like the City of London which have high daytime activity but few night time residents. As people working is a subset of all people KSI rates will naturally appear higher. However the relative distribution of risk does change under a workplace population approach suggesting that in at least some areas this is an appropriate way to consider the data, in the absence of robust estimates of travel presented in subsequent sections.
+The right plot uses the 2011 census workplace population for England and Wales. The workplace population favours areas like the City of London which have high daytime activity but few night time residents. As people working is a subset of all people KSI rates will naturally appear higher. However, the relative distribution of risk does change under a workplace population approach suggesting that in at least some areas this is an appropriate way to consider the data, in the absence of robust estimates of travel presented in subsequent sections.
 
-We can also compare the proportion of slightly injured people vs the proportion of KSI casualties. Weighting factors account for the adjusted proportion of serious causalities caused by the historic use of different reporting systems. However this difference may still be due to different reporting practices across the country.
+We can also compare the proportion of slightly injured people vs the proportion of KSI casualties for walking and cycling. Weighting factors account for the adjusted proportion of serious causalities caused by the historic use of different reporting systems. However this difference may still be due to different reporting practices across the country.
 
-If the 'proportion of KSI' represents a genuine difference in safety, then LAs with a high ratio (dark green in Figure \@ref(fig:slight-ksi)) are having proportionally more slight casualties than serious and fatal ones. This could be due to more segregation of active travellers from motor traffic, lower traffic speed or greater driver awareness of active travellers.
+If the 'proportion of KSI' represents a genuine difference in safety, then LAs with a high ratio (dark green in Figure \@ref(fig:slight-ksi)) are having proportionally more slight casualties than serious and fatal ones.
+Various factors could explain differences in the proportion: infrastructure (with a greater percentage of cycle trips happening on dedicated cycleways in London that the UK overall, for example); motor traffic speeds; and greater driver awareness of walking and cycling in places where walking and cycling is common.
 
-```{r slight-ksi, fig.cap="The proportion of casualties that are 'slight' at the LA level nationwide based on 2010-2019 STATS19 data."}
+```{r slight-ksi, fig.cap="The proportion of walking and cycling casualties that are 'slight' at the LA level nationwide based on 2010-2019 STATS19 data."}
 knitr::include_graphics("https://raw.githubusercontent.com/saferactive/saferactive/master/LA_trends_files/figure-gfm/crash_la_plot2-1.png")
 ```
 
 Looking at absolute number of KSI, the top 10 and bottom 10 are the same in 2010 and 2019 suggesting no overall change. The plot below shows the Active Travel KSI rate per 100,000 workplace population from 2010 to 2019. The majority of LAs are shown with the thin grey lines, while the top 5 and bottom 5 LAs are highlighted in colour. Three of the top five are London Boroughs, with the others being the seaside towns of Portsmouth and Blackpool.
 
-```{r LAtrends3, fig.cap="Top and bottom LAs for KSI per 100,000)"}
+```{r LAtrends3, fig.cap="Top and bottom LAs for active travel KSI per 100,000)"}
  knitr::include_graphics("trends_plot-1.png")
 ```
 
 If we look for areas with the biggest change in KSI rates between 2010 and 2019 we can see some weak noisy trends, with areas such a Torbay increasing in KSIs and Stoke on Trent declining.
 
-If we instead compare KSI against the resident population (adding in Scotland to the analysis) we can see that Aberdeen City have made a sustained decline in KSI rates over the last ten years, down over 60% from their high in 2011. Unlike some other LAs where the rate appears variable but steady, the KSI rate in Aberdeen has fallen almost every year and thus may represent a real world change in safety worthy of detailed study. In particular the Launch of Scotland’s Road Safety Framework in 2009 may have been successful in reducing Active Travel KSIs.
+If we instead compare KSI against the resident population (adding in Scotland to the analysis) we can see that Aberdeen City have made a sustained decline in KSI rates over the last ten years, down over 60% from their high in 2011. Unlike some other LAs where the rate appears variable but steady, the KSI rate in Aberdeen has fallen almost every year and thus may represent a real-world change in safety worthy of detailed study. The Launch of Scotland’s Road Safety Framework in 2009 may have been successful in reducing Active Travel KSIs.
 
-```{r LAtrends4, fig.cap="Las with the greatest change in KSI per 100,000 between 2010 and 2019"}
+```{r LAtrends4, fig.cap="LAs with the greatest change in active travel KSI rates per 100,000 people between 2010 and 2019"}
  knitr::include_graphics("trends3_plot-1.png")
 ```
 
@@ -212,7 +217,7 @@ After realising that this implementation would take several hours to complete on
     [Summing](https://github.com/saferactive/saferactive/blob/master/code/rasters-rnet.R#L56) these values for all route network segments across England and Wales yielded a total of 1.1 billion km cycled in 2011, roughly a quarter of the 4.5 billion km cycled by any mode in England and Wales according to the National Travel Survey (see table NTS0303 and analysis in the script [`nts-national-distance-cycled-year.R`](https://github.com/saferactive/saferactive/blob/master/code/nts-national-distance-cycled-year.R) for details).
 -   Add the total distance cycled of each segment per grid cell, based on the centre point (centroid) of each segment of 200 m or less.
 
-The results are shown in Figure \@ref(fig:cycled-yr).
+The results in rural (Hereford) and urban (London) areas are shown in Figure \@ref(fig:cycled-yr).
 
 ```{r cycled-yr, fig.cap="Estimates of distance cycled per year (thousand km per year of cycle commuting distance) passing through each 500 m grid cell, based on analysis of Census data on the route network from the PCT, for a rural area (Herefordshire, left) and an urban area (London, right).", out.width="40%", fig.show='hold'}
 # see https://github.com/saferactive/saferactive/issues/48
@@ -239,7 +244,7 @@ knitr::include_graphics(c(
 
 
 It is clear from the results that outer London is a more dangerous place to cycle than inner London. 
-However, places where cycling levels are low will tend to have more variable collision rates with less certainty, which means that an apparent high rate in a given year could actually be an artefact of the high variability in collision rates per km cycled.
+However, places where cycling levels are low will tend to have more variable collision rates with less certainty, which means that an apparent high rate in a given year could be an artefact of the high variability in collision rates per km cycled.
 There are at least three ways of dealing with this issue:
 
 - Only focus on areas with a sufficiently high level of exposure (cycling km in this case), with some cut-off (e.g. 1000 km per 500m grid cell per year minimum).
@@ -402,7 +407,7 @@ summary(cycle_count_predictions$change_cycles[cycle_count_predictions$year == 20
 
 ## Traffic calming measures
 
-There is OSM data for the years 2014 - 2019, providing insight on the date of installation of traffic calming measures.
+There is OpenStreetMap (OSM) data for the years 2014 - 2019, providing insight on the date of installation of traffic calming measures.
 Using two time points (e.g. 2016 and 2018), we have found ways to investigate differences before and after changes go in.
 
 <!-- ## 20 mph zones -->
@@ -428,7 +433,10 @@ We continue to develop approaches to visually analysing road crash data and have
 
 Road crash data are spatially and temporally precise but also attribute-rich. The Stats19 dataset for example has many  variables describing numerous aspects associated with road conditions and vehicle types. Exploratory visual analysis interfaces provide a mechanism for quickly investigating these.
 
-As a quick way of illustrating this, below are bar charts displaying crash frequencies for all  and active casualties by road speed classification. Crashes resulting in a KSI (fatal or serious injury) are dark red, those resulting a slight injury light red. It is not surprising that 30mph roads are the modal category of road for all crashes, but especially those involving active travel modes. A more interesting question is around how relative injury severity varies by road type and vehicle mode. To quickly investigate this we generate [mosaic plots](https://en.wikipedia.org/wiki/Mosaic_plot), a sort of visual contingency table where plot width varies according to _absolute number_ of crashes in this case and height according to _relative number_ of crashes resulting in a KSI (e.g. the relative height of the dark red bars). Whilst the pattern implied by this layout again could be anticipated, it does demonstrate the obvious effect of increasing road speed limits on injury severity (quantified as KSI rates), for crashes involving pedestrians and cyclists.
+As a quick way of illustrating this, below are bar charts displaying crash frequencies for all  and active casualties by road speed classification. Crashes resulting in a KSI (fatal or serious injury) are dark red, those resulting a slight injury light red. It is not surprising that 30mph roads are the modal category of road for all crashes, but especially those involving active travel modes.
+This is likely to be due to the relatively high proportion of active travel (and hence exposure) in residential and quiet roads that tend to have 30 mph limits.
+
+A more interesting question is around how relative injury severity varies by road type and vehicle mode. To quickly investigate this we generate [mosaic plots](https://en.wikipedia.org/wiki/Mosaic_plot), a sort of visual contingency table where plot width varies according to _absolute number_ of crashes in this case and height according to _relative number_ of crashes resulting in a KSI (e.g. the relative height of the dark red bars). Whilst the pattern implied by this layout again could be anticipated, it does demonstrate the obvious effect of increasing road speed limits on injury severity (quantified as KSI rates), for crashes involving pedestrians and cyclists.
 
 <!-- Link to crashes on hierarchy of vulnerability:  -->
 <!-- https://itsleeds.github.io/rrsrr/join.html#joining-vehicle-data -->
