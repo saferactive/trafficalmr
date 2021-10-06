@@ -79,6 +79,8 @@ f = basename(u)
 download.file(u, f)
 d_original = tibble::tibble(readODS::read_ods(f, skip = 6))
 names(d_original) = gsub(pattern = "\\d", replacement = "", x = names(d_original))
+names(d_original) = gsub(pattern = "note|notes", replacement = "", x = names(d_original))
+
 d = janitor::clean_names(d_original)
 d = d[nchar(d[[1]]) == 10, ]
 d$date = lubridate::dmy(d$date_weekends_and_bank_holidays_in_grey)
