@@ -1,8 +1,19 @@
 ---
 title: "Report 4: Trends in road safety and potential causal factors"
-author: "Joey Talbot"
-date: "20/08/2021"
-output: bookdown::github_document2
+author: Institute for Transport Studies
+output:
+  bookdown::html_vignette2:
+  # bookdown::word_document2:
+    number_sections: true
+    # toc: true
+vignette: >
+  %\VignetteIndexEntry{Report 4: Trends in road safety and potential causal factors}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: saferactive.bib
+pkgdown:
+  as_is: true
+  set_null_theme: false
 ---
 
 ```{r setup, include=FALSE}
