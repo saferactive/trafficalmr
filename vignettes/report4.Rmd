@@ -18,7 +18,7 @@ pkgdown:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-library(tidyverse)
+library(dplyr)
 library(stats19)
 library(sf)
 ```
