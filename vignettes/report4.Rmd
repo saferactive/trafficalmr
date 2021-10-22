@@ -229,7 +229,8 @@ https://github.com/saferactive/saferactive/releases/download/0.1.4/ksi-pf.csv
 
 # Low Traffic Neighbourhoods and rat-runs
 
-Traffic levels on minor roads have increased dramatically in recent years...
+Traffic levels on minor roads have increased dramatically in recent years, by 26% nationwide compared with only 9% on A roads, according to DfT's [official statistics](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/916749/road-traffic-estimates-in-great-britain-2019.pdf).
+Many factors influence road safety, but since the coronavirus pandemic modal filters and other traffic calming interventions in residential areas have come to the fore, explaining our focus on residential interventions in this section.
 
 Although the phrase 'Low Traffic Neighbourhood' is a recent invention, the concept is not new. 
 Modal filters preventing vehicle movement along a street while allowing passage to pedestrians and cyclists have existed for many decades. 
@@ -300,26 +301,9 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1379
 ```
 
 Weighting by the road length within a grid cell, we look at how pedestrian and cyclist KSI vary with the proportion of roads of different types. 
-We expect that KSI will increase as the proportion of ratruns increases, and decrease as the proportion of LTNs increases.
+We expect that KSI rates will increase as the proportion of ratruns increases, and decrease as the proportion of LTNs increases.
 
-For pedestrians, a GLM shows a small increase in KSI per km road with the proportion of roads classified as ratruns. 
-
-```{r}
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/137933108-d8fa1328-8a73-4943-a450-b685d01cf2b0.png")
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/137933146-c1c819c1-0735-49fa-9329-36808c2d23d5.png")
-```
-
-For cyclists, GLMs show small decreases in KSI per km road and KSI per km cycled, with the proportion of roads classified as LTNs.
-
-```{r}
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/137930345-8717150b-e99e-49a8-a77f-d234610db516.png")
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/137930392-c6aa4da3-6f9f-4d98-9a44-8cfaff4d7ebc.png")
-```
-
-
-# Data visualisation
-
-# Web application
+<!-- Todo: more explanation text -->
 
 # Discussion
 
@@ -330,7 +314,10 @@ This uncertainty must be understood in the context that to assess risk, we need 
 The casualty data is comprehensive and the core stats19 components (such as number of casualties) are highly reliable.
 Therefore it is uncertainty in the exposure, i.e. the number of km cycled on the roads, that is the most important factor.
 
-Casualty severity adjustment...
+<!-- Todo: add key points from work workshop -->
+
+<!-- Todo: add something on -->
+<!-- Casualty severity adjustment... -->
 
 ## Uncertainty in spatial trends
 
@@ -364,11 +351,12 @@ Both nationally and within a Local Authority, the number and proportion of count
 This causes inter-annual flux in observed cycle flows which can mask underlying trends.
 The result of these factors is that the mean AADF for counters within a given geographic area is inherently unstable from year to year. 
 
-## Impact of data scarcity
+<!-- Todo: add discussion emperical Bayes and data scarcity -->
+<!-- ## Impact of data scarcity -->
 
-Smaller Local Authority may have both few accidents per year and few DfT counter locations. 
+<!-- Smaller Local Authority may have both few accidents per year and few DfT counter locations.  -->
 
-Resampling and empirical Bayes...
+<!-- Resampling and empirical Bayes... -->
 
 
 # Conclusion
