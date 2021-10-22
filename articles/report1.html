@@ -62,6 +62,9 @@
     <li>
       <a href="../articles/report3.html">SaferActive Report 3: Modelling uptake and safety</a>
     </li>
+    <li>
+      <a href="../articles/report4.html">Report 4: Trends in road safety and potential causal factors</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -262,7 +265,7 @@ Milestones are shown in the table below.</p>
 <a href="#obtaining-traffic-calming-interventions-from-osm" class="anchor"></a><span class="header-section-number">6.1</span> Obtaining traffic calming interventions from OSM</h2>
 <p>Data on traffic interventions were obtained from OSM, using the tag <a href="https://wiki.openstreetmap.org/wiki/Key:traffic_calming"><code>traffic_calming</code></a>, as shown in Figure <a href="#fig:tcmap">6.1</a> and summarised in Table <a href="#tab:tctab">6.1</a>.</p>
 <div class="figure">
-<span id="fig:tcmap"></span>
+<span style="display:block;" id="fig:tcmap"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/traffic_calming_osm_map_london.png" alt="Map of traffic calming interventions in London from OSM." width="60%"><p class="caption">
 Figure 6.1: Map of traffic calming interventions in London from OSM.
 </p>
@@ -464,7 +467,7 @@ The results for all highways in OSM for London are shown below:</p>
 </table>
 <p>More prominent roads are most likely to have speed limit data, as shown in the plot below, which shows the roads that have meaningful speed limit values.</p>
 <div class="figure">
-<span id="fig:unnamed-chunk-5"></span>
+<span style="display:block;" id="fig:unnamed-chunk-5"></span>
 <img src="https://user-images.githubusercontent.com/1825120/87316271-796afe80-c51d-11ea-80dd-513f4bda52f2.png" alt="Speed limit data from OSM across all roads in London." width="100%"><p class="caption">
 Figure 6.2: Speed limit data from OSM across all roads in London.
 </p>
@@ -487,13 +490,13 @@ One option would be to identify 20 mph zones from data at the road segment level
 <a href="#interactive-visualisation" class="anchor"></a><span class="header-section-number">7.1</span> Interactive visualisation</h2>
 <p>We have explored visualisation options and we are using a state of the art R solution to power our production web application. The technicalities of the solution can be added somewhere else in the project but the solution is a modern front with a RESTful API which would mean the data is available for the users for transparency and reuse. The other scalable front end solution we are currently developing for the purpose of this project is inspired the smartphone ecosystem.</p>
 <div class="figure">
-<span id="fig:vis1"></span>
+<span style="display:block;" id="fig:vis1"></span>
 <img src="https://user-images.githubusercontent.com/408568/86475297-4e71f500-bd3c-11ea-921c-e4cca9683201.png" alt="Using R to develop the fron-end using Turing eAtlas npm package" width="100%"><p class="caption">
 Figure 7.1: Using R to develop the fron-end using Turing eAtlas npm package
 </p>
 </div>
 <div class="figure">
-<span id="fig:vis2"></span>
+<span style="display:block;" id="fig:vis2"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/vector_tiles.png" alt="Using vector tiles to visualise large amounts of ata which can be cached and used offline in the browser and ability to interact with it" width="100%"><p class="caption">
 Figure 7.2: Using vector tiles to visualise large amounts of ata which can be cached and used offline in the browser and ability to interact with it
 </p>
@@ -504,7 +507,7 @@ Figure 7.2: Using vector tiles to visualise large amounts of ata which can be ca
 <a href="#heat-map" class="anchor"></a><span class="header-section-number">7.2</span> Heat map</h2>
 <p>Another option we have explored is ‘heatmap’ visualisations, as shown in a prototype web application currently hosted at <a href="https://saferactive.github.io/" class="uri">https://saferactive.github.io/</a> and shown in Figure <a href="#fig:heatmap1">7.3</a>.</p>
 <div class="figure">
-<span id="fig:heatmap1"></span>
+<span style="display:block;" id="fig:heatmap1"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/shiny-app-1.png" alt="Prototype interactive visualisation of road crashes with a heatmap." width="100%"><p class="caption">
 Figure 7.3: Prototype interactive visualisation of road crashes with a heatmap.
 </p>
@@ -519,7 +522,7 @@ A screenshot appears in Figure <a href="#fig:who1">7.4</a>, but this is essentia
 As part of our visualization design work, we will also explore incorporating these sorts of matrix views for characterizing crashes into our web-based visualization tool.
 For example, these sorts of summaries views could be introduced as dynamic legends <span class="citation">(Meulemans et al. 2017)</span>, where the data displayed changes according to the spatial filter and zoom level of the main map view.</p>
 <div class="figure">
-<span id="fig:who1"></span>
+<span style="display:block;" id="fig:who1"></span>
 <img src="https://user-images.githubusercontent.com/1825120/87161600-aa002d80-c2bc-11ea-9d81-f3e3c3857bd3.png" alt="Screenshot taken from the who-hit-who tool." width="100%"><p class="caption">
 Figure 7.4: Screenshot taken from the who-hit-who tool.
 </p>
@@ -531,7 +534,7 @@ The matrix in Figure <a href="#fig:who1">7.4</a> does not immediately convey an 
 Upset plots organise co-occurring variables into discrete sets and summarises over the sets using bars, with an accompanying legend describing the composition of each set. In Figure <a href="#fig:who2">7.5</a>, an example is applied to road crash data in England for 2018, accessed via the <code>stats19</code> package <span class="citation">(Lovelace et al. 2019)</span>. The plot has three components: the main bar chart shows each discrete combination of vehicle involved in crashes in the Stats19 dataset, ordered left-to-right according to frequency. Beneath this is a matrix clarifying what each combination represents, with vehicle combinations indicated via filled dots and emphasised with connecting lines.</p>
 <p>By far the most common vehicle-to-vehicle combination is car-to-car. After this, collisions between cars and pedestrians, bicycles and motorcycles occur in reasonably large numbers. Notice that there are crashes involving more than two vehicle categories: most notable is car-van-HGV combination in column 8. With interaction it is possible to flexibly re-order upset plots, so rather than ordering according to intersection size, we may wish to order according to intersection degree – that is, the number of distinct vehicle types involved in a collision. Notice that in Figure <a href="#fig:who2">7.5</a>, we have chosen to provide an additional summary graphic for each set intersection – in this case relative accident severity. The apparently high severity levels for set combinations towards the right-end of the graphic should be read cautiously as they are based on very low frequencies. However, a noticeable higher KSI rate (close to 50%) can be observed for crashes involving cars and HGVs.</p>
 <div class="figure">
-<span id="fig:who2"></span>
+<span style="display:block;" id="fig:who2"></span>
 <img src="https://user-images.githubusercontent.com/1825120/87160079-4bd24b00-c2ba-11ea-832d-48e17eb78822.png" alt="Upset plot displaying vehicle combinations involved in crashes in 2018 in England. Source: Stats19." width="100%"><p class="caption">
 Figure 7.5: Upset plot displaying vehicle combinations involved in crashes in 2018 in England. Source: Stats19.
 </p>
@@ -548,21 +551,21 @@ Figure 7.5: Upset plot displaying vehicle combinations involved in crashes in 20
 <p>Corrections were also made to account for changes in accident reporting systems. In recent years, many police forces across the UK have switched to injury based reporting systems. This has altered the proportions of casualties recorded as having ‘serious’ and ‘slight’ injuries. To control for these changes, casualty-level correction values were used, as recommended in <span class="citation">(Department for Transport 2019b)</span>.</p>
 <p>Initial results show some clear patterns (Figure <a href="#fig:fig1">8.1</a>). Cycling levels are highest in Inner London, with one-way commuter journey km cycled ranging from 58,410 km in Westminster to 1060 km in Harrow. Cycle casualties are also greatest in Inner London and mean annual adjusted KSI values for the period 2009-2013 (including weekday peak hour data only) range from 24.8 casualties per year in Westminster to 1.8 casualties per year in Barking and Dagenham.</p>
 <div class="figure">
-<span id="fig:fig1"></span>
+<span style="display:block;" id="fig:fig1"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-totals.png" alt="Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems" width="100%"><p class="caption">
 Figure 8.1: Total km cycled (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems
 </p>
 </div>
 <p>There is a strong negative relationship between km cycled and KSI/bkm (Figure <a href="#fig:fig2">8.2</a>). Inner London Boroughs have greater km cycled and lower KSI/bkm, despite having a higher total number of casualties. By contrast, Outer London Boroughs have fewer km cycled and higher KSI/bkm. The results for slight injuries closely mirror those for serious injuries and fatalities.</p>
 <div class="figure">
-<span id="fig:fig2"></span>
+<span style="display:block;" id="fig:fig2"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/cycle-KSI-bkm.png" alt="Cyclist KSI and slight injuries per bkm for London Boroughs 2009 - 2013" width="100%"><p class="caption">
 Figure 8.2: Cyclist KSI and slight injuries per bkm for London Boroughs 2009 - 2013
 </p>
 </div>
 <p>Further analyses will examine the nature of the relationship between km cycled and KSI/bkm. Initial findings suggest that this may be a exponential decay relationship, as seen in Figure <a href="#fig:fig3">8.3</a>.</p>
 <div class="figure">
-<span id="fig:fig3"></span>
+<span style="display:block;" id="fig:fig3"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/km-cycled-KSI.png" alt="Relationship between KSI/bkm and number of km cycled in each Borough" width="100%"><p class="caption">
 Figure 8.3: Relationship between KSI/bkm and number of km cycled in each Borough
 </p>
@@ -572,14 +575,14 @@ Figure 8.3: Relationship between KSI/bkm and number of km cycled in each Borough
 <a href="#pedestrian-casualties" class="anchor"></a><span class="header-section-number">8.1</span> Pedestrian casualties</h2>
 <p>Using a similar method, we have estimated walking levels per Borough based on travel to work 2011 census data. Trips are routed using the Cyclestreets.net fast route algorithm. However, we expect this to be less accurate than our measure of cycling levels, due to the high proportion of walking trips that are for purposes other than commuting. Future work will investigate other data sources to improve our estimation of walking levels.</p>
 <div class="figure">
-<span id="fig:fig4"></span>
+<span style="display:block;" id="fig:fig4"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/walk-totals.png" alt="Total km walked (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems" width="100%"><p class="caption">
 Figure 8.4: Total km walked (one-way commuter journeys from 2011 census) and total KSI (2009 - 2013 weekday peak hours) using casualty severity adjustments for non-injury based reporting systems
 </p>
 </div>
 <p>Levels of walking to work are unsurprisingly highest in Boroughs close to Central London (Figure <a href="#fig:fig4">8.4</a>), reaching 39,700 km (for one-way commuter journeys) in Westminster. Meanwhile, KSI/bkm peaks at 23.2 casualties per year in Westminster.</p>
 <div class="figure">
-<span id="fig:fig5"></span>
+<span style="display:block;" id="fig:fig5"></span>
 <img src="https://raw.githubusercontent.com/saferactive/saferactive/master/figures/walk-KSI-bkm.png" alt="Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 - 2013" width="100%"><p class="caption">
 Figure 8.5: Pedestrian KSI and slight injuries per bkm for London Boroughs 2009 - 2013
 </p>
@@ -628,19 +631,19 @@ This will include data visualisation such as who-hit-who upset plots, software d
 <!-- 2021-06-01 15  Refined project web app pending feedback from workshop and stakeholders  -->
 <div id="refs" class="references">
 <div id="ref-akbari_traffic_2020">
-<p>Akbari, Ali, and Farshidreza Haghighi. 2020. “Traffic Calming Measures: An Evaluation of Four Low-Cost TCMs’ Effect on Driving Speed and Lateral Distance.” <em>IATSS Research</em> 44 (1): 67–74. <a href="https://doi.org/10.1016/j.iatssr.2019.07.002">https://doi.org/10.1016/j.iatssr.2019.07.002</a>.</p>
+<p>Akbari, Ali, and Farshidreza Haghighi. 2020. “Traffic Calming Measures: An Evaluation of Four Low-Cost TCMs’ Effect on Driving Speed and Lateral Distance.” <em>IATSS Research</em> 44 (1): 67–74. <a href="https://doi.org/10/gkb5qj">https://doi.org/10/gkb5qj</a>.</p>
 </div>
 <div id="ref-aldred_cycling_2018">
-<p>Aldred, Rachel, Anna Goodman, John Gulliver, and James Woodcock. 2018. “Cycling Injury Risk in London: A Case-Control Study Exploring the Impact of Cycle Volumes, Motor Vehicle Volumes, and Road Characteristics Including Speed Limits.” <em>Accident Analysis &amp; Prevention</em> 117 (August): 75–84. <a href="https://doi.org/10.1016/j.aap.2018.03.003">https://doi.org/10.1016/j.aap.2018.03.003</a>.</p>
+<p>Aldred, Rachel, Anna Goodman, John Gulliver, and James Woodcock. 2018. “Cycling Injury Risk in London: A Case-Control Study Exploring the Impact of Cycle Volumes, Motor Vehicle Volumes, and Road Characteristics Including Speed Limits.” <em>Accident Analysis &amp; Prevention</em> 117 (August): 75–84. <a href="https://doi.org/10/gdwb2b">https://doi.org/10/gdwb2b</a>.</p>
 </div>
 <div id="ref-bornioli_effectiveness_2018">
-<p>Bornioli, Anna, Isabelle Bray, Paul Pilkington, and Emma L. Bird. 2018. “The Effectiveness of a 20 Mph Speed Limit Intervention on Vehicle Speeds in Bristol, UK: A Non-Randomised Stepped Wedge Design.” <em>Journal of Transport &amp; Health</em> 11: 47–55. <a href="https://doi.org/10.1016/j.jth.2018.09.009">https://doi.org/10.1016/j.jth.2018.09.009</a>.</p>
+<p>Bornioli, Anna, Isabelle Bray, Paul Pilkington, and Emma L. Bird. 2018. “The Effectiveness of a 20 Mph Speed Limit Intervention on Vehicle Speeds in Bristol, UK: A Non-Randomised Stepped Wedge Design.” <em>Journal of Transport &amp; Health</em> 11: 47–55. <a href="https://doi.org/10/gkb5n6">https://doi.org/10/gkb5n6</a>.</p>
 </div>
 <div id="ref-brown_evidence_2017">
-<p>Brown, V., M. Moodie, and R. Carter. 2017. “Evidence for Associations Between Traffic Calming and Safety and Active Transport or Obesity: A Scoping Review.” <em>Journal of Transport &amp; Health</em> 7: 23–37. <a href="https://doi.org/10.1016/j.jth.2017.02.011">https://doi.org/10.1016/j.jth.2017.02.011</a>.</p>
+<p>Brown, V., M. Moodie, and R. Carter. 2017. “Evidence for Associations Between Traffic Calming and Safety and Active Transport or Obesity: A Scoping Review.” <em>Journal of Transport &amp; Health</em> 7: 23–37. <a href="https://doi.org/10/gctxsg">https://doi.org/10/gctxsg</a>.</p>
 </div>
 <div id="ref-bunn_traffic_2003">
-<p>Bunn, Frances, T. Collier, C. Frost, Katharine Ker, I. Roberts, and R. Wentz. 2003. “Traffic Calming for the Prevention of Road Traffic Injuries: Systematic Review and Meta-Analysis.” <em>Injury Prevention</em> 9 (3): 200–204. <a href="https://doi.org/10.1136/ip.9.3.200">https://doi.org/10.1136/ip.9.3.200</a>.</p>
+<p>Bunn, Frances, T. Collier, C. Frost, Katharine Ker, I. Roberts, and R. Wentz. 2003. “Traffic Calming for the Prevention of Road Traffic Injuries: Systematic Review and Meta-Analysis.” <em>Injury Prevention</em> 9 (3): 200–204. <a href="https://doi.org/10/cjwdsm">https://doi.org/10/cjwdsm</a>.</p>
 </div>
 <div id="ref-butcher_traffic_2020">
 <p>Butcher, Louise. 2020. “Traffic Regulation Orders (TROs).” BRIEFING PAPER CBP 6013. House of Commons Library.</p>
@@ -670,13 +673,13 @@ This will include data visualisation such as who-hit-who upset plots, software d
 <p>Highways England. 2020. “CD 195 - Designing for Cycle Traffic - DMRB.” Highways England.</p>
 </div>
 <div id="ref-lovelace_stats19_2019">
-<p>Lovelace, Robin, Malcolm Morgan, Layik Hama, and Mark Padgham. 2019. “Stats19: A Package for Working with Open Road Crash Data.” <em>Journal of Open Source Software</em>. <a href="https://doi.org/10.21105/joss.01181">https://doi.org/10.21105/joss.01181</a>.</p>
+<p>Lovelace, Robin, Malcolm Morgan, Layik Hama, and Mark Padgham. 2019. “Stats19: A Package for Working with Open Road Crash Data.” <em>Journal of Open Source Software</em>. <a href="https://doi.org/10/gkb498">https://doi.org/10/gkb498</a>.</p>
 </div>
 <div id="ref-maher_20mph_2018">
 <p>Maher, Mike. 2018. “20mph Research Study.” Department for Transport.</p>
 </div>
 <div id="ref-meulemans_small_2017">
-<p>Meulemans, Wouter, Jason Dykes, Aidan Slingsby, Cagatay Turkay, and Jo Wood. 2017. “Small Multiples with Gaps.” <em>IEEE Transactions on Visualization and Computer Graphics</em> 23 (1): 381–90. <a href="https://doi.org/10.1109/TVCG.2016.2598542">https://doi.org/10.1109/TVCG.2016.2598542</a>.</p>
+<p>Meulemans, Wouter, Jason Dykes, Aidan Slingsby, Cagatay Turkay, and Jo Wood. 2017. “Small Multiples with Gaps.” <em>IEEE Transactions on Visualization and Computer Graphics</em> 23 (1): 381–90. <a href="https://doi.org/10/f92gd5">https://doi.org/10/f92gd5</a>.</p>
 </div>
 <div id="ref-natcen_cycling_2018">
 <p>NatCen. 2018. “Cycling and Walking Safety Rapid Evidence Assessment.” Department for Transport.</p>
@@ -688,10 +691,10 @@ This will include data visualisation such as who-hit-who upset plots, software d
 <p>ROSPA. 2019. “A Guide to 20mph Limits.” The Royal Society for the Prevention of Accidents.</p>
 </div>
 <div id="ref-zalewski_traffic_2019">
-<p>Zalewski, Andrzej, and Jan Kempa. 2019. “Traffic Calming as a Comprehensive Solution Improving Traffic Road Safety.” In <em>IOP Conf. Ser. Mater. Sci. Eng</em>, 471:062035. <a href="https://doi.org/10.1088/1757-899X/471/6/062035">https://doi.org/10.1088/1757-899X/471/6/062035</a>.</p>
+<p>Zalewski, Andrzej, and Jan Kempa. 2019. “Traffic Calming as a Comprehensive Solution Improving Traffic Road Safety.” In <em>IOP Conf. Ser. Mater. Sci. Eng</em>, 471:062035. <a href="https://doi.org/10/gkb5qk">https://doi.org/10/gkb5qk</a>.</p>
 </div>
 <div id="ref-zein_safety_1997">
-<p>Zein, Sany R., Erica Geddes, Suzanne Hemsing, and Mavis Johnson. 1997. “Safety Benefits of Traffic Calming.” <em>Transportation Research Record</em> 1578 (1): 3–10. <a href="https://doi.org/10.3141/1578-01">https://doi.org/10.3141/1578-01</a>.</p>
+<p>Zein, Sany R., Erica Geddes, Suzanne Hemsing, and Mavis Johnson. 1997. “Safety Benefits of Traffic Calming.” <em>Transportation Research Record</em> 1578 (1): 3–10. <a href="https://doi.org/10/bm5h2t">https://doi.org/10/bm5h2t</a>.</p>
 </div>
 </div>
 </div>

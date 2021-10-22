@@ -64,6 +64,9 @@
     <li>
       <a href="articles/report3.html">SaferActive Report 3: Modelling uptake and safety</a>
     </li>
+    <li>
+      <a href="articles/report4.html">Report 4: Trends in road safety and potential causal factors</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -133,7 +136,7 @@
 <div id="development-contributing" class="section level1">
 <h1 class="hasAnchor">
 <a href="#development-contributing" class="anchor"></a>Development (contributing)</h1>
-<p>R package <code>testthat</code> is used to test this package. Some of the tests, understandably, need to make calls to OSM and other remote services. The package has an ENV to avoid running network calls (downloads). If you like to avoid running them set an ENV var with <code>DONT_DOWNLOAD_ANYTHING = false</code> so that you skip them. If <code><a href="https://jeroen.cran.dev/curl/reference/nslookup.html">curl::has_internet()</a></code> fails, they will be skipped anyways.</p>
+<p>R package <code>testthat</code> is used to test this package. Some of the tests, understandably, need to make calls to OSM and other remote services. The package has an ENV to avoid running network calls (downloads). If you like to avoid running them set an ENV var with <code>DONT_DOWNLOAD_ANYTHING = false</code> so that you skip them. If <code><a href="https://rdrr.io/pkg/curl/man/nslookup.html">curl::has_internet()</a></code> fails, they will be skipped anyways.</p>
 </div>
 
   </div>
