@@ -14,7 +14,6 @@ knitr::opts_chunk$set(
 ```
 
 
-
 <!-- [![Travis build status](https://travis-ci.org/ITSLeeds/trafficalmr.svg?branch=master)](https://travis-ci.org/ITSLeeds/trafficalmr) -->
 <!-- [![Coverage status](https://codecov.io/gh/ITSLeeds/trafficalmr/branch/master/graph/badge.svg)](https://codecov.io/github/ITSLeeds/trafficalmr?branch=master) -->
 <!-- [![Build status](https://ci.appveyor.com/api/projects/status/gqp3smc04as3qg85?svg=true)](https://ci.appveyor.com/project/layik/trafficalmr-05ana) -->
