@@ -55,24 +55,10 @@ NTS data are available for England only.
 
 We have used a range of nationally available datasets to estimate and visualise road safety, including Stats19 collision data, DfT and TfL traffic counts, NTS survey returns and 2011 Census commute data.  
 
-TfL counter data (Central, Inner and Outer London count points only)
+<!-- todo: add descriptions -->
+<!-- DfT counter data -->
 
-Mean count per Borough, over the period 2015 - 2020. 
-
-```{r}
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/132374206-40a7b092-d3f0-42cc-877e-a8552b6d8921.png")
-```
-
-
-Change since 2015 in each Borough.
-
-```{r}
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/132371640-a9eedf6c-ce3e-41c5-97eb-5b97d9c6b6b3.png")
-```
-
-DfT counter data
-
-Mean count per LAD, over the period 2010 - 2020. 
+<!-- Mean count per LAD, over the period 2010 - 2020.  -->
 
 # National trends
 
