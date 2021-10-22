@@ -71,15 +71,16 @@ The number of cyclists saw a small increase over the ten years prior to 2019, ac
 In 2020, the mean number of cyclists passing DfT traffic count points was three times higher than in previous years. 
 
 ```{r}
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/130480677-af7ea79d-94f8-4812-8ec6-9321a5b6b4e0.png")
+# todo: update this graph and add caption if it becomes a priority
+# knitr::include_graphics("https://user-images.githubusercontent.com/52210872/130480677-af7ea79d-94f8-4812-8ec6-9321a5b6b4e0.png")
 ```
 
 ## National trends in collisions and collision risk
 
-In the period 2010-2019, risk of cycle KSI has reduced. 
+In the period 2010-2019, risk of cycle KSI has reduced according to our analysis. 
 This reduction has mainly occurred since 2014, and can be seen when casualty data are assessed using all three measures of cycle volume.
 
-```{r}
+```{r, fig.cap="Estimates of cycle casualty risk per billion kilometres cycled with estimates of cycling levels from the Department for Transport's (DfT's) manual count data, a GAM model based on the DfT data, and the National Travel Survey (NTS)."}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/130476560-7aabd05c-b540-4deb-b0a4-4d994c3c7a2f.png")
 ```
 
