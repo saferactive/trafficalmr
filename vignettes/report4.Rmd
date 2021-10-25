@@ -86,9 +86,6 @@ The 2011 Census provides comprehensive nationwide coverage.
 Questions include method of travel to work, which can be used together with home and work locations to provide full origin-destination (OD) data for commuter journeys.
 For England and Wales, the Propensity to Cycle Tool combines this data with routing algorithms created by CycleStreets.net, in particular the fast route algorithm which identifies the fastest cycle route from origin to destination, accounting for the impact of hills.
 
-<!-- todo: add descriptions -->
-<!-- DfT counter data -->
-
 <!-- Mean count per LAD, over the period 2010 - 2020.  -->
 
 # National trends
@@ -293,7 +290,7 @@ Main roads are those classified as 'A', 'B' or 'C' roads. Data on traffic calmin
 
 This map extract from Leeds gives an example of how roads are classified.
 
-```{r}
+```{r, fig.cap="Extract from CycleStreets.net showing a classification of roads in north Leeds"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/137929708-99296ffc-07c9-4c12-b052-e2a3e14d7cdb.png")
 ```
 
@@ -349,22 +346,46 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1379
 
 Weighting by the road length within a grid cell, we look at how pedestrian and cyclist KSI vary with the proportion of roads of different types. 
 We expect that KSI rates will increase as the proportion of ratruns increases, and decrease as the proportion of LTNs increases.
-
-<!-- Todo: more explanation text -->
+This does seem to occur, as borne out by investigatory GLM models, although the relationship is weak as many other factors are at play.
+It would be interesting to study these relationships across wider spatial scales.
+Another option is to use a function to more precisely define street networks of local neighbourhoods that share common features, and use these as the unit of measurement rather than using 1km grid cells.  
 
 # Discussion
 
-Rather than one simple answer to the question of how to measure road safety risk, it is clear that there are many different ways of approaching this topic. 
+There are many questions on the topic of road safety that deserve further investigation. 
+A long standing focus of interest is the relationship of road safety risk with deprivation and inequality.
+It is possible for example to investigate the identity of casualties and of other people involved in collisions, together with the characteristics of the areas where collisions occur, assessing these using the Index of Multiple Deprivation.
+We might expect higher casualty rates for people from more deprived neighbourhoods, but interactions also take place with for example people who live in less deprived neighbourhoods being involved in collisions in more deprived neigbourhoods, and vice versa. 
+
+Another topic of interest is safety in numbers - the idea that in places where more people cycle, the risk of injury is lower.
+This does seem to be borne out, for example when cycling increased across England and Wales in 2020 the risk reduced. 
+However, we must still question the role of causality. 
+Is it the higher numbers of cyclists that make the roads safer, or are more people willing to cycle in places and at times when it is inherently safe?
+
+A further question is whether places with low casualty rates and falling risk share a set of common features or policies, that can be applied to other regions to improve their safety. 
+Scotland has seen some of the greatest reductions in injury risk in the UK over the last decade, and has a comprehensive Road Safety Framework to 2030.
+A focus on safe speeds is one of the five pillars of this strategy, with others focusing on road design, vehicle design, road user behaviour, and post-crash response.
+Lancashire is another area in which initially high collision rates have improved greatly.
+The county appears to have an active Road Safety Partnership.
+
+The road environment has changed greatly over the last two years.
+We have seen unprecedented lockdown and an increase in cycling, as well as opportunities for speeding, on relatively traffic-free roads.  
+Now traffic levels have returned to normal faster than public transport patronage, potentially increasing risk and congestion.  
+We also have new types of road user such as legal and illegal e-scooters, which are becoming more widespread.
+Meanwhile, among car drivers, there is a trend towards heavier and larger vehicles, such as SUVs, which may react differently in the event of a collision.
+These are just some of the trends that could influence road safety in future.
+
+## Assessing risk
+
+Much of this report has focused on the question of how to measure road safety risk, but rather than having one simple answer it is clear again that there are many different ways of approaching this topic.
 We have focused mainly on risk related to cycle commuting, which has some of the best data quality, but even here different data sources will provide different interpretations.
-
 This uncertainty must be understood in the context that to assess risk, we need measures of both casualty rates and exposure. 
-The casualty data is comprehensive and the core stats19 components (such as number of casualties) are highly reliable.
-Therefore it is uncertainty in the exposure, i.e. the number of km cycled on the roads, that is the most important factor.
 
-<!-- Todo: add key points from work workshop -->
-
-<!-- Todo: add something on -->
-<!-- Casualty severity adjustment... -->
+In the casualty data, it is important to be aware of issues related to the way in which the data is collected, such as differences between data recorded at the scene of a collision and data that has been self-reported online.
+Contributory factors that are recorded may be the interpretation of the reporting police officer.
+There is also the need to adjust for changing methodologies in determining injury severity. 
+Notwithstanding these points, the Stats19 casualty data is comprehensive and its core components (such as number of casualties) are highly reliable.
+Therefore it is in the exposure, i.e. the distance cycled on the roads, that the greatest degree of uncertainty lies.
 
 ## Uncertainty in spatial trends
 
