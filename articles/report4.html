@@ -162,8 +162,13 @@ For England and Wales, the Propensity to Cycle Tool combines this data with rout
 <div id="national-trends-in-cycle-volume" class="section level2">
 <h2 class="hasAnchor">
 <a href="#national-trends-in-cycle-volume" class="anchor"></a><span class="header-section-number">3.1</span> National trends in cycle volume</h2>
-<p>The number of cyclists saw a small increase over the ten years prior to 2019, according to three different data sources.</p>
-<p>In 2020, the mean number of cyclists passing DfT traffic count points was three times higher than in previous years.</p>
+<p>The number of cyclists saw a small increase over the decade prior to 2020, according to results from the National Travel Survey and DfT traffic counters.</p>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="https://user-images.githubusercontent.com/52210872/138778430-b088d4d5-ac67-4af7-9f2f-6f277f187359.png" alt="Change in national distance cycled according to National Travel Survey and change in mean AADF to DfT cycle counters"><p class="caption">
+Figure 3.1: Change in national distance cycled according to National Travel Survey and change in mean AADF to DfT cycle counters
+</p>
+</div>
 </div>
 <div id="national-trends-in-collisions-and-collision-risk" class="section level2">
 <h2 class="hasAnchor">
@@ -173,7 +178,7 @@ This reduction has mainly occurred since 2014, and can be seen when casualty dat
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-2"></span>
 <img src="https://user-images.githubusercontent.com/52210872/130476560-7aabd05c-b540-4deb-b0a4-4d994c3c7a2f.png" alt="Estimates of cycle casualty risk per billion kilometres cycled with estimates of cycling levels from the Department for Transport's (DfT's) manual count data, a GAM model based on the DfT data, and the National Travel Survey (NTS)."><p class="caption">
-Figure 3.1: Estimates of cycle casualty risk per billion kilometres cycled with estimates of cycling levels from the Department for Transport’s (DfT’s) manual count data, a GAM model based on the DfT data, and the National Travel Survey (NTS).
+Figure 3.2: Estimates of cycle casualty risk per billion kilometres cycled with estimates of cycling levels from the Department for Transport’s (DfT’s) manual count data, a GAM model based on the DfT data, and the National Travel Survey (NTS).
 </p>
 </div>
 </div>
@@ -489,7 +494,7 @@ This could potentially explain the high risk rates seen in areas such as rural W
 <h2 class="hasAnchor">
 <a href="#uncertainty-in-temporal-trends" class="anchor"></a><span class="header-section-number">7.3</span> Uncertainty in temporal trends</h2>
 <p>The spatial trends described above hold true for 2011, when the Census was conducted.
-When analysing change through time before and after this date, there is uncertainty related the measures used to assess change in cycling.
+When analysing change through time before and after this date, there is uncertainty related to the measures used to assess change in cycling.
 At the regional level, it is possible to use DfT regional traffic data and NTS survey returns, but these are not available at higher geographic resolutions.</p>
 <p>The sub-regional analyses rely on Annual Average Daily Flows derived from DfT traffic counters as a basis for estimating change through time.
 However, a key limitation is that the count locations are not consistent from year to year.
@@ -499,15 +504,23 @@ Expected cycle flows differ by road type.
 Both nationally and within a Local Authority, the number and proportion of counts that are located on roads of each type varies from year to year.<br>
 This causes inter-annual flux in observed cycle flows which can mask underlying trends.
 The result of these factors is that the mean AADF for counters within a given geographic area is inherently unstable from year to year.</p>
-<!-- Todo: add discussion emperical Bayes and data scarcity -->
-<!-- ## Impact of data scarcity -->
-<!-- Smaller Local Authority may have both few accidents per year and few DfT counter locations.  -->
-<!-- Resampling and empirical Bayes... -->
+<p>We investigated resampling of counter locations and weighting by road type to standardise the representation of road types through time within each Local Authority.
+This could be used in future to reduce the impact of inter-annual variability.</p>
+</div>
+<div id="impact-of-data-scarcity" class="section level2">
+<h2 class="hasAnchor">
+<a href="#impact-of-data-scarcity" class="anchor"></a><span class="header-section-number">7.4</span> Impact of data scarcity</h2>
+<p>Data scarcity can cause issues when there are either limited numbers of counter locations or few collisions per year within a Local Authority.
+An empirical Bayes approach could counteract this with use of an informative prior which has the effect of normalising the results for LAs towards the mean to different degrees, dependent on the sample sizes they are based on.
+Another potential approach is the use of a multilevel model, with counter location as a random effect.</p>
 </div>
 </div>
 <div id="conclusion" class="section level1">
 <h1 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a><span class="header-section-number">8</span> Conclusion</h1>
+<p>When investigating road safety, it is vital to understand how risk is calculated and assessed.
+Despite an increase in the number of cyclists killed and seriously injured on British roads in 2020, the risk actually fell by around 30%.
+There may be many factors that influence this risk, and further research into these factors would be beneficial.</p>
 </div>
   </div>
 
