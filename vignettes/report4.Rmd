@@ -29,7 +29,7 @@ The Saferactive project is funded by the Department for Transport.
 It aims to investigate spatial and temporal patterns in road safety for active travel. 
 
 High quality data is available on road safety through the Stats19 dataset.
-Published by the Department for Transport, this is a comprehensive dataset of road collision statistics, mainly as reported by police officers on the scene. 
+Published by the Department for Transport, this is a comprehensive dataset of road collision statistics, mainly as reported by police officers on the scene of the collision. 
 
 However, to estimate collision risk, we must also know the exposure, defined as the number of people walking and cycling on the road network.
 The exposure acts as the denominator in any estimate of road safety risk.
@@ -69,6 +69,7 @@ Collisions resulting in slight injuries may not always be reported, but reportin
 The key yardstick of road safety is the number of people killed or seriously injured (KSI).
 In recent years there have been changes in the methodology used by many police forces to categorise injuries as slight versus serious. 
 Adjustment factors are used to standardise and account for these methodological changes. 
+The Stats19 data for 2020 was only available in summary form at the time this report was written.
 
 The DfT traffic counts are a series of manual traffic counters.
 Counter locations are typically surveyed from 07:00 - 19:00 on a single date per year, with seasonal adjustments applied to calculate an Annual Average Daily Flow (AADF).
@@ -173,29 +174,29 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1336
 The low observed mean flows in 2018 and 2019 in the previous figure can be explained by the fact that many additional counts were undertaken on 'C' and Unclassified roads in these years.
 If these are new locations, the minimum flow for the count location will necessarily be recorded in one of these years.
 
-```{r}
+```{r, fig.cap="DfT counter locations by road type, 2010 - 2020."}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138469693-3f6b4a20-8092-452b-8303-b129c4254608.png")
 ```
 
 ## Regional trends in collision risk
 
-We now combine the KSI and cycle volume data, to obtain estimates of trends in road safety 
-First we use the NTS survey data.
+We now combine the KSI and cycle volume data, to obtain estimates of trends in road safety.
+Firstly, we compare trends based on NTS versus DfT regional traffic data, using the full Stats19 collision data.
+With the NTS survey data, there is a 29% fall in KSI per Bkm cycled over the period 2011 - 2019. 
+With the DfT regional traffic data the magnitude of change is smaller, with a 17% reduction in KSI per Bkm 2011 - 2019 (excluding Wales and Scotland). 
+Scotland and the North West have been particularly successful, with 36% and 31% reductions respectively.
 
-```{r, fig.cap="KSI risk per km cycled, using NTS journey data "}
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/133631183-2f5e6454-f34b-4aa3-bcac-fad88503e896.png")
+```{r, fig.cap="KSI risk per km cycled, 2010 - 2019, using (left) NTS journey data and (right) DfT regional traffic data."}
+knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138713972-2c0d6e22-81a6-4330-8d51-e740637c923b.png")
 ```
 
-Trends in KSI risk per km cycled, using DfT regional traffic data
+Next, we compare trends in DfT regional traffic data versus the individual DfT counts.
+For this we can include the year 2020, and therefore use the Stats19 summary data only (which is available 2013 - 2020).
+The order of the regions is fairly arbitrary in the second graph, since it is based on mean flows at count points within the region, but the trends provide valuable information.
+The DfT regional traffic data shows a 30% reduction in risk 2019 - 2020, while for the DfT counters this is a 34% reduction in risk.
 
-```{r, }
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138102558-f4cda4ef-7815-4147-9787-761c59249c00.png")
-```
-
-Trends in KSI risk per DfT mean cycle count 
-
-```{r}
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/132327377-8daceacf-2de6-4513-b776-b5593ec2d11a.png")
+```{r, fig.cap="Trends in road safety risk, 2013 - 2020, using (left) DfT regional traffic data and (right) DfT counters."}
+knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138716908-00b8c78e-1279-4a8a-a644-a92b6d2b1d27.png")
 ```
 
 
