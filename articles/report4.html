@@ -153,8 +153,6 @@ It is completed by around 15,000 individual respondents.</p>
 <p>The 2011 Census provides comprehensive nationwide coverage.
 Questions include method of travel to work, which can be used together with home and work locations to provide full origin-destination (OD) data for commuter journeys.
 For England and Wales, the Propensity to Cycle Tool combines this data with routing algorithms created by CycleStreets.net, in particular the fast route algorithm which identifies the fastest cycle route from origin to destination, accounting for the impact of hills.</p>
-<!-- todo: add descriptions -->
-<!-- DfT counter data -->
 <!-- Mean count per LAD, over the period 2010 - 2020.  -->
 </div>
 <div id="national-trends" class="section level1">
@@ -373,7 +371,12 @@ This includes cul-de-sacs and wider networks of streets for which all of the acc
 All roads are assigned as main roads, low traffic neighbourhood roads, ratruns, or ratruns with traffic calming measures.
 Main roads are those classified as ‘A’, ‘B’ or ‘C’ roads. Data on traffic calming measures are obtained from OSM.</p>
 <p>This map extract from Leeds gives an example of how roads are classified.</p>
-<p><img src="https://user-images.githubusercontent.com/52210872/137929708-99296ffc-07c9-4c12-b052-e2a3e14d7cdb.png"><!-- --></p>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-18"></span>
+<img src="https://user-images.githubusercontent.com/52210872/137929708-99296ffc-07c9-4c12-b052-e2a3e14d7cdb.png" alt="Extract from CycleStreets.net showing a classification of roads in north Leeds"><p class="caption">
+Figure 6.1: Extract from CycleStreets.net showing a classification of roads in north Leeds
+</p>
+</div>
 <p>We have used this beta map with West Yorkshire as a case study region, to assess the impact of Low Traffic Neighbourhoods on road safety.</p>
 <div id="active-travel-ksi-road-length-and-commuter-cycling-in-west-yorkshire" class="section level2">
 <h2 class="hasAnchor">
@@ -383,21 +386,21 @@ We see a clear correlation between total road length within each 1km cell and th
 <div class="figure">
 <span style="display:block;" id="fig:ped-ksi"></span>
 <img src="https://user-images.githubusercontent.com/52210872/136543444-d574755c-eb0d-4d4b-9981-a22fc18756ea.png" alt="Pedestrian KSI over the years 2010-2019 against road length in km. Each point represents a 1km grid cell"><p class="caption">
-Figure 6.1: Pedestrian KSI over the years 2010-2019 against road length in km. Each point represents a 1km grid cell
+Figure 6.2: Pedestrian KSI over the years 2010-2019 against road length in km. Each point represents a 1km grid cell
 </p>
 </div>
 <p>There is also a positive association between road length and cycle KSI but it is weaker, likely reflecting the fact that the cycling distribution is more uneven than the pedestrian distribution.</p>
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-19"></span>
 <img src="https://user-images.githubusercontent.com/52210872/136543521-220b0a1d-432d-46dd-b796-ddbd20309573.png" alt="Cycle KSI over the years 2010-2019 against road length in km. Each point represents a 1km grid cell"><p class="caption">
-Figure 6.2: Cycle KSI over the years 2010-2019 against road length in km. Each point represents a 1km grid cell
+Figure 6.3: Cycle KSI over the years 2010-2019 against road length in km. Each point represents a 1km grid cell
 </p>
 </div>
 <p>We can see a positive correlation between distance cycled for travel to work and cycle KSI.</p>
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-20"></span>
 <img src="https://user-images.githubusercontent.com/52210872/136543609-0a2e5e82-af09-4a97-85d8-bed82f4fb72f.png" alt="Cycle KSI over the years 2010-2019 against km cycled for travel to work according to the 2011 Census, using the fast route network derived from the PCT. Each point represents a 1km grid cell, with colour weighted by total road length within the grid cell"><p class="caption">
-Figure 6.3: Cycle KSI over the years 2010-2019 against km cycled for travel to work according to the 2011 Census, using the fast route network derived from the PCT. Each point represents a 1km grid cell, with colour weighted by total road length within the grid cell
+Figure 6.4: Cycle KSI over the years 2010-2019 against km cycled for travel to work according to the 2011 Census, using the fast route network derived from the PCT. Each point represents a 1km grid cell, with colour weighted by total road length within the grid cell
 </p>
 </div>
 <p>Switching to maps, we can see how these patterns play out across West Yorkshire.
@@ -406,7 +409,7 @@ Cycle commute km are strongly concentrated within Leeds.</p>
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-21"></span>
 <img src="https://user-images.githubusercontent.com/52210872/137118045-8f0c8c93-e104-4583-a5e0-f5c600d0b6e9.png" alt="Cycle and pedestrian KSI for the period 2010-2019 and km cycled for travel to work in West Yorkshire. The map of km cycled only includes cells that form part of the PCT-derived fast route network for the 2011 Census"><p class="caption">
-Figure 6.4: Cycle and pedestrian KSI for the period 2010-2019 and km cycled for travel to work in West Yorkshire. The map of km cycled only includes cells that form part of the PCT-derived fast route network for the 2011 Census
+Figure 6.5: Cycle and pedestrian KSI for the period 2010-2019 and km cycled for travel to work in West Yorkshire. The map of km cycled only includes cells that form part of the PCT-derived fast route network for the 2011 Census
 </p>
 </div>
 <p>Now looking at the distribution of KSI risk, we see that for walking, KSI risk per km road remains highest in the urban areas, especially Bradford.
@@ -417,7 +420,7 @@ A more reliable finding is that KSI risk appears higher in Bradford than in Leed
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-22"></span>
 <img src="https://user-images.githubusercontent.com/52210872/138101552-b834daf2-ae4d-4b4b-a4cf-031e316949c3.png" alt="Cycle and pedestrian KSI risk for the period 2010-2019 and KSI per Bkm cycled for travel to work in West Yorkshire, assuming 35% of cycle journeys are commutes (NTS mean for England in 2010-2019). The third map only includes cells that form part of the PCT-derived fast route network for the 2011 Census"><p class="caption">
-Figure 6.5: Cycle and pedestrian KSI risk for the period 2010-2019 and KSI per Bkm cycled for travel to work in West Yorkshire, assuming 35% of cycle journeys are commutes (NTS mean for England in 2010-2019). The third map only includes cells that form part of the PCT-derived fast route network for the 2011 Census
+Figure 6.6: Cycle and pedestrian KSI risk for the period 2010-2019 and KSI per Bkm cycled for travel to work in West Yorkshire, assuming 35% of cycle journeys are commutes (NTS mean for England in 2010-2019). The third map only includes cells that form part of the PCT-derived fast route network for the 2011 Census
 </p>
 </div>
 </div>
@@ -428,24 +431,49 @@ Figure 6.5: Cycle and pedestrian KSI risk for the period 2010-2019 and KSI per B
 Unsurprisingly, the total road length within each 1km grid cell varies greatly across the region, being highest in towns and cities, but so too does the distribution of types of road within each grid cell.</p>
 <p><img src="https://user-images.githubusercontent.com/52210872/137931151-74a946aa-11a8-4989-be58-db89206792c0.png"><!-- --></p>
 <p>Weighting by the road length within a grid cell, we look at how pedestrian and cyclist KSI vary with the proportion of roads of different types.
-We expect that KSI rates will increase as the proportion of ratruns increases, and decrease as the proportion of LTNs increases.</p>
-<!-- Todo: more explanation text -->
+We expect that KSI rates will increase as the proportion of ratruns increases, and decrease as the proportion of LTNs increases.
+This does seem to occur, as borne out by investigatory GLM models, although the relationship is weak as many other factors are at play.
+It would be interesting to study these relationships across wider spatial scales.
+Another option is to use a function to more precisely define street networks of local neighbourhoods that share common features, and use these as the unit of measurement rather than using 1km grid cells.</p>
 </div>
 </div>
 <div id="discussion" class="section level1">
 <h1 class="hasAnchor">
 <a href="#discussion" class="anchor"></a><span class="header-section-number">7</span> Discussion</h1>
-<p>Rather than one simple answer to the question of how to measure road safety risk, it is clear that there are many different ways of approaching this topic.
-We have focused mainly on risk related to cycle commuting, which has some of the best data quality, but even here different data sources will provide different interpretations.</p>
-<p>This uncertainty must be understood in the context that to assess risk, we need measures of both casualty rates and exposure.
-The casualty data is comprehensive and the core stats19 components (such as number of casualties) are highly reliable.
-Therefore it is uncertainty in the exposure, i.e. the number of km cycled on the roads, that is the most important factor.</p>
-<!-- Todo: add key points from work workshop -->
-<!-- Todo: add something on -->
-<!-- Casualty severity adjustment... -->
+<p>There are many questions on the topic of road safety that deserve further investigation.
+A long standing focus of interest is the relationship of road safety risk with deprivation and inequality.
+It is possible for example to investigate the identity of casualties and of other people involved in collisions, together with the characteristics of the areas where collisions occur, assessing these using the Index of Multiple Deprivation.
+We might expect higher casualty rates for people from more deprived neighbourhoods, but interactions also take place with for example people who live in less deprived neighbourhoods being involved in collisions in more deprived neigbourhoods, and vice versa.</p>
+<p>Another topic of interest is safety in numbers - the idea that in places where more people cycle, the risk of injury is lower.
+This does seem to be borne out, for example when cycling increased across England and Wales in 2020 the risk reduced.
+However, we must still question the role of causality.
+Is it the higher numbers of cyclists that make the roads safer, or are more people willing to cycle in places and at times when it is inherently safe?</p>
+<p>A further question is whether places with low casualty rates and falling risk share a set of common features or policies, that can be applied to other regions to improve their safety.
+Scotland has seen some of the greatest reductions in injury risk in the UK over the last decade, and has a comprehensive Road Safety Framework to 2030.
+A focus on safe speeds is one of the five pillars of this strategy, with others focusing on road design, vehicle design, road user behaviour, and post-crash response.
+Lancashire is another area in which initially high collision rates have improved greatly.
+The county appears to have an active Road Safety Partnership.</p>
+<p>The road environment has changed greatly over the last two years.
+We have seen unprecedented lockdown and an increase in cycling, as well as opportunities for speeding, on relatively traffic-free roads.<br>
+Now traffic levels have returned to normal faster than public transport patronage, potentially increasing risk and congestion.<br>
+We also have new types of road user such as legal and illegal e-scooters, which are becoming more widespread.
+Meanwhile, among car drivers, there is a trend towards heavier and larger vehicles, such as SUVs, which may react differently in the event of a collision.
+These are just some of the trends that could influence road safety in future.</p>
+<div id="assessing-risk" class="section level2">
+<h2 class="hasAnchor">
+<a href="#assessing-risk" class="anchor"></a><span class="header-section-number">7.1</span> Assessing risk</h2>
+<p>Much of this report has focused on the question of how to measure road safety risk, but rather than having one simple answer it is clear again that there are many different ways of approaching this topic.
+We have focused mainly on risk related to cycle commuting, which has some of the best data quality, but even here different data sources will provide different interpretations.
+This uncertainty must be understood in the context that to assess risk, we need measures of both casualty rates and exposure.</p>
+<p>In the casualty data, it is important to be aware of issues related to the way in which the data is collected, such as differences between data recorded at the scene of a collision and data that has been self-reported online.
+Contributory factors that are recorded may be the interpretation of the reporting police officer.
+There is also the need to adjust for changing methodologies in determining injury severity.
+Notwithstanding these points, the Stats19 casualty data is comprehensive and its core components (such as number of casualties) are highly reliable.
+Therefore it is in the exposure, i.e. the distance cycled on the roads, that the greatest degree of uncertainty lies.</p>
+</div>
 <div id="uncertainty-in-spatial-trends" class="section level2">
 <h2 class="hasAnchor">
-<a href="#uncertainty-in-spatial-trends" class="anchor"></a><span class="header-section-number">7.1</span> Uncertainty in spatial trends</h2>
+<a href="#uncertainty-in-spatial-trends" class="anchor"></a><span class="header-section-number">7.2</span> Uncertainty in spatial trends</h2>
 <p>When it comes to travel to work, we have comprehensive knowledge of spatial trends in cycling through the 2011 Census. Certain uncertainties remain even here, since we do not know the actual routes used to travel between origin and destination, but the CycleStreets.net fast algorithm provides a good approximation of these.</p>
 <p>However, this only holds true for travel to work, which in 2011 accounted for 38% of cycle journeys.
 Similarly comprehensive data exists for travel to school, but not for other purposes such as leisure, personal business and shopping.
@@ -459,7 +487,7 @@ This could potentially explain the high risk rates seen in areas such as rural W
 </div>
 <div id="uncertainty-in-temporal-trends" class="section level2">
 <h2 class="hasAnchor">
-<a href="#uncertainty-in-temporal-trends" class="anchor"></a><span class="header-section-number">7.2</span> Uncertainty in temporal trends</h2>
+<a href="#uncertainty-in-temporal-trends" class="anchor"></a><span class="header-section-number">7.3</span> Uncertainty in temporal trends</h2>
 <p>The spatial trends described above hold true for 2011, when the Census was conducted.
 When analysing change through time before and after this date, there is uncertainty related the measures used to assess change in cycling.
 At the regional level, it is possible to use DfT regional traffic data and NTS survey returns, but these are not available at higher geographic resolutions.</p>
