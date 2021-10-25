@@ -205,7 +205,7 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1387
 We investigate trends in KSI, exposure and risk for commuter cycling at the geographical scales of Upper Tier Local Authorities and Police Force areas.
 Data related to KSI and km cycled are available for the years 2010 - 2020, while data related to population estimates, such as km cycled per capita, are available for the years 2010 - 2019.
 
-KSI and risk data are estimated based on the number of cyclists killed and seriously injured during weekday peak hours (07:00-10:00 and 16:00-19:00), and estimates of km cycled derived from Census 2011 travel to work by bicycle. 
+KSI and risk are estimated based on the number of cyclists killed and seriously injured during weekday peak hours (07:00-10:00 and 16:00-19:00), and estimates of km cycled derived from Census 2011 travel to work by bicycle. 
 These journeys are routed using the CycleStreets.net fast routes algorithm, as used in the Propensity to Cycle Tool.
 
 For all other years, we adjust the 2011 commuter cycle flows using DfT counter data, based on mean AADF counts within the relevant geographical zone. 
@@ -217,43 +217,50 @@ $$
 
 where $Km_{2020}$ = estimated km cycled for travel to work in 2020; $Km_{2011}$ = km cycled for travel to work in 2011; $AADF_{2020}$ = mean AADF of DfT counters within the geographical region in 2020; $AADF_{2010}$ = mean AADF in 2010; $AADF_{2011}$ = mean AADF in 2011; and $AADF_{2012}$ = mean AADF in 2012.
 
+Since only summary collision data was available for 2020, we estimated weekday peak hour KSI in 2020 by using the percentage change in total KSI between 2019 and 2020.
+If anything, this is likely to overestimate the number of collisions (and thus the risk) occurring during peak hours, since travel to work was disproportionately affected by pandemic-related lockdown measures.  
+
 ## Upper Tier Local Authority trends 
 
-Change in KSI at LA level is seen below.
+To compare the trends in each metric, we show mean values across the years 2010 - 2014 and 2015 - 2019, plus the values in 2020.
+To start with, we look at KSI at the LA level, where there is relatively little noticeable change across the decade.
 
-```{r}
+```{r, fig.cap="Changes in peak hour KSI at Upper Tier Local Authority level"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136986982-540da20d-c37f-4aad-acdf-337fe899c1e2.png")
 ```
 
-This can be compared with changes in km cycled at LA level.
+This can be compared with changes in km cycled at LA level which have increased in many areas.
 
-```{r}
+```{r, fig.cap="Changes in commute cycle volume at Upper Tier Local Authority level"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136987001-d5aa80a7-59fe-49fb-9c9d-c9ccd1f77ec8.png")
 ```
 
-Combining the data from the previous two figures, we obtain estimates of change in risk.
+Combining the data from the previous two figures, we obtain estimates of change in risk, clearly showing how risk fell over the decade across the decade, particularly in areas such as Lancashire, parts of Wales and Outer London.
 
-```{r}
+```{r, fig.cap="Changes in KSI risk at Upper Tier Local Authority level"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136982364-660dbbba-6494-4aa5-9502-575a455b428a.png")
 ```
 
 ## Police Force area trends
 
-Similarly, we investigate changes in peak hour KSI at Police Force level.
+In the previous figure, some Local Authorities with low populations (such as Merthyr Tydfil, Ceredigion and Rutland) stood out with very high risk in certain years.
+This is likely to be an artefact of the random impact of a small number of collisions in an area with very little overall cycle commuting.
+To avoid these effects, we conduct the same analysis for police force areas.
 
-```{r}
+```{r, fig.cap="Changes in peak hour KSI at Police Force level"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136990432-56fb1df1-d8f2-4c71-ade4-a67323c1abb5.png")
 ```
 
-Km cycled has risen noticeably in many regions.
+In 2020, the distance cycled rose noticeably across large parts of England and Wales.
 
-```{r}
+```{r, fig.cap="Changes in commute cycle volume at Police Force level"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136990447-7879441a-7969-4082-874b-f371d0f0864f.png")
 ```
 
-The result is a decrease in risk for cycle commuting across most Police Force areas.
+Even more clearly than for the Local Authorities, we can see a decrease in risk for cycle commuting across most Police Force areas.
+The high risk observed in some of the more rural Police Force areas such as Dyfed-Powys (and similarly in some of the LAs shown previously) may be an artefact of the fact that in these areas, leisure cycling dominates, even during weekday peak hours, and commuter cycling forms a smaller component of total cycling here than it does elsewhere.
 
-```{r}
+```{r, fig.cap="Changes in KSI risk at Police Force level"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136990471-f2dfd8a0-1319-44fb-8ed3-b7287d6be588.png")
 ```
 
@@ -263,6 +270,9 @@ The Upper Tier Local Authority level trends in peak hour cycling and risk can be
 
 The police force level trends in peak hour cycling and risk can be found at 
 https://github.com/saferactive/saferactive/releases/download/0.1.4/ksi-pf.csv
+
+These datasets can all be seen on the Saferactive web app. 
+https://saferactive.github.io/tgve/
 
 # Low Traffic Neighbourhoods and rat-runs
 
