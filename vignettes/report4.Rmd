@@ -116,33 +116,38 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1304
 
 # Regional trends
 
+We first look at regional trends in KSI.
+This is followed by trends in distance travelled and in risk.
+
 ## Regional trends in active travel casualties
 
-Change in cycle KSI in each region.
+There was a 9% fall in cycle KSI 2013 - 2019, followed by a 3% rise in KSI in 2020. 
 
-```{r}
+```{r, fig.cap="Change in cycle KSI by region"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138121988-52a7e749-acda-4214-a4b7-c3f2b4f7f272.png")
 ```
 
-Pedestrian KSI by region.
+Similarly, there was an 8% fall in pedestrian KSI 2013 - 2019, but this was followed by a 32% fall in KSI in 2020. 
 
-```{r}
+```{r, fig.cap="Change in pedestrian KSI by region"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138121368-e1cf201f-d773-4190-be9f-ac48c5b21b29.png")
 ```
 
 ## Regional trends in cycle volume
 
-At the regional level, the most reliable data sources are the NTS and DfT regional traffic data.
+It appears that the Covid-19 lockdowns during 2020 had very different impacts on KSI rates for cycling and walking. 
+Cycle casualties increased, but we must investigate cycle volume to determine whether the risk also increased.
 
-Total distance cycled per year in each English region 2003 - 2019 (based on NTS survey)
+At the regional level, the most reliable data sources for cycle volume are the NTS and DfT regional traffic data.
+Based on the NTS, total distance cycled per year in each English region shows a steady rise 2003 - 2019.
 
-```{r}
+```{r, fig.cap="Total distance cycled per year 2003 - 2019, according to National Travel Survey."}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/133634243-6449b3c1-61dd-429c-bc41-562841968ff4.png")
 ```
 
-Total distance cycled per year in each region 2010 - 2020 (including Scotland and Wales), based on DfT regional traffic data.
+Based on the DfT regional statistics, there were small rises in total distance cycled in 2010 - 2019, followed by larger increases in 2020. 
 
-```{r}
+```{r, fig.cap="Total distance cycled per year 2010 - 2020, according to DfT regional traffic data."}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138102424-717a763f-1ec9-4675-80a1-38d9138e4fa0.png")
 ```
 
@@ -152,7 +157,7 @@ Firstly, we look at mean cycle flows per DfT counter in each region.
 These are all Annual Average Daily Flows (AADF), calculated by the DfT to account for the impact of seasonality on the raw counter flows.
 To allow easy comparison between regions, we normalised these as percentage change since 2011. 
 
-```{r}
+```{r, fig.cap="Mean AADF cycle flow per DfT counter 2010 - 2019. Values are shown as % change in mean flow since 2011."}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/132316899-1bbc1cc9-687e-4df3-9c7a-3074778dd107.png")
 ```
 
@@ -161,7 +166,7 @@ As another approach, we look at mean change in AADF cycle flow per DfT counter i
 This is based on the change in flow at each counter, calculated as the flow for a particular year minus the minimum annual flow for the given counter.
 Again, these are normalised as percentage change since 2011.
 
-```{r}
+```{r, fig.cap="Mean change in AADF flow at each counter, measured as change above minimum flow for the counter. Values are shown as % change since 2011."}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/133624726-227a7114-0fb1-4f62-bd06-a139f7245b60.png")
 ```
 
@@ -174,15 +179,16 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1384
 
 ## Regional trends in collision risk
 
-Trends in KSI risk per km cycled, using NTS journey data 
+We now combine the KSI and cycle volume data, to obtain estimates of trends in road safety 
+First we use the NTS survey data.
 
-```{r}
+```{r, fig.cap="KSI risk per km cycled, using NTS journey data "}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/133631183-2f5e6454-f34b-4aa3-bcac-fad88503e896.png")
 ```
 
 Trends in KSI risk per km cycled, using DfT regional traffic data
 
-```{r}
+```{r, }
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138102558-f4cda4ef-7815-4147-9787-761c59249c00.png")
 ```
 
