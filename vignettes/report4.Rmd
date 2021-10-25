@@ -94,13 +94,10 @@ At national and regional scales we have more reliable estimates of cycle volume 
 
 ## National trends in cycle volume
 
-The number of cyclists saw a small increase over the ten years prior to 2019, according to three different data sources. 
+The number of cyclists saw a small increase over the decade prior to 2020, according to results from the National Travel Survey and DfT traffic counters. 
 
-In 2020, the mean number of cyclists passing DfT traffic count points was three times higher than in previous years. 
-
-```{r}
-# todo: update this graph and add caption if it becomes a priority
-# knitr::include_graphics("https://user-images.githubusercontent.com/52210872/130480677-af7ea79d-94f8-4812-8ec6-9321a5b6b4e0.png")
+```{r, fig.cap="Change in national distance cycled according to National Travel Survey and change in mean AADF to DfT cycle counters"}
+knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138778430-b088d4d5-ac67-4af7-9f2f-6f277f187359.png")
 ```
 
 ## National trends in collisions and collision risk
@@ -406,7 +403,7 @@ The reliance on Census data which is now ten years old also means that spatial t
 ## Uncertainty in temporal trends
 
 The spatial trends described above hold true for 2011, when the Census was conducted. 
-When analysing change through time before and after this date, there is uncertainty related the measures used to assess change in cycling.
+When analysing change through time before and after this date, there is uncertainty related to the measures used to assess change in cycling.
 At the regional level, it is possible to use DfT regional traffic data and NTS survey returns, but these are not available at higher geographic resolutions.
 
 The sub-regional analyses rely on Annual Average Daily Flows derived from DfT traffic counters as a basis for estimating change through time.
@@ -419,14 +416,19 @@ Both nationally and within a Local Authority, the number and proportion of count
 This causes inter-annual flux in observed cycle flows which can mask underlying trends.
 The result of these factors is that the mean AADF for counters within a given geographic area is inherently unstable from year to year. 
 
-<!-- Todo: add discussion emperical Bayes and data scarcity -->
-<!-- ## Impact of data scarcity -->
+We investigated resampling of counter locations and weighting by road type to standardise the representation of road types through time within each Local Authority. 
+This could be used in future to reduce the impact of inter-annual variability.
 
-<!-- Smaller Local Authority may have both few accidents per year and few DfT counter locations.  -->
+## Impact of data scarcity
 
-<!-- Resampling and empirical Bayes... -->
-
+Data scarcity can cause issues when there are either limited numbers of counter locations or few collisions per year within a Local Authority.
+An empirical Bayes approach could counteract this with use of an informative prior which has the effect of normalising the results for LAs towards the mean to different degrees, dependent on the sample sizes they are based on.
+Another potential approach is the use of a multilevel model, with counter location as a random effect.
 
 # Conclusion
+
+When investigating road safety, it is vital to understand how risk is calculated and assessed.
+Despite an increase in the number of cyclists killed and seriously injured on British roads in 2020, the risk actually fell by around 30%.
+There may be many factors that influence this risk, and further research into these factors would be beneficial.
 
 
