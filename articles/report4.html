@@ -105,7 +105,7 @@
 <p>The Saferactive project is funded by the Department for Transport.
 It aims to investigate spatial and temporal patterns in road safety for active travel.</p>
 <p>High quality data is available on road safety through the Stats19 dataset.
-Published by the Department for Transport, this is a comprehensive dataset of road collision statistics, mainly as reported by police officers on the scene.</p>
+Published by the Department for Transport, this is a comprehensive dataset of road collision statistics, mainly as reported by police officers on the scene of the collision.</p>
 <p>However, to estimate collision risk, we must also know the exposure, defined as the number of people walking and cycling on the road network.
 The exposure acts as the denominator in any estimate of road safety risk.
 The degree of uncertainty associated with estimates of exposure is high, and this uncertainty will be a key focus of the report.</p>
@@ -139,7 +139,8 @@ Casualties are classed as slight, serious or fatal.
 Collisions resulting in slight injuries may not always be reported, but reporting rates for serious and fatal injuries are very high.
 The key yardstick of road safety is the number of people killed or seriously injured (KSI).
 In recent years there have been changes in the methodology used by many police forces to categorise injuries as slight versus serious.
-Adjustment factors are used to standardise and account for these methodological changes.</p>
+Adjustment factors are used to standardise and account for these methodological changes.
+The Stats19 data for 2020 was only available in summary form at the time this report was written.</p>
 <p>The DfT traffic counts are a series of manual traffic counters.
 Counter locations are typically surveyed from 07:00 - 19:00 on a single date per year, with seasonal adjustments applied to calculate an Annual Average Daily Flow (AADF).
 However, the same locations are not surveyed each year.
@@ -245,23 +246,37 @@ Figure 4.6: Mean change in AADF flow at each counter, measured as change above m
 </div>
 <p>The low observed mean flows in 2018 and 2019 in the previous figure can be explained by the fact that many additional counts were undertaken on ‘C’ and Unclassified roads in these years.
 If these are new locations, the minimum flow for the count location will necessarily be recorded in one of these years.</p>
-<p><img src="https://user-images.githubusercontent.com/52210872/138469693-3f6b4a20-8092-452b-8303-b129c4254608.png"><!-- --></p>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-9"></span>
+<img src="https://user-images.githubusercontent.com/52210872/138469693-3f6b4a20-8092-452b-8303-b129c4254608.png" alt="DfT counter locations by road type, 2010 - 2020."><p class="caption">
+Figure 4.7: DfT counter locations by road type, 2010 - 2020.
+</p>
+</div>
 </div>
 <div id="regional-trends-in-collision-risk" class="section level2">
 <h2 class="hasAnchor">
 <a href="#regional-trends-in-collision-risk" class="anchor"></a><span class="header-section-number">4.3</span> Regional trends in collision risk</h2>
-<p>We now combine the KSI and cycle volume data, to obtain estimates of trends in road safety
-First we use the NTS survey data.</p>
+<p>We now combine the KSI and cycle volume data, to obtain estimates of trends in road safety.
+Firstly, we compare trends based on NTS versus DfT regional traffic data, using the full Stats19 collision data.
+With the NTS survey data, there is a 29% fall in KSI per Bkm cycled over the period 2011 - 2019.
+With the DfT regional traffic data the magnitude of change is smaller, with a 17% reduction in KSI per Bkm 2011 - 2019 (excluding Wales and Scotland).
+Scotland and the North West have been particularly successful, with 36% and 31% reductions respectively.</p>
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-10"></span>
-<img src="https://user-images.githubusercontent.com/52210872/133631183-2f5e6454-f34b-4aa3-bcac-fad88503e896.png" alt="KSI risk per km cycled, using NTS journey data "><p class="caption">
-Figure 4.7: KSI risk per km cycled, using NTS journey data
+<img src="https://user-images.githubusercontent.com/52210872/138713972-2c0d6e22-81a6-4330-8d51-e740637c923b.png" alt="KSI risk per km cycled, 2010 - 2019, using (left) NTS journey data and (right) DfT regional traffic data."><p class="caption">
+Figure 4.8: KSI risk per km cycled, 2010 - 2019, using (left) NTS journey data and (right) DfT regional traffic data.
 </p>
 </div>
-<p>Trends in KSI risk per km cycled, using DfT regional traffic data</p>
-<p><img src="https://user-images.githubusercontent.com/52210872/138102558-f4cda4ef-7815-4147-9787-761c59249c00.png"><!-- --></p>
-<p>Trends in KSI risk per DfT mean cycle count</p>
-<p><img src="https://user-images.githubusercontent.com/52210872/132327377-8daceacf-2de6-4513-b776-b5593ec2d11a.png"><!-- --></p>
+<p>Next, we compare trends in DfT regional traffic data versus the individual DfT counts.
+For this we can include the year 2020, and therefore use the Stats19 summary data only (which is available 2013 - 2020).
+The order of the regions is fairly arbitrary in the second graph, since it is based on mean flows at count points within the region, but the trends provide valuable information.
+The DfT regional traffic data shows a 30% reduction in risk 2019 - 2020, while for the DfT counters this is a 34% reduction in risk.</p>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-11"></span>
+<img src="https://user-images.githubusercontent.com/52210872/138716908-00b8c78e-1279-4a8a-a644-a92b6d2b1d27.png" alt="Trends in road safety risk, 2013 - 2020, using (left) DfT regional traffic data and (right) DfT counters."><p class="caption">
+Figure 4.9: Trends in road safety risk, 2013 - 2020, using (left) DfT regional traffic data and (right) DfT counters.
+</p>
+</div>
 </div>
 </div>
 <div id="sub-regional-trends-in-cycle-ksi-and-risk" class="section level1">
@@ -335,14 +350,14 @@ Figure 6.1: Pedestrian KSI over the years 2010-2019 against road length in km. E
 </div>
 <p>There is also a positive association between road length and cycle KSI but it is weaker, likely reflecting the fact that the cycling distribution is more uneven than the pedestrian distribution.</p>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-20"></span>
+<span style="display:block;" id="fig:unnamed-chunk-19"></span>
 <img src="https://user-images.githubusercontent.com/52210872/136543521-220b0a1d-432d-46dd-b796-ddbd20309573.png" alt="Cycle KSI over the years 2010-2019 against road length in km. Each point represents a 1km grid cell"><p class="caption">
 Figure 6.2: Cycle KSI over the years 2010-2019 against road length in km. Each point represents a 1km grid cell
 </p>
 </div>
 <p>We can see a positive correlation between distance cycled for travel to work and cycle KSI.</p>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-21"></span>
+<span style="display:block;" id="fig:unnamed-chunk-20"></span>
 <img src="https://user-images.githubusercontent.com/52210872/136543609-0a2e5e82-af09-4a97-85d8-bed82f4fb72f.png" alt="Cycle KSI over the years 2010-2019 against km cycled for travel to work according to the 2011 Census, using the fast route network derived from the PCT. Each point represents a 1km grid cell, with colour weighted by total road length within the grid cell"><p class="caption">
 Figure 6.3: Cycle KSI over the years 2010-2019 against km cycled for travel to work according to the 2011 Census, using the fast route network derived from the PCT. Each point represents a 1km grid cell, with colour weighted by total road length within the grid cell
 </p>
@@ -351,7 +366,7 @@ Figure 6.3: Cycle KSI over the years 2010-2019 against km cycled for travel to w
 The greatest concentration of cycle and walking KSI are found in the urban areas such as Leeds and Bradford.
 Cycle commute km are strongly concentrated within Leeds.</p>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-22"></span>
+<span style="display:block;" id="fig:unnamed-chunk-21"></span>
 <img src="https://user-images.githubusercontent.com/52210872/137118045-8f0c8c93-e104-4583-a5e0-f5c600d0b6e9.png" alt="Cycle and pedestrian KSI for the period 2010-2019 and km cycled for travel to work in West Yorkshire. The map of km cycled only includes cells that form part of the PCT-derived fast route network for the 2011 Census"><p class="caption">
 Figure 6.4: Cycle and pedestrian KSI for the period 2010-2019 and km cycled for travel to work in West Yorkshire. The map of km cycled only includes cells that form part of the PCT-derived fast route network for the 2011 Census
 </p>
@@ -362,7 +377,7 @@ However, when we use Bkm cycled as the denominator, the map is very different. N
 This map shows very high KSI rates in some of the Pennine fringes of West Yorkshire, but these are probably artefacts of the fact that we are using commuter cycling as the denominator, while leisure and sport cycling dominate in these areas.
 A more reliable finding is that KSI risk appears higher in Bradford than in Leeds.</p>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-23"></span>
+<span style="display:block;" id="fig:unnamed-chunk-22"></span>
 <img src="https://user-images.githubusercontent.com/52210872/138101552-b834daf2-ae4d-4b4b-a4cf-031e316949c3.png" alt="Cycle and pedestrian KSI risk for the period 2010-2019 and KSI per Bkm cycled for travel to work in West Yorkshire, assuming 35% of cycle journeys are commutes (NTS mean for England in 2010-2019). The third map only includes cells that form part of the PCT-derived fast route network for the 2011 Census"><p class="caption">
 Figure 6.5: Cycle and pedestrian KSI risk for the period 2010-2019 and KSI per Bkm cycled for travel to work in West Yorkshire, assuming 35% of cycle journeys are commutes (NTS mean for England in 2010-2019). The third map only includes cells that form part of the PCT-derived fast route network for the 2011 Census
 </p>
