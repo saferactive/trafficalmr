@@ -49,7 +49,7 @@ A second reason for focusing on cycling is that since 2020 there have been large
 It is important to take these changes in context and to recognise that an increase in casualties does not necessarily mean an increase in risk.
 This is why it is important to focus on exposure and the denominators of road safety.
 
-Initially, in Section 2 we explore the input data used.
+Initially, in Section 2, we explore the input data used.
 Sections 3 and 4 of this report focus on changes in casualty rates at national and regional scales, over the last decade.
 Here, we can use data that covers all journey purposes.
 Section 5 interrogates changes at sub-regional scales.
