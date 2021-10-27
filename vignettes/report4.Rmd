@@ -28,11 +28,12 @@ library(sf)
 The Saferactive project is funded by the Department for Transport. 
 It aims to investigate spatial and temporal patterns in road safety for active travel. 
 
-High quality data is available on road safety through the Stats19 dataset.
-Published by the Department for Transport, this is a comprehensive dataset of road collision statistics, mainly as reported by police officers on the scene of the collision. 
+Datasets on road traffic casualties that were reported to the policy are available from the open access STATS19 database.
+Published by the Department for Transport, STATS19 is a comprehensive database of road collision statistics, mainly as reported by police officers on the scene of the collision, with information at accident, casualty, and vehicle levels.
 
-However, to estimate collision risk, we must also know the exposure, defined as the number of people walking and cycling on the road network.
-The exposure acts as the denominator in any estimate of road safety risk.
+However, to estimate collision risk, we must also know the exposure.
+Exposure can be measured in different ways, including the number of people walking and cycling through a particular point or junction on the road network and total distance travelled along a particular segment or within a particular area.
+The exposure acts as the denominator in any estimate of road safety risk, allowing safety to be calculated as a rate such as number of people killed and seriously injured per billion kilometres (KSI/bkm) [@feleke_comparative_2018].
 The degree of uncertainty associated with estimates of exposure is high, and this uncertainty will be a key focus of the report.
 
 The majority of the report focuses on cycling rather than walking. 
