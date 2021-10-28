@@ -1,5 +1,5 @@
 ---
-title: "Report 4: Trends in road safety and potential causal factors"
+title: "SaferActive Report 4: Trends in road safety and potential causal factors"
 author: Institute for Transport Studies
 output:
   bookdown::html_vignette2:
@@ -242,7 +242,7 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1369
 
 In the previous figure, some Local Authorities with low populations (such as Merthyr Tydfil, Ceredigion and Rutland) stood out with very high risk in certain years.
 This is likely to be an artefact of the random impact of a small number of collisions in an area with very little overall cycle commuting.
-To avoid these effects, we conduct the same analysis for police force areas.
+To avoid these effects, we conduct the same analysis for police force areas, starting with changes in KSI.
 
 ```{r, fig.cap="Changes in peak hour KSI at Police Force level"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136990432-56fb1df1-d8f2-4c71-ade4-a67323c1abb5.png")
@@ -260,6 +260,29 @@ The high risk observed in some of the more rural Police Force areas such as Dyfe
 ```{r, fig.cap="Changes in KSI risk at Police Force level"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136990471-f2dfd8a0-1319-44fb-8ed3-b7287d6be588.png")
 ```
+
+## Spatial trends in sub-regional risk - safety in numbers and urbanisation
+
+Can we disentangle any patterns from the spatial trends observed in the graphs displayed above?
+We will briefly investigate two factors of interest.
+The first is the idea of 'safety in numbers', namely that in a place where more people cycle, the injury risk will be lower.
+We use the mean distance cycled per capita for travel to work, based on the resident population of Upper Tier Local Authorities, over the period 2010 - 2019.
+When this is plotted against the KSI risk per km cycled, we see a strong correlation.
+
+```{r, fig.cap="Cycle KSI risk against mean km cycled per capita (2010 – 2019) for Upper Tier Local Authorities. Points are weighted by 2015 population."}
+knitr::include_graphics("https://user-images.githubusercontent.com/52210872/139227009-75aa8f15-2b72-4c4f-8afe-c47ee3c70bc5.png")
+```
+
+A second factor is the rural-urban status of a Local Authority. 
+This could impact on road safety in many ways, for example the overall volume of traffic is likely to be higher in more urban districts.
+To investigate this, we must use Lower Tier Local Authorities.
+The figure below appears to show an urbanisation effect which is independent of the previously described safety in numbers effect.
+For each group of LAs, KSI risk falls with distance cycled, but for any given level of cycling, KSI risk is highest in LAs classified as 'Urban with Major Conurbation' or 'Urban with Minor Conurbation', and lowest in LAs classified as 'Mainly Rural'.
+
+```{r, fig.cap="Cycle KSI risk against mean km cycled per capita (2010 - 2019) for Lower Tier Local Authorities classified by rural-urban status. Note the log scale on the x-axis."}
+knitr::include_graphics("https://user-images.githubusercontent.com/52210872/139245683-5ee67566-6b45-4f40-8b4a-baf2b5f9e16e.png")
+```
+
 
 ## Data downloads
 
@@ -358,9 +381,11 @@ It is possible for example to investigate the identity of casualties and of othe
 We might expect higher casualty rates for people from more deprived neighbourhoods, but interactions also take place with for example people who live in less deprived neighbourhoods being involved in collisions in more deprived neigbourhoods, and vice versa. 
 
 Another topic of interest is safety in numbers - the idea that in places where more people cycle, the risk of injury is lower.
-This does seem to be borne out, for example when cycling increased across England and Wales in 2020 the risk reduced. 
+This appears to be borne out by the spatial trends shown in Section 5.3, as well as in temporal trends - for example when cycling increased across England and Wales in 2020 the risk reduced. 
 However, we must still question the role of causality. 
-Is it the higher numbers of cyclists that make the roads safer, or are more people willing to cycle in places and at times when it is inherently safe?
+Is it the higher numbers of cyclists that make the roads safer, or are more people willing to cycle in places and at times when other factors (such as the design of the road environment) mean it is inherently safe?
+Potential reasons why increased cycling might in itself lead to reduced injury risk could include changes in driver behaviour, in that drivers are more likely to actively look out for cyclists in locations where the number of cyclists is higher.
+A more in-depth study would be required to tease out these causal relations.
 
 A further question is whether places with low casualty rates and falling risk share a set of common features or policies, that can be applied to other regions to improve their safety. 
 Scotland has seen some of the greatest reductions in injury risk in the UK over the last decade, and has a comprehensive Road Safety Framework to 2030.
