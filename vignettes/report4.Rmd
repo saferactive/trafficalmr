@@ -25,14 +25,18 @@ library(sf)
 
 # Introduction
 
-The Saferactive project is funded by the Department for Transport. 
+The Saferactive project is funded by the Department for Transport.
 It aims to investigate spatial and temporal patterns in road safety for active travel. 
+This is the fourth and final report of the project, which provides an overview of project findings and recommendations for next steps and research and data collection priorities.
+The previous reports covered data on road safety ([Report 1](https://saferactive.github.io/trafficalmr/articles/report1.html)), methods of geographic data analysis and scenarios of change ([Report 2](https://saferactive.github.io/trafficalmr/articles/report2.html)), and modelling uptake of active modes and safety nationwide ([Report 3](https://saferactive.github.io/trafficalmr/articles/report2.html)).
+These reports are open access and can be found [online](https://saferactive.github.io/trafficalmr/). 
 
-High quality data is available on road safety through the Stats19 dataset.
-Published by the Department for Transport, this is a comprehensive dataset of road collision statistics, mainly as reported by police officers on the scene of the collision. 
+Datasets on road traffic casualties that were reported to the policy are available from the open access STATS19 database.
+Published by the Department for Transport, STATS19 is a comprehensive database of road collision statistics, mainly as reported by police officers on the scene of the collision, with information at accident, casualty, and vehicle levels.
 
-However, to estimate collision risk, we must also know the exposure, defined as the number of people walking and cycling on the road network.
-The exposure acts as the denominator in any estimate of road safety risk.
+However, to estimate collision risk, we must also know the exposure.
+Exposure can be measured in different ways, including the number of people walking and cycling through a particular point or junction on the road network and total distance travelled along a particular segment or within a particular area.
+The exposure acts as the denominator in any estimate of road safety risk, allowing safety to be calculated as a rate such as number of people killed and seriously injured per billion kilometres (KSI/bkm) [@feleke_comparative_2018].
 The degree of uncertainty associated with estimates of exposure is high, and this uncertainty will be a key focus of the report.
 
 The majority of the report focuses on cycling rather than walking. 
@@ -45,9 +49,8 @@ A second reason for focusing on cycling is that since 2020 there have been large
 It is important to take these changes in context and to recognise that an increase in casualties does not necessarily mean an increase in risk.
 This is why it is important to focus on exposure and the denominators of road safety.
 
-Initially, in Section 2 we explore the input data used.
-Sections 3 and 4 of this report focus on changes in casualty rates at national and regional scales, over the last decade.
-Here, we can use data that covers all journey purposes.
+Initially, in Section 2, we explore the input data used.
+Sections 3 and 4 of this report focus on changes in casualty rates at national and regional scales, over the last decade, using data that covers all journey purposes.
 Section 5 interrogates changes at sub-regional scales.
 This is where data availability forces us to limit the scope to commuter cycling within England and Wales.
 In Section 6 we again narrow the geographic scope and look at how cycle and pedestrian casualties are associated with different types of road, including a generalised definition of Low Traffic Neighbourhoods, in a West Yorkshire case study area. 
@@ -455,5 +458,4 @@ Another potential approach is the use of a multilevel model, with counter locati
 When investigating road safety, it is vital to understand how risk is calculated and assessed.
 Despite an increase in the number of cyclists killed and seriously injured on British roads in 2020, the risk actually fell by around 30%.
 There may be many factors that influence this risk, and further research into these factors would be beneficial.
-
 
