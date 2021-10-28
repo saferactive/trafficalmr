@@ -1,5 +1,5 @@
 ---
-title: "Report 4: Trends in road safety and potential causal factors"
+title: "SaferActive Report 4: Trends in road safety and potential causal factors"
 author: Institute for Transport Studies
 output:
   bookdown::html_vignette2:
@@ -25,18 +25,14 @@ library(sf)
 
 # Introduction
 
-The Saferactive project is funded by the Department for Transport.
+The Saferactive project is funded by the Department for Transport. 
 It aims to investigate spatial and temporal patterns in road safety for active travel. 
-This is the fourth and final report of the project, which provides an overview of project findings and recommendations for next steps and research and data collection priorities.
-The previous reports covered data on road safety ([Report 1](https://saferactive.github.io/trafficalmr/articles/report1.html)), methods of geographic data analysis and scenarios of change ([Report 2](https://saferactive.github.io/trafficalmr/articles/report2.html)), and modelling uptake of active modes and safety nationwide ([Report 3](https://saferactive.github.io/trafficalmr/articles/report2.html)).
-These reports are open access and can be found [online](https://saferactive.github.io/trafficalmr/). 
 
-Datasets on road traffic casualties that were reported to the policy are available from the open access STATS19 database.
-Published by the Department for Transport, STATS19 is a comprehensive database of road collision statistics, mainly as reported by police officers on the scene of the collision, with information at accident, casualty, and vehicle levels.
+High quality data is available on road safety through the Stats19 dataset.
+Published by the Department for Transport, this is a comprehensive dataset of road collision statistics, mainly as reported by police officers on the scene of the collision. 
 
-However, to estimate collision risk, we must also know the exposure.
-Exposure can be measured in different ways, including the number of people walking and cycling through a particular point or junction on the road network and total distance travelled along a particular segment or within a particular area.
-The exposure acts as the denominator in any estimate of road safety risk, allowing safety to be calculated as a rate such as number of people killed and seriously injured per billion kilometres (KSI/bkm) [@feleke_comparative_2018].
+However, to estimate collision risk, we must also know the exposure, defined as the number of people walking and cycling on the road network.
+The exposure acts as the denominator in any estimate of road safety risk.
 The degree of uncertainty associated with estimates of exposure is high, and this uncertainty will be a key focus of the report.
 
 The majority of the report focuses on cycling rather than walking. 
@@ -49,8 +45,9 @@ A second reason for focusing on cycling is that since 2020 there have been large
 It is important to take these changes in context and to recognise that an increase in casualties does not necessarily mean an increase in risk.
 This is why it is important to focus on exposure and the denominators of road safety.
 
-Initially, in Section 2, we explore the input data used.
-Sections 3 and 4 of this report focus on changes in casualty rates at national and regional scales, over the last decade, using data that covers all journey purposes.
+Initially, in Section 2 we explore the input data used.
+Sections 3 and 4 of this report focus on changes in casualty rates at national and regional scales, over the last decade.
+Here, we can use data that covers all journey purposes.
 Section 5 interrogates changes at sub-regional scales.
 This is where data availability forces us to limit the scope to commuter cycling within England and Wales.
 In Section 6 we again narrow the geographic scope and look at how cycle and pedestrian casualties are associated with different types of road, including a generalised definition of Low Traffic Neighbourhoods, in a West Yorkshire case study area. 
@@ -243,6 +240,7 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1369
 In the previous figure, some Local Authorities with low populations (such as Merthyr Tydfil, Ceredigion and Rutland) stood out with very high risk in certain years.
 This is likely to be an artefact of the random impact of a small number of collisions in an area with very little overall cycle commuting.
 To avoid these effects, we conduct the same analysis for police force areas.
+We start with changes in KSI.
 
 ```{r, fig.cap="Changes in peak hour KSI at Police Force level"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136990432-56fb1df1-d8f2-4c71-ade4-a67323c1abb5.png")
@@ -260,6 +258,13 @@ The high risk observed in some of the more rural Police Force areas such as Dyfe
 ```{r, fig.cap="Changes in KSI risk at Police Force level"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136990471-f2dfd8a0-1319-44fb-8ed3-b7287d6be588.png")
 ```
+
+## Spatial trends in sub-regional risk - safety in numbers and the rural-urban character of Local Authorities
+
+Can we disentangle any patterns from the spatial trends observed in the graphs displayed above?
+We will briefly investigate two factors of interest.
+The first is the idea of 'safety of numbers', namely that in a place where more people cycle, the injury risk will be lower.
+
 
 ## Data downloads
 
@@ -360,7 +365,9 @@ We might expect higher casualty rates for people from more deprived neighbourhoo
 Another topic of interest is safety in numbers - the idea that in places where more people cycle, the risk of injury is lower.
 This does seem to be borne out, for example when cycling increased across England and Wales in 2020 the risk reduced. 
 However, we must still question the role of causality. 
-Is it the higher numbers of cyclists that make the roads safer, or are more people willing to cycle in places and at times when it is inherently safe?
+Is it the higher numbers of cyclists that make the roads safer, or are more people willing to cycle in places and at times when other factors (such as the design of the road environment) mean it is inherently safe?
+Potential reasons why increased cycling might in itself lead to reduced injury risk could include changes in driver behaviour, in that drivers are more likely to actively look out for cyclists in locations where the number of cyclists is higher.
+A more in-depth study would be required to tease out these causal relations.
 
 A further question is whether places with low casualty rates and falling risk share a set of common features or policies, that can be applied to other regions to improve their safety. 
 Scotland has seen some of the greatest reductions in injury risk in the UK over the last decade, and has a comprehensive Road Safety Framework to 2030.
