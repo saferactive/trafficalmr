@@ -428,10 +428,22 @@ Data scarcity can cause issues when there are either limited numbers of counter 
 An empirical Bayes approach could counteract this with use of an informative prior which has the effect of normalising the results for LAs towards the mean to different degrees, dependent on the sample sizes they are based on.
 Another potential approach is the use of a multilevel model, with counter location as a random effect.
 
-# Conclusion
+## Further research
 
-When investigating road safety, it is vital to understand how risk is calculated and assessed.
-Despite an increase in the number of cyclists killed and seriously injured on British roads in 2020, the risk actually fell by around 30%.
-There may be many factors that influence this risk, and further research into these factors would be beneficial.
+When investigating road safety, it is important to take into account both exposure and risk to avoid faulty assumptions arising from 'denominator neglect'.
+Headlines around spikes in cyclist fatalities in London, with scant measure of the broader picture of increasing cycling rates that suggest an overall improvement in safety, demonstrate this point.
+Conversely, areas that see both decreases in active travel but a flatlining in casualties, should be cause for concern and intervention to tackle the causes of unsafe roads for the modes that pose the least threat to other road users and who have the most to loose from high impact collisions motor vehicles.
+
+This project demonstrates that 'safety' can be quantified using existing datasets that are available nationwide.
+Specifically, the metric of number of people killed and injured per billion km walked or cycled, accounts for both changes exposure and collisions.
+Our analysis clearly shows that some areas across Great Britain have successfully increased walking and cycling level, while simultaneously reducing absolute numbers of people hurt on the roads while walking and cycling (not to mention wheeling on e-scooters and other mobility devices.).
+We recommend further research specifically into areas that have made the most impressive reductions in KSI/bkm rates, while succeeding in enabling more people to walk and cycle for everyday trips, reducing reliance on cars.
+
+Despite an increase in the number of cyclists killed and seriously injured on British roads in 2020, the risk in terms of KSI/Bkm actually fell by around 30%.
+This is an area that is worthy of further research: which places saw the greatest increases in cycling and improvements in safety, why, and how can lessons learned from these places be applied elswhere?
+There are many factors that influence risk and and further research, building on our findings, could help identify which conditions and types of intervention (e.g. LTNs) are most effective in different types of settlement.
+
+More broadly, the time series analysis presented in our work enables policy makers to track change in road safety over time, for different places, and different groups.
+For example, the finding that road safety inequalities for cycling seems to be increasing, especially for children 
 
 
