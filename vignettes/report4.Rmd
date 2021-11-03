@@ -100,7 +100,7 @@ At national and regional scales we have more reliable estimates of cycle volume 
 The number of cyclists saw a small increase over the decade prior to 2020, according to results from the National Travel Survey and DfT traffic counters.
 
 ```{r, fig.cap="Change in national distance cycled according to National Travel Survey and change in mean AADF to DfT cycle counters"}
-knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138778430-b088d4d5-ac67-4af7-9f2f-6f277f187359.png")
+knitr::include_graphics("https://user-images.githubusercontent.com/52210872/140119106-ccc99eef-9714-44f2-bff2-a93e06ccf5c6.png")
 ```
 
 ## National trends in collisions and collision risk
