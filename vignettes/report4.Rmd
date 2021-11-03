@@ -26,10 +26,10 @@ library(sf)
 # Introduction
 
 The Saferactive project is funded by the Department for Transport.
-It aims to investigate spatial and temporal patterns in road safety for active travel. 
+It aims to investigate spatial and temporal patterns in road safety for active travel.
 This is the fourth and final report of the project, which provides an overview of project findings and recommendations for next steps and research and data collection priorities.
 The previous reports covered data on road safety ([Report 1](https://saferactive.github.io/trafficalmr/articles/report1.html)), methods of geographic data analysis and scenarios of change ([Report 2](https://saferactive.github.io/trafficalmr/articles/report2.html)), and modelling uptake of active modes and safety nationwide ([Report 3](https://saferactive.github.io/trafficalmr/articles/report2.html)).
-These reports are open access and can be found [online](https://saferactive.github.io/trafficalmr/). 
+These reports are open access and can be found [online](https://saferactive.github.io/trafficalmr/).
 
 Datasets on road traffic casualties that were reported to the policy are available from the open access STATS19 database.
 Published by the Department for Transport, STATS19 is a comprehensive database of road collision statistics, mainly as reported by police officers on the scene of the collision, with information at accident, casualty, and vehicle levels.
@@ -39,13 +39,13 @@ Exposure can be measured in different ways, including the number of people walki
 The exposure acts as the denominator in any estimate of road safety risk, allowing safety to be calculated as a rate such as number of people killed and seriously injured per billion kilometres (KSI/bkm) [@feleke_comparative_2018].
 The degree of uncertainty associated with estimates of exposure is high, and this uncertainty will be a key focus of the report.
 
-The majority of the report focuses on cycling rather than walking. 
-Firstly, this is because better data is available for cycle journeys, in particular journeys to work. 
-Travel to work is recorded in the 2011 Census, and according to the NTS survey in 2011 it comprised around 38% of all cycle journeys but only 7% of journeys on foot. 
+The majority of the report focuses on cycling rather than walking.
+Firstly, this is because better data is available for cycle journeys, in particular journeys to work.
+Travel to work is recorded in the 2011 Census, and according to the NTS survey in 2011 it comprised around 38% of all cycle journeys but only 7% of journeys on foot.
 Therefore we decided it is acceptable to use travel to work as a proxy for cycling but not for walking.
 Networks of cycle counters from the Department for Transport (DfT), Transport for London (TfL) and others are also available, providing data on annual changes in cycle flows, while comparable data does not exist for walking.
 
-A second reason for focusing on cycling is that since 2020 there have been large changes in how we use our streets, with unprecedented increases in cycling during the lockdown periods, accompanied in some cases by a rise in cycle casualties. 
+A second reason for focusing on cycling is that since 2020 there have been large changes in how we use our streets, with unprecedented increases in cycling during the lockdown periods, accompanied in some cases by a rise in cycle casualties.
 It is important to take these changes in context and to recognise that an increase in casualties does not necessarily mean an increase in risk.
 This is why it is important to focus on exposure and the denominators of road safety.
 
@@ -53,25 +53,25 @@ Initially, in Section 2, we explore the input data used.
 Sections 3 and 4 of this report focus on changes in casualty rates at national and regional scales, over the last decade, using data that covers all journey purposes.
 Section 5 interrogates changes at sub-regional scales.
 This is where data availability forces us to limit the scope to commuter cycling within England and Wales.
-In Section 6 we again narrow the geographic scope and look at how cycle and pedestrian casualties are associated with different types of road, including a generalised definition of Low Traffic Neighbourhoods, in a West Yorkshire case study area. 
+In Section 6 we again narrow the geographic scope and look at how cycle and pedestrian casualties are associated with different types of road, including a generalised definition of Low Traffic Neighbourhoods, in a West Yorkshire case study area.
 
 # Input data
 
-We have used a range of nationally available datasets to estimate and visualise road safety, including Stats19 collision data, DfT traffic counts, NTS survey returns and 2011 Census commute data.  
+We have used a range of nationally available datasets to estimate and visualise road safety, including Stats19 collision data, DfT traffic counts, NTS survey returns and 2011 Census commute data.
 
-We have focused mainly on the decade from 2010 to 2020, but there is some variability in the years covered by different datasets. 
+We have focused mainly on the decade from 2010 to 2020, but there is some variability in the years covered by different datasets.
 We accessed 2020 data for collisions and DfT traffic counts, but not for all of the other datasets.
-Where possible, we include data from England, Wales and Scotland. 
+Where possible, we include data from England, Wales and Scotland.
 The sub-regional analyses are only available for England and Wales since they are based on the Propensity to Cycle Tool.
 NTS data are available for England only.
 
 Stats19 is a comprehensive dataset of British road collision statistics, published by the DfT.
-The data are collected by police forces, mostly being recorded by officers at the scene of collisions. 
+The data are collected by police forces, mostly being recorded by officers at the scene of collisions.
 Casualties are classed as slight, serious or fatal.
 Collisions resulting in slight injuries may not always be reported, but reporting rates for serious and fatal injuries are very high.
 The key yardstick of road safety is the number of people killed or seriously injured (KSI).
-In recent years there have been changes in the methodology used by many police forces to categorise injuries as slight versus serious. 
-Adjustment factors are used to standardise and account for these methodological changes. 
+In recent years there have been changes in the methodology used by many police forces to categorise injuries as slight versus serious.
+Adjustment factors are used to standardise and account for these methodological changes.
 The Stats19 data for 2020 was only available in summary form at the time this report was written.
 
 The DfT traffic counts are a series of manual traffic counters.
@@ -80,9 +80,9 @@ However, the same locations are not surveyed each year.
 Only 7% of counter locations see annual surveys 2010-2019, and very few of these locations were also surveyed in 2020.
 Careful analysis is therefore required to accurately represent temporal trends.
 
-NTS surveys have been conducted annually since 1988. 
-Results are available for each English region but not at higher geographic resolutions. 
-The self-reported household survey takes the form of a seven-day travel diary, and includes journeys of all purposes. 
+NTS surveys have been conducted annually since 1988.
+Results are available for each English region but not at higher geographic resolutions.
+The self-reported household survey takes the form of a seven-day travel diary, and includes journeys of all purposes.
 It is completed by around 15,000 individual respondents.
 
 The 2011 Census provides comprehensive nationwide coverage.
@@ -97,7 +97,7 @@ At national and regional scales we have more reliable estimates of cycle volume 
 
 ## National trends in cycle volume
 
-The number of cyclists saw a small increase over the decade prior to 2020, according to results from the National Travel Survey and DfT traffic counters. 
+The number of cyclists saw a small increase over the decade prior to 2020, according to results from the National Travel Survey and DfT traffic counters.
 
 ```{r, fig.cap="Change in national distance cycled according to National Travel Survey and change in mean AADF to DfT cycle counters"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138778430-b088d4d5-ac67-4af7-9f2f-6f277f187359.png")
@@ -105,7 +105,7 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1387
 
 ## National trends in collisions and collision risk
 
-In the period 2010-2019, risk of cycle KSI has reduced according to our analysis. 
+In the period 2010-2019, risk of cycle KSI has reduced according to our analysis.
 This reduction has mainly occurred since 2014, and can be seen when casualty data are assessed using all three measures of cycle volume.
 
 ```{r, fig.cap="Estimates of cycle casualty risk per billion kilometres cycled with estimates of cycling levels from the Department for Transport's (DfT's) manual count data, a GAM model based on the DfT data, and the National Travel Survey (NTS)."}
@@ -119,13 +119,13 @@ This is followed by trends in distance travelled and in risk.
 
 ## Regional trends in active travel casualties
 
-There was a 9% fall in cycle KSI 2013 - 2019, followed by a 3% rise in KSI in 2020. 
+There was a 9% fall in cycle KSI 2013 - 2019, followed by a 3% rise in KSI in 2020.
 
 ```{r, fig.cap="Change in cycle KSI by region"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138121988-52a7e749-acda-4214-a4b7-c3f2b4f7f272.png")
 ```
 
-Similarly, there was an 8% fall in pedestrian KSI 2013 - 2019, but this was followed by a 32% fall in KSI in 2020. 
+Similarly, there was an 8% fall in pedestrian KSI 2013 - 2019, but this was followed by a 32% fall in KSI in 2020.
 
 ```{r, fig.cap="Change in pedestrian KSI by region"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138121368-e1cf201f-d773-4190-be9f-ac48c5b21b29.png")
@@ -133,7 +133,7 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1381
 
 ## Regional trends in cycle volume
 
-It appears that the Covid-19 lockdowns during 2020 had very different impacts on KSI rates for cycling and walking. 
+It appears that the Covid-19 lockdowns during 2020 had very different impacts on KSI rates for cycling and walking.
 Cycle casualties increased, but we must investigate cycle volume to determine whether the risk also increased.
 
 At the regional level, the most reliable data sources for cycle volume are the NTS and DfT regional traffic data.
@@ -143,7 +143,7 @@ Based on the NTS, total distance cycled per year in each English region shows a 
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/133634243-6449b3c1-61dd-429c-bc41-562841968ff4.png")
 ```
 
-Based on the DfT regional statistics, there were small rises in total distance cycled in 2010 - 2019, followed by larger increases in 2020. 
+Based on the DfT regional statistics, there were small rises in total distance cycled in 2010 - 2019, followed by larger increases in 2020.
 
 ```{r, fig.cap="Total distance cycled per year 2010 - 2020, according to DfT regional traffic data."}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138102424-717a763f-1ec9-4675-80a1-38d9138e4fa0.png")
@@ -151,16 +151,16 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1381
 
 Data from individual DfT traffic counters, unlike the sources shown in the two previous figures, are available for analysis at sub-regional levels.
 Therefore, for comparative purposes we show regional aggregations of the traffic counter data.
-Firstly, we look at mean cycle flows per DfT counter in each region. 
+Firstly, we look at mean cycle flows per DfT counter in each region.
 These are all Annual Average Daily Flows (AADF), calculated by the DfT to account for the impact of seasonality on the raw counter flows.
-To allow easy comparison between regions, we normalised these as percentage change since 2011. 
+To allow easy comparison between regions, we normalised these as percentage change since 2011.
 
 ```{r, fig.cap="Mean AADF cycle flow per DfT counter 2010 - 2019. Values are shown as % change in mean flow since 2011."}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/132316899-1bbc1cc9-687e-4df3-9c7a-3074778dd107.png")
 ```
 
 Count locations change from year to year, which could be causing some of observed flux in these regional mean values.
-As another approach, we look at mean change in AADF cycle flow per DfT counter in each region (including Scotland and Wales). 
+As another approach, we look at mean change in AADF cycle flow per DfT counter in each region (including Scotland and Wales).
 This is based on the change in flow at each counter, calculated as the flow for a particular year minus the minimum annual flow for the given counter.
 Again, these are normalised as percentage change since 2011.
 
@@ -179,8 +179,8 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1384
 
 We now combine the KSI and cycle volume data, to obtain estimates of trends in road safety.
 Firstly, we compare trends based on NTS versus DfT regional traffic data, using the full Stats19 collision data.
-With the NTS survey data, there is a 29% fall in KSI per Bkm cycled over the period 2011 - 2019. 
-With the DfT regional traffic data the magnitude of change is smaller, with a 17% reduction in KSI per Bkm 2011 - 2019 (excluding Wales and Scotland). 
+With the NTS survey data, there is a 29% fall in KSI per Bkm cycled over the period 2011 - 2019.
+With the DfT regional traffic data the magnitude of change is smaller, with a 17% reduction in KSI per Bkm 2011 - 2019 (excluding Wales and Scotland).
 Scotland and the North West have been particularly successful, with 36% and 31% reductions respectively.
 
 ```{r, fig.cap="KSI risk per km cycled, 2010 - 2019, using (left) NTS journey data and (right) DfT regional traffic data."}
@@ -196,17 +196,16 @@ The DfT regional traffic data shows a 30% reduction in risk 2019 - 2020, while f
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/138716908-00b8c78e-1279-4a8a-a644-a92b6d2b1d27.png")
 ```
 
-
 # Sub-regional trends in cycle KSI and risk
 
 We investigate trends in KSI, exposure and risk for commuter cycling at the geographical scales of Upper Tier Local Authorities and Police Force areas.
 Data related to KSI and km cycled are available for the years 2010 - 2020, while data related to population estimates, such as km cycled per capita, are available for the years 2010 - 2019.
 
-KSI and risk are estimated based on the number of cyclists killed and seriously injured during weekday peak hours (07:00-10:00 and 16:00-19:00), and estimates of km cycled derived from Census 2011 travel to work by bicycle. 
+KSI and risk are estimated based on the number of cyclists killed and seriously injured during weekday peak hours (07:00-10:00 and 16:00-19:00), and estimates of km cycled derived from Census 2011 travel to work by bicycle.
 These journeys are routed using the CycleStreets.net fast routes algorithm, as used in the Propensity to Cycle Tool.
 
-For all other years, we adjust the 2011 commuter cycle flows using DfT counter data, based on mean AADF counts within the relevant geographical zone. 
-As a baseline for the annual adjustments of cycle flows, we reduce volatility by using the mean AADF flows in a three year period centered on 2011, e.g: 
+For all other years, we adjust the 2011 commuter cycle flows using DfT counter data, based on mean AADF counts within the relevant geographical zone.
+As a baseline for the annual adjustments of cycle flows, we reduce volatility by using the mean AADF flows in a three year period centered on 2011, e.g:
 
 $$
 Km_{2020} =  Km_{2011} * (AADF_{2020} / (Mean(AADF_{2010}, AADF_{2011}, AADF_{2012})))
@@ -215,9 +214,9 @@ $$
 where $Km_{2020}$ = estimated km cycled for travel to work in 2020; $Km_{2011}$ = km cycled for travel to work in 2011; $AADF_{2020}$ = mean AADF of DfT counters within the geographical region in 2020; $AADF_{2010}$ = mean AADF in 2010; $AADF_{2011}$ = mean AADF in 2011; and $AADF_{2012}$ = mean AADF in 2012.
 
 Since only summary collision data was available for 2020, we estimated weekday peak hour KSI in 2020 by using the percentage change in total KSI between 2019 and 2020.
-If anything, this is likely to overestimate the number of collisions (and thus the risk) occurring during peak hours, since travel to work was disproportionately affected by pandemic-related lockdown measures.  
+If anything, this is likely to overestimate the number of collisions (and thus the risk) occurring during peak hours, since travel to work was disproportionately affected by pandemic-related lockdown measures.
 
-## Upper Tier Local Authority trends 
+## Upper Tier Local Authority trends
 
 To compare the trends in each metric, we show mean values across the years 2010 - 2014 and 2015 - 2019, plus the values in 2020.
 To start with, we look at KSI at the LA level, where there is relatively little noticeable change across the decade.
@@ -273,7 +272,7 @@ When this is plotted against the KSI risk per km cycled, we see a strong correla
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/139227009-75aa8f15-2b72-4c4f-8afe-c47ee3c70bc5.png")
 ```
 
-A second factor is the rural-urban status of a Local Authority. 
+A second factor is the rural-urban status of a Local Authority.
 This could impact on road safety in many ways, for example the overall volume of traffic is likely to be higher in more urban districts.
 To investigate this, we must use Lower Tier Local Authorities.
 The figure below appears to show an urbanisation effect which is independent of the previously described safety in numbers effect.
@@ -283,33 +282,32 @@ For each group of LAs, KSI risk falls with distance cycled, but for any given le
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/139245683-5ee67566-6b45-4f40-8b4a-baf2b5f9e16e.png")
 ```
 
-
 ## Data downloads
 
-The Upper Tier Local Authority level trends in peak hour cycling and risk can be found at https://github.com/saferactive/saferactive/releases/download/0.1.4/ksi.csv
+The Upper Tier Local Authority level trends in peak hour cycling and risk can be found at <https://github.com/saferactive/saferactive/releases/download/0.1.4/ksi.csv>
 
-The police force level trends in peak hour cycling and risk can be found at 
-https://github.com/saferactive/saferactive/releases/download/0.1.4/ksi-pf.csv
+The police force level trends in peak hour cycling and risk can be found at <https://github.com/saferactive/saferactive/releases/download/0.1.4/ksi-pf.csv>
 
-These datasets can all be seen on the Saferactive web app. 
-https://saferactive.github.io/tgve/
+These datasets can all be seen on the Saferactive web app.
+<https://saferactive.github.io/tgve/>
 
 # Low Traffic Neighbourhoods and rat-runs
 
 Traffic levels on minor roads have increased dramatically in recent years, by 26% nationwide compared with only 9% on A roads, according to DfT's [official statistics](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/916749/road-traffic-estimates-in-great-britain-2019.pdf).
 Many factors influence road safety, but since the coronavirus pandemic modal filters and other traffic calming interventions in residential areas have come to the fore, explaining our focus on residential interventions in this section.
 
-Although the phrase 'Low Traffic Neighbourhood' is a recent invention, the concept is not new. 
-Modal filters preventing vehicle movement along a street while allowing passage to pedestrians and cyclists have existed for many decades. 
-They can take a wide range of forms, such as bollards, gaps, and continuations of pavement across the entrances of side streets. 
+Although the phrase 'Low Traffic Neighbourhood' is a recent invention, the concept is not new.
+Modal filters preventing vehicle movement along a street while allowing passage to pedestrians and cyclists have existed for many decades.
+They can take a wide range of forms, such as bollards, gaps, and continuations of pavement across the entrances of side streets.
 
-It can also be argued that any street, or any network of streets, which does not provide a vehicle connection between two main roads, is in effect part of a low traffic neighbourhood. 
-These streets do not provide worthwhile opportunities for ratrunning, so they are likely to be used mainly by residents and those wishing to access destinations on the street itself. 
+It can also be argued that any street, or any network of streets, which does not provide a vehicle connection between two main roads, is in effect part of a low traffic neighbourhood.
+These streets do not provide worthwhile opportunities for ratrunning, so they are likely to be used mainly by residents and those wishing to access destinations on the street itself.
 This includes cul-de-sacs and wider networks of streets for which all of the access points are on the same main road.
 
-Using this definition of low traffic neighbourhoods, CycleStreets.net have created a nationwide beta map of LTNs. 
-All roads are assigned as main roads, low traffic neighbourhood roads, ratruns, or ratruns with traffic calming measures. 
-Main roads are those classified as 'A', 'B' or 'C' roads. Data on traffic calming measures are obtained from OSM.
+Using this definition of low traffic neighbourhoods, CycleStreets.net have created a nationwide beta map of LTNs.
+All roads are assigned as main roads, low traffic neighbourhood roads, ratruns, or ratruns with traffic calming measures.
+Main roads are those classified as 'A', 'B' or 'C' roads.
+Data on traffic calming measures are obtained from OSM.
 
 This map extract from Leeds gives an example of how roads are classified.
 
@@ -321,7 +319,7 @@ We have used this beta map with West Yorkshire as a case study region, to assess
 
 ## Active travel KSI, road length and commuter cycling in West Yorkshire
 
-For this case study we have divided the West Yorkshire road network into a set of 1km grid cells. 
+For this case study we have divided the West Yorkshire road network into a set of 1km grid cells.
 We see a clear correlation between total road length within each 1km cell and the number of pedestrian KSI over the period 2010-2019.
 
 ```{r ped-ksi, fig.cap="Pedestrian KSI over the years 2010-2019 against road length in km. Each point represents a 1km grid cell"}
@@ -340,18 +338,19 @@ We can see a positive correlation between distance cycled for travel to work and
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/136543609-0a2e5e82-af09-4a97-85d8-bed82f4fb72f.png")
 ```
 
-Switching to maps, we can see how these patterns play out across West Yorkshire. 
-The greatest concentration of cycle and walking KSI are found in the urban areas such as Leeds and Bradford. 
+Switching to maps, we can see how these patterns play out across West Yorkshire.
+The greatest concentration of cycle and walking KSI are found in the urban areas such as Leeds and Bradford.
 Cycle commute km are strongly concentrated within Leeds.
 
 ```{r, fig.cap="Cycle and pedestrian KSI for the period 2010-2019 and km cycled for travel to work in West Yorkshire. The map of km cycled only includes cells that form part of the PCT-derived fast route network for the 2011 Census"}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/137118045-8f0c8c93-e104-4583-a5e0-f5c600d0b6e9.png")
 ```
 
-Now looking at the distribution of KSI risk, we see that for walking, KSI risk per km road remains highest in the urban areas, especially Bradford. 
-For cycling, KSI risk per km road has a slightly more scattered distribution with high values in Leeds. 
-However, when we use Bkm cycled as the denominator, the map is very different. Now some of the lowest rates are found in Leeds. 
-This map shows very high KSI rates in some of the Pennine fringes of West Yorkshire, but these are probably artefacts of the fact that we are using commuter cycling as the denominator, while leisure and sport cycling dominate in these areas. 
+Now looking at the distribution of KSI risk, we see that for walking, KSI risk per km road remains highest in the urban areas, especially Bradford.
+For cycling, KSI risk per km road has a slightly more scattered distribution with high values in Leeds.
+However, when we use Bkm cycled as the denominator, the map is very different.
+Now some of the lowest rates are found in Leeds.
+This map shows very high KSI rates in some of the Pennine fringes of West Yorkshire, but these are probably artefacts of the fact that we are using commuter cycling as the denominator, while leisure and sport cycling dominate in these areas.
 A more reliable finding is that KSI risk appears higher in Bradford than in Leeds.
 
 ```{r, fig.cap="Cycle and pedestrian KSI risk for the period 2010-2019 and KSI per Bkm cycled for travel to work in West Yorkshire, assuming 35% of cycle journeys are commutes (NTS mean for England in 2010-2019). The third map only includes cells that form part of the PCT-derived fast route network for the 2011 Census"}
@@ -360,42 +359,42 @@ knitr::include_graphics("https://user-images.githubusercontent.com/52210872/1381
 
 ## KSI and road types in West Yorkshire
 
-The next step is to investigate how these patterns relate to the distribution of road types. 
+The next step is to investigate how these patterns relate to the distribution of road types.
 Unsurprisingly, the total road length within each 1km grid cell varies greatly across the region, being highest in towns and cities, but so too does the distribution of types of road within each grid cell.
 
 ```{r}
 knitr::include_graphics("https://user-images.githubusercontent.com/52210872/137931151-74a946aa-11a8-4989-be58-db89206792c0.png")
 ```
 
-Weighting by the road length within a grid cell, we look at how pedestrian and cyclist KSI vary with the proportion of roads of different types. 
+Weighting by the road length within a grid cell, we look at how pedestrian and cyclist KSI vary with the proportion of roads of different types.
 We expect that KSI rates will increase as the proportion of ratruns increases, and decrease as the proportion of LTNs increases.
 This does seem to occur, as borne out by investigatory GLM models, although the relationship is weak as many other factors are at play.
 It would be interesting to study these relationships across wider spatial scales.
-Another option is to use a function to more precisely define street networks of local neighbourhoods that share common features, and use these as the unit of measurement rather than using 1km grid cells.  
+Another option is to use a function to more precisely define street networks of local neighbourhoods that share common features, and use these as the unit of measurement rather than using 1km grid cells.
 
 # Discussion
 
-There are many questions on the topic of road safety that deserve further investigation. 
+There are many questions on the topic of road safety that deserve further investigation.
 A long standing focus of interest is the relationship of road safety risk with deprivation and inequality.
 It is possible for example to investigate the identity of casualties and of other people involved in collisions, together with the characteristics of the areas where collisions occur, assessing these using the Index of Multiple Deprivation.
-We might expect higher casualty rates for people from more deprived neighbourhoods, but interactions also take place with for example people who live in less deprived neighbourhoods being involved in collisions in more deprived neigbourhoods, and vice versa. 
+We might expect higher casualty rates for people from more deprived neighbourhoods, but interactions also take place with for example people who live in less deprived neighbourhoods being involved in collisions in more deprived neigbourhoods, and vice versa.
 
 Another topic of interest is safety in numbers - the idea that in places where more people cycle, the risk of injury is lower.
-This appears to be borne out by the spatial trends shown in Section 5.3, as well as in temporal trends - for example when cycling increased across England and Wales in 2020 the risk reduced. 
-However, we must still question the role of causality. 
+This appears to be borne out by the spatial trends shown in Section 5.3, as well as in temporal trends - for example when cycling increased across England and Wales in 2020 the risk reduced.
+However, we must still question the role of causality.
 Is it the higher numbers of cyclists that make the roads safer, or are more people willing to cycle in places and at times when other factors (such as the design of the road environment) mean it is inherently safe?
 Potential reasons why increased cycling might in itself lead to reduced injury risk could include changes in driver behaviour, in that drivers are more likely to actively look out for cyclists in locations where the number of cyclists is higher.
 A more in-depth study would be required to tease out these causal relations.
 
-A further question is whether places with low casualty rates and falling risk share a set of common features or policies, that can be applied to other regions to improve their safety. 
+A further question is whether places with low casualty rates and falling risk share a set of common features or policies, that can be applied to other regions to improve their safety.
 Scotland has seen some of the greatest reductions in injury risk in the UK over the last decade, and has a comprehensive Road Safety Framework to 2030.
 A focus on safe speeds is one of the five pillars of this strategy, with others focusing on road design, vehicle design, road user behaviour, and post-crash response.
 Lancashire is another area in which initially high collision rates have improved greatly.
 The county appears to have an active Road Safety Partnership.
 
 The road environment has changed greatly over the last two years.
-We have seen unprecedented lockdown and an increase in cycling, as well as opportunities for speeding, on relatively traffic-free roads.  
-Now traffic levels have returned to normal faster than public transport patronage, potentially increasing risk and congestion.  
+We have seen unprecedented lockdown and an increase in cycling, as well as opportunities for speeding, on relatively traffic-free roads.\
+Now traffic levels have returned to normal faster than public transport patronage, potentially increasing risk and congestion.\
 We also have new types of road user such as legal and illegal e-scooters, which are becoming more widespread.
 Meanwhile, among car drivers, there is a trend towards heavier and larger vehicles, such as SUVs, which may react differently in the event of a collision.
 These are just some of the trends that could influence road safety in future.
@@ -404,20 +403,21 @@ These are just some of the trends that could influence road safety in future.
 
 Much of this report has focused on the question of how to measure road safety risk, but rather than having one simple answer it is clear again that there are many different ways of approaching this topic.
 We have focused mainly on risk related to cycle commuting, which has some of the best data quality, but even here different data sources will provide different interpretations.
-This uncertainty must be understood in the context that to assess risk, we need measures of both casualty rates and exposure. 
+This uncertainty must be understood in the context that to assess risk, we need measures of both casualty rates and exposure.
 
 In the casualty data, it is important to be aware of issues related to the way in which the data is collected, such as differences between data recorded at the scene of a collision and data that has been self-reported online.
 Contributory factors that are recorded may be the interpretation of the reporting police officer.
-There is also the need to adjust for changing methodologies in determining injury severity. 
+There is also the need to adjust for changing methodologies in determining injury severity.
 Notwithstanding these points, the Stats19 casualty data is comprehensive and its core components (such as number of casualties) are highly reliable.
 Therefore it is in the exposure, i.e. the distance cycled on the roads, that the greatest degree of uncertainty lies.
 
 ## Uncertainty in spatial trends
 
-When it comes to travel to work, we have comprehensive knowledge of spatial trends in cycling through the 2011 Census. Certain uncertainties remain even here, since we do not know the actual routes used to travel between origin and destination, but the CycleStreets.net fast algorithm provides a good approximation of these.
+When it comes to travel to work, we have comprehensive knowledge of spatial trends in cycling through the 2011 Census.
+Certain uncertainties remain even here, since we do not know the actual routes used to travel between origin and destination, but the CycleStreets.net fast algorithm provides a good approximation of these.
 
-However, this only holds true for travel to work, which in 2011 accounted for 38% of cycle journeys. 
-Similarly comprehensive data exists for travel to school, but not for other purposes such as leisure, personal business and shopping. 
+However, this only holds true for travel to work, which in 2011 accounted for 38% of cycle journeys.
+Similarly comprehensive data exists for travel to school, but not for other purposes such as leisure, personal business and shopping.
 In particular, leisure cycling accounted for 34% of journeys in 2011 and is likely to have considerably different spatial patterns to commuter cycling.
 In addition, we do not yet have evidence relating to multimodal journeys such as combined cycle-rail journeys.
 
@@ -426,25 +426,25 @@ We have focused on travel to work by only counting collisions that occur during 
 Therefore, in the sub-regional analyses we will have overestimated KSI risk everywhere, but especially in places where commuting is a relatively smaller proportion of total cycle journeys.
 This could potentially explain the high risk rates seen in areas such as rural Wales, the fringes of London, the South Coast and the Pennines, which may have relatively high proportions of leisure/sport cycling.
 
-The reliance on Census data which is now ten years old also means that spatial trends will not account for new build developments, although flows from these sites may be included in the traffic counter data for more recent years.  
+The reliance on Census data which is now ten years old also means that spatial trends will not account for new build developments, although flows from these sites may be included in the traffic counter data for more recent years.
 
 ## Uncertainty in temporal trends
 
-The spatial trends described above hold true for 2011, when the Census was conducted. 
+The spatial trends described above hold true for 2011, when the Census was conducted.
 When analysing change through time before and after this date, there is uncertainty related to the measures used to assess change in cycling.
 At the regional level, it is possible to use DfT regional traffic data and NTS survey returns, but these are not available at higher geographic resolutions.
 
 The sub-regional analyses rely on Annual Average Daily Flows derived from DfT traffic counters as a basis for estimating change through time.
-However, a key limitation is that the count locations are not consistent from year to year. 
+However, a key limitation is that the count locations are not consistent from year to year.
 Some locations see counts every year, but most do not, leading to a proponderance of missing data which impacts on observed trends.
 
-In addition, counts are undertaken on a variety of road types, from trunk 'A' roads to 'C' and unclassified roads. 
-Expected cycle flows differ by road type. 
-Both nationally and within a Local Authority, the number and proportion of counts that are located on roads of each type varies from year to year.  
+In addition, counts are undertaken on a variety of road types, from trunk 'A' roads to 'C' and unclassified roads.
+Expected cycle flows differ by road type.
+Both nationally and within a Local Authority, the number and proportion of counts that are located on roads of each type varies from year to year.\
 This causes inter-annual flux in observed cycle flows which can mask underlying trends.
-The result of these factors is that the mean AADF for counters within a given geographic area is inherently unstable from year to year. 
+The result of these factors is that the mean AADF for counters within a given geographic area is inherently unstable from year to year.
 
-We investigated resampling of counter locations and weighting by road type to standardise the representation of road types through time within each Local Authority. 
+We investigated resampling of counter locations and weighting by road type to standardise the representation of road types through time within each Local Authority.
 This could be used in future to reduce the impact of inter-annual variability.
 
 ## Impact of data scarcity
@@ -457,17 +457,24 @@ Another potential approach is the use of a multilevel model, with counter locati
 
 When investigating road safety, it is important to take into account both exposure and risk to avoid faulty assumptions arising from 'denominator neglect'.
 Headlines around spikes in cyclist fatalities in London, with scant measure of the broader picture of increasing cycling rates that suggest an overall improvement in safety, demonstrate this point.
-Conversely, areas that see both decreases in active travel but a flatlining in casualties, should be cause for concern and intervention to tackle the causes of unsafe roads for the modes that pose the least threat to other road users and who have the most to loose from high impact collisions motor vehicles.
+Conversely, areas that see both decreases in active travel but a flatlining in casualties, should be cause for concern and interventions should be prioritised.
+Evidence on which interventions are most effective is still emerging but it is clear that they should tackle the root causes of unsafe roads for the modes that pose the least threat to other road users and who have the most to loose from high impact collisions motor vehicles.
 
 This project demonstrates that 'safety' can be quantified using existing datasets that are available nationwide.
 Specifically, the metric of number of people killed and injured per billion km walked or cycled, accounts for both changes exposure and collisions.
-Our analysis clearly shows that some areas across Great Britain have successfully increased walking and cycling level, while simultaneously reducing absolute numbers of people hurt on the roads while walking and cycling (not to mention wheeling on e-scooters and other mobility devices.).
-We recommend further research specifically into areas that have made the most impressive reductions in KSI/bkm rates, while succeeding in enabling more people to walk and cycle for everyday trips, reducing reliance on cars.
+Our analysis clearly shows that some areas across Great Britain have successfully increased walking and cycling levels, while simultaneously reducing absolute numbers of people hurt on the roads while walking and cycling (not to mention wheeling on e-scooters and other mobility devices not explored in this project).
+We recommend further research specifically into areas that have made the greatest reductions in KSI/bkm rates, while succeeding in enabling more people to walk and cycle for everyday trips, reducing reliance on cars.
+We recommend regular reporting of road safety outcomes alongside reporting of open access estimates of active travel, as part of wider strategies that have a long term goal such as 'vision zero' policies akin the zero carbon objectives with evidence-based regular targets.
 
-Despite an increase in the number of cyclists killed and seriously injured on British roads in 2020, the risk in terms of KSI/Bkm actually fell by around 30%.
+Despite an increase in the number of cyclists killed and seriously injured on British roads in 2020 in the context of the COVID pandemic, the risk in terms of KSI/Bkm actually fell by around 30%.
 This is an area that is worthy of further research: which places saw the greatest increases in cycling and improvements in safety, why, and how can lessons learned from these places be applied elswhere?
 There are many factors that influence risk and and further research, building on our findings, could help identify which conditions and types of intervention (e.g. LTNs) are most effective in different types of settlement.
 
-More broadly, the time series analysis presented in our work enables policy makers to track change in road safety over time, for different places, and different groups.
-For example, the finding that road safety inequalities for cycling seems to be increasing, especially for children 
+The time series analysis presented in our work enables policy makers to track change in road safety over time, for different places, and different groups.
+For example, the finding that road safety inequalities for cycling seems to be increasing, especially for children [@vidaltortosa_socioeconomic_2021], should be cause for urgent investigation and the prioritisation of resources to support the levelling up agenda.
 
+More broadly, our work creates a foundation on which further road safety research focussing on active travel can build.
+The estimates of cycling uptake and collision rates each year over the past decade, for every local authority, is a free and open resource.
+Furthermore the code underlying our work is open source and we encourage others to build on the analysis contained the saferactive repos on GitHub: https://github.com/saferactive/
+This is an important and emerging field in need of consilidation and comparison of diverse data sources.
+There is a need for national reporting and provision of open data at high temporal and spatial resolution: monthly reporting of road safety and active travel outcomes at local levels could, for example, be used to monitor, assess and support intervention such as experimental TROs of the type used to implement LTNs.
