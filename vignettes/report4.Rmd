@@ -10,7 +10,7 @@ vignette: >
   %\VignetteIndexEntry{SaferActive Report 4: Trends in road safety and potential causal factors}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-bibliography: report4.bib
+bibliography: saferactive.bib
 pkgdown:
   as_is: true
   set_null_theme: false
@@ -219,7 +219,7 @@ where $Km_{2020}$ = estimated km cycled for travel to work in 2020; $Km_{2011}$ 
 
 Since only summary collision data was available for 2020, we estimated weekday peak hour KSI in 2020 by using the percentage change in total KSI between 2019 and 2020.
 If anything, this is likely to overestimate the number of collisions (and thus the risk) occurring during peak hours, since travel to work was disproportionately affected by pandemic-related lockdown measures.
-Furthermore, interventions such as provisional cycleways and 'Low Traffic Neighbourhoods' (LTNs) will likely have affected the spatial distribution of road traffic casualties in 2020 \[\@\]
+Furthermore, interventions such as provisional cycleways and 'Low Traffic Neighbourhoods' (LTNs) will likely have affected the spatial distribution of road traffic casualties in 2020 [@lovelace_methods_2020; @laverty_2021_impact].
 
 ## Upper Tier Local Authority trends
 
@@ -476,9 +476,11 @@ This is an area that is worthy of further research: which places saw the greates
 There are many factors that influence risk and and further research, building on our findings, could help identify which conditions and types of intervention (e.g. LTNs) are most effective in different types of settlement.
 
 The time series analysis presented in our work enables policy makers to track change in road safety over time, for different places, and different groups.
-For example, the finding that road safety inequalities for cycling seems to be increasing, especially for children \[vidaltortosa_socioeconomic_2021\], should be cause for urgent investigation and the prioritisation of resources to support the levelling up agenda.
+For example, the finding that road safety inequalities for cycling seems to be increasing, especially for children [@vidaltortosa_socioeconomic_2021], should be cause for urgent investigation and the prioritisation of resources to support the levelling up agenda.
 
 More broadly, our work creates a foundation on which further road safety research focussing on active travel can build.
 The estimates of cycling uptake and collision rates each year over the past decade, for every local authority, is a free and open resource.
 Furthermore the code underlying our work is open source and we encourage others to build on the analysis contained the saferactive repos on GitHub: <https://github.com/saferactive/> This is an important and emerging field in need of consilidation and comparison of diverse data sources.
 There is a need for national reporting and provision of open data at high temporal and spatial resolution: monthly reporting of road safety and active travel outcomes at local levels could, for example, be used to monitor, assess and support intervention such as experimental TROs of the type used to implement LTNs.
+
+# References
