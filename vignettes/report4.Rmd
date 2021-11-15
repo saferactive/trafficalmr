@@ -17,7 +17,7 @@ pkgdown:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, cache = TRUE)
 library(dplyr)
 library(stats19)
 library(sf)
