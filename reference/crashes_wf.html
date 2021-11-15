@@ -142,30 +142,30 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>crashes</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2018</span>, <span class='st'>"acc"</span><span class='op'>)</span>
-<span class='va'>lnd</span> <span class='op'>=</span> <span class='fu'>spData</span><span class='fu'>::</span><span class='va'>lnd</span>
-<span class='va'>waltham_forest</span> <span class='op'>=</span> <span class='va'>lnd</span><span class='op'>[</span><span class='va'>lnd</span><span class='op'>$</span><span class='va'>NAME</span> <span class='op'>==</span> <span class='st'>"Waltham Forest"</span>, <span class='op'>]</span>
-<span class='va'>crashes_sf</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/format_sf.html'>format_sf</a></span><span class='op'>(</span><span class='va'>crashes</span>, lonlat <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>crashes_sf</span><span class='op'>$</span><span class='va'>police_force</span><span class='op'>)</span>
-<span class='va'>crashes_wf</span> <span class='op'>=</span> <span class='va'>crashes_sf</span><span class='op'>[</span><span class='va'>waltham_forest</span>, <span class='op'>]</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>crashes_wf</span><span class='op'>)</span>
-<span class='va'>crashes_wf</span> <span class='op'>=</span> <span class='fu'>sf</span><span class='fu'>::</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_drop_geometry</a></span><span class='op'>(</span><span class='va'>crashes_wf</span><span class='op'>)</span>
-<span class='co'># crashes_wy = crashes[crashes$police_force == "West Yorkshire", ]</span>
-<span class='va'>casualties</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2018</span>, <span class='st'>"cas"</span><span class='op'>)</span>
-<span class='va'>casualties_wf</span> <span class='op'>=</span> <span class='va'>casualties</span><span class='op'>[</span><span class='va'>casualties</span><span class='op'>$</span><span class='va'>accident_index</span> <span class='op'>%in%</span> <span class='va'>crashes_wf</span><span class='op'>$</span><span class='va'>accident_index</span>, <span class='op'>]</span>
-<span class='va'>vehicles</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2018</span>, <span class='st'>"veh"</span><span class='op'>)</span>
-<span class='va'>vehicles_wf</span> <span class='op'>=</span> <span class='va'>vehicles</span><span class='op'>[</span><span class='va'>vehicles</span><span class='op'>$</span><span class='va'>accident_index</span> <span class='op'>%in%</span> <span class='va'>crashes_wf</span><span class='op'>$</span><span class='va'>accident_index</span>, <span class='op'>]</span>
-
-<span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/use_data.html'>use_data</a></span><span class='op'>(</span><span class='va'>crashes_wf</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/use_data.html'>use_data</a></span><span class='op'>(</span><span class='va'>casualties_wf</span><span class='op'>)</span>
-<span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/use_data.html'>use_data</a></span><span class='op'>(</span><span class='va'>vehicles_wf</span><span class='op'>)</span>
-
-<span class='va'>crashes</span> <span class='op'>=</span> <span class='va'>crashes_wf</span>
-<span class='va'>casualties</span> <span class='op'>=</span> <span class='va'>casualties_wf</span>
-<span class='va'>vehicles</span> <span class='op'>=</span> <span class='va'>vehicles_wf</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='va'>crashes</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2018</span>, <span class='st'>"acc"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>lnd</span> <span class='op'>=</span> <span class='fu'>spData</span><span class='fu'>::</span><span class='va'>lnd</span></span>
+<span class='r-in'><span class='va'>waltham_forest</span> <span class='op'>=</span> <span class='va'>lnd</span><span class='op'>[</span><span class='va'>lnd</span><span class='op'>$</span><span class='va'>NAME</span> <span class='op'>==</span> <span class='st'>"Waltham Forest"</span>, <span class='op'>]</span></span>
+<span class='r-in'><span class='va'>crashes_sf</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/format_sf.html'>format_sf</a></span><span class='op'>(</span><span class='va'>crashes</span>, lonlat <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>crashes_sf</span><span class='op'>$</span><span class='va'>police_force</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>crashes_wf</span> <span class='op'>=</span> <span class='va'>crashes_sf</span><span class='op'>[</span><span class='va'>waltham_forest</span>, <span class='op'>]</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>crashes_wf</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>crashes_wf</span> <span class='op'>=</span> <span class='fu'>sf</span><span class='fu'>::</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_drop_geometry</a></span><span class='op'>(</span><span class='va'>crashes_wf</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># crashes_wy = crashes[crashes$police_force == "West Yorkshire", ]</span></span>
+<span class='r-in'><span class='va'>casualties</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2018</span>, <span class='st'>"cas"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>casualties_wf</span> <span class='op'>=</span> <span class='va'>casualties</span><span class='op'>[</span><span class='va'>casualties</span><span class='op'>$</span><span class='va'>accident_index</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>crashes_wf</span><span class='op'>$</span><span class='va'>accident_index</span>, <span class='op'>]</span></span>
+<span class='r-in'><span class='va'>vehicles</span> <span class='op'>=</span> <span class='fu'>stats19</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/stats19/reference/get_stats19.html'>get_stats19</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2018</span>, <span class='st'>"veh"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>vehicles_wf</span> <span class='op'>=</span> <span class='va'>vehicles</span><span class='op'>[</span><span class='va'>vehicles</span><span class='op'>$</span><span class='va'>accident_index</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>crashes_wf</span><span class='op'>$</span><span class='va'>accident_index</span>, <span class='op'>]</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/use_data.html'>use_data</a></span><span class='op'>(</span><span class='va'>crashes_wf</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/use_data.html'>use_data</a></span><span class='op'>(</span><span class='va'>casualties_wf</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/use_data.html'>use_data</a></span><span class='op'>(</span><span class='va'>vehicles_wf</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>crashes</span> <span class='op'>=</span> <span class='va'>crashes_wf</span></span>
+<span class='r-in'><span class='va'>casualties</span> <span class='op'>=</span> <span class='va'>casualties_wf</span></span>
+<span class='r-in'><span class='va'>vehicles</span> <span class='op'>=</span> <span class='va'>vehicles_wf</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

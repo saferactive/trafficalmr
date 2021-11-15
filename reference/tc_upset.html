@@ -164,98 +164,116 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>crash_summary</span> <span class='op'>=</span> <span class='fu'><a href='tc_join_stats19_for_upset.html'>tc_join_stats19_for_upset</a></span><span class='op'>(</span><span class='va'>crashes_wf</span>, <span class='va'>casualties_wf</span>, <span class='va'>vehicles_wf</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `casualty_type_simple`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `vehicle_type_simple`.</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "accident_index"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>crash_summary</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "accident_index"    "Bus"               "HGV_occupant"     
-#&gt;  [4] "Car"               "Car_occupant"      "Bicycle"          
-#&gt;  [7] "Pedestrian"        "Taxi"              "Motorcycle"       
-#&gt; [10] "HGV"               "Van"               "Taxi_occupant"    
-#&gt; [13] "Other"             "Minibus_occupant"  "accident_severity"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>crash_summary</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  accident_index        Bus          HGV_occupant       Car         
-#&gt;  Length:3449        Mode :logical   Mode :logical   Mode :logical  
-#&gt;  Class :character   FALSE:3240      FALSE:3242      FALSE:572      
-#&gt;  Mode  :character   TRUE :209       TRUE :207       TRUE :2877     
-#&gt;  Car_occupant     Bicycle        Pedestrian         Taxi        
-#&gt;  Mode :logical   Mode :logical   Mode :logical   Mode :logical  
-#&gt;  FALSE:2022      FALSE:2854      FALSE:2695      FALSE:3302     
-#&gt;  TRUE :1427      TRUE :595       TRUE :754       TRUE :147      
-#&gt;  Motorcycle         HGV             Van          Taxi_occupant  
-#&gt;  Mode :logical   Mode :logical   Mode :logical   Mode :logical  
-#&gt;  FALSE:2901      FALSE:3391      FALSE:3103      FALSE:3391     
-#&gt;  TRUE :548       TRUE :58        TRUE :346       TRUE :58       
-#&gt;    Other         Minibus_occupant accident_severity 
-#&gt;  Mode :logical   Mode :logical    Length:3449       
-#&gt;  FALSE:3392      FALSE:3447       Class :character  
-#&gt;  TRUE :57        TRUE :2          Mode  :character  </div><div class='input'><span class='fu'>tc_upset</span><span class='op'>(</span><span class='va'>crash_summary</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 558 rows containing non-finite values (stat_count).</span></div><div class='img'><img src='tc_upset-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>tc_upset</span><span class='op'>(</span><span class='va'>crash_summary</span>, casualty_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Bicycle"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 20 rows containing non-finite values (stat_count).</span></div><div class='img'><img src='tc_upset-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># create plot with 'Other' category</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>casualties_wf</span><span class='op'>$</span><span class='va'>casualty_type</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 
-#&gt;             Bus or coach occupant (17 or more pass seats) 
-#&gt;                                                       159 
-#&gt;                                              Car occupant 
-#&gt;                                                      2038 
-#&gt;                                                   Cyclist 
-#&gt;                                                       580 
-#&gt;          Goods vehicle (7.5 tonnes mgw and over) occupant 
-#&gt;                                                         1 
-#&gt;       Goods vehicle (over 3.5t. and under 7.5t.) occupant 
-#&gt;                                                         2 
-#&gt;                 Minibus (8 - 16 passenger seats) occupant 
-#&gt;                                                         4 
-#&gt;             Motorcycle 125cc and under rider or passenger 
-#&gt;                                                       300 
-#&gt;              Motorcycle 50cc and under rider or passenger 
-#&gt;                                                        69 
-#&gt; Motorcycle over 125cc and up to 500cc rider or  passenger 
-#&gt;                                                        59 
-#&gt;                  Motorcycle over 500cc rider or passenger 
-#&gt;                                                        89 
-#&gt;                                    Other vehicle occupant 
-#&gt;                                                        15 
-#&gt;                                                Pedestrian 
-#&gt;                                                       772 
-#&gt;                            Taxi/Private hire car occupant 
-#&gt;                                                        70 
-#&gt;    Van / Goods vehicle (3.5 tonnes mgw or under) occupant 
-#&gt;                                                        87 </div><div class='input'><span class='va'>casualties_wf2</span> <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
-  <span class='va'>casualties_wf</span>,
-  casualty_type_simple <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span>
-     <span class='va'>casualty_type</span> <span class='op'>==</span> <span class='st'>"Car occupant"</span> <span class='op'>~</span> <span class='st'>"Car"</span>,
-     <span class='va'>casualty_type</span> <span class='op'>==</span> <span class='st'>"Pedestrian"</span> <span class='op'>~</span> <span class='st'>"Pedestrian"</span>,
-     <span class='va'>casualty_type</span> <span class='op'>==</span> <span class='st'>"Cyclist"</span> <span class='op'>~</span> <span class='st'>"Cyclist"</span>,
-     <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='st'>"Other"</span>
-    <span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>casualties_wf2</span><span class='op'>$</span><span class='va'>casualty_type_simple</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 
-#&gt;        Car    Cyclist      Other Pedestrian 
-#&gt;       2038        580        855        772 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>vehicles_wf</span><span class='op'>$</span><span class='va'>vehicle_type</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 
-#&gt;                  Agricultural vehicle  Bus or coach (17 or more pass seats) 
-#&gt;                                     3                                   210 
-#&gt;                                   Car         Goods 7.5 tonnes mgw and over 
-#&gt;                                  4285                                    27 
-#&gt;       Goods over 3.5t. and under 7.5t      Minibus (8 - 16 passenger seats) 
-#&gt;                                    31                                    10 
-#&gt;            Motorcycle 125cc and under             Motorcycle 50cc and under 
-#&gt;                                   326                                    72 
-#&gt; Motorcycle over 125cc and up to 500cc                 Motorcycle over 500cc 
-#&gt;                                    67                                    91 
-#&gt;                         Other vehicle                           Pedal cycle 
-#&gt;                                    44                                   597 
-#&gt;                 Taxi/Private hire car   Van / Goods 3.5 tonnes mgw or under 
-#&gt;                                   151                                   363 </div><div class='input'><span class='va'>vehicles_wf2</span> <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
-  <span class='va'>vehicles_wf</span>,
-  vehicle_type_simple <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span>
-     <span class='va'>vehicle_type</span> <span class='op'>==</span> <span class='st'>"Car"</span> <span class='op'>~</span> <span class='st'>"Car"</span>,
-     <span class='va'>vehicle_type</span> <span class='op'>==</span> <span class='st'>"Bicycle"</span> <span class='op'>~</span> <span class='st'>"Pedal cycle"</span>,
-     <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='st'>"Other"</span>
-    <span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='va'>crash_summary</span> <span class='op'>=</span> <span class='fu'><a href='tc_join_stats19_for_upset.html'>tc_join_stats19_for_upset</a></span><span class='op'>(</span><span class='va'>crashes_wf</span>, <span class='va'>casualties_wf2</span>, <span class='va'>vehicles_wf2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = "accident_index"</span></div><div class='input'><span class='fu'>tc_upset</span><span class='op'>(</span><span class='va'>crash_summary</span>, casualty_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Bicycle"</span>, <span class='st'>"Other"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown parameters: inherit.blank</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 20 rows containing non-finite values (stat_count).</span></div><div class='img'><img src='tc_upset-3.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>crash_summary</span> <span class='op'>=</span> <span class='fu'><a href='tc_join_stats19_for_upset.html'>tc_join_stats19_for_upset</a></span><span class='op'>(</span><span class='va'>crashes_wf</span>, <span class='va'>casualties_wf</span>, <span class='va'>vehicles_wf</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Unknown or uninitialised column: `casualty_type_simple`.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Unknown or uninitialised column: `vehicle_type_simple`.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Joining, by = "accident_index"</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>crash_summary</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "accident_index"    "Bus"               "HGV_occupant"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "Car"               "Car_occupant"      "Bicycle"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "Pedestrian"        "Taxi"              "Motorcycle"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "HGV"               "Van"               "Taxi_occupant"    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [13] "Other"             "Minibus_occupant"  "accident_severity"</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>crash_summary</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  accident_index        Bus          HGV_occupant       Car         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Length:3449        Mode :logical   Mode :logical   Mode :logical  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Class :character   FALSE:3240      FALSE:3242      FALSE:572      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mode  :character   TRUE :209       TRUE :207       TRUE :2877     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Car_occupant     Bicycle        Pedestrian         Taxi        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mode :logical   Mode :logical   Mode :logical   Mode :logical  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  FALSE:2022      FALSE:2854      FALSE:2695      FALSE:3302     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  TRUE :1427      TRUE :595       TRUE :754       TRUE :147      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Motorcycle         HGV             Van          Taxi_occupant  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mode :logical   Mode :logical   Mode :logical   Mode :logical  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  FALSE:2901      FALSE:3391      FALSE:3103      FALSE:3391     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  TRUE :548       TRUE :58        TRUE :346       TRUE :58       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    Other         Minibus_occupant accident_severity </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Mode :logical   Mode :logical    Length:3449       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  FALSE:3392      FALSE:3447       Class :character  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  TRUE :57        TRUE :2          Mode  :character  </span>
+<span class='r-in'><span class='fu'>tc_upset</span><span class='op'>(</span><span class='va'>crash_summary</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Ignoring unknown parameters: inherit.blank</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Removed 558 rows containing non-finite values (stat_count).</span>
+<span class='r-plt img'><img src='tc_upset-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='fu'>tc_upset</span><span class='op'>(</span><span class='va'>crash_summary</span>, casualty_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Bicycle"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Ignoring unknown parameters: inherit.blank</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Removed 20 rows containing non-finite values (stat_count).</span>
+<span class='r-plt img'><img src='tc_upset-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='co'># create plot with 'Other' category</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>casualties_wf</span><span class='op'>$</span><span class='va'>casualty_type</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>             Bus or coach occupant (17 or more pass seats) </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                       159 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                              Car occupant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                      2038 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                   Cyclist </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                       580 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          Goods vehicle (7.5 tonnes mgw and over) occupant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                         1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       Goods vehicle (over 3.5t. and under 7.5t.) occupant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                         2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                 Minibus (8 - 16 passenger seats) occupant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                         4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>             Motorcycle 125cc and under rider or passenger </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                       300 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>              Motorcycle 50cc and under rider or passenger </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                        69 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Motorcycle over 125cc and up to 500cc rider or  passenger </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                        59 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                  Motorcycle over 500cc rider or passenger </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                        89 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                    Other vehicle occupant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                        15 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                Pedestrian </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                       772 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                            Taxi/Private hire car occupant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                        70 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    Van / Goods vehicle (3.5 tonnes mgw or under) occupant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                        87 </span>
+<span class='r-in'><span class='va'>casualties_wf2</span> <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='va'>casualties_wf</span>,</span>
+<span class='r-in'>  casualty_type_simple <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span></span>
+<span class='r-in'>     <span class='va'>casualty_type</span> <span class='op'>==</span> <span class='st'>"Car occupant"</span> <span class='op'>~</span> <span class='st'>"Car"</span>,</span>
+<span class='r-in'>     <span class='va'>casualty_type</span> <span class='op'>==</span> <span class='st'>"Pedestrian"</span> <span class='op'>~</span> <span class='st'>"Pedestrian"</span>,</span>
+<span class='r-in'>     <span class='va'>casualty_type</span> <span class='op'>==</span> <span class='st'>"Cyclist"</span> <span class='op'>~</span> <span class='st'>"Cyclist"</span>,</span>
+<span class='r-in'>     <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='st'>"Other"</span></span>
+<span class='r-in'>    <span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>casualties_wf2</span><span class='op'>$</span><span class='va'>casualty_type_simple</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        Car    Cyclist      Other Pedestrian </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       2038        580        855        772 </span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>vehicles_wf</span><span class='op'>$</span><span class='va'>vehicle_type</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                  Agricultural vehicle  Bus or coach (17 or more pass seats) </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                     3                                   210 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                   Car         Goods 7.5 tonnes mgw and over </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                  4285                                    27 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       Goods over 3.5t. and under 7.5t      Minibus (8 - 16 passenger seats) </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                    31                                    10 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            Motorcycle 125cc and under             Motorcycle 50cc and under </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                   326                                    72 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Motorcycle over 125cc and up to 500cc                 Motorcycle over 500cc </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                    67                                    91 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                         Other vehicle                           Pedal cycle </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                    44                                   597 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                 Taxi/Private hire car   Van / Goods 3.5 tonnes mgw or under </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                   151                                   363 </span>
+<span class='r-in'><span class='va'>vehicles_wf2</span> <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='va'>vehicles_wf</span>,</span>
+<span class='r-in'>  vehicle_type_simple <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span></span>
+<span class='r-in'>     <span class='va'>vehicle_type</span> <span class='op'>==</span> <span class='st'>"Car"</span> <span class='op'>~</span> <span class='st'>"Car"</span>,</span>
+<span class='r-in'>     <span class='va'>vehicle_type</span> <span class='op'>==</span> <span class='st'>"Bicycle"</span> <span class='op'>~</span> <span class='st'>"Pedal cycle"</span>,</span>
+<span class='r-in'>     <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='st'>"Other"</span></span>
+<span class='r-in'>    <span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'><span class='va'>crash_summary</span> <span class='op'>=</span> <span class='fu'><a href='tc_join_stats19_for_upset.html'>tc_join_stats19_for_upset</a></span><span class='op'>(</span><span class='va'>crashes_wf</span>, <span class='va'>casualties_wf2</span>, <span class='va'>vehicles_wf2</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Joining, by = "accident_index"</span>
+<span class='r-in'><span class='fu'>tc_upset</span><span class='op'>(</span><span class='va'>crash_summary</span>, casualty_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Car"</span>, <span class='st'>"Pedestrian"</span>, <span class='st'>"Bicycle"</span>, <span class='st'>"Other"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Ignoring unknown parameters: inherit.blank</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Removed 20 rows containing non-finite values (stat_count).</span>
+<span class='r-plt img'><img src='tc_upset-3.png' alt='' width='700' height='433' /></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

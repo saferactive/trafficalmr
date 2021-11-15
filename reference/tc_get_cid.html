@@ -168,29 +168,30 @@ or "TRF_RAISED", "TRF_ENTRY", "TRF_CUSHI", "TRF_HUMP", "TRF_SINUSO",</p></td>
     <p>An sf object representing traffic calming interventions</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># cid_traffic_calming = tc_get_cid()</span>
-<span class='co'># summary(cid_traffic_calming)</span>
-<span class='co'>#   FEATURE_ID            SVDATE           TRF_RAISED      TRF_ENTRY       TRF_CUSHI</span>
-<span class='co'># Length:58565       Min.   :2017-01-06   Mode :logical   Mode :logical   Mode :logical</span>
-<span class='co'># Class :character   1st Qu.:2017-08-13   FALSE:55793     FALSE:50984     FALSE:45939</span>
-<span class='co'># Mode  :character   Median :2017-10-19   TRUE :2772      TRUE :7581      TRUE :12626</span>
-<span class='co'># Mean   :2017-10-14</span>
-<span class='co'># 3rd Qu.:2017-12-15</span>
-<span class='co'># Max.   :2018-08-21</span>
-<span class='co'># TRF_HUMP       TRF_SINUSO      TRF_BARIER      TRF_NAROW        TRF_CALM</span>
-<span class='co'># Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical</span>
-<span class='co'># FALSE:25294     FALSE:51845     FALSE:57630     FALSE:57903     FALSE:57844</span>
-<span class='co'># TRUE :33271     TRUE :6720      TRUE :935       TRUE :662       TRUE :721</span>
-<span class='co'>#</span>
-<span class='co'>#</span>
-<span class='co'>#</span>
-<span class='co'># BOROUGH           PHOTO1_URL         PHOTO2_URL                 geometry</span>
-<span class='co'># Length:58565       Length:58565       Length:58565       POINT        :58565</span>
-<span class='co'># Class :character   Class :character   Class :character   epsg:4326    :    0</span>
-<span class='co'># Mode  :character   Mode  :character   Mode  :character   +proj=long...:    0</span>
-<span class='co'># cid_barriers = tc_get_cid(tc_type = "TRF_BARIER")</span>
-<span class='co'># summary(cid_barriers)</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># cid_traffic_calming = tc_get_cid()</span></span>
+<span class='r-in'><span class='co'># summary(cid_traffic_calming)</span></span>
+<span class='r-in'><span class='co'>#   FEATURE_ID            SVDATE           TRF_RAISED      TRF_ENTRY       TRF_CUSHI</span></span>
+<span class='r-in'><span class='co'># Length:58565       Min.   :2017-01-06   Mode :logical   Mode :logical   Mode :logical</span></span>
+<span class='r-in'><span class='co'># Class :character   1st Qu.:2017-08-13   FALSE:55793     FALSE:50984     FALSE:45939</span></span>
+<span class='r-in'><span class='co'># Mode  :character   Median :2017-10-19   TRUE :2772      TRUE :7581      TRUE :12626</span></span>
+<span class='r-in'><span class='co'># Mean   :2017-10-14</span></span>
+<span class='r-in'><span class='co'># 3rd Qu.:2017-12-15</span></span>
+<span class='r-in'><span class='co'># Max.   :2018-08-21</span></span>
+<span class='r-in'><span class='co'># TRF_HUMP       TRF_SINUSO      TRF_BARIER      TRF_NAROW        TRF_CALM</span></span>
+<span class='r-in'><span class='co'># Mode :logical   Mode :logical   Mode :logical   Mode :logical   Mode :logical</span></span>
+<span class='r-in'><span class='co'># FALSE:25294     FALSE:51845     FALSE:57630     FALSE:57903     FALSE:57844</span></span>
+<span class='r-in'><span class='co'># TRUE :33271     TRUE :6720      TRUE :935       TRUE :662       TRUE :721</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># BOROUGH           PHOTO1_URL         PHOTO2_URL                 geometry</span></span>
+<span class='r-in'><span class='co'># Length:58565       Length:58565       Length:58565       POINT        :58565</span></span>
+<span class='r-in'><span class='co'># Class :character   Class :character   Class :character   epsg:4326    :    0</span></span>
+<span class='r-in'><span class='co'># Mode  :character   Mode  :character   Mode  :character   +proj=long...:    0</span></span>
+<span class='r-in'><span class='co'># cid_barriers = tc_get_cid(tc_type = "TRF_BARIER")</span></span>
+<span class='r-in'><span class='co'># summary(cid_barriers)</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
